@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../../../data/login/services/auth.service';
 import { StorageService } from '../../../../../data/login/services/storage.service';
-import { EventBusService } from 'src/base/events/event-bus.service';
-import { EventData } from 'src/base/events/event.class';
+
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { messages } from 'src/base/messages';
-import { AlertsService } from '../../../../../base/alerts.service';
+import { messages } from 'src/presentation/base/messages';
+import { AlertsService } from 'src/presentation/base/services/alerts.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
