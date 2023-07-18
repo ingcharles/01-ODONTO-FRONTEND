@@ -11,7 +11,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
-import { INITIAL_EVENTS, createEventId } from '../../../../../base/constants';
+import { INITIAL_EVENTS, createEventId } from '../../../../../../../base/constants';
 @Component({
   selector: 'index-calendar',
   templateUrl: './index-calendar.component.html',
