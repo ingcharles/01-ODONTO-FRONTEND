@@ -3,7 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './components/create/pages/login.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ValidationService } from '../base/services/validation.service';
+
 
 
 
@@ -15,6 +17,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     LoginRoutingModule,
     FormsModule,
-  ]
+    ReactiveFormsModule
+  ],
+  providers: [{provide: ValidationService}]
 })
 export class LoginModule { }
