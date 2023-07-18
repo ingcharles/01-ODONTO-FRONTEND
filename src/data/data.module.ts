@@ -6,6 +6,7 @@ import { GeneralService } from './general/services/general.service';
 import { PersonaMapper } from './general/mappers/persona.mapper';
 import { httpInterceptorProviders } from '../base/interceptors/http.interceptor';
 import { AuthService } from './login/services/auth.service';
+import { AuthMapper } from './login/mappers/auth.mapper';
 
 
 
@@ -16,7 +17,8 @@ import { AuthService } from './login/services/auth.service';
         //CrcaMapper,providers: [],
 
         PersonaMapper,
-        { provide: AGeneralService, useClass: GeneralService }
+      AuthMapper,
+        { provide: GeneralService }
     ],
     imports: [
         CommonModule,
