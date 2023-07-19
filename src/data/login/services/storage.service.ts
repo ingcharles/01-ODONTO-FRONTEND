@@ -15,6 +15,7 @@ export class StorageService {
   }
 
   public saveUserStorage(user: any): void {
+    console.log("JSON.stringify(user)", JSON.stringify(user))
     window.sessionStorage.removeItem(USER_KEY);
     window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
   }
@@ -22,6 +23,7 @@ export class StorageService {
   public getUserStorage(): any {
     const user = window.sessionStorage.getItem(USER_KEY);
     if (user) {
+      console.log("JSON.parse(user)", JSON.parse(user))
       return JSON.parse(user);
     }
 

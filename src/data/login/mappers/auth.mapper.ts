@@ -2,7 +2,9 @@
 
 import { IAuthFromRsViewModel, IAuthViewModel } from 'src/domain/login/viewModels/i-auth.viewModel';
 import { AMapper } from './a-mapper';
-import { IAuthToModel } from '../models/i-auth.model';
+import { IAuthFromRsModel, IAuthToModel } from '../models/i-auth.model';
+import { IResponseStatusViewModel } from 'src/domain/general/viewModels/i-response-status.viewModel';
+import { Observable } from 'rxjs';
 
 
 export class AuthMapper extends AMapper<any, any> {
@@ -15,22 +17,26 @@ export class AuthMapper extends AMapper<any, any> {
             ci: item.ci,
             password: item.password,
         }
+    console.log("valor1", valor);
         return valor;
 
     }
 
-
+  // async mapCrcaNumerarioTo(item: ICrcaFormViewModel): Promise<ICrcaNumerarioModel> {
     /** Recibe y mapea los datos que vienen desde el servicio  hacia la vista*/
-  mapLoginFrom(item: any): IAuthFromRsViewModel {
-        return {
+   mapLoginFrom(item: IAuthFromRsModel): IAuthFromRsViewModel {
+     console.log("item", item);
+    const valor: IAuthFromRsViewModel = {
             message: item.message,
             statusCode: item.statusCode,
             ok: item.ok,
             data: item.data ? {
-                ci: item.data.ci,
-                password: item.data.password
+                codigoUsuario: item.data.codigoUsuario,
+               // password: item.data.password
             } : null
         }
+     console.log("valor", valor);
+    return valor;
     }
 
 

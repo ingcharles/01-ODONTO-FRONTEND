@@ -7,6 +7,7 @@ export interface IAuthFromRsModel extends IResponseStatusModel {
 
 export interface IAuthFromModel {
   codigoUsuario: number;
+
 }
 
 

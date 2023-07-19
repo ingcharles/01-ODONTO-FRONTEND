@@ -31,7 +31,7 @@ export const messages = {
     TypeFilenNotAllowed: "Tipo de archivo no está permitido",
     exceed5MBFile: "Tamaño supera los 5MB",
     confirmAnular: "¿Está seguro de anular el registro?",
-    
+
     isWarning: isWarning,
     isSuccess: isSuccess,
     isError: isError,
