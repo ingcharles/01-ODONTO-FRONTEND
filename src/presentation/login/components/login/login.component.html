@@ -93,7 +93,7 @@
 
 <body>
 
-  <div class="content-padding">
+  <div class="login-content">
     <div id="logoApp" class="text-center">
       <h1 class="f-300 pb-4">
         <img alt="" src="../../../../../assets/login/logoApp.png">
@@ -102,7 +102,6 @@
         <div class="md-12">
 
           <div class="lc-block " [ngClass]="loginToggled">
-            <!-- #formLogin="ngForm" (ngSubmit)="login(formLogin)" -->
             <form [formGroup]="loginForm" (ngSubmit)="login()">
               <div class="mb-4">
                 <div class="input-group">
@@ -132,8 +131,6 @@
                       required passwordStrength formControlName="password"
                       aria-label="Recipient's username" aria-describedby="basic-addon2"
                       (onPaste)="this._validatorService.validatePaste($event)" [(ngModel)]="user.password">
-
-                    <!-- (keyup.enter)="login()" -->
                   </div>
                 </div>
 
@@ -145,7 +142,7 @@
                   </div>
                   <div *ngIf="this._validatorService.isValidFielPasswordStrength(loginForm,'password')">
                     {{menssage.passwordLogin}}
-                    
+
                   </div>
                 </div>
 

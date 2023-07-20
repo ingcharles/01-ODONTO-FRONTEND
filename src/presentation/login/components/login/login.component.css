@@ -1,12 +1,12 @@
 ::ng-deep body {
   margin: 0;
-  background: url(../../../../../assets/login/fondo.jpg) no-repeat center center fixed;
+  background: url(../../../../assets/login/fondo.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   font-family: roboto;
-  font-size: 13px;
+  font-size: 11px;
   line-height: 1.42857143;
   color: #5e5e5e;
   font-weight: 400;
@@ -25,38 +25,30 @@
   height: 15%;
 }
 
-.lc-block {
+/* .lc-block {
   background-color: rgba(255, 255, 255, 0.6);
   box-shadow: 0 1px 11px rgba(0, 0, 0, .27);
   border-radius: 3px;
   padding: 70px 60px;
 
 
-  /* margin: 25px 0 0 0;
-      width: 80%; */
-  /* width: 600px;
-      display: inline-block;
-      margin: 25px 0 0 0; */
-  /* vertical-align: middle; */
-  /* position: relative; */
-  /* font-size: 16px !important; */
+
+} */
+.fg-line .form-control:not(:disabled) {
+  background: transparent;
+  color: rgba(88, 89, 91);
 }
 
-.content-padding {
-  padding-left: 30%;
-  padding-right: 30%;
-}
 
 .login-content .lc-block {
   background-color: rgba(255, 255, 255, 0.6);
   box-shadow: 0 1px 11px rgba(0, 0, 0, .27);
   border-radius: 2px;
-  padding: 5% 5%;
+  padding: 60px 40px;
   display: inline-block;
-  margin: 25px 0 0 0;
   vertical-align: middle;
   position: relative;
-  font-size: 16px;
+  width: 30%;
 }
 
 .bgm-teal {
@@ -162,8 +154,8 @@ fieldset[disabled] a.btn {
 
 .loginButton {
   position: absolute;
-  left: 47%;
-  margin-top: 30px;
+  left: 44%;
+  margin-top: 22px;
   /* bottom: 198px; */
 }
 
@@ -189,6 +181,7 @@ input:focus {
   box-shadow: none;
   border: 0;
   border-bottom: 1px solid #e0e0e0;
+  font-size: 11px;
 }
 
 .form-control:active,
@@ -200,6 +193,17 @@ input:focus {
   flex-wrap: inherit;
 }
 
+.input-group-addon {
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1;
+  color: #555;
+  text-align: center;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 2px;
+}
 /* .input-group-addon,
 .input-group-btn,
 .input-group .form-control {
@@ -228,9 +232,9 @@ input:focus {
 }
 
 .fg-line .form-control {
-  resize: none
+  resize: none;
+  border-radius: 0.25rem;
 }
-
 .fg-line .form-control:not(:disabled) {
   color: #000;
   background: transparent;
@@ -327,13 +331,14 @@ input:focus {
     .ng-valid[required], .ng-valid.required  {
       border-left: 5px solid #42A948; /* green */
     }
-    
+
     .ng-invalid:not(form)  {
       border-left: 5px solid #a94442; /* red */
     }
 
     div.alert {
-      padding-bottom: 0.2rem;
+      padding-top:initial;
+      padding-bottom: initial;
     }
     .alert div {
       /* background-color: #fed3d3; */
@@ -344,16 +349,16 @@ input:focus {
       /* margin-bottom: 0.4rem; */
       text-align: start;
     }
-    
+
     .form-group {
       margin-bottom: 1rem;
     }
-    
+
     label {
       display: block;
       margin-bottom: .5rem;
     }
-    
+
     select {
       width: 100%;
       padding: .5rem;

@@ -12,6 +12,7 @@ export const messages = {
     min8Character: 'Debe contener mínimo 8 caracteres.',
     passwordLogin: 'Su contraseña debe tener minúsculas, mayúsculas y caracteres numéricos.',
     max500Character: 'Debe contener máximo 500 caracteres',
+  max100Character: 'Debe contener máximo 100 caracteres',
     dniValid: "Ingrese una cédula o ruc válido",
     aportanteNoExist: "Aportante no registrado, por favor registrelo",
     camposVacios: "Debe completar todos los campos",

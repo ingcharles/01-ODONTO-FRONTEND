@@ -19,7 +19,7 @@ export class ValidationService {
     constructor() { }
 
 
-    
+
  /**
    ** Method que valida si el campo es valido
    * @param field string -> nombre del campo colocado el fieldControlName
@@ -204,7 +204,7 @@ export class ValidationService {
 
 
     /**
-    ** Method que valida cédula con modulo base 10 
+    ** Method que valida cédula con modulo base 10
     *  @param {string} cedula recibe la cedula como parametro
     *  @returns {boolean} true o false
     */

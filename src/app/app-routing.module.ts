@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from 'src/presentation/login/components/create/pages/login.component';
+import { LoginComponent } from 'src/presentation/login/components/login/login.component';
 import { AppComponent } from './app.component';
 
 const routes: Routes = [
@@ -27,6 +27,11 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () =>
       import('../presentation/login/login.module').then((m) => m.LoginModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () =>
+      import('../presentation/register/register.module').then((m) => m.RegisterModule)
   },
 
   {

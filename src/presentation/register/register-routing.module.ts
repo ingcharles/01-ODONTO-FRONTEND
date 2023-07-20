@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
   {
-    path: '', component: LoginComponent
+    path: '', component: RegisterComponent
   },
   {
     /* Ruta para la */
-    path: 'login', component: LoginComponent
+    path: 'register', component: RegisterComponent
   },
 
   // {
@@ -18,17 +18,17 @@ const routes: Routes = [
     path: '**',
     redirectTo: '',
   }
-//   {
-//   path: 'login',
-//   component: LoginComponent,
-//   data: {
-//     title: 'Login Page'
-//   }
-// },
+  //   {
+  //   path: 'login',
+  //   component: LoginComponent,
+  //   data: {
+  //     title: 'Login Page'
+  //   }
+  // },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class LoginRoutingModule { }
+export class RegisterRoutingModule { }
