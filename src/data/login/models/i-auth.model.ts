@@ -37,3 +37,18 @@ export interface IRegisterToModel extends IAuditoriaModel {
   isProfesional: boolean | null;
   isClinic: boolean | null;
 }
+
+export interface IForgotPasswordFromRsModel extends IResponseStatusModel {
+  data?: IForgotPasswordFromModel
+}
+
+export interface IForgotPasswordFromModel {
+  codigoUsuario: number;
+
+}
+
+export interface IForgotPasswordToModel extends IAuditoriaModel {
+
+  email: string | null;
+
+}

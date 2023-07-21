@@ -2,7 +2,7 @@ import { AuthService } from "src/data/login/services/auth.service";
 import { Observable } from "rxjs";
 import { Injectable } from "@angular/core";
 import { IAuthFromRsModel } from "src/data/login/models/i-auth.model";
-import { IAuthFromRsViewModel, IAuthViewModel, IRegisterFromRsViewModel, IRegisterViewModel } from "../viewModels/i-auth.viewModel";
+import { IAuthFromRsViewModel, IAuthViewModel, IForgotPasswordViewModel, IRegisterFromRsViewModel, IRegisterViewModel } from "../viewModels/i-auth.viewModel";
 import { StorageService } from "src/data/login/services/storage.service";
 import { IResponseStatusViewModel } from "src/domain/general/viewModels/i-response-status.viewModel";
 
@@ -17,6 +17,10 @@ export class AuthUseCase {
 
   public async register(user: IRegisterViewModel): Promise<Observable<IRegisterFromRsViewModel>>  {
     return await this._authService.register(user);
+  }
+
+  public async forgotPassword(user: IForgotPasswordViewModel): Promise<Observable<IRegisterFromRsViewModel>> {
+    return await this._authService.forgotPassword(user);
   }
 
   public saveUserStorage(user: any): void {

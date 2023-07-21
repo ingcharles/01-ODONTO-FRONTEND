@@ -5,7 +5,7 @@ import { ValidationService } from 'src/presentation/base/services/validation.ser
 import { AlertsService } from 'src/presentation/base/services/alerts.service';
 import { AuthUseCase } from 'src/domain/login/useCases/auth-usecase';
 import { LoaderService } from 'src/presentation/base/services/loader.service';
-import { IAuthViewModel } from 'src/domain/login/viewModels/i-auth.viewModel';
+import { IAuthViewModel, IForgotPasswordViewModel } from 'src/domain/login/viewModels/i-auth.viewModel';
 import { Router } from '@angular/router';
 
 
@@ -54,26 +54,25 @@ export class ForgotPasswordComponent {
     //* se ejecuta el servicio solo si no cumple con el if anterior
     //* esto siempre y cuando viene por Nuevo Crca Numerario
     this._alertService.alertConfirm(messages.confirmacionTitle, messages.confirmSave, () => {
-      this._authUseCase.login(this.forgotPasswordForm.value as IAuthViewModel).then(obs => {
+      this._authUseCase.forgotPassword(this.forgotPasswordForm.value as IForgotPasswordViewModel).then(obs => {
         this._loaderService.display(true);
         obs.subscribe((result) => {
 
           this._loaderService.display(false);
           if (result.ok) {
-            console.log("result.message = " + result);
-            this._authUseCase.saveUserStorage(result.data);
-            this.isLoginFailed = false;
-            this.isLoggedIn = true;
-            this.roles = this._authUseCase.getUserStorage().roles;
-            console.log('roles', this.roles);
+            // console.log("result.message = " + result);
+            // this._authUseCase.saveUserStorage(result.data);
+            // this.isLoginFailed = false;
+            // this.isLoggedIn = true;
+            // this.roles = this._authUseCase.getUserStorage().roles;
+            // console.log('roles', this.roles);
             this.redirectHome();
             this._alertService.alertMessage(messages.exitoTitle, result.message, messages.isSuccess);
-            //  this.forgotPasswordForm.get('codigoCrca')!.patchValue(result.data?.codigoCrca);
+
 
           } else {
-            //this.errorMessage = err.error.message;
-            console.log("result.falos= " + result.ok);
-            this.isLoginFailed = true;
+
+            // this.isLoginFailed = true;
             this._alertService.alertMessage(messages.advertenciaTitle, result.message, messages.isWarning);
           }
         })

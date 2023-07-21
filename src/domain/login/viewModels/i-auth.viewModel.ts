@@ -25,8 +25,6 @@ export interface IRegisterFromRsViewModel extends IResponseStatusViewModel {
 
 export interface IRegisterRsViewModel {
    codigoUsuario: number | null;
-
-
 }
 
 export interface IRegisterViewModel {
@@ -41,3 +39,14 @@ export interface IRegisterViewModel {
   isClinic: boolean | null;
 }
 
+export interface IForgotPasswordFromRsViewModel extends IResponseStatusViewModel {
+  data?: IForgotPasswordRsViewModel | null;
+}
+
+export interface IForgotPasswordRsViewModel {
+  codigoUsuario: number | null;
+}
+
+export interface IForgotPasswordViewModel {
+  email: string | null;
+}
