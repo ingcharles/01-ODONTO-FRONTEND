@@ -1,23 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from 'src/presentation/login/components/login/login.component';
 import { AppComponent } from './app.component';
 
 const routes: Routes = [
-//   path: '',
-//   redirectTo: '/login',
-//   pathMatch: 'full'
-// },
-//   // {
-//   //   path: 'login',
-//   //   component: LoginComponent,
-//   // },
-//   {
-//     path: 'login',
-//     loadChildren: () =>
-//       import('../presentation/login/login.module').then((m) => m.LoginModule)
-//   },
-
   {
     path: '',
     component: AppComponent
@@ -32,6 +17,11 @@ const routes: Routes = [
     path: 'register',
     loadChildren: () =>
       import('../presentation/register/register.module').then((m) => m.RegisterModule)
+  },
+  {
+    path: 'forgot-password',
+    loadChildren: () =>
+      import('../presentation/forgot-password/forgot-password.module').then((m) => m.ForgotPasswordModule)
   },
 
   {

@@ -119,10 +119,6 @@ export class LoginComponent {
       return;
     }
 
-    // console.log('onSubmit', onsubmit);
-    //const { ci, password } = this.loginForm.value;
-    // console.log('username', username);
-    // const aa = this.loginForm.value as IUathViewModel;
     //* se ejecuta el servicio solo si no cumple con el if anterior
     //* esto siempre y cuando viene por Nuevo Crca Numerario
     this._alertService.alertConfirm(messages.confirmacionTitle, messages.confirmSave, () => {

@@ -17,3 +17,27 @@ export interface IAuthViewModel {
   ci: number | null;
   password: string | null;
 }
+
+
+export interface IRegisterFromRsViewModel extends IResponseStatusViewModel {
+  data?: IRegisterRsViewModel | null;
+}
+
+export interface IRegisterRsViewModel {
+   codigoUsuario: number | null;
+
+
+}
+
+export interface IRegisterViewModel {
+  ci: number | null;
+  names: string | null;
+  lastNames: string | null;
+  email: string | null;
+  password: string | null;
+  confirmPassword: string | null;
+  licenseAgreement: boolean | null;
+  isProfesional: boolean | null;
+  isClinic: boolean | null;
+}
+

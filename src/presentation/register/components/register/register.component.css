@@ -10,7 +10,7 @@
   line-height: 1.42857143;
   color: #5e5e5e;
   font-weight: 400;
-  padding-top: 3%;
+  padding-top: 2%;
   /* font-size: 13px; */
   /* font-family: sans-serif !important; */
 }
@@ -177,7 +177,7 @@ fieldset[disabled] a.btn {
 
 .loginButton {
   position: absolute;
-  left: 44%;
+  left: 43%;
   margin-top: 22px;
   /* bottom: 198px; */
 }
