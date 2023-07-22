@@ -2,3 +2,8 @@
 [hidden], template {
   display: none
 }
+
+a {
+  background-color: transparent;
+  cursor: pointer;
+}

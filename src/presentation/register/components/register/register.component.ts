@@ -26,7 +26,7 @@ export class RegisterComponent {
     ci: [null, [Validators.required, Validators.minLength(10)]],
     names: [null, [Validators.required, Validators.maxLength(100)]],
     lastNames: [null, [Validators.required, Validators.maxLength(100)]],
-    email: [null, [Validators.required]],
+    email: [null, [Validators.required, Validators.pattern(this._validatorService.emailPattern)]],
     password: [null, [Validators.required, Validators.minLength(8), this.createPasswordStrengthValidator()]],
     confirmPassword: [null],
     licenseAgreement: [false],
@@ -131,7 +131,9 @@ export class RegisterComponent {
               // this.isLoggedIn = true;
               // this.roles = this._authUseCase.getUserStorage().roles;
               // console.log('roles', this.roles);
-              this.redirectLogin();
+              this._globals.setLoginStatus(false);
+              this._globals.setIsRequestingGlobal(false);
+              //this.redirectLogin();
               this._alertService.alertMessage(messages.exitoTitle, result.message, messages.isSuccess);
               //  this.loginForm.get('codigoCrca')!.patchValue(result.data?.codigoCrca);
 
@@ -142,10 +144,17 @@ export class RegisterComponent {
               this._alertService.alertMessage(messages.advertenciaTitle, result.message, messages.isWarning);
             }
           })
+        }).catch(err =>{
+          this._globals.setLoginStatus(false);
+          // this.error = true;
+          // this.isRequesting = false;
+          this._globals.setIsRequestingGlobal(false);
+          // this.registerToggled = "toggled";
+          // this.loginToggled = "";
         });
       });
 
-      
+
       // //this.user.LicenseAgreement = true;
       // this.loginService
       //   .register(this.user)
@@ -180,30 +189,33 @@ export class RegisterComponent {
       //this.response.Message = "Debe cumplir los Requerimientos";
     }
   }
-
-
-  redirectLogin(): void {
-    this._router.navigate(['/login']);
-    // this._router.navigateByUrl('/');
+  refirectToPages(value: string): void {
+    this._router.navigate(['/'+ value]);
   }
 
-  showBlock(value: string): void {
-    this.initVariables();
-    switch (value) {
-      // case "login":
-      //   this.loginToggled = "toggled";
-      //   break;
-       case "register":
-        this.registerToggled = "toggled";
-       break;
-      // case "forget-password":
-      //   this.forgetPasswordToggled = "toggled";
-      //   break;
-      // case "change-password":
-      //   this.changePasswordToggled = "toggled";
-      //   break;
-    }
-  }
+
+  // redirectLogin(): void {
+  //   this._router.navigate(['/login']);
+  //   // this._router.navigateByUrl('/');
+  // }
+
+  // showBlock(value: string): void {
+  //   this.initVariables();
+  //   switch (value) {
+  //     // case "login":
+  //     //   this.loginToggled = "toggled";
+  //     //   break;
+  //      case "register":
+  //       this.registerToggled = "toggled";
+  //      break;
+  //     // case "forget-password":
+  //     //   this.forgetPasswordToggled = "toggled";
+  //     //   break;
+  //     // case "change-password":
+  //     //   this.changePasswordToggled = "toggled";
+  //     //   break;
+  //   }
+  // }
   initVariables() {
     this.registerToggled = "";
     // this.registerToggled = "";

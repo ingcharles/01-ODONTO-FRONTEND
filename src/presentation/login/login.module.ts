@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ValidationService } from '../base/services/validation.service';
 import { AuthService } from 'src/data/login/services/auth.service';
 import { AuthMapper } from 'src/data/login/mappers/auth.mapper';
+import { Globals } from '../base/services/globals';
 
 
 
@@ -22,6 +23,6 @@ import { AuthMapper } from 'src/data/login/mappers/auth.mapper';
   ],
   providers: [
 
-    { provide: ValidationService }, { provide: AuthService }, { provide: AuthMapper }]
+    { provide: ValidationService }, { provide: AuthService }, { provide: AuthMapper }, {provide: Globals}]
 })
 export class LoginModule { }

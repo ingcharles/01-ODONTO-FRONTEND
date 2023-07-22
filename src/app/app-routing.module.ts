@@ -23,6 +23,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('../presentation/forgot-password/forgot-password.module').then((m) => m.ForgotPasswordModule)
   },
+  {
+    path: 'change-password',
+    loadChildren: () =>
+      import('../presentation/change-password/change-password.module').then((m) => m.ChangePasswordModule)
+  },
 
   {
     path: '**',

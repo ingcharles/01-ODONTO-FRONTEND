@@ -110,17 +110,6 @@ export class ValidationService {
             form.controls[field].touched
         );
     }
-       /**
-    ** Method que valida si el campo cumple con el patrón establecido
-    * @param field string -> nombre del campo colocado el fieldControlName
-    * @returns true o false
-    */
-    public isValidFielPattern1(form: FormGroup, field: string): boolean | null {
-        return (
-            form.controls[field].errors?.['pattern'] &&
-            form.controls[field].touched
-        );
-    }
 
        /**
     ** Method que valida si el campo cumple con el patrón establecido
