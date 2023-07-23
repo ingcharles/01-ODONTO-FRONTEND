@@ -3,14 +3,17 @@ import { IResponseStatusViewModel } from "src/domain/general/viewModels/i-respon
 
 export interface IAuthFromRsViewModel extends IResponseStatusViewModel {
   data?: IAuthRsViewModel | null;
+  token?: IAuthTokenRsViewModel | null;
 }
 
 export interface IAuthRsViewModel {
    codigoUsuario: number | null;
-
-
 }
 
+export interface IAuthTokenRsViewModel {
+  accessToken: string | null;
+  refreshToken: string | null;
+}
 export interface IAuthViewModel {
   // codigoUsuario: number | null;
   //  // password: string | null;

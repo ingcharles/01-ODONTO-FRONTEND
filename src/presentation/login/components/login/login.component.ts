@@ -103,6 +103,7 @@ export class LoginComponent {
         obs.subscribe((result) => {
 
           this._loaderService.display(false);
+          console.log("result",result);
           if (result.ok) {
             console.log("result.message = " + result);
             this._authUseCase.saveUserStorage(result.data);
