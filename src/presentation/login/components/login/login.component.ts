@@ -10,6 +10,7 @@ import { LoaderService } from 'src/presentation/base/services/loader.service';
 import { IAuthViewModel } from 'src/domain/login/viewModels/i-auth.viewModel';
 import { Route, Router } from '@angular/router';
 import { Globals } from 'src/presentation/base/services/globals';
+import { IAuthTokenRsViewModel } from '../../../../domain/login/viewModels/i-auth.viewModel';
 
 
 @Directive({
@@ -38,6 +39,7 @@ export class LoginComponent {
 
 
   constructor(public _fb: FormBuilder, public _validatorService: ValidationService, private _alertService: AlertsService, private _loaderService: LoaderService, private _authUseCase: AuthUseCase, private _router: Router, private _globals:Globals) { }
+
   //* obtener los mensajes de la alertas configuradas en base/messages.ts
   public menssage = messages;
 
@@ -52,6 +54,16 @@ export class LoginComponent {
     password: ['', [Validators.required, Validators.minLength(8), this.createPasswordStrengthValidator()]],
   });
 
+
+
+  ngOnInit(): void {
+    // console.log("this._authUseCase.isLoggedIn()", this._authUseCase.isLoggedIn());
+    if (this._authUseCase.isLoggedIn()) {
+      this.isLoggedIn = true;
+      // this.roles = this._authUseCase.getUser().roles;
+      this.refirectToPages('');
+    }
+  }
 
   createPasswordStrengthValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
@@ -89,7 +101,7 @@ export class LoginComponent {
     //   // return;
     // }
     if (this.loginForm.invalid) {
-      console.log('invalid', this.loginForm.invalid);
+      // console.log('invalid', this.loginForm.invalid);
       this.loginForm.markAllAsTouched();
       this._alertService.alertMessage(messages.advertenciaTitle, messages.camposVacios, 'warning');
       return;
@@ -97,28 +109,38 @@ export class LoginComponent {
 
     //* se ejecuta el servicio solo si no cumple con el if anterior
     //* esto siempre y cuando viene por Nuevo Crca Numerario
-    this._alertService.alertConfirm(messages.confirmacionTitle, messages.confirmSave, () => {
+    //this._alertService.alertConfirm(messages.confirmacionTitle, messages.confirmSave, () => {
       this._authUseCase.login(this.loginForm.value as IAuthViewModel).then(obs => {
         this._loaderService.display(true);
         obs.subscribe((result) => {
 
           this._loaderService.display(false);
-          console.log("result",result);
+          // console.log("result",result);
           if (result.ok) {
-            console.log("result.message = " + result);
-            this._authUseCase.saveUserStorage(result.data);
+
+
+
+            result.token!.userId = result.data?.codigoUsuario!;
+            result.token!.firstName = result.data?.nombreUsuario!;
+
+            console.log("result.token?.accessToken: " + result.token?.accessToken);
+            console.log("result.token?.refreshToken: " + result.token?.refreshToken);
+            console.log("result.token!.userId: " + result.token?.userId);
+            console.log("result.token!.firstName: " + result.token?.firstName);
+            this._authUseCase.saveUserStorage(result.token!);
             this.isLoginFailed = false;
             this.isLoggedIn = true;
-            this.roles = this._authUseCase.getUserStorage().roles;
-            console.log('roles', this.roles);
+            this._authUseCase.getUserStorage();
+            // this.roles = this._authUseCase.getUserStorage().roles;
+            // console.log('roles', this.roles);
             //this.redirectHome();
             this.refirectToPages('')
-            this._alertService.alertMessage(messages.exitoTitle, result.message, messages.isSuccess);
+            //this._alertService.alertMessage(messages.exitoTitle, result.message, messages.isSuccess);
             //  this.loginForm.get('codigoCrca')!.patchValue(result.data?.codigoCrca);
 
           } else {
             //this.errorMessage = err.error.message;
-            console.log("result.falos= " + result.ok);
+            //console.log("result.falos= " + result.ok);
             this._globals.setLoginStatus(false);
             this.isLoginFailed = true;
             this._alertService.alertMessage(messages.advertenciaTitle, result.message, messages.isWarning);
@@ -130,8 +152,8 @@ export class LoginComponent {
         // this.isRequesting = false;
         this._globals.setIsRequestingGlobal(false);
       });
-    });
-    return;
+   // });
+    //return;
   }
 
 }

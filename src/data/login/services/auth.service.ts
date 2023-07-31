@@ -6,7 +6,7 @@ import { IResponseStatusViewModel } from 'src/domain/general/viewModels/i-respon
 import { AuthMapper} from '../mappers/auth.mapper';
 import { StatusResponseService } from 'src/data/base/status-response.service';
 import { AAuthService } from 'src/domain/login/services/a-auth-service';
-import { IAuthFromRsViewModel, IAuthViewModel, IForgotPasswordFromRsViewModel, IForgotPasswordViewModel, IRegisterFromRsViewModel, IRegisterViewModel } from 'src/domain/login/viewModels/i-auth.viewModel';
+import { IAuthFromRsViewModel, IAuthTokenRsViewModel, IAuthViewModel, IForgotPasswordFromRsViewModel, IForgotPasswordViewModel, IRegisterFromRsViewModel, IRegisterViewModel } from 'src/domain/login/viewModels/i-auth.viewModel';
 
 
 //const AUTH_API = 'http://localhost:8080/api/auth/';
@@ -36,6 +36,21 @@ export class AuthService extends AAuthService {
         })
     );
 }
+
+  public async refreshToken(sessionToken: IAuthTokenRsViewModel): Promise<Observable<IAuthFromRsViewModel>> {
+    const url = `${apiUrl}Auth/RefreshToken`;
+    return this._http.post<any>(url, await this._authMapper.mapRefreshTokenTo(sessionToken)).pipe(
+      map((result) => {
+        console.log("result", result);
+        console.log("this._authMapper.mapRefreshTokenFrom(result)", this._authMapper.mapRefreshTokenFrom(result));
+        return this._authMapper.mapRefreshTokenFrom(result)
+      }),
+      catchError((error) => {
+        return of(this._statusResponseService.error(error));
+      })
+    );
+  }
+
 
 public async register(userLogin: IRegisterViewModel): Promise<Observable<IRegisterFromRsViewModel>> {
   const url = `${apiUrl}Auth/SaveRegisterUser`;

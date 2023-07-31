@@ -3,20 +3,44 @@ import { IResponseStatusModel } from "src/data/general/models/i-response-status.
 
 export interface IAuthFromRsModel extends IResponseStatusModel {
   data?: IAuthFromModel
+  token?: IAuthTokenFromModel | null;
 }
 
 export interface IAuthFromModel {
-  codigoUsuario: number;
+  codigoUsuario: number| null;
+  nombreUsuario: string | null;
 
 }
 
+export interface IAuthTokenFromModel {
+  userId: number | null;
+  firstName: string | null;
+  accessToken: string | null;
+  refreshToken: string | null;
+}
 
 export interface IAuthToModel extends IAuditoriaModel {
-  ci: number | null;
+  ci: string | null;
   password: string | null;
 }
 
+export interface IRefreshTokenFromRsModel extends IResponseStatusModel {
+  data?: IAuthFromModel
+  token?: IRefreshTokenRsModel | null;
+}
+export interface IRefreshTokenModel extends IAuditoriaModel {
+  codigoUsuario: number;
+  refreshToken: string;
+  // firstName: string | null;
+  // accessToken: string | null;
+}
 
+export interface IRefreshTokenRsModel extends IAuditoriaModel {
+  codigoUsuario: number;
+  refreshToken: string;
+  firstName: string | null;
+  accessToken: string | null;
+}
 export interface IRegisterFromRsModel extends IResponseStatusModel {
   data?: IRegisterFromModel
 }
@@ -27,7 +51,7 @@ export interface IRegisterFromModel {
 }
 
 export interface IRegisterToModel extends IAuditoriaModel {
-  ci: number | null;
+  ci: string | null;
   names: string | null;
   lastNames: string | null;
   email: string | null;

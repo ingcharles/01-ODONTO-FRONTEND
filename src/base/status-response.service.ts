@@ -10,9 +10,14 @@ export class StatusResponseService {
     error(httpErrorResponse: any): IResponseStatusErrorViewModel {
         let { error, ok } = httpErrorResponse;
         let responseStatus: IResponseStatusErrorViewModel = <IResponseStatusErrorViewModel>{}
+
         if (error.StatusCode == 404 || error.StatusCode == 500) {
             responseStatus = { message: error.Message, statusCode: error.StatusCode, ok }
         }
+        // else if (error.status == 401) {
+        //   responseStatus = { message: error.message, statusCode: error.status, ok }
+
+        //}
         return responseStatus;
     }
 

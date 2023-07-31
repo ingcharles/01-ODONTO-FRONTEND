@@ -1,9 +1,10 @@
 
 
 
+
 import { AMapper } from './a-mapper';
-import { IAuthFromRsModel, IAuthToModel, IForgotPasswordFromRsModel, IForgotPasswordToModel, IRegisterFromRsModel, IRegisterToModel } from '../models/i-auth.model';
-import { IAuthFromRsViewModel, IAuthViewModel, IForgotPasswordFromRsViewModel, IForgotPasswordViewModel, IRegisterFromRsViewModel, IRegisterViewModel } from 'src/domain/login/viewModels/i-auth.viewModel';
+import { IAuthFromRsModel, IAuthToModel, IForgotPasswordFromRsModel, IForgotPasswordToModel, IRefreshTokenFromRsModel, IRefreshTokenModel, IRegisterFromRsModel, IRegisterToModel } from '../models/i-auth.model';
+import { IAuthFromRsViewModel, IAuthTokenRsViewModel, IAuthViewModel, IForgotPasswordFromRsViewModel, IForgotPasswordViewModel,   IRegisterFromRsViewModel, IRegisterViewModel } from 'src/domain/login/viewModels/i-auth.viewModel';
 
 
 export class AuthMapper extends AMapper<any, any> {
@@ -27,7 +28,9 @@ export class AuthMapper extends AMapper<any, any> {
       ok: item.ok,
       data: item.data ? {
         codigoUsuario: item.data.codigoUsuario,
-      } : null
+        nombreUsuario: item.data.nombreUsuario,
+      } : null,
+      token: item.token ,
     }
     console.log("valor", valor);
     return valor;
@@ -89,4 +92,37 @@ export class AuthMapper extends AMapper<any, any> {
     console.log("valor", valor);
     return valor;
   }
+
+  /** Recibe y mapea los datos que vienen de la vista hacia el servicio */
+  async mapRefreshTokenTo(item: IAuthTokenRsViewModel): Promise<IRefreshTokenModel> {
+    const valor: IRefreshTokenModel = {
+      auditoria: "2edf8b3e2f5a424fa8333ba742154869|1202|151|192.168.1.1|Chrome|I|Guardar información del Crca en Numerario|01",
+      codigoUsuario: item.userId!,
+      refreshToken: item.refreshToken!,
+    }
+    return valor;
+  }
+
+  /** Recibe y mapea los datos que vienen desde el servicio  hacia la vista*/
+  mapRefreshTokenFrom(item: IRefreshTokenFromRsModel): IAuthFromRsViewModel {
+    console.log("item", item);
+    const valor: IAuthFromRsViewModel = {
+      message: item.message,
+      statusCode: item.statusCode,
+      ok: item.ok,
+      data: item.data ? {
+        codigoUsuario: item.data.codigoUsuario,
+        nombreUsuario: item.data.nombreUsuario,
+      } : null,
+      token: item.token ? {
+        userId: item.data!.codigoUsuario,
+        refreshToken: item.token.refreshToken,
+        firstName: item.data!.nombreUsuario,
+        accessToken: item.token.accessToken,
+      } : null
+    }
+    console.log("valor", valor);
+    return valor;
+  }
+
 }

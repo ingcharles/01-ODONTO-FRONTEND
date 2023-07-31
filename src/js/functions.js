@@ -368,7 +368,7 @@ $(document).ready(function () {
     /*
      * Text Feild
      */
-console.log('aaaaaaaaa');
+// console.log('aaaaaaaaa');
     //Add blue animated border and remove with condition when focus and blur
     //if($('.fg-line')[0]) {
     $('body').on('focus', '.form-control', function () {

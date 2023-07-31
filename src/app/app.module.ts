@@ -3,10 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { InterceptorService } from 'src/base/interceptors/interceptor.service';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpHeaderInterceptorProvider } from 'src/base/interceptors/http-header.interceptor';
+
 import { LoaderService } from 'src/presentation/base/services/loader.service';
 import { DataModule } from 'src/data/data.module';
+import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
+import { ErrorInterceptorProvider } from 'src/base/interceptors/error.Interceptor';
+
+export function tokenGetter() {
+  return sessionStorage.getItem("access_token");
+}
 
 @NgModule({
   declarations: [
@@ -16,14 +22,25 @@ import { DataModule } from 'src/data/data.module';
     BrowserModule,
     AppRoutingModule,
     MatProgressSpinnerModule,
-    DataModule
+    DataModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ["example.com"],
+        disallowedRoutes: ["http://example.com/examplebadroute/"],
+      },
+    }),
   ],
 
-  providers: [{
+  providers: [/*{
     provide: HTTP_INTERCEPTORS,
     useClass: InterceptorService,
     multi: true
-  }, { provide: LoaderService }],
+  },*/
+    ErrorInterceptorProvider,
+    HttpHeaderInterceptorProvider,
+    //{ provide: ErrorInterceptorProvider },
+  { provide: LoaderService },  { provide: JwtHelperService }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
