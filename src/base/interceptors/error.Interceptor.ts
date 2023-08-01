@@ -19,12 +19,12 @@ import { IResponseStatusErrorViewModel } from 'src/domain/general/viewModels/i-r
 export class ErrorInterceptor implements HttpInterceptor {
 
   isRefreshingToken: boolean = false;
-  constructor(private _authUseCase: AuthUseCase, private router: Router, private _statusResponseService: StatusResponseService) { }
+  constructor(private _authUseCase: AuthUseCase, private router: Router, private _statusResponseService: StatusResponseService/*, private _jwtHelper: JwtHelperService*/) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(request)
       .pipe(
-        tap(response => console.log(JSON.stringify(response),'bbbbbbbbbbbbbbbbbbbbbbbbbbb')),
+        tap(response => console.log('JSON.stringify(response)',JSON.stringify(response))),
         catchError((error: HttpErrorResponse) => {
           let session = this._authUseCase.getUserStorage();
           console.log(JSON.stringify(error),'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
@@ -33,6 +33,9 @@ export class ErrorInterceptor implements HttpInterceptor {
           console.log(" !this._authUseCase.isLoggedIn()", !this._authUseCase.isLoggedIn());
           console.log("!this.isRefreshingToken", !this.isRefreshingToken);
 
+          // if (!this._jwtHelper.isTokenExpired(session?.accessToken!)){
+
+          // }
 
           if (error.status === 401 && session != null && !this._authUseCase.isLoggedIn() && !this.isRefreshingToken) {
             this.isRefreshingToken = true;

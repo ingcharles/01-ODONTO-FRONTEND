@@ -37,7 +37,7 @@ export function tokenGetter() {
     useClass: InterceptorService,
     multi: true
   },*/
-    ErrorInterceptorProvider,
+    //ErrorInterceptorProvider,
     HttpHeaderInterceptorProvider,
     //{ provide: ErrorInterceptorProvider },
   { provide: LoaderService },  { provide: JwtHelperService }],

@@ -35,6 +35,8 @@ export class Permissions {
   //   return true;
   //   // return true;
   // }
+
+    console.log("entra AuthGuard");
     const token = this._storageService.getUserStorage();
     if (this._storageService.isLoggedIn() && !this._jwtHelper.isTokenExpired(token?.accessToken!)) {
       return true;

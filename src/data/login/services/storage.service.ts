@@ -21,12 +21,12 @@ export class StorageService {
     console.log("******************")
      console.log("JSON.stringify(user)------------: ", JSON.stringify(user))
     console.log("******************")
-    window.sessionStorage.removeItem(ACCESS_TOKEN);
+    // window.sessionStorage.removeItem(ACCESS_TOKEN);
+   this.cleanUserStorage();
     // window.sessionStorage.setItem(ACCESS_TOKEN, JSON.stringify(user));
     window.sessionStorage.setItem(ACCESS_TOKEN, user.accessToken!);
     window.sessionStorage.setItem(REFRESH_TOKEN, user.refreshToken!);
     if (user.userId) {
-      console.log("******************", user.userId)
       window.sessionStorage.setItem(ID_USER, user.userId.toString());
       window.sessionStorage.setItem(FIRST_NAME, user.firstName!);
     }
@@ -58,22 +58,25 @@ export class StorageService {
   public isLoggedIn(): boolean {
     // console.log("ACCESS_TOKEN", ACCESS_TOKEN);
     const user = window.sessionStorage.getItem(ACCESS_TOKEN);
-    // console.log("user", user);
+    console.log("user", user);
     if (!user) {
       return false;
     }
+    return true;
 
 
 
-
-    // check if token is expired
-    const jwtToken = JSON.parse(atob(user!.split('.')[1]));
-    console.log("Date.now():  ", Date.now())
-    console.log("jwtToken.exp * 1000:   ", jwtToken.exp * 1000)
-    console.log("jwtToken.exp:   ", jwtToken.exp)
-    const tokenExpired = Date.now() > (jwtToken.exp * 1000);
-    console.log("!tokenExpired   ", !tokenExpired)
-    return !tokenExpired;
+    // // check if token is expired
+    // const jwtToken = JSON.parse(atob(user!.split('.')[1]));
+    // // console.log("Date.now():  ", Date.now())
+    // // console.log("jwtToken.exp * 1000:   ", jwtToken.exp * 1000)
+    // // console.log("jwtToken.exp:   ", jwtToken.exp)
+    // const tokenExpired = Date.now() > (jwtToken.exp * 1000);
+    // console.log("tokenExpired   ", tokenExpired)
+    // if (!tokenExpired){
+    //   window.sessionStorage.removeItem(ACCESS_TOKEN);
+    // }
+    // return !tokenExpired;
   }
 
 
