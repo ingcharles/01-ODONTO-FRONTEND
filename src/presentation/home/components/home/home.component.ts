@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { AuthUseCase } from 'src/domain/login/useCases/auth-usecase';
+import { StorageUseCase } from 'src/domain/login/useCases/storage-usecase';
 import { IAuthViewModel } from 'src/domain/login/viewModels/i-auth.viewModel';
 
 @Component({
@@ -11,13 +12,13 @@ import { IAuthViewModel } from 'src/domain/login/viewModels/i-auth.viewModel';
 
 })
 export class HomeComponent {
-  constructor(private jwtHelper: JwtHelperService, private _router: Router, private _authUseCase: AuthUseCase) { }
+  constructor(private jwtHelper: JwtHelperService, private _router: Router, private _authUseCase: AuthUseCase, private _storageUseCase: StorageUseCase) { }
   // isUserAuthenticated = (): boolean => {
   //   return false
   // }
   isUserAuthenticated = (): boolean => {
     //const token = window.sessionStorage.getItem("access_token");
-    const token = this._authUseCase.getUserStorage();
+    const token = this._storageUseCase.getUserStorage();
     // console.log('token',token);
     // console.log('isTokenExpired', this.jwtHelper.isTokenExpired(token?.accessToken!));
     if (token && !this.jwtHelper.isTokenExpired(token?.accessToken!)) {
@@ -27,7 +28,7 @@ export class HomeComponent {
     return false;
   }
   logout = () => {
-    this._authUseCase.cleanUserStorage();
+    this._storageUseCase.cleanUserStorage();
     // sessionStorage.removeItem("access_token");
     this.refirectToPages('login');
   }
@@ -49,7 +50,7 @@ export class HomeComponent {
         obs.subscribe({
           next: data => {
      // obs.subscribe((result) => {
-            console.log("entra accion....", data);
+            console.log("entra register....", data);
           }
       });
     });

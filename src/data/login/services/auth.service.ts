@@ -38,11 +38,12 @@ export class AuthService extends AAuthService {
 }
 
   public async refreshToken(sessionToken: IAuthTokenRsViewModel): Promise<Observable<IAuthFromRsViewModel>> {
+    // console.log("refreshTokken 0");
     const url = `${apiUrl}Auth/RefreshToken`;
     return this._http.post<any>(url, await this._authMapper.mapRefreshTokenTo(sessionToken)).pipe(
       map((result) => {
-        console.log("result", result);
-        console.log("this._authMapper.mapRefreshTokenFrom(result)", this._authMapper.mapRefreshTokenFrom(result));
+        // console.log("result", result);
+        // console.log("this._authMapper.mapRefreshTokenFrom(result)", this._authMapper.mapRefreshTokenFrom(result));
         return this._authMapper.mapRefreshTokenFrom(result)
       }),
       catchError((error) => {

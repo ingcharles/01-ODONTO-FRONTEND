@@ -121,7 +121,7 @@ export class AuthMapper extends AMapper<any, any> {
         accessToken: item.token.accessToken,
       } : null
     }
-    console.log("valor", valor);
+    // console.log("valor", valor);
     return valor;
   }
 
