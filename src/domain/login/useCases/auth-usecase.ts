@@ -9,7 +9,7 @@ import { IResponseStatusViewModel } from "src/domain/general/viewModels/i-respon
 @Injectable({ providedIn: 'root' })
 export class AuthUseCase {
 
-  constructor(private _authService: AuthService, private _storageService: StorageService) { }
+  constructor(private _authService: AuthService) { }
 
   public async login(user: IAuthViewModel): Promise<Observable<IAuthFromRsViewModel>>  {
     return await this._authService.login(user);
@@ -27,18 +27,18 @@ export class AuthUseCase {
     return await this._authService.forgotPassword(user);
   }
 
-  public saveUserStorage(user: IAuthTokenRsViewModel): void {
-    return this._storageService.saveUserStorage(user);
-  }
+  // public async saveUserStorage(user: IAuthTokenRsViewModel): Promise<void> {
+  //   return this._storageService.saveUserStorage(user);
+  // }
 
-  public getUserStorage(): IAuthTokenRsViewModel | null {
-    return this._storageService.getUserStorage();
-  }
-  public isLoggedIn(): any {
-    return this._storageService.isLoggedIn();
-  }
-  public cleanUserStorage(): any {
-    return this._storageService.cleanUserStorage();
-  }
+  // public getUserStorage(): IAuthTokenRsViewModel | null {
+  //   return this._storageService.getUserStorage();
+  // }
+  // public isLoggedIn(): any {
+  //   return this._storageService.isLoggedIn();
+  // }
+  // public cleanUserStorage(): any {
+  //   return this._storageService.cleanUserStorage();
+  // }
 
 }

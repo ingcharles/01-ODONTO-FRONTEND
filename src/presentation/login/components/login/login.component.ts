@@ -11,6 +11,7 @@ import { IAuthViewModel } from 'src/domain/login/viewModels/i-auth.viewModel';
 import { Route, Router } from '@angular/router';
 import { Globals } from 'src/presentation/base/services/globals';
 import { IAuthTokenRsViewModel } from '../../../../domain/login/viewModels/i-auth.viewModel';
+import { StorageUseCase } from 'src/domain/login/useCases/storage-usecase';
 
 
 @Directive({
@@ -38,7 +39,7 @@ export class PasswordStrengthDirective implements Validator {
 export class LoginComponent {
 
 
-  constructor(public _fb: FormBuilder, public _validatorService: ValidationService, private _alertService: AlertsService, private _loaderService: LoaderService, private _authUseCase: AuthUseCase, private _router: Router, private _globals:Globals) { }
+  constructor(public _fb: FormBuilder, public _validatorService: ValidationService, private _alertService: AlertsService, private _loaderService: LoaderService, private _authUseCase: AuthUseCase, private _storageUseCase: StorageUseCase, private _router: Router, private _globals:Globals) { }
 
   //* obtener los mensajes de la alertas configuradas en base/messages.ts
   public menssage = messages;
@@ -58,7 +59,7 @@ export class LoginComponent {
 
   ngOnInit(): void {
     // console.log("this._authUseCase.isLoggedIn()", this._authUseCase.isLoggedIn());
-    if (this._authUseCase.isLoggedIn()) {
+    if (this._storageUseCase.isLoggedIn()) {
       this.isLoggedIn = true;
       // this.roles = this._authUseCase.getUser().roles;
       this.refirectToPages('');
@@ -127,10 +128,10 @@ export class LoginComponent {
             console.log("result.token?.refreshToken: " + result.token?.refreshToken);
             console.log("result.token!.userId: " + result.token?.userId);
             console.log("result.token!.firstName: " + result.token?.firstName);
-            this._authUseCase.saveUserStorage(result.token!);
+            this._storageUseCase.saveUserStorage(result.token!);
             this.isLoginFailed = false;
             this.isLoggedIn = true;
-            this._authUseCase.getUserStorage();
+            this._storageUseCase.getUserStorage();
             // this.roles = this._authUseCase.getUserStorage().roles;
             // console.log('roles', this.roles);
             //this.redirectHome();
