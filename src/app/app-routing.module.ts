@@ -5,12 +5,12 @@ import { HomeComponent } from 'src/presentation/home/components/home/home.compon
 import { AuthGuard } from 'src/presentation/app/shared/guards/auth.guard';
 
 const routes: Routes = [
-  {
-    path: '',
-    canActivate: [AuthGuard],
-    component: HomeComponent
-
-  },
+//   {
+//     path: '',
+//     // canActivate: [AuthGuard],
+//     // component: HomeComponent
+// component: AppComponent
+//   },
   {
     path: 'home',
 
@@ -40,7 +40,7 @@ const routes: Routes = [
 
   {
     path: '**',
-    redirectTo: 'Home'
+    redirectTo: ''
   }
 
 ];
