@@ -1,6 +1,6 @@
 <!-- <spinner-content [isRunning]="_globals.isRequestingGlobal.getValue()"></spinner-content> -->
 <!-- [hidden]="!_globals.isUserLoggedIn.getValue()" -->
-<header id="header" >
+<header id="header">
   <ul class="header-inner">
     <li id="menu-trigger" data-trigger="#sidebar">
       <div class="line-wrap">
@@ -10,7 +10,7 @@
       </div>
     </li>
     <li class="logo hidden-xs">
-        <a [routerLink]="['/dashboard']"> <small class="c-lime">iniciado como {{_globals.owner.getValue() ? "Admimnistrador" : "Trabajador"}}</small></a>
+      <a [routerLink]="['/dashboard']"> <small class="c-lime">iniciado como {{_globals.owner.getValue() ? "Admimnistrador" : "Trabajador"}}</small></a>
       <!-- <a [routerLink]="['/dashboard']">{{_globals.clinic.getValue().Name}} <small class="c-lime">iniciado como {{_globals.owner.getValue() ? "Admimnistrador" : "Trabajador"}}</small></a> -->
     </li>
     <li class="pull-right">
@@ -25,24 +25,52 @@
         <!--<li id="top-search">
                     <a class="tm-search" href=""></a>
                 </li>-->
+        <div class="dropdown">
+          <button class="tm-notification" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="tmn-counts">0</i>
+          </button>
+          <ul class="dropdown-menu pull-right dropdown-menu-lg" aria-labelledby="dropdownMenuButton1">
+              <div class="listview">
+                <div class="lv-header">
+                  Alertas
+                </div>
+                <div class="lv-body">
+                  <a class="lv-item" href="">
+                    <!-- <a class="lv-item" href="" *ngFor="let opt of _globals.notifications.getValue().Data"> -->
+                    <div class="media">
+                      <div class="media-body">
+                        <!-- <div class="lv-title">{{opt.title}}</div>
+                                    <small class="lv-small">Cita en: {{opt.cantDays}} dias</small> -->
+                        <div class="lv-title">g</div>
+                        <small class="lv-small">Cita en: 0 dias</small>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <a class="lv-footer" href="" [routerLink]="['/notifications']">Ver todas</a>
+              </div>
+          </ul>
+        </div>
+
+
         <li class="dropdown">
-          <a data-toggle="dropdown" class="tm-notification" href=""><i class="tmn-counts">0</i></a>
+          <a data-toggle="dropdown" class="tm-notification" id="dropdownMenuButton" href="#"><i class="tmn-counts">0</i></a>
           <!-- <a data-toggle="dropdown" class="tm-notification" href=""><i class="tmn-counts">{{_globals.notifications.getValue().Total}}</i></a> -->
 
-          <div class="dropdown-menu pull-right dropdown-menu-lg">
+          <div class="dropdown-menu pull-right dropdown-menu-lg" aria-labelledby="dropdownMenuButton">
             <div class="listview">
               <div class="lv-header">
                 Alertas
               </div>
               <div class="lv-body">
-                <a class="lv-item" href="" >
-                <!-- <a class="lv-item" href="" *ngFor="let opt of _globals.notifications.getValue().Data"> -->
+                <a class="lv-item" href="">
+                  <!-- <a class="lv-item" href="" *ngFor="let opt of _globals.notifications.getValue().Data"> -->
                   <div class="media">
                     <div class="media-body">
                       <!-- <div class="lv-title">{{opt.title}}</div>
                       <small class="lv-small">Cita en: {{opt.cantDays}} dias</small> -->
-                        <div class="lv-title">g</div>
-                        <small class="lv-small">Cita en: 0 dias</small>
+                      <div class="lv-title">g</div>
+                      <small class="lv-small">Cita en: 0 dias</small>
                     </div>
                   </div>
                 </a>
@@ -64,11 +92,11 @@
               <a [routerLink]="['/patiens', -1]"><i class="md md-person-add"></i> Adicionar paciente</a>
             </li>
             <!-- [hidden]="!_globals.owner.getValue()" -->
-            <li >
+            <li>
               <a [routerLink]="['/treatments', -1]"><i class="md md-add"></i> Adicionar Tratamiento</a>
             </li>
             <!-- [hidden]="!_globals.owner.getValue()" -->
-            <li >
+            <li>
               <a [routerLink]="['/employees', -1]"><i class="md md-person-add"></i> Adicionar Empleado</a>
             </li>
             <li>
@@ -89,7 +117,7 @@
   </div>
 </header>
 <!-- [hidden]="!_globals.isUserLoggedIn.getValue()" -->
-<section id="main" >
+<section id="main">
   <aside id="sidebar">
     <div class="sidebar-inner">
       <div class="si-inner">
@@ -128,8 +156,8 @@
               <li><a id="data-personal" class="menu-table" [routerLink]="['/notifications']">Notificaciones</a></li>
             </ul>
           </li>
-<!-- [hidden]="!_globals.roleAdmin.getValue()" -->
-          <li class="sub-menu" >
+          <!-- [hidden]="!_globals.roleAdmin.getValue()" -->
+          <li class="sub-menu">
             <a href=""><i class="md md-attach-money"></i> Reportes</a>
 
             <ul>
@@ -140,8 +168,8 @@
                             <li><a class="menu-table" [routerLink]="['/charts/patient']">Pacientes</a></li-->
             </ul>
           </li>
-<!-- [hidden]="!_globals.roleAdmin.getValue()" -->
-          <li class="sub-menu" >
+          <!-- [hidden]="!_globals.roleAdmin.getValue()" -->
+          <li class="sub-menu">
             <a href=""><i class="md md-view-list"></i> Configuraci&oacute;n</a>
 
             <ul>
@@ -175,14 +203,14 @@
       <div role="tabpanel" class="tab-pane fade in active" id="clinics">
         <div class="listview">
           <!-- <a class="lv-item" [routerLink]="['/changeclinic', 'owner',clinic.Id, clinic.Name]" *ngFor="let clinic of _globals.clinicsOwners.getValue().Data"></a> -->
-          <a class="lv-item" >
+          <a class="lv-item">
             <div class="media">
               <div class="pull-left p-relative">
                 <i class="md md-domain"></i>
               </div>
               <div class="media-body">
-                  <div class="lv-title"></div>
-                  <small class="lv-small"></small>
+                <div class="lv-title"></div>
+                <small class="lv-small"></small>
                 <!-- <div class="lv-title">{{clinic.Name}}</div>
                 <small class="lv-small">{{clinic.Adress}}</small> -->
               </div>
@@ -192,8 +220,8 @@
       </div>
       <div role="tabpanel" class="tab-pane fade" id="online">
         <div class="listview">
-              <!-- <a class="lv-item" [routerLink]="['/changeclinic', 'worker', clinic.Id, clinic.Name]" *ngFor="let clinic of _globals.clinicsWorkers.getValue().Data"></a> -->
-          <a class="lv-item" >
+          <!-- <a class="lv-item" [routerLink]="['/changeclinic', 'worker', clinic.Id, clinic.Name]" *ngFor="let clinic of _globals.clinicsWorkers.getValue().Data"></a> -->
+          <a class="lv-item">
             <div class="media">
               <div class="pull-left p-relative">
                 <i class="md md-domain"></i>
@@ -201,8 +229,8 @@
               <div class="media-body">
                 <!-- <div class="lv-title">{{clinic.Name}}</div>
                 <small class="lv-small">{{clinic.Adress}}</small> -->
-<div class="lv-title"></div>
-<small class="lv-small"></small>
+                <div class="lv-title"></div>
+                <small class="lv-small"></small>
 
               </div>
             </div>
@@ -216,56 +244,62 @@
 
     <router-outlet>
 
-      <div class="container">
+      <!-- <div class="container">
 
         <div class="card">
-      <div class="accordion" id="accordionExample">
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingOne">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            Accordion Item #1
-          </button>
-        </h2>
-        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-          <div class="accordion-body">
-            <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing
-            and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit
-            overflow.
+          <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Accordion Item #1
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the
+                  showing
+                  and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition
+                  does limit
+                  overflow.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  Accordion Item #2
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as
+                  the showing
+                  and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition
+                  does limit
+                  overflow.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  Accordion Item #3
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as
+                  the showing
+                  and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition
+                  does limit
+                  overflow.
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingTwo">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-            Accordion Item #2
-          </button>
-        </h2>
-        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-          <div class="accordion-body">
-            <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing
-            and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit
-            overflow.
-          </div>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingThree">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-            Accordion Item #3
-          </button>
-        </h2>
-        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-          <div class="accordion-body">
-            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing
-            and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit
-            overflow.
-          </div>
-        </div>
-      </div>
-    </div>
-</div>
-</div>
-  </router-outlet>
+      </div> -->
+    </router-outlet>
   </section>
 </section>
 

@@ -25,15 +25,14 @@
               "src/assets"
             ],
             "styles": [
-
-              "node_modules/bootstrap/scss/bootstrap.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/@fortawesome/fontawesome-free/css/all.css",
               "src/styles.css"
             ],
             "scripts": [
-              "src/js/jquery-3.7.0.min.js",
-              "src/js/functions.js",
-              "node_modules/bootstrap/dist/js/bootstrap.js"
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "src/js/functions.js"
             ]
           },
           "configurations": {

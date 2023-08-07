@@ -1,18 +1,17 @@
-::ng-deep body {
+/* ::ng-deep body {
   margin: 0;
   background: url(../../../../assets/core/fondo.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  font-family: roboto;
+  font-family: roboto !important;
   font-size: 11px;
   line-height: 1.42857143;
   color: #5e5e5e;
   font-weight: 400;
   padding-top: 3%;
-  /* font-size: 13px; */
-  /* font-family: sans-serif !important; */
+
 }
 
 .form-control:not(:disabled) {
@@ -25,15 +24,6 @@
   height: 15%;
 }
 
-/* .lc-block {
-  background-color: rgba(255, 255, 255, 0.6);
-  box-shadow: 0 1px 11px rgba(0, 0, 0, .27);
-  border-radius: 3px;
-  padding: 70px 60px;
-
-
-
-} */
 .fg-line .form-control:not(:disabled) {
   background: transparent;
   color: rgba(88, 89, 91);
@@ -105,20 +95,7 @@
   box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125)
 }
 
-/* .btn.disabled,
-.btn[disabled],
-fieldset[disabled] .btn {
-  cursor: not-allowed;
-  opacity: .65;
-  filter: alpha(opacity=65);
-  -webkit-box-shadow: none;
-  box-shadow: none
-}
 
-a.btn.disabled,
-fieldset[disabled] a.btn {
-  pointer-events: none
-} */
 
 .btn {
   -webkit-transition: all;
@@ -156,7 +133,6 @@ fieldset[disabled] a.btn {
   position: absolute;
   left: 43%;
   margin-top: 22px;
-  /* bottom: 198px; */
 }
 
 .loginButton button {
@@ -165,9 +141,9 @@ fieldset[disabled] a.btn {
   width: 75px;
 }
 
-a {
+.login-content a {
   color: #218D9D !important;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 
@@ -204,11 +180,7 @@ input:focus {
   border: 1px solid transparent;
   border-radius: 2px;
 }
-/* .input-group-addon,
-.input-group-btn,
-.input-group .form-control {
-  display: table-cell;
-} */
+
 
 .input-group-text {
   font-size: 1.2rem;
@@ -219,8 +191,9 @@ input:focus {
 
 .fg-line {
   position: relative;
-  /* vertical-align: top; */
+
 }
+
 .fg-line.left {
   padding-left: 0.25rem !important;
 }
@@ -235,6 +208,7 @@ input:focus {
   resize: none;
   border-radius: 0.25rem;
 }
+
 .fg-line .form-control:not(:disabled) {
   color: #000;
   background: transparent;
@@ -315,51 +289,39 @@ input:focus {
   z-index: 1
 }
 
-/* Validation Stats */
-/* &.has-success:after {
-        background: @m-green;
-    }
+.ng-valid[required],
+.ng-valid.required {
+  border-left: 5px solid #42A948;
 
-    &.has-warning:after {
-        background: @m-amber;
-    }
+}
 
-    &.has-error:after {
-        background: @m-red;
-    } */
+.ng-invalid:not(form) {
+  border-left: 5px solid #a94442;
+}
 
-    .ng-valid[required], .ng-valid.required  {
-      border-left: 5px solid #42A948; /* green */
-    }
+div.alert {
+  padding-top: initial;
+  padding-bottom: initial;
+}
 
-    .ng-invalid:not(form)  {
-      border-left: 5px solid #a94442; /* red */
-    }
+.alert div {
+  color: #820000;
 
-    div.alert {
-      padding-top:initial;
-      padding-bottom: initial;
-    }
-    .alert div {
-      /* background-color: #fed3d3; */
-      color: #820000;
-      /* padding: 0.6rem; */
-      padding-left: 2rem;
-      padding-bottom: 0.2rem;
-      /* margin-bottom: 0.4rem; */
-      text-align: start;
-    }
+  padding-left: 2rem;
+  padding-bottom: 0.2rem;
+  text-align: start;
+}
 
-    .form-group {
-      margin-bottom: 1rem;
-    }
+.form-group {
+  margin-bottom: 1rem;
+}
 
-    label {
-      display: block;
-      margin-bottom: .5rem;
-    }
+label {
+  display: block;
+  margin-bottom: .5rem;
+}
 
-    select {
-      width: 100%;
-      padding: .5rem;
-    }
+select {
+  width: 100%;
+  padding: .5rem;
+} */

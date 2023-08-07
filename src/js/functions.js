@@ -609,11 +609,11 @@ $(document).ready(function () {
             }
         }
 
-        setTimeout(function () {
-            if ($('.waves-effect')[0]) {
-                Waves.displayEffect();
-            }
-        });
+        // setTimeout(function () {
+        //     if ($('.waves-effect')[0]) {
+        //         Waves.displayEffect();
+        //     }
+        // });
     })();
 
     /*
