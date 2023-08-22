@@ -325,3 +325,15 @@ select {
   width: 100%;
   padding: .5rem;
 } */
+
+
+.loginButton button {
+  border-radius: 50% !important;
+  height: 75px;
+  width: 75px;
+}
+
+.login-content a {
+  color: #218D9D !important;
+  text-decoration: none !important;
+}

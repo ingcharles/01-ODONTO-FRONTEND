@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { AuthUseCase } from 'src/domain/login/useCases/auth-usecase';
 import { StorageUseCase } from 'src/domain/login/useCases/storage-usecase';
 import { IAuthViewModel } from 'src/domain/login/viewModels/i-auth.viewModel';
+import { Globals } from 'src/presentation/base/services/globals';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,7 @@ import { IAuthViewModel } from 'src/domain/login/viewModels/i-auth.viewModel';
 
 })
 export class HomeComponent {
-  constructor(private jwtHelper: JwtHelperService, private _router: Router, private _authUseCase: AuthUseCase, private _storageUseCase: StorageUseCase) { }
+  constructor(private jwtHelper: JwtHelperService, private _router: Router, private _authUseCase: AuthUseCase, private _storageUseCase: StorageUseCase, private _globals: Globals) { }
   // isUserAuthenticated = (): boolean => {
   //   return false
   // }
@@ -23,35 +24,33 @@ export class HomeComponent {
     // console.log('isTokenExpired', this.jwtHelper.isTokenExpired(token?.accessToken!));
     if (token && !this.jwtHelper.isTokenExpired(token?.accessToken!)) {
       // console.log('entra logeado token');
-       return true;
+      return true;
     }
     return false;
   }
   logout = () => {
     this._storageUseCase.cleanUserStorage();
     // sessionStorage.removeItem("access_token");
-    this.refirectToPages('login');
-  }
-
-  refirectToPages(value: string): void {
-    this._router.navigate(['/' + value]);
+    this._globals.refirectToPages('login');
   }
 
 
-  accion=()=>{
-    const aaa: IAuthViewModel = {ci: '1722039953', password: '12345Abc'};
+
+
+  accion = () => {
+    const aaa: IAuthViewModel = { ci: '1722039953', password: '12345Abc' };
     // userId: number | null;
     // firstName: string | null;
     // accessToken: string | null;
     // refreshToken: string | null;
-    this._authUseCase.register({ ci: '1722039953', names: '12345Abc', lastNames: '12345Abc', email: '12345Abc', password: '12345Abc', confirmPassword: '12345Abc', licenseAgreement: false, isProfesional: false, isClinic:false }).then(obs => {
+    this._authUseCase.register({ ci: '1722039953', names: '12345Abc', lastNames: '12345Abc', email: '12345Abc', password: '12345Abc', confirmPassword: '12345Abc', licenseAgreement: false, isProfesional: false, isClinic: false }).then(obs => {
 
       //this._authUseCase.refreshToken(session).then(obs => {
-        obs.subscribe({
-          next: data => {
-     // obs.subscribe((result) => {
-            console.log("entra register....", data);
-          }
+      obs.subscribe({
+        next: data => {
+          // obs.subscribe((result) => {
+          console.log("entra register....", data);
+        }
       });
     });
   }

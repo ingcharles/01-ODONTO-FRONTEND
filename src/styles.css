@@ -8760,6 +8760,7 @@ button.close {
   filter: none
 }
 
+/*
 .md-3d-rotation:before {
   content: "\f000"
 }
@@ -11942,7 +11943,7 @@ button.close {
 .icon-47:before {
   content: "S"
 }
-
+*/
 .chosen-select {
   width: 100%
 }
@@ -14093,6 +14094,7 @@ body #content {
     position: relative
   }
 
+
   .top-menu>li:not(#toggle-width):before {
     left: 0;
     top: 0;
@@ -14151,6 +14153,15 @@ body #content {
   z-index: 1
 }
 
+.top-menu>li>button {
+  min-width: 50px;
+  display: inline-block;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 1
+}
+
 .top-menu>li>a>.tmn-counts {
   position: absolute;
   color: #FFF;
@@ -14169,15 +14180,15 @@ body #content {
   animation-fill-mode: both
 }
 
-.top-menu>div>button>.tmn-counts {
+.top-menu>li>button>.tmn-counts {
   position: absolute;
   color: #FFF;
   font-style: normal;
   background: #f44336;
   padding: 1px 5px;
   border-radius: 2px;
-  /* right: 7px; */
-  top: -3px;
+  right: 7px;
+  top: -7px;
   font-size: 10px;
   -webkit-animation-name: wobble;
   animation-name: wobble;
@@ -14186,6 +14197,7 @@ body #content {
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both
 }
+
 .top-menu>li>a.tm-chat {
   background-image: url(./assets/core/menu-2.png)
 }
@@ -14196,14 +14208,19 @@ only screen and (-o-min-device-pixel-ratio:2/1),
 only screen and (min-device-pixel-ratio:2),
 only screen and (min-resolution:192dpi),
 only screen and (min-resolution:2dppx) {
-  .top-menu>li>a.tm-chat {
+  .top-menu>li>button.tm-chat {
     background-image: url(./assets/core/menu-2@2x.png);
     background-size: 18px 12px
   }
 }
 
-.top-menu>li>a.tm-settings {
-  background-image: url(./assets/core/ellipsis.png)
+.top-menu>li>button.tm-settings {
+  background-image: url(./assets/core/ellipsis.png);
+  /* background-size: 24px 24px !important; */
+  background-color: inherit;
+  border: inherit;
+  width: 40px;
+  height: 40px;
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio:2),
@@ -14212,42 +14229,49 @@ only screen and (-o-min-device-pixel-ratio:2/1),
 only screen and (min-device-pixel-ratio:2),
 only screen and (min-resolution:192dpi),
 only screen and (min-resolution:2dppx) {
-  .top-menu>li>a.tm-settings {
+  .top-menu>li>button.tm-settings {
     background-image: url(./assets/core/ellipsis@2x.png);
-    background-size: 24px 24px
+    /* background-size: 24px 24px; */
+    background-color: inherit;
+    border: inherit;
+    width: 40px;
+    height: 40px;
   }
 }
 
-.top-menu>li>a.tm-notification {
+/* .top-menu>li>a.tm-notification {
   background-image: url(./assets/core/notification.png)
+} */
+
+.top-menu>li>button.tm-notification {
+  background-image: url(./assets/core/notification.png);
+  width: 40px;
+  height: 40px;
+  background-color: inherit;
+  border: inherit;
+  float: left;
 }
 
-.top-menu>div>button.tm-notification {
-  background-image: url(./assets/core/notification.png);
-  width: 24px;
-    height: 24px;
-    background-color: inherit;
-      border: inherit;
-}
 @media only screen and (-webkit-min-device-pixel-ratio:2),
 only screen and (min--moz-device-pixel-ratio:2),
 only screen and (-o-min-device-pixel-ratio:2/1),
 only screen and (min-device-pixel-ratio:2),
 only screen and (min-resolution:192dpi),
 only screen and (min-resolution:2dppx) {
-  .top-menu>li>a.tm-notification {
+  /* .top-menu>li>a.tm-notification {
     background-image: url(./assets/core/notification@2x.png);
     background-size: 24px 24px
-  }
+  } */
 
-.top-menu>div>button.tm-notification {
-  background-image: url(./assets/core/notification@2x.png);
-  background-size: 24px 24px !important;
-  background-color: inherit;
+  .top-menu>li>button.tm-notification {
+    background-image: url(./assets/core/notification@2x.png);
+    /* background-size: 24px 24px !important; */
+    background-color: inherit;
     border: inherit;
-  width: 24px;
-  height: 24px;
-}
+    width: 40px;
+    height: 40px;
+    float: left;
+  }
 }
 
 .top-menu>li>a.tm-message {
@@ -17469,6 +17493,7 @@ only screen and (min-resolution:2dppx) {
 .btn[class*=bgm-] {
   color: #fff
 }
+
 /*
 .btn:not(.btn-link):not(.btn-float):not(.command-edit):not(.command-delete):not(.selectpicker) {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12)
@@ -17958,6 +17983,7 @@ html:not(.ie9) .select:not(.fg-line):before {
 html:not(.ie9) .select.fg-line:before {
   right: 10px
 }
+
 /*
 .input-group-addon {
   border-width: 0 0 1px
@@ -21466,16 +21492,6 @@ body {
   margin-top: 22px;
 }
 
-.loginButton button {
-  border-radius: 50% !important;
-  height: 75px;
-  width: 75px;
-}
-
-.login-content a {
-  color: #218D9D !important;
-  text-decoration: none !important;
-}
 
 
 input:active,

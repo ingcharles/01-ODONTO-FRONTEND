@@ -39,7 +39,7 @@ export class PasswordStrengthDirective implements Validator {
 export class LoginComponent {
 
 
-  constructor(public _fb: FormBuilder, public _validatorService: ValidationService, private _alertService: AlertsService, private _loaderService: LoaderService, private _authUseCase: AuthUseCase, private _storageUseCase: StorageUseCase, private _router: Router, private _globals:Globals) { }
+  constructor(public _fb: FormBuilder, public _validatorService: ValidationService, private _alertService: AlertsService, private _loaderService: LoaderService, private _authUseCase: AuthUseCase, private _storageUseCase: StorageUseCase, private _router: Router, private _globals: Globals) { }
 
   //* obtener los mensajes de la alertas configuradas en base/messages.ts
   public menssage = messages;
@@ -90,7 +90,7 @@ export class LoginComponent {
 
 
   refirectToPages(value: string): void {
-    this._router.navigate(['/'+ value]);
+    this._router.navigate(['/' + value]);
   }
 
   login() {
@@ -111,49 +111,50 @@ export class LoginComponent {
     //* se ejecuta el servicio solo si no cumple con el if anterior
     //* esto siempre y cuando viene por Nuevo Crca Numerario
     //this._alertService.alertConfirm(messages.confirmacionTitle, messages.confirmSave, () => {
-      this._authUseCase.login(this.loginForm.value as IAuthViewModel).then(obs => {
-        this._loaderService.display(true);
-        obs.subscribe((result) => {
+    this._authUseCase.login(this.loginForm.value as IAuthViewModel).then(obs => {
+      this._loaderService.display(true);
+      obs.subscribe((result) => {
 
-          this._loaderService.display(false);
-          // console.log("result",result);
-          if (result.ok) {
+        this._loaderService.display(false);
+        // console.log("result",result);
+        if (result.ok) {
 
 
 
-            result.token!.userId = result.data?.codigoUsuario!;
-            result.token!.firstName = result.data?.nombreUsuario!;
+          result.token!.userId = result.data?.codigoUsuario!;
+          result.token!.firstName = result.data?.nombreUsuario!;
 
-            console.log("result.token?.accessToken: " + result.token?.accessToken);
-            console.log("result.token?.refreshToken: " + result.token?.refreshToken);
-            console.log("result.token!.userId: " + result.token?.userId);
-            console.log("result.token!.firstName: " + result.token?.firstName);
-            this._storageUseCase.saveUserStorage(result.token!);
-            this.isLoginFailed = false;
-            this.isLoggedIn = true;
-            this._storageUseCase.getUserStorage();
-            // this.roles = this._authUseCase.getUserStorage().roles;
-            // console.log('roles', this.roles);
-            //this.redirectHome();
-            this.refirectToPages('')
-            //this._alertService.alertMessage(messages.exitoTitle, result.message, messages.isSuccess);
-            //  this.loginForm.get('codigoCrca')!.patchValue(result.data?.codigoCrca);
+          console.log("result.token?.accessToken: " + result.token?.accessToken);
+          console.log("result.token?.refreshToken: " + result.token?.refreshToken);
+          console.log("result.token!.userId: " + result.token?.userId);
+          console.log("result.token!.firstName: " + result.token?.firstName);
+          this._storageUseCase.saveUserStorage(result.token!);
+          this.isLoginFailed = false;
+          this.isLoggedIn = true;
+          this._storageUseCase.getUserStorage();
+          this._globals.setUserName(result.data?.nombreUsuario!);
+          // this.roles = this._authUseCase.getUserStorage().roles;
+          // console.log('roles', this.roles);
+          //this.redirectHome();
+          this.refirectToPages('')
+          //this._alertService.alertMessage(messages.exitoTitle, result.message, messages.isSuccess);
+          //  this.loginForm.get('codigoCrca')!.patchValue(result.data?.codigoCrca);
 
-          } else {
-            //this.errorMessage = err.error.message;
-            //console.log("result.falos= " + result.ok);
-            this._globals.setLoginStatus(false);
-            this.isLoginFailed = true;
-            this._alertService.alertMessage(messages.advertenciaTitle, result.message, messages.isWarning);
-          }
-        })
-      }).catch(err => {
-        this._globals.setLoginStatus(false);
-        // this.error = error;
-        // this.isRequesting = false;
-        this._globals.setIsRequestingGlobal(false);
-      });
-   // });
+        } else {
+          //this.errorMessage = err.error.message;
+          //console.log("result.falos= " + result.ok);
+          this._globals.setLoginStatus(false);
+          this.isLoginFailed = true;
+          this._alertService.alertMessage(messages.advertenciaTitle, result.message, messages.isWarning);
+        }
+      })
+    }).catch(err => {
+      this._globals.setLoginStatus(false);
+      // this.error = error;
+      // this.isRequesting = false;
+      this._globals.setIsRequestingGlobal(false);
+    });
+    // });
     //return;
   }
 
