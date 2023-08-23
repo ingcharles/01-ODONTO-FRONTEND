@@ -9,7 +9,8 @@ import { LoaderService } from 'src/presentation/base/services/loader.service';
 import { DataModule } from 'src/data/data.module';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { ErrorInterceptorProvider } from 'src/base/interceptors/error.Interceptor';
-
+// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 export function tokenGetter() {
   return sessionStorage.getItem("access_token");
 }
@@ -30,6 +31,8 @@ export function tokenGetter() {
         disallowedRoutes: ["http://example.com/examplebadroute/"],
       },
     }),
+
+    NgbModule
   ],
 
   providers: [/*{

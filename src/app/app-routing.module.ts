@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeComponent } from 'src/presentation/home/components/home/home.component';
 import { AuthGuard } from 'src/presentation/app/shared/guards/auth.guard';
+import { CreatePacienteComponent } from '../presentation/paciente/components/create-paciente/create-paciente.component';
 
 const routes: Routes = [
 //   {
@@ -37,6 +38,12 @@ const routes: Routes = [
     loadChildren: () =>
       import('../presentation/change-password/change-password.module').then((m) => m.ChangePasswordModule)
   },
+  {
+    path: 'patiens',
+    loadChildren: () =>
+      import('../presentation/paciente/paciente.module').then((m) => m.PacienteModule)
+  },
+
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
     path: '**',

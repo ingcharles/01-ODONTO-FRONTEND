@@ -1,0 +1,399 @@
+<!-- <spinner-content [isRunning]="isRequesting"></spinner-content> -->
+<!-- [hidden]="isRequesting" -->
+<div class="container">
+
+  <div class="card">
+    <form #fpatient="ngForm" novalidate (ngSubmit)="save()">
+      <div class="card-header">
+        <h2>
+          Paciente
+          <small>
+            Información del paciente
+          </small>
+        </h2>
+      </div>
+
+      <div class="card-body card-padding">
+
+        <p class="c-black f-500 m-b-5">Información general</p>
+        <small>
+          Información general del paciente. Los campos se&ntilde;alados con <strong>(*)</strong> son obligatorios.
+        </small>
+
+        <br /><br />
+
+        <file-uploader class="pull-right" [activeColor]="'orangered'" [baseColor]="'lightgray'" [imageSrc]="imageSrc"></file-uploader>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-4">
+            <!-- {{ (name.valid || (name.pristine && !fpatient.submitted)) ? '' : 'has-error has-feedback' }} -->
+            <div class="input-group form-group ">
+              <span class="input-group-addon"><i class="md md-person"></i>(*)</span>
+
+              <div class="fg-line">
+                <!-- [(ngModel)]="person.Name" #name="ngModel"-->
+                <input type="text" class="form-control"  name="name"  placeholder="Nombres" required>
+              </div>
+              <!-- {{ (name.valid || (name.pristine && !fpatient.submitted)) ? 'hidden' : '' }} -->
+              <span class="md md-close form-control-feedback "></span>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-4">
+            <!-- {{ (last_name.valid || (last_name.pristine && !fpatient.submitted)) ? '' : 'has-error has-feedback' }} -->
+            <div class="input-group form-group">
+              <span class="input-group-addon"><i class="md md-account-child"></i>(*)</span>
+              <div class="fg-line">
+                <!-- [(ngModel)]="person.LastNames"  #last_name="ngModel" -->
+                <input type="text" class="form-control" name="last_name" placeholder="Apellidos" required>
+              </div>
+              <!-- {{ (last_name.valid || (last_name.pristine && !fpatient.submitted)) ? 'hidden' : '' }} -->
+              <span class="md md-close form-control-feedback"></span>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-4">
+            <!-- {{ (dni.valid || (dni.pristine && !fpatient.submitted)) ? '' : 'has-error has-feedback' }} -->
+            <div class="input-group form-group" required>
+              <span class="input-group-addon"><i class="md md-portrait"></i></span>
+              <div class="fg-line">
+                <!-- [(ngModel)]="person.DNI" #dni="ngModel" -->
+                <input type="text" class="form-control" name="dni" placeholder="CI">
+              </div>
+              <!-- {{ (dni.valid || (dni.pristine && !fpatient.submitted)) ? 'hidden' : '' }} -->
+              <span class="md md-close form-control-feedback"></span>
+            </div>
+          </div>
+
+          <!-- *ngIf="newPatient || (appGlobals.owner.getValue() && !patient.PatientFromPartner) || isSuperAdmin" -->
+          <div class="col-xs-12 col-sm-4" >
+            <!-- {{ (mobile.valid || (mobile.pristine && !fpatient.submitted)) ? '' : 'has-error has-feedback' }} -->
+            <div class="input-group form-group">
+              <span class="input-group-addon"><i class="md md-stay-primary-portrait"></i></span>
+              <div class="fg-line">
+                <!-- [(ngModel)]="person.Mobile" #mobile="ngModel"-->
+                <input type="text" class="form-control"  name="mobile"  placeholder="Teléfono movil">
+              </div>
+              <!-- {{ (mobile.valid || (mobile.pristine && !fpatient.submitted)) ? 'hidden' : '' }} -->
+              <span class="md md-close form-control-feedback "></span>
+            </div>
+          </div>
+<!-- *ngIf="newPatient || (appGlobals.owner.getValue() && !patient.PatientFromPartner) || isSuperAdmin" -->
+          <div class="col-xs-12 col-sm-4" >
+            <!-- {{ (phone.valid || (phone.pristine && !fpatient.submitted)) ? '' : 'has-error has-feedback' }} -->
+            <div class="input-group form-group">
+              <span class="input-group-addon"><i class="md md-local-phone"></i></span>
+              <div class="fg-line">
+                <!-- [(ngModel)]="person.Phone" #phone="ngModel"-->
+                <input type="text" class="form-control"  name="phone"  placeholder="Teléfono">
+              </div>
+              <!-- {{ (phone.valid || (phone.pristine && !fpatient.submitted)) ? 'hidden' : '' }} -->
+              <span class="md md-close form-control-feedback"></span>
+            </div>
+          </div>
+<!-- *ngIf="newPatient || (appGlobals.owner.getValue() && !patient.PatientFromPartner) || isSuperAdmin" -->
+          <div class="col-xs-12 col-sm-4" >
+            <!-- {{ (mail.valid || (mail.pristine && !fpatient.submitted)) ? '' : 'has-error has-feedback' }} -->
+            <div class="input-group form-group">
+              <span class="input-group-addon"><i class="md md-email"></i></span>
+              <div class="fg-line">
+                <!-- [(ngModel)]="person.Email"  #mail="ngModel"-->
+                <input type="email" class="form-control" name="mail" placeholder="Correo electrónico">
+              </div>
+              <!-- {{ (mail.valid || (mail.pristine && !fpatient.submitted)) ? 'hidden' : '' }} -->
+              <span class="md md-close form-control-feedback"></span>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-4">
+            <!-- {{ (sex.valid || (sex.pristine && !fpatient.submitted)) ? '' : 'has-error has-feedback' }} -->
+            <div class="input-group form-group">
+              <span class="input-group-addon"><i class="md md-account-child"></i>(*)</span>
+              <div class="fg-line select">
+                <!-- [(ngModel)]="person.Sex" #sex="ngModel"-->
+                <select class="form-control"  name="sex"  required>
+                  <option value="true">Masculino</option>
+                  <option value="false">Femenino</option>
+                </select>
+              </div>
+              <!-- {{ (sex.valid || (sex.pristine && !fpatient.submitted)) ? 'hidden' : '' }} -->
+              <span class="md md-close form-control-feedback"></span>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-4">
+            <div class="input-group form-group">
+              <span class="input-group-addon"><i class="md md-event"></i>(*)</span>
+              <div class="fg-line">
+                <!-- -->
+                  <!-- <ngb-datepicker #d ></ngb-datepicker> -->
+                <!-- [(ngModel)]="person.DateOfBirth" -->
+                <!-- const isDisabled = (date: NgbDate, current: {month: number}) => date.day === 13; -->
+                <!-- [minDate]="{year: 2010, month: 1, day: 1}" -->
+                <!-- [maxDate]="{year: 2048, month: 12, day: 31}" -->
+                <!-- <button (click)="d.close()">Toggle</button> -->
+                <!-- [startDate]="{year: 2000, month: 1}" -->
+                <input id="DateOfBirth" type="text" data-toggle="dropdown"  [autoClose]="true"  (click)="d.open()"   ngbDatepicker #d="ngbDatepicker" class="form-control date-picker"  name="DateOfBirth">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-4">
+            <!-- {{ (race.valid || (race.pristine && !fpatient.submitted)) ? '' : 'has-error has-feedback' }} -->
+            <div class="input-group form-group">
+              <span class="input-group-addon"><i class="md md-star-half"></i></span>
+              <div class="fg-line">
+                <!-- [(ngModel)]="person.Race" #race="ngModel" -->
+                <input type="text" class="form-control"  name="race" placeholder="Color de la piel">
+              </div>
+              <!-- {{ (race.valid || (race.pristine && !fpatient.submitted)) ? 'hidden' : '' }} -->
+              <span class="md md-close form-control-feedback"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <!-- {{ (address.valid || (address.pristine && !fpatient.submitted)) ? '' : 'has-error has-feedback' }} -->
+            <div class="input-group  form-group">
+              <span class="input-group-addon"><i class="md md-location-on"></i></span>
+
+              <div class="fg-line">
+                <!-- [(ngModel)]="person.Address" #address="ngModel"-->
+                <input type="text" class="form-control"  name="Address"  placeholder="Dirección">
+              </div>
+              <!-- {{ (address.valid || (address.pristine && !fpatient.submitted)) ? 'hidden' : '' }} -->
+              <span class="md md-close form-control-feedback "></span>
+            </div>
+          </div>
+        </div>
+
+        <br /><br />
+
+        <p class="c-black f-500 m-b-5 m-t-20">Información de los padres</p>
+        <small>
+          Información de los padres si el paciente es ni&ntilde;o(a)
+        </small>
+
+        <div class="row">
+          <div class="col-sm-4">
+            <!-- {{ (namefather.valid || (namefather.pristine && !fpatient.submitted)) ? '' : 'has-error has-feedback' }} -->
+            <div class="input-group form-group">
+              <span class="input-group-addon"><i class="md md-person"></i></span>
+              <div class="fg-line">
+                <!-- [(ngModel)]="patient.NameFather" #namefather="ngModel"-->
+                <input type="text" class="form-control"  name="namefather"  placeholder="Nombres del padre">
+              </div>
+              <!-- {{ (namefather.valid || (namefather.pristine && !fpatient.submitted)) ? 'hidden' : '' }} -->
+              <span class="md md-close form-control-feedback"></span>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <!-- {{ (lastnamefather.valid || (lastnamefather.pristine && !fpatient.submitted)) ? '' : 'has-error has-feedback' }} -->
+            <div class="input-group form-group">
+              <span class="input-group-addon"><i class="md md-account-child"></i></span>
+              <div class="fg-line">
+                <!-- [(ngModel)]="patient.LastNamesFather" #lastnamefather="ngModel"-->
+                <input type="text" class="form-control"  name="lastnamefather"  placeholder="Apellidos del padre">
+              </div>
+              <!-- {{ (lastnamefather.valid || (lastnamefather.pristine && !fpatient.submitted)) ? 'hidden' : '' }} -->
+              <span class="md md-close form-control-feedback"></span>
+            </div>
+
+          </div>
+
+          <div class="col-sm-4">
+            <!-- {{ (fatherwork.valid || (fatherwork.pristine && !fpatient.submitted)) ? '' : 'has-error has-feedback' }} -->
+            <div class="input-group form-group">
+              <span class="input-group-addon"><i class="md md-directions-walk"></i></span>
+              <div class="fg-line">
+                <!-- [(ngModel)]="patient.WorkFather" #fatherwork="ngModel"-->
+                <input type="text" class="form-control"  name="fatherwork"  placeholder="Trabajo del padre">
+              </div>
+              <!-- {{ (fatherwork.valid || (fatherwork.pristine && !fpatient.submitted)) ? 'hidden' : '' }} -->
+              <span class="md md-close form-control-feedback"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-4">
+            <!-- {{ (namemother.valid || (namemother.pristine && !fpatient.submitted)) ? '' : 'has-error has-feedback' }} -->
+            <div class="input-group form-group">
+              <span class="input-group-addon"><i class="md md-person"></i></span>
+              <div class="fg-line">
+                <!-- [(ngModel)]="patient.NameMother" #namemother="ngModel"-->
+                <input type="text" class="form-control" name="namemother"  placeholder="Nombres de la madre">
+              </div>
+              <!-- {{ (namemother.valid || (namemother.pristine && !fpatient.submitted)) ? 'hidden' : '' }} -->
+              <span class="md md-close form-control-feedback"></span>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <!-- {{ (lastnamemother.valid || (lastnamemother.pristine && !fpatient.submitted)) ? '' : 'has-error has-feedback' }} -->
+            <div class="input-group form-group">
+              <span class="input-group-addon"><i class="md md-account-child"></i></span>
+              <div class="fg-line">
+                <!-- [(ngModel)]="patient.LastNamesMother" #lastnamemother="ngModel"-->
+                <input type="text" class="form-control"  name="lastnamemother"  placeholder="Apellidos de la madre">
+              </div>
+              <!-- {{ (lastnamemother.valid || (lastnamemother.pristine && !fpatient.submitted)) ? 'hidden' : '' }} -->
+              <span class="md md-close form-control-feedback "></span>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <!-- {{ (motherwork.valid || (motherwork.pristine && !fpatient.submitted)) ? '' : 'has-error has-feedback' }} -->
+            <div class="input-group form-group ">
+              <span class="input-group-addon"><i class="md md-directions-walk"></i></span>
+
+              <div class="fg-line">
+                <!-- [(ngModel)]="patient.WorkMother" #motherwork="ngModel"-->
+                <input type="text" class="form-control"  name="motherwork"  placeholder="Trabajo de la madre">
+              </div>
+              <!-- {{ (motherwork.valid || (motherwork.pristine && !fpatient.submitted)) ? 'hidden' : '' }} -->
+              <span class="md md-close form-control-feedback "></span>
+            </div>
+          </div>
+        </div>
+
+        <br /><br />
+
+        <p class="c-black f-500 m-b-5 m-t-20">Información médica</p>
+        <small>Ingrese los detalles de la información médica</small>
+
+        <br /><br />
+
+        <div class="row">
+          <div class="col-sm-12">
+            <!-- {{ (reason.valid || (reason.pristine && !fpatient.submitted)) ? '' : 'has-error has-feedback' }} -->
+            <div class="input-group form-group ">
+              <span class="input-group-addon"><i class="md md-local-hospital"></i></span>
+              <div class="fg-line">
+                <!-- [(ngModel)]="patient.ReasonForConsultation" #reason="ngModel"-->
+                <textarea type="text" class="form-control" rows="2" name="reason"  placeholder="Motivo de la consulta"></textarea>
+              </div>
+              <!-- {{ (reason.valid || (reason.pristine && !fpatient.submitted)) ? 'hidden' : '' }} -->
+              <span class="md md-close form-control-feedback"></span>
+            </div>
+<!-- {{ (problem.valid || (problem.pristine && !fpatient.submitted)) ? '' : 'has-error has-feedback' }} -->
+            <div class="input-group form-group">
+              <span class="input-group-addon"><i class="md md-local-library"></i></span>
+              <div class="fg-line">
+                <!-- [(ngModel)]="patient.CurrentProblem" #problem="ngModel"-->
+                <textarea type="text" class="form-control" rows="2"  name="problem"  placeholder="Enfermedades actuales"></textarea>
+              </div>
+              <!-- {{ (problem.valid || (problem.pristine && !fpatient.submitted)) ? 'hidden' : '' }} -->
+              <span class="md md-close form-control-feedback"></span>
+            </div>
+          </div>
+        </div>
+        <br />
+        <br />
+
+        <small>Historial personal y familiar</small>
+        <br />
+        <br />
+
+        <div class="row">
+          <!-- <div class="col-sm-3" *ngFor="let obj of patient.personalAndFamilyHistory"> -->
+            <label class="checkbox checkbox-inline m-r-20">
+              <!-- [(ngModel)]="obj.Value" name="{{ obj.Name }}"  [checked]="obj.Value === 'True'"-->
+              <input type="checkbox"  >
+              <i class="input-helper"></i>
+              <!-- {{obj.Name}} {{obj.Active}} -->
+              <span></span>
+            </label>
+          <!-- </div> -->
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="input-group form-group">
+              <span class="input-group-addon"><i class="md md-local-library"></i></span>
+              <div class="fg-line">
+                <!-- [(ngModel)]="patient.NotePersonalAndFamilyRecord" -->
+                <!-- #note="ngModel" -->
+                <textarea class="form-control" rows="2"  name="note"  placeholder="Observación del historial personal y familiar"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <br />
+        <br />
+
+        <small>Signos vitales</small>
+        <br />
+        <br />
+        <div class="row">
+          <!-- *ngFor="let obj of patient.vitalSigns" -->
+          <div class="col-sm-3" >
+            <div class="input-group form-group">
+              <span class="input-group-addon"><i class="md md-directions-walk"></i></span>
+              <div class="fg-line">
+                <!-- placeholder="{{ obj.Name }}" [(ngModel)]="obj.Value" name="{{ obj.Name }}" -->
+                <input type="text" class="form-control" >
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <br />
+
+        <small>Examen del sistema estomatogn&aacute;tico</small>
+        <br />
+        <br />
+        <div class="row">
+          <!-- *ngFor="let obj of patient.stomatognathicSystem" -->
+          <div class="col-sm-3" >
+            <label class="checkbox checkbox-inline m-r-20">
+              <!-- [(ngModel)]="obj.Value" [checked]="obj.Value == 'True'" name="{{obj.Name}}" -->
+              <input type="checkbox" >
+              <i class="input-helper"></i>
+              <!-- {{obj.Name}} -->
+            </label>
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="input-group form-group">
+              <span class="input-group-addon"><i class="md md-local-library"></i></span>
+
+              <div class="fg-line">
+                <!-- [(ngModel)]="patient.NoteReviewSystemStomatognathic" #note_examen="ngModel"-->
+                <textarea type="text" class="form-control" rows="2"  name="note_examen"  placeholder="Observación del examen del sistema estomatogn&aacute;tico"
+                  (keyup.enter)="save()"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" *ngIf="isSuperAdmin">
+          <div class="col-sm-12">
+            <div class="input-group form-group">
+              <span class="input-group-addon"><i class="md md-lock"></i></span>
+              <div class="col-sm-3">
+                <label class="checkbox checkbox-inline m-r-20">
+                  <!-- [checked]="patient.PatientFromPartner" [(ngModel)]="patient.PatientFromPartner" -->
+                  <input type="checkbox" name="Referido de OdontoFy">
+                  <i class="input-helper"></i>
+                  Referido de OdontoFy
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <br />
+        <br />
+        <button type="submit" class="btn btn-primary btn-sm m-t-10" [disabled]="!fpatient.valid">Guardar</button>
+        <button type="button" class="btn btn-default btn-sm m-t-10" (click)="cancel()">Cancelar</button>
+      </div>
+      <br />
+    </form>
+  </div>
+</div>

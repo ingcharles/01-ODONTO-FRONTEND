@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { StorageUseCase } from 'src/domain/login/useCases/storage-usecase';
 import { Globals } from 'src/presentation/base/services/globals';
-
+import '@angular/localize/init';
 @Component({
   selector: 'app-root',
   // templateUrl: './app.component.html',
@@ -19,6 +19,10 @@ export class AppComponent {
   constructor(private _storageUseCase: StorageUseCase, private _globals: Globals) {
     // this.response = new Response();
     // document.getElementById("index-spinner").style.display = "none";
+
+      // locale(navigator.language);
+
+
   }
 
   get getUserName(): string {
