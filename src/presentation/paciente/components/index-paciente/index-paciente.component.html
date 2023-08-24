@@ -1,9 +1,10 @@
-<p>index-paciente works!</p>
+<!-- <p>index-paciente works!</p> -->
 <!-- <spinner-content [isRunning]="isRequesting"></spinner-content> -->
-<div class="container" [hidden]="isRequesting">
+<!-- [hidden]="isRequesting" -->
+<div class="container">
   <div class="card">
     <div class="card-header">
-      <h2>{{title}}: Historias cl&iacute;nicas<small>Datos personales y detalles cl&iacute;nicos</small></h2>
+      <h2>{{title}}: Historias clínicas<small>Datos personales y detalles clínicos</small></h2>
 
       <ul class="actions" data-toggle="tooltip" data-placement="left" title="Agregar {{title}}">
         <li>
@@ -21,7 +22,8 @@
           <div class="input-group form-group">
             <span class="input-group-addon"><i class="md md-search"></i></span>
             <div class="dtp-container dropdown fg-line">
-              <input id="query" type='text' class="form-control" placeholder="Nombre o DNI" (keyup.enter)="searchPatients()">
+              <input id="query" type='text' class="form-control" placeholder="Nombre o DNI"
+                (keyup.enter)="searchPatients()">
             </div>
           </div>
         </div>
@@ -30,8 +32,9 @@
           <div class="input-group form-group">
             <span class="input-group-addon"><i class="md md-school"></i></span>
             <div class="fg-line select">
-              <select class="form-control" [(ngModel)]="clinicWorker" name="clinicWorker" (change)="selectClinicWorker($event.target.value)">
-                <option value="-1">Todas tus cl&iacute;nicas</option>
+              <!-- [(ngModel)]="clinicWorker" (change)="selectClinicWorker($event.target.value)" -->
+              <select class="form-control" name="clinicWorker">
+                <option value="-1">Todas tus clínicas</option>
                 <option *ngFor="let opt of clinicsWorker" [value]="opt.Id">{{opt.Name}}</option>
               </select>
             </div>
@@ -47,30 +50,51 @@
       </div>
     </div>
 
-    <div class="text-center" [hidden]="response.Total > 0">
+
+
+
+    <!-- [hidden]="response.Total > 0" -->
+    <div class="text-center">
       <i class="md md-settings-ethernet" style="font-size: 100px;"></i>
       <div>No hay elementos para mostrar</div>
     </div>
-
-    <div class="table-responsive" [hidden]="!(response.Total > 0)">
-      <table class="table table-striped" [mfData]="response.Data" #mf="mfDataTable" [mfRowsOnPage]="10">
+    <!-- [hidden]="!(response.Total > 0)" -->
+    <div class="table-responsive">
+      <!-- [mfData]="response.Data" #mf="mfDataTable" [mfRowsOnPage]="10" -->
+      <table class="table table-striped">
         <thead>
           <tr>
             <th style="width: 80%">
-              <mfDefaultSorter by="name">Nombre</mfDefaultSorter>
+              <!-- <mfDefaultSorter by="name">Nombre</mfDefaultSorter> -->
             </th>
             <th style="width: 10%" class="hidden-xs">
-              <mfDefaultSorter by="age">Edad</mfDefaultSorter>
+              <!-- <mfDefaultSorter by="age">Edad</mfDefaultSorter> -->
             </th>
             <th style="width: 10%">
-              <mfDefaultSorter></mfDefaultSorter>
+              <!-- <mfDefaultSorter></mfDefaultSorter> -->
             </th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of mf.data">
-            <td style="width: 80%"><a [routerLink]="['/patiens-dashboard', item.patient.Id]">{{item.Name}} {{item.LastNames}}<small class="c-red" [hidden]="!item.patient.PatientFromPartner">-de OdontoBy</small></a></td>
-            <td style="width: 10%" class="hidden-xs">{{item.Age > 0 ? item.Age : ''}} <small>{{item.Months > 0 ? item.Months : ''}} {{item.Months == 1 ? 'mes' : ( item.Months > 1 ? 'meses': '')}} </small></td>
+          <!-- *ngFor="let item of mf.data" -->
+          <tr>
+            <td style="width: 80%"><a [routerLink]="['/patiens-dashboard', 1]">aaaa
+                <small class="c-red">-de
+                  OdontoBy</small></a></td>
+            <td style="width: 10%" class="hidden-xs"> <small>bb </small></td>
+            <td style="width: 10%">
+              <a [routerLink]="['/patiens/patiens', 1]" class="p-r-20">
+                <i class="md fa-solid fa-file-pen"></i>
+              </a>
+              <span (click)="delete(1)" style="color:red;cursor: pointer;">
+                <i class="md fa-solid fa-trash-can"></i>
+              </span>
+            </td>
+            <!-- <td style="width: 80%"><a [routerLink]="['/patiens-dashboard', item.patient.Id]">{{item.Name}}
+                {{item.LastNames}}<small class="c-red" [hidden]="!item.patient.PatientFromPartner">-de
+                  OdontoBy</small></a></td>
+            <td style="width: 10%" class="hidden-xs">{{item.Age > 0 ? item.Age : ''}} <small>{{item.Months > 0 ?
+                item.Months : ''}} {{item.Months == 1 ? 'mes' : ( item.Months > 1 ? 'meses': '')}} </small></td>
             <td style="width: 10%">
               <a href="" [routerLink]="['/patiens', item.patient.Id]" class="p-r-20">
                 <i class="md md-edit"></i>
@@ -78,17 +102,172 @@
               <span (click)="delete(item.Id)" style="color:red;cursor: pointer;">
                 <i class="md md-delete"></i>
               </span>
-            </td>
+            </td> -->
           </tr>
         </tbody>
         <tfoot>
           <tr>
             <td colspan="4">
-              <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50]"></mfBootstrapPaginator>
+              <!-- <mfBootstrapPaginator [rowsOnPageSet]="[10,25,50]"></mfBootstrapPaginator> -->
             </td>
           </tr>
         </tfoot>
       </table>
     </div>
+
+
+    <table class="table align-middle mb-0 bg-white">
+      <thead class="bg-light">
+        <tr>
+          <th>Name</th>
+          <th>Title</th>
+          <th>Status</th>
+          <th>Position</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="d-flex align-items-center">
+              <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px"
+                class="rounded-circle" />
+              <div class="ms-3">
+                <p class="fw-bold mb-1">John Doe</p>
+                <p class="text-muted mb-0">john.doe@gmail.com</p>
+              </div>
+            </div>
+          </td>
+          <td>
+            <p class="fw-normal mb-1">Software engineer</p>
+            <p class="text-muted mb-0">IT department</p>
+          </td>
+          <td>
+            <span class="badge badge-success rounded-pill d-inline">Active</span>
+          </td>
+          <td>Senior</td>
+          <td>
+            <button type="button" class="btn btn-link btn-sm btn-rounded">
+              Edit
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="d-flex align-items-center">
+              <img src="https://mdbootstrap.com/img/new/avatars/6.jpg" class="rounded-circle" alt=""
+                style="width: 45px; height: 45px" />
+              <div class="ms-3">
+                <p class="fw-bold mb-1">Alex Ray</p>
+                <p class="text-muted mb-0">alex.ray@gmail.com</p>
+              </div>
+            </div>
+          </td>
+          <td>
+            <p class="fw-normal mb-1">Consultant</p>
+            <p class="text-muted mb-0">Finance</p>
+          </td>
+          <td>
+            <span class="badge badge-primary rounded-pill d-inline">Onboarding</span>
+          </td>
+          <td>Junior</td>
+          <td>
+            <button type="button" class="btn btn-link btn-rounded btn-sm fw-bold" mdbRipple rippleColor="dark">
+              Edit
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="d-flex align-items-center">
+              <img src="https://mdbootstrap.com/img/new/avatars/7.jpg" class="rounded-circle" alt=""
+                style="width: 45px; height: 45px" />
+              <div class="ms-3">
+                <p class="fw-bold mb-1">Kate Hunington</p>
+                <p class="text-muted mb-0">kate.hunington@gmail.com</p>
+              </div>
+            </div>
+          </td>
+          <td>
+            <p class="fw-normal mb-1">Designer</p>
+            <p class="text-muted mb-0">UI/UX</p>
+          </td>
+          <td>
+            <span class="badge badge-warning rounded-pill d-inline">Awaiting</span>
+          </td>
+          <td>Senior</td>
+          <td>
+            <button type="button" class="btn btn-link btn-rounded btn-sm fw-bold" mdbRipple rippleColor="dark">
+              Edit
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+
+
+
+    <div class="mat-elevation-z8">
+
+      <table mat-table [dataSource]="dataSource">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> No. </th>
+          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="d-flex align-items-center">
+              <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px"
+                class="rounded-circle" />
+              <div class="ms-3">
+                <p class="fw-bold mb-1">{{element.name}} </p>
+                <p class="text-muted mb-0">john.doe@gmail.com</p>
+              </div>
+            </div>
+
+          </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="weight">
+          <th mat-header-cell *matHeaderCellDef> Weight </th>
+          <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="symbol">
+          <th mat-header-cell *matHeaderCellDef> Symbol </th>
+          <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+        </ng-container>
+        <ng-container matColumnDef="symbola">
+          <th mat-header-cell *matHeaderCellDef> Symbola </th>
+          <td mat-cell *matCellDef="let element">
+            <a [routerLink]="['/patiens/create-patiens', 1]">
+              <!-- aaaa -->
+              <!-- <small class="c-red">{{element.symbol}}</small>  -->
+              <i class="md fa-solid fa-file-pen"></i></a>
+          </td>
+
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+
+      </table>
+
+
+      <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+      </mat-paginator> -->
+      <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons
+        aria-label="Select page">
+      </mat-paginator>
+    </div>
+
   </div>
 </div>

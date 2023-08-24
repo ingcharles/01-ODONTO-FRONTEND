@@ -46,6 +46,8 @@ body {
 
 } */
 
+@import 'colors';
+
 article,
 aside,
 details,
@@ -1734,7 +1736,7 @@ mark,
 }
 
 .text-primary {
-  color: #218D9D
+  color: $color-primario;
 }
 
 a.text-primary:hover,
@@ -21671,4 +21673,24 @@ label {
 select {
   width: 100%;
   padding: .5rem;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }

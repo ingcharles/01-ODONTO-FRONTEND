@@ -11,6 +11,7 @@ import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { ErrorInterceptorProvider } from 'src/base/interceptors/error.Interceptor';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 export function tokenGetter() {
   return sessionStorage.getItem("access_token");
 }
@@ -32,7 +33,8 @@ export function tokenGetter() {
       },
     }),
 
-    NgbModule
+    NgbModule,
+      BrowserAnimationsModule
   ],
 
   providers: [/*{

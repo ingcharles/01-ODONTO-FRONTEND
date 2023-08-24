@@ -6,8 +6,8 @@ import { PacienteRoutingModule } from './paciente-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { IndexPacienteComponent } from './components/index-paciente/index-paciente.component';
 import { NgbDatepicker, NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
-
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
@@ -23,7 +23,9 @@ import { NgbDatepicker, NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     SharedModule,
     NgbDatepicker,
-    NgbModule
+    NgbModule,
+    MatTableModule,
+    MatPaginatorModule
   ]
 })
 export class PacienteModule { }
