@@ -8,7 +8,7 @@ export interface IAuthFromRsViewModel extends IResponseStatusViewModel {
 }
 
 export interface IAuthRsViewModel {
-   codigoUsuario: number | null;
+  codigoUsuario: number | null;
   nombreUsuario: string | null;
 }
 
@@ -21,8 +21,9 @@ export interface IAuthTokenRsViewModel {
 export interface IAuthViewModel {
   // codigoUsuario: number | null;
   //  // password: string | null;
-  ci: string | null;
-  password: string | null;
+  codigoUsuario?: number | null;
+  ci?: string | null;
+  password?: string | null;
 }
 
 export interface IRefreshTokenFromRsViewModel extends IResponseStatusViewModel {
@@ -42,7 +43,7 @@ export interface IRegisterFromRsViewModel extends IResponseStatusViewModel {
 }
 
 export interface IRegisterRsViewModel {
-   codigoUsuario: number | null;
+  codigoUsuario: number | null;
 }
 
 export interface IRegisterViewModel {

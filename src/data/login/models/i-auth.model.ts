@@ -7,7 +7,7 @@ export interface IAuthFromRsModel extends IResponseStatusModel {
 }
 
 export interface IAuthFromModel {
-  codigoUsuario: number| null;
+  codigoUsuario: number | null;
   nombreUsuario: string | null;
 
 }
@@ -20,8 +20,9 @@ export interface IAuthTokenFromModel {
 }
 
 export interface IAuthToModel extends IAuditoriaModel {
-  ci: string | null;
-  password: string | null;
+  codigoUsuario?: number | null;
+  ci?: string | null;
+  password?: string | null;
 }
 
 export interface IRefreshTokenFromRsModel extends IResponseStatusModel {

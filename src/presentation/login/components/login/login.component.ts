@@ -136,6 +136,8 @@ export class LoginComponent {
           // this.roles = this._authUseCase.getUserStorage().roles;
           // console.log('roles', this.roles);
           //this.redirectHome();
+
+
           this.refirectToPages('')
           //this._alertService.alertMessage(messages.exitoTitle, result.message, messages.isSuccess);
           //  this.loginForm.get('codigoCrca')!.patchValue(result.data?.codigoCrca);

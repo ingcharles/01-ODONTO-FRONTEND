@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { AuthUseCase } from 'src/domain/login/useCases/auth-usecase';
 import { StorageUseCase } from 'src/domain/login/useCases/storage-usecase';
+import { IAplicacionRsViewModel } from 'src/domain/login/viewModels/i-aplicaciones.viewModel';
 import { IAuthViewModel } from 'src/domain/login/viewModels/i-auth.viewModel';
 import { Globals } from 'src/presentation/base/services/globals';
 
@@ -17,6 +18,9 @@ export class HomeComponent {
   // isUserAuthenticated = (): boolean => {
   //   return false
   // }
+
+  aplicacion: IAplicacionRsViewModel[] = [];
+
   isUserAuthenticated = (): boolean => {
     //const token = window.sessionStorage.getItem("access_token");
     const token = this._storageUseCase.getUserStorage();
@@ -53,6 +57,31 @@ export class HomeComponent {
         }
       });
     });
+  }
+
+
+  ngOnInit(): void {
+    // console.log("this._authUseCase.isLoggedIn()", this._authUseCase.isLoggedIn());
+    if (this._storageUseCase.isLoggedIn()) {
+
+      const userData = this._storageUseCase.getUserStorage();
+      console.log("userData!.userId", userData!.userId)
+      this._authUseCase.aplicacion({ codigoUsuario: userData!.userId }).then(obs => {
+        //this._loaderService.display(true);
+        obs.subscribe((resultAplicacion) => {
+
+          //this._loaderService.display(false);
+          // console.log("result",result);
+          if (resultAplicacion.ok) {
+            this.aplicacion = resultAplicacion.data!;
+            console.log("resultAplicacion", resultAplicacion);
+          }
+        })
+      });
+      // this.isLoggedIn = true;
+      // // this.roles = this._authUseCase.getUser().roles;
+      // this.refirectToPages('');
+    }
   }
 }
 

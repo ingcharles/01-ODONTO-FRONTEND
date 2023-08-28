@@ -16,3 +16,40 @@
 </ul>
 
 
+
+<div id="collapseOne" class="panel-collapse in collapse show" role="tabpanel" aria-labelledby="headingOne">
+  <div class="panel-body" id="listadoItems">
+    <div class="card">
+      <div class="card-body p-2">
+        <div class="animated fadeInRight">
+          <div class="row">
+            <!-- <c:forEach  var="aplicacion"> -->
+            <div class="col-md-3 col-sm-6 aplicacion" *ngFor="let item of this.aplicacion" draggable="true"
+              id="{{item.codigo}}" data-opcion="index" data-destino="menuAplicacion">
+              <div class="widget-head-color-box {{item.color}} text-center">
+                <div class="titulo-aplicacion">
+                  <h6>{{item.nombre}}</h6>
+                </div>
+                <div class="icon">
+                  <i class="md {{item.icono}}"></i>
+                </div>
+                <div class=" ttw-notification-menu align-self-center">
+                  <div id="" class="notification-menu-item first-item aplicacion-{{item.codigo}}">
+                    <a>Notificaciones <i class="fa fa-envelope-o"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="widget-text-box  {{item.color}}-borde">
+                <p>
+                  <b>{{item.descripcion}}</b> <a href="#" class="{{item.color}}-color"> Más info <i
+                      class="fas fa-arrow-circle-right"></i></a>
+                </p>
+              </div>
+            </div>
+            <!-- </c:forEach> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

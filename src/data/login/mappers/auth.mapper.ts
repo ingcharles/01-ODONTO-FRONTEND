@@ -4,7 +4,9 @@
 
 import { AMapper } from './a-mapper';
 import { IAuthFromRsModel, IAuthToModel, IForgotPasswordFromRsModel, IForgotPasswordToModel, IRefreshTokenFromRsModel, IRefreshTokenModel, IRegisterFromRsModel, IRegisterToModel } from '../models/i-auth.model';
-import { IAuthFromRsViewModel, IAuthTokenRsViewModel, IAuthViewModel, IForgotPasswordFromRsViewModel, IForgotPasswordViewModel,   IRegisterFromRsViewModel, IRegisterViewModel } from 'src/domain/login/viewModels/i-auth.viewModel';
+import { IAuthFromRsViewModel, IAuthTokenRsViewModel, IAuthViewModel, IForgotPasswordFromRsViewModel, IForgotPasswordViewModel, IRegisterFromRsViewModel, IRegisterViewModel } from 'src/domain/login/viewModels/i-auth.viewModel';
+import { IAplicacionFromRsViewModel } from 'src/domain/login/viewModels/i-aplicaciones.viewModel';
+import { IAplicacionFromModel, IAplicacionFromRsModel } from '../models/i-aplicacion.model';
 
 
 export class AuthMapper extends AMapper<any, any> {
@@ -30,7 +32,7 @@ export class AuthMapper extends AMapper<any, any> {
         codigoUsuario: item.data.codigoUsuario,
         nombreUsuario: item.data.nombreUsuario,
       } : null,
-      token: item.token ,
+      token: item.token,
     }
     console.log("valor", valor);
     return valor;
@@ -123,6 +125,49 @@ export class AuthMapper extends AMapper<any, any> {
     }
     // console.log("valor", valor);
     return valor;
+  }
+
+  /** Recibe y mapea los datos que vienen de la vista hacia el servicio */
+  async mapAplicacionTo(item: IAuthViewModel): Promise<IAuthToModel> {
+    const valor: IAuthToModel = {
+      auditoria: "2edf8b3e2f5a424fa8333ba742154869|1202|151|192.168.1.1|Chrome|I|Guardar información del Crca en Numerario|01",
+      codigoUsuario: item.codigoUsuario
+    }
+    return valor;
+  }
+
+  /** Recibe y mapea los datos que vienen desde el servicio  hacia la vista*/
+  mapAplicacionFrom(param: IAplicacionFromRsModel): IAplicacionFromRsViewModel {
+    console.log("item", param);
+    return {
+      ...param, data: param.data?.map((item: IAplicacionFromModel) => {
+        return {
+          codigo: item.codigo,
+          nombre: item.nombre,
+          descripcion: item.descripcion,
+          icono: item.icono,
+          color: item.color,
+          nemonico: item.nemonico,
+          estado: item.estado
+        };
+      })
+      // const valor: IAplicacionFromRsViewModel = {
+      //   message: item.message,
+      //   statusCode: item.statusCode,
+      //   ok: item.ok,
+      //   data: item.data ? {
+      //     codigo: item.data.codigo,
+      //     nombre: item.data.nombre,
+      //     descripcion: item.data.descripcion,
+      //     icono: item.data.icono,
+      //     color: item.data.color,
+      //     nemonico: item.data.nemonico,
+      //     estado: item.data.estado
+      //   } : null,
+
+    }
+    // console.log("valor", valor);
+    // return valor;
   }
 
 }
