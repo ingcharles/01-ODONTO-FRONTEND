@@ -1262,15 +1262,20 @@ function cargarValorComboPorDefecto(combo, valor) {
             "selected");
 }
 
-function ajustarAltoVentanaAplicacion() {
+// export var numeroALetras = (function () {
+
+  // return
+   function ajustarAltoVentanaAplicacion() {
+  console.log("resize");
     header = $(".main-header").height();
     footer = $(".main-footer").height();
     $(".content-wrapper").css( "min-height", $(window).height() - 18 - header - footer);
     $(".main-sidebar").height($(window).height());
     $("#menuAplicacion").height($(window).height() - 149);
     $("#areaTrabajo").height($(window).height() - 18 - header - footer);
-
-}
+  // return true;
+  }
+// })();
 
 $(window).resize(function () {
     ajustarAltoVentanaAplicacion();

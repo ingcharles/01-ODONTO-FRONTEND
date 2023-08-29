@@ -5,6 +5,8 @@ import { Globals } from 'src/presentation/base/services/globals';
 import '@angular/localize/init';
 import { AuthUseCase } from 'src/domain/login/useCases/auth-usecase';
 import { IAplicacionRsViewModel } from 'src/domain/login/viewModels/i-aplicaciones.viewModel';
+// import $ from 'jquery';
+// import * as aaa from '../js/plataforma'
 @Component({
   selector: 'app-root',
   // templateUrl: './app.component.html',
@@ -54,6 +56,16 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
+    // $(document).ready(function (): void  {
+    //   console.log("document.getElementById");
+      // var aa: Boolean = aaa.numeroALetras();
+
+
+
+
+   // });
+
+
     // console.log("this._authUseCase.isLoggedIn()", this._authUseCase.isLoggedIn());
     // if (this._storageUseCase.isLoggedIn()) {
 
