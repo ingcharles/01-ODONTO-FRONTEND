@@ -1,0 +1,266 @@
+
+<!-- <%--
+    @property:	CARLOS EDUARDO ANCHUNDIA VALENCIA
+    @author:	Carlos Anchundia
+    @mail: 	e.du.ingcharles@hotmail.com
+    @date: 	07/03/2020, 08:10:13
+    @document: 	index
+    @version:	1.0
+    @package 	vistas
+--%> -->
+
+<!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ page import="com.plataforma.utilities.general.Constantes"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page session="false"%> -->
+<!-- <spring:url value="/resources/" var="urlPublic" />
+<c:set var="anioActual" value="<%=Constantes.ANIO_ACTUAL%>" />
+<c:set var="logoImagen" value="<%=Constantes.LOGO_TEXTO1%>" />
+<sec:authentication var="principal" property="principal" /> -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="pragma" content="no-cache">
+        <meta http-equiv="cache-control" content="no-cache">
+        <meta http-equiv="expires" content="0">
+        <meta name="expires" content="Wed, 01 Jan 1997 00:00:00 GMT">
+        <title>Plataforma de Negocios</title>
+    </head>
+    <!-- <link type="image/x-icon" rel="shortcut icon" href="${urlPublic}img/core/favicon.ico" />
+    <link rel="stylesheet" href="${urlPublic}css/fontawesome-all.css">
+    <link rel="stylesheet" href="${urlPublic}css/bootstrap.min.css" />
+    <link rel="stylesheet" href="${urlPublic}css/bootstrap.datepicker.css" />
+	<link rel="stylesheet" href="${urlPublic}css/dataTables.bootstrap.min.css" />
+	<link rel="stylesheet" href="${urlPublic}css/sweetalert2.min.css">
+    <link rel="stylesheet" href="${urlPublic}css/plataforma.css">
+    <script src="${urlPublic}js/jquery.min.js"></script>
+
+    <script src="${urlPublic}js/notificacion.js"></script> -->
+
+    <body class="hold-transition sidebar-mini ">
+        <div class="wrapper">
+            <!-- Header -->
+            <div class="main-header navbar navbar-expand navbar-dark">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" data-widget="pushmenu"  href="#"><i class="fas fa-bars"></i></a></li>
+                    <li class="nav-item d-none d-sm-inline-block">
+                        <a href="#" class="nav-link cargarInicio" data-rutaAplicacion="core"
+                           data-nombreAplicacion="Listado de Módulos"
+                           data-destino="areaTrabajo"><i class="fa fa-home fa-lg"></i> Inicio</a></li>
+                    <li class="nav-item d-none d-sm-inline-block">
+                        <a href="" class="nav-link"><i class="fas fa-question-circle fa-lg"></i> Ayuda</a></li>
+                </ul>
+
+                <div class="navbar-nav ml-auto">
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item dropdown d-none d-xsm-inline-block">
+                        <a class="nav-link" data-toggle="dropdown" href="#"> <i class="far fa-user fa-lg"></i></a>
+                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                                <a href="#" class="dropdown-item">
+                                    <div class="media">
+                                      <!-- src="${urlPublic}${avatar}" -->
+                                        <img  alt="User Avatar"
+                                             class="img-size-50 mr-3 mt-1 img-circle" />
+                                        <div class="media-body">
+                                            <h3 class="dropdown-item-title">
+                                                <!-- ${pageContext.request.userPrincipal.principal.tblUsuarios.nombre!=null ? pageContext.request.userPrincipal.principal.tblUsuarios.nombre: pageContext.request.userPrincipal.principal.tblUsuarios.identificacion} -->
+                                                <span class="float-right text-sm text-danger">
+                                                    <i class="fas fa-online"></i>
+                                                </span>
+                                            </h3>
+                                            <p class="text-sm">
+                                                <small>Miembro desde:</small>
+                                            </p>
+                                            <p class="text-sm text-muted">
+                                                <i class="far fa-clock mr-1"></i> <small>
+                                                    <!-- <fmt:formatDate  pattern="EEE, d MMMM yyyy 'a las ' HH:mm"
+                                                                     value="${pageContext.request.userPrincipal.principal.tblUsuarios.fechaRegistro}" /> -->
+                                                </small>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="dropdown-divider"></div>
+
+                                 <div class="dropdown-footer">
+                                     <a href="#" id="estiloID" data-destino="areaTrabajo #listadoItems" data-rutaaplicacion="usuarios" data-opcion="cambiarContraseniaLogeado" data-nombre="Cambiar contraseña" class="btn btn-success btn-sm"><i class="fas fa-user-lock pr-1"></i><span class="brand-text">Cambiar contraseña</span> </a>
+                                </div>
+
+                            </div></li>
+                        <li class="nav-item dropdown">
+                          <!-- <c:url value="/logout"
+                               var="logoutUrl" /> -->
+                              <!-- action="${logoutUrl}" -->
+                            <form id="logout" class="form-inline"
+                                  method="post">
+                                <!-- <sec:csrfInput /> -->
+                            </form> <a href="javascript:document.getElementById('logout').submit()"
+                                       class="nav-link"><i class="fas fa-sign-out-alt fa-lg"></i>
+                                Salir </a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Menu -->
+            <aside class="main-sidebar sidebar-dark-black elevation-2">
+                <a href="#" class="brand-link cargarInicio"
+                   data-rutaAplicacion="core"
+                   data-nombreAplicacion="Listado de Módulos"
+                   data-destino="areaTrabajo">LOGO
+                   <!-- <img src="${urlPublic}${logoImagen}"> -->
+                </a>
+                <div class="sidebar">
+                    <div class="user-panel pt-2 pb-2 d-flex">
+                        <div class="image">
+                            <!-- <img src="${urlPublic}${avatar}" alt="User Avatar"
+                                 class="img-size-50 mr-3 img-circle" /> -->
+                        </div>
+                        <div class="info">
+                            <a href="#" class="d-block cargarInicio" data-rutaAplicacion="core" data-nombreAplicacion="Listado de Módulos" data-destino="areaTrabajo">
+                                <!-- ${pageContext.request.userPrincipal.principal.tblUsuarios.nombre!=null ? pageContext.request.userPrincipal.principal.tblUsuarios.nombre: pageContext.request.userPrincipal.principal.tblUsuarios.identificacion} -->
+                            </a>
+                        </div>
+                    </div>
+                    <div id="menuAplicacion"></div>
+                </div>
+            </aside>
+
+            <div class="content-wrapper">
+                <section id="areaTrabajo">
+
+                    <!-- <section id="content"> -->
+
+                      <router-outlet>
+<!-- <jsp:include page="core/ventanaAplicacion.jsp"></jsp:include> -->
+hh
+
+
+
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading active" role="tab" id="headingOne">
+      <div class="linkPanel" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <div class="panel-title">
+          <div class="panel-title-uno">
+            Listado de Módulos<span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="collapseOne" class="panel-collapse in collapse show" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body" id="listadoItems">
+        <div class="card">
+          <div class="card-body p-2">
+            <div class="animated fadeInRight">
+              <div class="row">
+                <div class="col-md-3 col-sm-6 aplicacion" *ngFor="let item of this.aplicacion" draggable="true" id="{{item.codigo}}" data-opcion="index" data-destino="menuAplicacion">
+                  <div class="widget-head-color-box {{item.color}} text-center">
+                    <div class="titulo-aplicacion">
+                      <h6>{{item.nombre}}</h6>
+                    </div>
+                    <div class="icon">
+                      <i class="md {{item.icono}}"></i>
+                    </div>
+                    <div class=" ttw-notification-menu align-self-center">
+                      <div id="" class="notification-menu-item first-item aplicacion-{{item.codigo}}">
+                        <a>Notificaciones <i class="fa fa-envelope-o"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="widget-text-box  {{item.color}}-borde">
+                    <p>
+                      <b>{{item.descripcion}}</b> <a href="#" class="{{item.color}}-color"> Más info <i class="fas fa-arrow-circle-right"></i></a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default" id="two">
+    <!-- ondragover="allowDrop(event)" ondrop="drop(event)" -->
+    <div class="panel-heading" role="tab" id="headingTwo" style="display: none;" >
+      <div class="linkPanel collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        <div class="panel-title">
+          <div class="panel-title-dos">
+            <span>Formularios</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body" id="detalleItem"></div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+                      </router-outlet>
+                    <!-- </section> -->
+                </section>
+                    <!-- <section class="content"></section> -->
+                </div>
+
+                <footer class="main-footer text-sm">
+                    <div class="float-right d-none d-sm-block">
+                        <b>Version</b>
+                    <!-- <c:out value="<%=Constantes.VERSION_SISTEMA%>" /> -->
+                </div>
+
+                <div class="font-weight-bold" ><span class="rojo100-color">Copyright &copy;
+                  <!-- <c:out value=" ${anioActual==2020 ? '2020': '2020 - '.concat(anioActual)}" /> -->
+                        : </span>
+                        <!-- <a href="<c:out value="<%=Constantes.PAGINA_WEB_EMPRESA%>"/>"
+                                 target="_blank" style="color: #0061af;"><c:out
+                        value="<%=Constantes.NOMBRE_EMPRESA_DESARROLLADORA%>" /></a> -->
+                      </div>
+
+            </footer>
+        </div>
+    </body>
+
+	<!-- <script src="${urlPublic}js/jquery-ui.min.js"></script>
+
+  	<script src="${urlPublic}js/bootstrap.datepicker.js"></script>
+    <script src="${urlPublic}js/bootstrap.min.js"></script>
+    <script src="${urlPublic}js/jquery.dataTables.min.js"></script>
+    <script src="${urlPublic}js/dataTables.bootstrap.min.js"></script>
+    <script src="${urlPublic}js/jquery.inputmask.js"></script>
+    <script src="${urlPublic}js/sweetalert2.all.min.js"></script>
+    <script src="${urlPublic}js/bootstrap4-toggle.min.js"></script>
+    <script src="${urlPublic}js/plataforma.js"></script> -->
+
+
+    <script type="text/javascript">
+        // var csrfToken = '${_csrf.token}';
+        // var urlPublic = '${urlPublic}';
+
+
+        $(document).ready(function () {
+
+            ajustarAltoVentanaAplicacion();
+
+
+
+
+        });
+
+
+    </script>
+
+</html>

@@ -32,7 +32,9 @@
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
-              "src/js/functions.js"
+              "src/js/functions.js",
+              "src/js/plataforma.js",
+              "src/js/sweetalert2.all.min.js"
             ]
           },
 

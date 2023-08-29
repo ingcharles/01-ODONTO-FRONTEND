@@ -44,7 +44,7 @@ const routes: Routes = [
       import('../presentation/paciente/paciente.module').then((m) => m.PacienteModule)
   },
 
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  // { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
     path: '**',
     redirectTo: ''
