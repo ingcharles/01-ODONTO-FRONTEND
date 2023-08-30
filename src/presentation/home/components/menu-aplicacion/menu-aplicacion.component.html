@@ -1,17 +1,22 @@
 <!-- <a (click)="this.goTo('/patiens')" routerLinkActive="active">Contact</a> -->
 <ul class="main-menu">
+  <li class="active"><a [routerLink]="['/dashboard']"><i class="md fa-solid fa-house"></i> Inicio</a></li>
+  <li>
+    <!--[hidden]="!appGlobals.roleDoctor.getValue()"-->
+    <a id="menu-calendar" [routerLink]="['/calendar']"><i class="md fa-solid fa-calendar-day"></i> Agenda</a>
+  </li>
   <!-- <li class="active"><a [routerLink]="['/dashboard']"><i class="md fa-solid fa-house"></i> Inicio</a></li>
   <li> -->
   <!--[hidden]="!appGlobals.roleDoctor.getValue()"-->
   <!-- <a id="menu-calendar" [routerLink]="['/calendar']"><i class="md fa-solid fa-calendar-day"></i> Agenda</a>
   </li> -->
   <li class="sub-menu" *ngFor="let item of this.varMenu">
-    <a href=""><i class="md fa-solid fa-users"></i> {{item.nombre}}</a>
+    <a href=""><i class="md {{item.icono}}"></i> {{item.nombre}}</a>
 
     <ul>
-      <li *ngFor="let item1 of this.item.children">
+       <li *ngFor="let item1 of this.item.menuItem">
         <a id="{{item1.codigo}}" class="menu-table" [routerLink]="['/patiens/create-patiens']"><i
-            class="md fa-solid fa-users"></i> {{item1.nombre}}</a>
+            class="md {{item1.icono}}"></i> {{item1.nombre}}</a>
       </li>
       <!-- <li><a id="data-personal" class="menu-table" [routerLink]="['/notifications']"><i
             class="md fa-solid fa-users"></i>Notificaciones</a>
@@ -40,7 +45,7 @@
     </ul>
   </li> -->
 
-  <li>
-    <!-- <a id="refresh" (click)="clearCache()"><i class="md md-refresh"></i> Actualizar versi&oacute;n</a> -->
-  </li>
+  <!-- <li>
+   <a id="refresh" (click)="clearCache()"><i class="md md-refresh"></i> Actualizar versi&oacute;n</a>
+  </li> -->
 </ul>

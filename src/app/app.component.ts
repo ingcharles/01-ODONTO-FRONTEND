@@ -11,7 +11,7 @@ import { IAplicacionRsViewModel } from 'src/domain/login/viewModels/i-aplicacion
 @Component({
   selector: 'app-root',
   // templateUrl: './app.component.html',
-  templateUrl: '../presentation/template/template2.html',
+  templateUrl: '../presentation/template/template.html',
   styleUrls: ['./app.component.css'],
   providers: [
     // HTTP_PROVIDERS,
@@ -109,7 +109,7 @@ export class AppComponent {
         if (resultMenu.ok) {
           // this.menuItem = resultMenu.data!;
           console.log("resultMenu", resultMenu);
-          const menu: any = []
+          const menu: any[] = []
           const menuItem: IMenuItemRsViewModel[] = []
 
           resultMenu.data!.forEach(element => {
@@ -119,7 +119,7 @@ export class AppComponent {
             //var nombre: string = element.nombre!; // nombre_opcion
             // var icon = fila[k][2]; // icono
             // var url = fila[k][3]; // url
-            var orden: number = element.codigo!; // orden
+            var orden: number = 0; // orden
             var codigoPadre: any = element.codigoPadre; // id_padre
 
 
@@ -136,7 +136,11 @@ export class AppComponent {
               item = {
                 codigo: element.codigo,
                 nombre: element.nombre,
+                // codigoPadre: element.codigoPadre,
+                icono: element.icono,
+                link: element.link,
                 codigoPadre: element.codigoPadre,
+                estado: element.estado,
               };
               if (!menuItem[codigoPadre].menuItem) {
                 menuItem[codigoPadre].menuItem = [];
@@ -158,7 +162,7 @@ export class AppComponent {
 
               };
 
-              menu[orden] = menuItem[codigo];
+              menu.push(menuItem[codigo]);
 
               // source.push(items.codigo);
 

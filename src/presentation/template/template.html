@@ -147,13 +147,14 @@
             </li>
           </ul>
         </div>
-
-        <ul class="main-menu">
+<app-menu-aplicacion [varMenu]="this.menuItem"></app-menu-aplicacion>
+        <!-- <ul class="main-menu">
           <li class="active"><a [routerLink]="['/dashboard']"><i class="md fa-solid fa-house"></i> Inicio</a></li>
-          <li>
+          <li> -->
             <!--[hidden]="!appGlobals.roleDoctor.getValue()"-->
-            <a id="menu-calendar" [routerLink]="['/calendar']"><i class="md fa-solid fa-calendar-day"></i> Agenda</a>
+            <!-- <a id="menu-calendar" [routerLink]="['/calendar']"><i class="md fa-solid fa-calendar-day"></i> Agenda</a>
           </li>
+
           <li class="sub-menu">
             <a href=""><i class="md fa-solid fa-users"></i> Pacientes</a>
 
@@ -163,21 +164,21 @@
                   clínicas</a></li>
               <li><a id="data-personal" class="menu-table" [routerLink]="['/notifications']">Notificaciones</a></li>
             </ul>
-          </li>
+          </li> -->
           <!-- [hidden]="!_globals.roleAdmin.getValue()" -->
-          <li class="sub-menu">
+          <!-- <li class="sub-menu">
             <a href=""><i class="md fa-solid fa-file-lines"></i> Reportes</a>
 
             <ul>
               <li><a class="menu-table" [routerLink]="['/accounting-all', 'all']">Estados de cuentas</a></li>
               <li><a class="menu-table" [routerLink]="['/charts/sale']">Ventas</a></li>
-              <li><a class="menu-table" [routerLink]="['/billing']">Facturas</a></li>
+              <li><a class="menu-table" [routerLink]="['/billing']">Facturas</a></li> -->
               <!--li><a class="menu-table" [routerLink]="['/charts/appoitment']">Citas</a></li>
                             <li><a class="menu-table" [routerLink]="['/charts/patient']">Pacientes</a></li-->
-            </ul>
-          </li>
+            <!-- </ul>
+          </li> -->
           <!-- [hidden]="!_globals.roleAdmin.getValue()" -->
-          <li class="sub-menu">
+          <!-- <li class="sub-menu">
             <a href=""><i class="md fa-solid fa-gear"></i> Configuración</a>
 
             <ul>
@@ -190,7 +191,7 @@
           <li>
             <a id="refresh" (click)="clearCache()"><i class="md md-refresh"></i> Actualizar versi&oacute;n</a>
           </li>
-        </ul>
+        </ul>-->
       </div>
     </div>
   </aside>
@@ -253,6 +254,72 @@
   <section id="content">
 
     <router-outlet>
+
+
+
+  <div class="panel-group" *ngIf="this.menuItem.length == 0"  id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+      <div class="panel-heading active" role="tab" id="headingOne">
+        <div class="linkPanel" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          <div class="panel-title">
+            <div class="panel-title-uno">
+              Listado de Módulos<span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="collapseOne" class="panel-collapse in collapse show" role="tabpanel" aria-labelledby="headingOne">
+        <div class="panel-body" id="listadoItems">
+          <div class="card">
+            <div class="card-body p-2">
+              <div class="animated fadeInRight">
+                <div class="row">
+                  <div class="col-md-3 col-sm-6 aplicacion" *ngFor="let item of this.aplicacion" draggable="true" id="{{item.codigo}}" data-opcion="index" data-destino="menuAplicacion" (click)="onPress()">
+                    <div class="widget-head-color-box {{item.color}} text-center">
+                      <div class="titulo-aplicacion">
+                        <h6>{{item.nombre}}</h6>
+                      </div>
+                      <div class="icon">
+                        <i class="md {{item.icono}}"></i>
+                      </div>
+                      <div class=" ttw-notification-menu align-self-center">
+                        <div id="" class="notification-menu-item first-item aplicacion-{{item.codigo}}">
+                          <a>Notificaciones <i class="fa fa-envelope-o"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="widget-text-box  {{item.color}}-borde">
+                      <p>
+                        <b>{{item.descripcion}}</b> <a href="#" class="{{item.color}}-color"> Más info <i class="fas fa-arrow-circle-right"></i></a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default" id="two">
+      <!-- ondragover="allowDrop(event)" ondrop="drop(event)" -->
+      <div class="panel-heading" role="tab" id="headingTwo" style="display: none;">
+        <div class="linkPanel collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          <div class="panel-title">
+            <div class="panel-title-dos">
+              <span>Formularios</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+        <div class="panel-body" id="detalleItem"></div>
+      </div>
+    </div>
+  </div>
+
+
 
 
 
