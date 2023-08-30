@@ -5,8 +5,10 @@
 import { AMapper } from './a-mapper';
 import { IAuthFromRsModel, IAuthToModel, IForgotPasswordFromRsModel, IForgotPasswordToModel, IRefreshTokenFromRsModel, IRefreshTokenModel, IRegisterFromRsModel, IRegisterToModel } from '../models/i-auth.model';
 import { IAuthFromRsViewModel, IAuthTokenRsViewModel, IAuthViewModel, IForgotPasswordFromRsViewModel, IForgotPasswordViewModel, IRegisterFromRsViewModel, IRegisterViewModel } from 'src/domain/login/viewModels/i-auth.viewModel';
-import { IAplicacionFromRsViewModel } from 'src/domain/login/viewModels/i-aplicaciones.viewModel';
-import { IAplicacionFromModel, IAplicacionFromRsModel } from '../models/i-aplicacion.model';
+import { IAplicacionFromRsViewModel, IAplicacionMenuRsViewModel, IAplicacionRsViewModel } from 'src/domain/login/viewModels/i-aplicaciones.viewModel';
+import { IAplicacionFromModel, IAplicacionFromRsModel, IAplicacionMenuToModel, IAplicacionToModel } from '../models/i-aplicacion.model';
+import { IMenuFromModel, IMenuFromRsModel, IMenuToModel } from '../models/i-menu.model';
+import { IMenuFromRsViewModel } from 'src/domain/login/viewModels/i-menu.viewModel';
 
 
 export class AuthMapper extends AMapper<any, any> {
@@ -168,6 +170,38 @@ export class AuthMapper extends AMapper<any, any> {
     }
     // console.log("valor", valor);
     // return valor;
+  }
+
+
+  /** Recibe y mapea los datos que vienen de la vista hacia el servicio */
+  async mapMenuTo(item: IAplicacionMenuRsViewModel): Promise<IAplicacionMenuToModel> {
+    const valor: IAplicacionMenuToModel = {
+      auditoria: "2edf8b3e2f5a424fa8333ba742154869|1202|151|192.168.1.1|Chrome|I|Guardar información del Crca en Numerario|01",
+      codigoUsuario: item.codigoUsuario,
+      codigoAplicacion: item.codigoAplicacion
+    }
+    return valor;
+  }
+
+  /** Recibe y mapea los datos que vienen desde el servicio  hacia la vista*/
+  mapMenuFrom(param: IMenuFromRsModel): IMenuFromRsViewModel {
+    console.log("item", param);
+    return {
+      ...param, data: param.data?.map((item: IMenuFromModel) => {
+        return {
+          codigo: item.codigo,
+          nombre: item.nombre,
+          descripcion: item.descripcion,
+          icono: item.icono,
+          link: item.link,
+          codigoPadre: item.codigoPadre,
+          estado: item.estado
+        };
+      })
+
+
+    }
+
   }
 
 }

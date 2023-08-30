@@ -24,7 +24,8 @@
         <div class="animated fadeInRight">
           <div class="row">
             <!-- <c:forEach  var="aplicacion"> -->
-            <div class="col-md-3 col-sm-6 aplicacion" *ngFor="let item of this.aplicacion" draggable="true"
+
+            <a class="col-md-3 col-sm-6 aplicacion" *ngFor="let item of this.aplicacion" draggable="true"
               id="{{item.codigo}}" data-opcion="index" data-destino="menuAplicacion">
               <div class="widget-head-color-box {{item.color}} text-center">
                 <div class="titulo-aplicacion">
@@ -45,7 +46,7 @@
                       class="fas fa-arrow-circle-right"></i></a>
                 </p>
               </div>
-            </div>
+            </a>
             <!-- </c:forEach> -->
           </div>
         </div>

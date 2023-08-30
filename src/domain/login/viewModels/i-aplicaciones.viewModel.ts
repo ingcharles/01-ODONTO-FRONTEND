@@ -13,12 +13,11 @@ export interface IAplicacionRsViewModel {
   color: string | null;
   nemonico: string | null;
   estado: number | null;
+  // codigoUsuario?: number | null;
 }
 
+export interface IAplicacionMenuRsViewModel {
+  codigoUsuario: number | null;
+  codigoAplicacion: number | null;
 
-// export interface IAplicacionViewModel {
-//   codigo: number | null;
-
-// }
-
-
+}

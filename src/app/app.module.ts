@@ -12,6 +12,9 @@ import { ErrorInterceptorProvider } from 'src/base/interceptors/error.Intercepto
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeComponent } from 'src/presentation/home/components/home/home.component';
+import { HomeModule } from 'src/presentation/home/home.module';
+import { RouterModule } from '@angular/router';
 export function tokenGetter() {
   return sessionStorage.getItem("access_token");
 }
@@ -25,6 +28,7 @@ export function tokenGetter() {
     AppRoutingModule,
     MatProgressSpinnerModule,
     DataModule,
+
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -34,7 +38,9 @@ export function tokenGetter() {
     }),
 
     NgbModule,
-      BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HomeModule,
+    RouterModule
   ],
 
   providers: [/*{
@@ -45,7 +51,7 @@ export function tokenGetter() {
     //ErrorInterceptorProvider,
     HttpHeaderInterceptorProvider,
     //{ provide: ErrorInterceptorProvider },
-  { provide: LoaderService },  { provide: JwtHelperService }],
+    { provide: LoaderService }, { provide: JwtHelperService }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

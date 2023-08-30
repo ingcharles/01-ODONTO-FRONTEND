@@ -6,6 +6,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { AuthUseCase } from 'src/domain/login/useCases/auth-usecase';
 import { StorageUseCase } from 'src/domain/login/useCases/storage-usecase';
 import { Router } from '@angular/router';
+import { MenuAplicacionComponent } from './components/menu-aplicacion/menu-aplicacion.component';
 
 @NgModule({
 
@@ -16,8 +17,10 @@ import { Router } from '@angular/router';
     ReactiveFormsModule
   ],
   declarations: [
-    HomeComponent
+    HomeComponent,
+    MenuAplicacionComponent
   ],
+  exports: [MenuAplicacionComponent],
   providers: []
 })
 export class HomeModule {

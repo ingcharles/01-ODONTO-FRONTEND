@@ -7,7 +7,8 @@ import { AuthMapper } from '../mappers/auth.mapper';
 import { StatusResponseService } from 'src/data/base/status-response.service';
 import { AAuthService } from 'src/domain/login/services/a-auth-service';
 import { IAuthFromRsViewModel, IAuthTokenRsViewModel, IAuthViewModel, IForgotPasswordFromRsViewModel, IForgotPasswordViewModel, IRegisterFromRsViewModel, IRegisterViewModel } from 'src/domain/login/viewModels/i-auth.viewModel';
-import { IAplicacionFromRsViewModel } from 'src/domain/login/viewModels/i-aplicaciones.viewModel';
+import { IAplicacionFromRsViewModel, IAplicacionMenuRsViewModel, IAplicacionRsViewModel } from 'src/domain/login/viewModels/i-aplicaciones.viewModel';
+import { IMenuFromRsViewModel } from 'src/domain/login/viewModels/i-menu.viewModel';
 
 
 //const AUTH_API = 'http://localhost:8080/api/auth/';
@@ -129,4 +130,16 @@ export class AuthService extends AAuthService {
   // logout(): Observable<any> {
   //   return this._http.post(apiUrl + 'signout', { }, httpOptions);
   // }
+
+  public async menu(usuario: IAplicacionMenuRsViewModel): Promise<Observable<IMenuFromRsViewModel>> {
+    const url = `${apiUrl}Auth/GetMenuByCodAplicacion`;
+    return this._http.post<any>(url, await this._authMapper.mapMenuTo(usuario)).pipe(
+      map((result) => {
+        return this._authMapper.mapMenuFrom(result)
+      }),
+      catchError((error) => {
+        return of(this._statusResponseService.error(error));
+      })
+    );
+  }
 }

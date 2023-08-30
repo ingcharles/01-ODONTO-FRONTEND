@@ -17,5 +17,9 @@ export interface IAplicacionFromModel {
 
 export interface IAplicacionToModel extends IAuditoriaModel {
   codigo: number | null;
+}
 
+export interface IAplicacionMenuToModel extends IAuditoriaModel {
+  codigoUsuario: number | null;
+  codigoAplicacion: number | null;
 }

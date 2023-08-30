@@ -5,7 +5,8 @@ import { IAuthFromRsModel } from "src/data/login/models/i-auth.model";
 import { IAuthFromRsViewModel, IAuthTokenRsViewModel, IAuthViewModel, IForgotPasswordViewModel, IRegisterFromRsViewModel, IRegisterViewModel } from "../viewModels/i-auth.viewModel";
 import { StorageService } from "src/data/login/services/storage.service";
 import { IResponseStatusViewModel } from "src/domain/general/viewModels/i-response-status.viewModel";
-import { IAplicacionFromRsViewModel } from "../viewModels/i-aplicaciones.viewModel";
+import { IAplicacionFromRsViewModel, IAplicacionMenuRsViewModel, IAplicacionRsViewModel } from "../viewModels/i-aplicaciones.viewModel";
+import { IMenuFromRsViewModel } from "../viewModels/i-menu.viewModel";
 
 @Injectable({ providedIn: 'root' })
 export class AuthUseCase {
@@ -30,6 +31,10 @@ export class AuthUseCase {
 
   public async aplicacion(aplicacion: IAuthViewModel): Promise<Observable<IAplicacionFromRsViewModel>> {
     return await this._authService.aplicacion(aplicacion);
+  }
+
+  public async menu(aplicacion: IAplicacionMenuRsViewModel): Promise<Observable<IMenuFromRsViewModel>> {
+    return await this._authService.menu(aplicacion);
   }
 
   // public async saveUserStorage(user: IAuthTokenRsViewModel): Promise<void> {
