@@ -150,26 +150,11 @@ export class AuthMapper extends AMapper<any, any> {
           icono: item.icono,
           color: item.color,
           nemonico: item.nemonico,
-          estado: item.estado
+          estado: item.estado,
+          codigoUsuario: item.codigoUsuario
         };
       })
-      // const valor: IAplicacionFromRsViewModel = {
-      //   message: item.message,
-      //   statusCode: item.statusCode,
-      //   ok: item.ok,
-      //   data: item.data ? {
-      //     codigo: item.data.codigo,
-      //     nombre: item.data.nombre,
-      //     descripcion: item.data.descripcion,
-      //     icono: item.data.icono,
-      //     color: item.data.color,
-      //     nemonico: item.data.nemonico,
-      //     estado: item.data.estado
-      //   } : null,
-
     }
-    // console.log("valor", valor);
-    // return valor;
   }
 
 

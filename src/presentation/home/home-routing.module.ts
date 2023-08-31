@@ -1,17 +1,17 @@
+import { AplicacionPageComponent } from './components/aplicacion/aplicacion-page.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from '../app/shared/guards/auth.guard';
-import { MenuAplicacionComponent } from './components/menu-aplicacion/menu-aplicacion.component';
+import { MenuAplicacionPageComponent } from './components/menu-aplicacion/menu-aplicacion-page.component';
 
 
 const routes: Routes = [
   {
     // canActivate: [AuthGuard],
-    path: '', component: HomeComponent
+    path: '', component: AplicacionPageComponent
   },
   {
-    path: 'menu-aplicacion', component: MenuAplicacionComponent
+    path: 'menu-aplicacion', component: MenuAplicacionPageComponent
   },
   // {
   //   /* Ruta para la */

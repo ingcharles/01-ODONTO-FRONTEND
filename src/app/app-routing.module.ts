@@ -1,24 +1,22 @@
+import { AplicacionPageComponent } from '../presentation/home/components/aplicacion/aplicacion-page.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
-import { HomeComponent } from 'src/presentation/home/components/home/home.component';
 import { AuthGuard } from 'src/presentation/app/shared/guards/auth.guard';
-import { CreatePacienteComponent } from '../presentation/paciente/components/create-paciente/create-paciente.component';
 
 const routes: Routes = [
-//   {
-//     path: '',
-//     // canActivate: [AuthGuard],
-//     // component: HomeComponent
-// component: AppComponent
-//   },
+  {
+    path: '',
+    canActivate: [AuthGuard],
+    component: AplicacionPageComponent,
+    //component: AppComponent
+  },
   {
     path: 'home',
 
     loadChildren: () =>
       import('../presentation/home/home.module').then((m) => m.HomeModule)
   },
-   {
+  {
     path: 'login',
     loadChildren: () =>
       import('../presentation/login/login.module').then((m) => m.LoginModule)
@@ -44,7 +42,7 @@ const routes: Routes = [
       import('../presentation/paciente/paciente.module').then((m) => m.PacienteModule)
   },
 
-  // { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
     path: '**',
     redirectTo: ''

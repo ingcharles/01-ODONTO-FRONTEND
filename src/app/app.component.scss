@@ -1,0 +1,36 @@
+@import "../colors";
+
+::ng-deep mat-spinner.mat-spinner-track-watermark {
+  position: absolute !important;
+}
+
+::ng-deep mat-spinner.mat-spinner-track-watermark circle {
+  stroke-opacity: 0.2 !important;
+  stroke: $color-primario !important;
+}
+
+::ng-deep mat-spinner.mat-spinner-track {
+  position: relative !important;
+}
+
+::ng-deep mat-spinner.mat-spinner-track circle {
+  stroke: $color-primario !important;
+}
+
+.mat-spinner-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.mat-spinner-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}

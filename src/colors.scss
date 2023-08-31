@@ -1,5 +1,27 @@
-
-$color-primario: #218D9D;
+$color-primario: #218d9d;
 $color-primario-hover: #005ca8;
 $color-primario-dark: #003783;
-$color-gray: #4C4C4C;
+$color-gray: #4c4c4c;
+
+:root {
+  --color-primario: #218d9d;
+  --color-gris: #4c4c4c;
+  --rojo100: #ed5565;
+  --rojoError100: #bd362f;
+  --turquesa100: #18a78a;
+  --azul100: #1c84c6;
+  --azulInformativo100: #17a2b8;
+  --verde100: #20983b;
+  --verde75: #4e924d;
+  --verdeExito100: #28a745;
+  --gris100: #a9a9a9;
+  --gris25: #d2d2d2;
+  --gris50: #c5c4c4;
+  --blanco100: white;
+  --negro100: black;
+  --negro75: #343a40;
+  --anaranjado100: #f0ad4e;
+  --amarillo100: #facd01;
+  --celeste75: #17a2b8;
+  --celeste100: #0598af;
+}

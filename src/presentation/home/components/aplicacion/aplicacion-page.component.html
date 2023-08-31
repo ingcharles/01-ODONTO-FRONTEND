@@ -1,0 +1,66 @@
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading active" role="tab" id="headingOne">
+      <div class="linkPanel" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+        aria-expanded="true" aria-controls="collapseOne">
+        <div class="panel-title">
+          <div class="panel-title-uno">
+            Listado de Módulos<span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="collapseOne" class="panel-collapse in collapse show" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body" id="listadoItems">
+        <div class="card">
+          <div class="card-body p-2">
+            <div class="animated fadeInRight">
+              <div class="row">
+                <!-- (click)="ouputOpenAplicacion.emit(item)"  (click)="openAplication(item)-->
+                <div class="col-md-3 col-sm-6 aplicacion" *ngFor="let item of this.aplicacion" draggable="true"
+                  id="{{item.codigo}}" data-opcion="index" data-destino="menuAplicacion" (click)="openAplication(item)">
+                  <div class=" widget-head-color-box {{item.color}} text-center">
+                    <div class="titulo-aplicacion">
+                      <h6>{{item.nombre}}</h6>
+                    </div>
+                    <div class="icon">
+                      <i class="md {{item.icono}}"></i>
+                    </div>
+                    <div class=" ttw-notification-menu align-self-center">
+                      <div id="" class="notification-menu-item first-item aplicacion-{{item.codigo}}">
+                        <a>Notificaciones <i class="fa fa-envelope-o"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="widget-text-box  {{item.color}}-borde">
+                    <p>
+                      <b>{{item.descripcion}}</b> <a href="#" class="{{item.color}}-color"> Más info <i
+                          class="fas fa-arrow-circle-right"></i></a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default" id="two">
+    <!-- ondragover="allowDrop(event)" ondrop="drop(event)" -->
+    <div class="panel-heading" role="tab" id="headingTwo" style="display: none;">
+      <div class="linkPanel collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"
+        aria-expanded="false" aria-controls="collapseTwo">
+        <div class="panel-title">
+          <div class="panel-title-dos">
+            <span>Formularios</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body" id="detalleItem"></div>
+    </div>
+  </div>
+</div>

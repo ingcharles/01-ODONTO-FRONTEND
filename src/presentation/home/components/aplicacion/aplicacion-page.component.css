@@ -1,0 +1,148 @@
+/** ESTILOS PARA DAR FORMA A LOS CUADRO DE LOS MODULOS **/
+.widget-text-box {
+  margin-bottom: 10px;
+  font-size: 11px;
+  height: 56px;
+  padding: 5px;
+  background: #ffffff;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.widget-head-color-box {
+  position: relative;
+  border-radius: 5px 5px 0 0;
+  margin-top: 2px;
+  /*max-height: 140px;*/
+  /*padding: 10px;*/
+  color: #ffffff;
+}
+
+.widget-head-color-box .titulo-aplicacion {
+  margin-bottom: 5px;
+  height: 90px;
+  padding: 8px;
+}
+
+/* .widget-text-box p {
+  color: #000;
+ } */
+
+.widget-head-color-box,
+.widget-text-box {
+  opacity: 0.8;
+}
+
+.titulo-aplicacion,
+.widget-head-color-box .icon i,
+.notification-bubble {
+  cursor: pointer;
+}
+
+.widget-head-color-box:hover,
+.widget-text-box:hover {
+  opacity: 1;
+}
+
+.img-size-50 {
+  width: 3rem;
+}
+
+.img-circle {
+  border-radius: 50%;
+}
+
+/*
+.comunes .item,
+.programas .item {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  padding-left: 14px;
+  padding-right: 0px;
+
+  margin-bottom: 1%;
+  color: white;
+}
+.comunes .item .widget-head-color-box {
+  max-height: 150px;
+}
+.comunes .item .widget-head-color-box .titulo-aplicacion {
+  height: 130px;
+}
+.comunes .item .widget-text-box,
+.programas .item .widget-text-box {
+  width: 100%;
+  right: 0;
+  margin-bottom: 0px;
+  position: absolute;
+  bottom: 0px;
+  background-color: rgba(0, 0, 0, 0.25);
+  height: 55px;
+}
+
+.comunes .item .widget-head-color-box p,
+.comunes .item .widget-head-color-box h6,
+.programas .item .widget-head-color-box p,
+.comunes .item .widget-head-color-box h6 {
+  width: inherit;
+}
+
+.comunes .item .widget-text-box p,
+.comunes .item .widget-text-box h6 {
+  -webkit-line-clamp: 3;
+} */
+
+
+
+.widget-head-color-box .icon>i.fa,
+.widget-head-color-box .icon>i.fab,
+.widget-head-color-box .icon>i.far,
+.widget-head-color-box .icon>i.fas {
+  font-size: 48px;
+}
+
+.widget-head-color-box .icon>i.glyphicon,
+.widget-head-color-box .icon>i.ion {
+  font-size: 60px;
+}
+
+.widget-head-color-box .icon>i.fa,
+.widget-head-color-box .icon>i.fab,
+.widget-head-color-box .icon>i.far,
+.widget-head-color-box .icon>i.fas,
+.widget-head-color-box .icon>i.glyphicon,
+.widget-head-color-box .icon>i.ion {
+  top: 20px;
+  position: absolute;
+  right: 20px;
+  transition: all 0.3s linear;
+}
+
+.widget-head-color-box .icon {
+  color: rgba(0, 0, 0, 0.15);
+  z-index: 0;
+}
+
+.widget-head-color-box:hover .icon>i.fa,
+.widget-head-color-box:hover .icon>i.fab,
+.widget-head-color-box:hover .icon>i.far,
+.widget-head-color-box:hover .icon>i.fas {
+  font-size: 58px;
+}
+
+.widget-head-color-box:hover .icon>i.glyphicon,
+.widget-head-color-box:hover .icon>i.ion {
+  font-size: 70px;
+}
+
+.widget-head-color-box p,
+.widget-head-color-box h6 {
+  text-align: left;
+  width: 95%;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

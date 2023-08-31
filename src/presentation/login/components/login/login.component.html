@@ -78,350 +78,82 @@
   </c-container>
 </div>
  -->
-<!DOCTYPE html>
-<html>
 
-<head>
-  <title>A Meaningful Page Title</title>
-  <!-- Javascript Libraries -->
-  <!-- <script src="../../../../../js/jquery-3.7.0.min.js"></script>
+<div class="login-content">
+  <div id="logoApp" class="text-center">
+    <h1 class="f-300 pb-4">
+      <img alt="" src="../../../../../assets/login/logoApp.png">
+    </h1>
+    <div class="row">
+      <div class="md-12">
 
+        <div class="lc-block " [ngClass]="loginToggled">
+          <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <div class="mb-4">
+              <div class="input-group">
+                <span class="input-group-text" id="basic-addon1"><i class="fa fa-address-card"></i></span>
+                <div class="fg-line">
 
-  <script src="../../../../../js/functions.js"></script> -->
-
-</head>
-
-<body>
-
-  <div class="login-content">
-    <div id="logoApp" class="text-center">
-      <h1 class="f-300 pb-4">
-        <img alt="" src="../../../../../assets/login/logoApp.png">
-      </h1>
-      <div class="row">
-        <div class="md-12">
-
-          <div class="lc-block " [ngClass]="loginToggled">
-            <form [formGroup]="loginForm" (ngSubmit)="login()">
-              <div class="mb-4">
-                <div class="input-group">
-                  <span class="input-group-text" id="basic-addon1"><i class="fa fa-address-card"></i></span>
-                  <div class="fg-line">
-
-                    <input type="text" id="ci" name="ci" class="form-control" placeholder="Cédula"
-                      aria-label="Recipient's username" aria-describedby="basic-addon1" required minlength="10"
-                      formControlName="ci" [(ngModel)]="user.ci"
-                      (onPaste)="this._validatorService.validatePaste($event)"
-                      (keypress)="this._validatorService.validateOnlyNumber($event)">
-                  </div>
-                </div>
-                <div *ngIf="this._validatorService.isValidFieldTouched(loginForm,'ci')" class="alert">
-                  <div *ngIf="this._validatorService.isValidFieldRequired(loginForm, 'ci')">
-                    {{this.menssage.required}}</div>
-                  <div *ngIf="this._validatorService.isValidFieldMinlength(loginForm,'ci')">
-                    {{this.menssage.min10Character}}
-                  </div>
+                  <input type="text" id="ci" name="ci" class="form-control" placeholder="Cédula"
+                    aria-label="Recipient's username" aria-describedby="basic-addon1" required minlength="10"
+                    formControlName="ci" (onPaste)="this._validatorService.validatePaste($event)"
+                    (keypress)="this._validatorService.validateOnlyNumber($event)">
+                  <!-- [(ngModel)]="user.ci" -->
                 </div>
               </div>
-              <div class="mb-4">
-                <div class="input-group">
-                  <span class="input-group-text" id="basic-addon2"><i class="fa fa-lock"></i></span>
-                  <div class="fg-line left">
-                    <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña"
-                      required passwordStrength formControlName="password"
-                      aria-label="Recipient's username" aria-describedby="basic-addon2"
-                      (onPaste)="this._validatorService.validatePaste($event)" [(ngModel)]="user.password">
-                  </div>
+              <div *ngIf="this._validatorService.isValidFieldTouched(loginForm,'ci')" class="alert">
+                <div *ngIf="this._validatorService.isValidFieldRequired(loginForm, 'ci')">
+                  {{this.menssage.required}}</div>
+                <div *ngIf="this._validatorService.isValidFieldMinlength(loginForm,'ci')">
+                  {{this.menssage.min10Character}}
                 </div>
-
-                <div *ngIf="this._validatorService.isValidFieldTouched(loginForm,'password')" class="alert">
-                  <div *ngIf="this._validatorService.isValidFieldRequired(loginForm,'password')">{{menssage.required}}
-                  </div>
-                  <div *ngIf="this._validatorService.isValidFieldMinlength(loginForm,'password')">
-                    {{menssage.min8Character}}
-                  </div>
-                  <div *ngIf="this._validatorService.isValidFielPasswordStrength(loginForm,'password')">
-                    {{menssage.passwordLogin}}
-
-                  </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <div class="input-group">
+                <span class="input-group-text" id="basic-addon2"><i class="fa fa-lock"></i></span>
+                <div class="fg-line left">
+                  <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña"
+                    required passwordStrength formControlName="password" aria-label="Recipient's username"
+                    aria-describedby="basic-addon2" (onPaste)="this._validatorService.validatePaste($event)"
+                    autocomplete="on">
+                  <!-- [(ngModel)]="user.password" -->
                 </div>
-
               </div>
 
-              <div class="loginItemLeft">
-                <a data-block="#l-forget-password" (click)="refirectToPages('forgot-password')">
-                  Recuperar contraseña
-                </a>
+              <div *ngIf="this._validatorService.isValidFieldTouched(loginForm,'password')" class="alert">
+                <div *ngIf="this._validatorService.isValidFieldRequired(loginForm,'password')">{{menssage.required}}
+                </div>
+                <div *ngIf="this._validatorService.isValidFieldMinlength(loginForm,'password')">
+                  {{menssage.min8Character}}
+                </div>
+                <div *ngIf="this._validatorService.isValidFielPasswordStrength(loginForm,'password')">
+                  {{menssage.passwordLogin}}
+
+                </div>
               </div>
-              <div class="loginItemRight">
-                ¿No tienes cuenta?
-                <a data-block="#l-register" (click)="refirectToPages('register')">
-                  Regístrate
-                </a>
-              </div>
-              <div class="loginButton">
-                <button class="btn bgm-teal">
-                  Entrar
-                </button>
-              </div>
-            </form>
-          </div>
+
+            </div>
+
+            <div class="loginItemLeft">
+              <a data-block="#l-forget-password" (click)="refirectToPages('forgot-password')">
+                Recuperar contraseña
+              </a>
+            </div>
+            <div class="loginItemRight">
+              ¿No tienes cuenta?
+              <a data-block="#l-register" (click)="refirectToPages('register')">
+                Regístrate
+              </a>
+            </div>
+            <div class="loginButton">
+              <button class="btn bgm-teal">
+                Entrar
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </div>
-
-
-
-</body>
-
-</html>
-<!-- <!DOCTYPE html> -->
-<!--[if IE 9 ]><html class="ie9"><![endif]-->
-
-<!-- <head> -->
-<!-- <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-<!-- <title>Material Admin</title> -->
-
-<!-- Vendor CSS -->
-<!-- <link href="../vendors/animate-css/animate.min.css" rel="stylesheet"> -->
-
-<!-- CSS -->
-<!-- <link href="../css/app.min.css" rel="stylesheet">
-</head>
-
-
-
-</html> -->
-
-<!-- <div class="login-content text-center"> -->
-
-<!-- Login -->
-<!-- <div class="lc-block" id="l-login" [ngClass]="loginToggled">
-
-    <div class="form-group">
-      <div class="input-group input-group-lg">
-        <div class="input-group-prepend">
-          <span class="input-group-text"><i class="fa fa-user"></i></span>
-        </div>
-        <input type="text" class="form-control" placeholder="Username">
-      </div>
-
-    </div>
-    <div class="input-group m-b-20">
-      <span class="input-group-addon">
-        <i class="md md-email"></i>
-      </span>
-
-      <div class="form-outline">
-
-        <input type="text" id="formControlLg" class="form-control form-control-lg" [(ngModel)]="user.email" />
-        <label class="form-label" for="formControlLg">Correo electrónico</label>
-      </div>
-    </div>
-
-    <div class="input-group m-b-20">
-      <span class="input-group-addon">
-        <i class="md md-accessibility"></i>
-      </span>
-      <div class="fg-line">
-        <input type="password" class="form-control" placeholder="Contrase&ntilde;a" [(ngModel)]="user.password" (keyup.enter)="login()">
-      </div>
-    </div> -->
-
-<!-- <div class="checkbox">
-      <label>
-        <input type="checkbox" [(ngModel)]="user.KeepConnected">
-        <i class="input-helper"></i>
-        Mant&eacute;nme conectado
-      </label>
-    </div> -->
-
-<!--<div class="loginItemLeft">
-      <a data-block="#l-forget-password" (click)="showBlock('forget-password')">
-        Recuperar contrase&ntilde;a
-      </a>
-    </div>
-    <div class="loginItemRight">
-      ¿No tienes cuenta?
-      <a data-block="#l-register" (click)="showBlock('register')">
-        Regístrate
-      </a>
-    </div>
-    <div class="loginButton">
-      <button class="btn bgm-teal" (click)="login()">
-        Entrar
-      </button>
-    </div> -->
-
-
-<!-- Register -->
-<!-- <div class="lc-block" id="l-register" [ngClass]="registerToggled">
-    <div class="input-group m-b-20">
-      <span class="input-group-addon">
-        <i class="md md-person"></i>
-      </span>
-      <div class="fg-line">
-        <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="user.Name">
-      </div>
-    </div>
-
-    <div class="input-group m-b-20">
-      <span class="input-group-addon">
-        <i class="md md-account-child"></i>
-      </span>
-      <div class="fg-line">
-        <input type="text" class="form-control" placeholder="Apellidos" [(ngModel)]="user.LastNames">
-      </div>
-    </div>
-
-    <div class="input-group m-b-20">
-      <span class="input-group-addon">
-        <i class="md md-mail"></i>
-      </span>
-      <div class="fg-line">
-        <input type="text" class="form-control" placeholder="Correo elect&oacute;nico" [(ngModel)]="user.Email">
-      </div>
-    </div>
-
-    <div class="input-group m-b-20">
-      <span class="input-group-addon">
-        <i class="md md-accessibility"></i>
-      </span>
-      <div class="fg-line">
-        <input type="password" class="form-control" placeholder="Contrase&ntilde;a" [(ngModel)]="user.Password">
-      </div>
-    </div>
-
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" [(ngModel)]="user.ImProfesional">
-        <i class="input-helper"></i>
-        Soy un profesional
-      </label>
-    </div>
-
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" [(ngModel)]="user.IHaveClinic">
-        <i class="input-helper"></i>
-        Tengo una cl&iacute;nica
-      </label>
-    </div>
-
-    <div class="loginItemLeft">
-      <a data-block="#l-forget-password" (click)="showBlock('forget-password')">
-        Recuperar contrase&ntilde;a
-      </a>
-    </div>
-
-    <div class="loginItemRight">
-      ¿Ya tienes cuenta?
-      <a data-block="#l-login" (click)="showBlock('login')">
-        Entrar
-      </a>
-    </div>
-
-    <div class="checkbox">
-      <label>
-
-        <span>Al crear aceptas los </span>
-        <a href="http://odontofy.com/terms-and-conditions-of-use" target="_blank"> t&eacute;rminos y condiciones de uso</a>
-      </label>
-    </div>
-
-    <div class="loginButton">
-      <button class="btn bgm-teal" (click)="register()">
-        Crear
-      </button>
-    </div>
-  </div> -->
-
-<!-- Forgot Password -->
-<!-- <div class="lc-block" id="l-forget-password" [ngClass]="forgetPasswordToggled">
-    <div [hidden]="isSendEmail">
-      <p class="text-left">Ingrese su correo para recuperar la contrase&ntilde;a</p>
-
-      <div class="input-group m-b-20">
-        <span class="input-group-addon">
-          <i class="md md-email"></i>
-        </span>
-        <div class="fg-line">
-          <input type="text" class="form-control" placeholder="Correo electr&oacute;nico" [(ngModel)]="user.Email" (keyup.enter)="forgetPassword()">
-        </div>
-      </div>
-    </div>
-
-    <div [hidden]="!isSendEmail">
-      <p class="text-left">Se ha enviado un enlace a su correo para recuperar su contrase&ntilde;a</p>
-    </div>
-
-    <div class="loginItemLeft">
-      ¿No tienes cuenta?
-      <a data-block="#l-register" (click)="showBlock('register')">
-        Regístrate
-      </a>
-    </div>
-    <div class="loginItemRight">
-      ¿Ya tienes cuenta?
-      <a data-block="#l-login" (click)="showBlock('login')">
-        Entrar
-      </a>
-    </div>
-
-    <div class="loginButton">
-      <button class="btn bgm-teal" (click)="forgetPassword()">
-        Enviar
-      </button>
-    </div>
-  </div> -->
-
-<!-- Forgot Password -->
-<!-- <div class="lc-block" id="l-change-password" [ngClass]="changePasswordToggled">
-    <p class="text-left">Ingrese la nueva contrase&ntilde;a</p>
-    <div class="input-group m-b-20">
-      <span class="input-group-addon">
-        <i class="md md-accessibility"></i>
-      </span>
-      <div class="fg-line">
-        <input type="password" class="form-control" placeholder="Contrase&ntilde;a" [(ngModel)]="changePass.Password" name="password">
-      </div>
-    </div>
-    <div class="input-group m-b-20">
-      <span class="input-group-addon">
-        <i class="md md-accessibility"></i>
-      </span>
-      <div class="fg-line">
-        <input type="password" class="form-control" placeholder="Repita la contrase&ntilde;a" [(ngModel)]="changePass.ConfirmPassword" name="repeat_password" (keyup.enter)="changeForgetPassword()">
-      </div>
-    </div>
-
-    <div style="text-align: left; margin: 50px 0 50px 0">
-      ¿No tienes cuenta?
-      <a data-block="#l-register" (click)="showBlock('register')">
-        Regístrate
-      </a>
-    </div>
-    <div style="text-align: right; margin: 25px 0">
-      ¿Ya tienes cuenta?
-      <a data-block="#l-login" (click)="showBlock('login')">
-        Entrar
-      </a>
-    </div>
-
-    <div class="loginButton">
-      <button class="btn bgm-teal" (click)="changeForgetPassword()">
-        Enviar
-      </button>
-    </div>
-  </div> -->
-
-<!-- Message -->
-<!-- <div [hidden]="!error" class="alert alert-danger alert-dismissible col-sm-4 col-sm-offset-4 m-t-50" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-    {{response.Message}}
-  </div> -->
+</div>

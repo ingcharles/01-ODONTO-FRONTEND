@@ -13,6 +13,7 @@ export interface IAplicacionFromModel {
   color: string | null;
   nemonico: string | null;
   estado: number | null;
+  codigoUsuario: number | null;
 }
 
 export interface IAplicacionToModel extends IAuditoriaModel {

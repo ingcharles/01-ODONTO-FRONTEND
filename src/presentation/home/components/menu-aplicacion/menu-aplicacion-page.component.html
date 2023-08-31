@@ -10,13 +10,13 @@
   <!--[hidden]="!appGlobals.roleDoctor.getValue()"-->
   <!-- <a id="menu-calendar" [routerLink]="['/calendar']"><i class="md fa-solid fa-calendar-day"></i> Agenda</a>
   </li> -->
-  <li class="sub-menu" *ngFor="let item of this.varMenu">
+  <li class="sub-menu" *ngFor="let item of this.inputMenu">
     <a href=""><i class="md {{item.icono}}"></i> {{item.nombre}}</a>
 
     <ul>
-       <li *ngFor="let item1 of this.item.menuItem">
-        <a id="{{item1.codigo}}" class="menu-table" [routerLink]="['/patiens/create-patiens']"><i
-            class="md {{item1.icono}}"></i> {{item1.nombre}}</a>
+      <li *ngFor="let subItem of this.item.menuItem">
+        <a id="{{subItem.codigo}}" class="menu-table" [routerLink]="[subItem.link]"><i class="md {{subItem.icono}}"></i>
+          {{subItem.nombre}}</a>
       </li>
       <!-- <li><a id="data-personal" class="menu-table" [routerLink]="['/notifications']"><i
             class="md fa-solid fa-users"></i>Notificaciones</a>
