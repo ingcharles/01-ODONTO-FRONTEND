@@ -1,40 +1,27 @@
-import { FormControl, FormGroup, NgModel, ValidationErrors } from '@angular/forms';
+import { FormControl, FormGroup, ValidationErrors } from '@angular/forms';
 export const isValidCI = (control: FormControl): ValidationErrors | null => {
 
   return null;
 }
-
+// import * as $ from "jquery";
 
 export class ValidationService {
 
   firstNameAndLastnamePattern: string = '([a-zA-Z]+) ([a-zA-Z]+)';
-  emailPattern: string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
+  emailPattern: string = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$";
+
+
   onlyNumber: string = "^([0-9]{10,13})$";
   twoDecimal: string = "^([0-9]{0,8})(\.[0-9]{0,2})$";
   // twoDecimal: string = "^(?!0+\.00)(?=.{1,9}(\.|$))(?!0(?!\.))\d{1,3}(,\d{3})*(\.\d+)?$";
 
+  onlyTwoDecimalRegExp: RegExp = /.[0-9]{2}$/;
   onlyNumberRegExp: RegExp = /[0-9]/;
   onlyOnlyLetterRegExp: RegExp = /[A-Za-zñÑáÁéÉíÍóÓúÚ ]/;
+  //emailPatterndRegExp: RegExp = /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/;
   //onlyOnlyDateRegExp: RegExp = new RegExp("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$");// /(?:3[01]|[12][0-9]|0?[1-9])([\-/.])(0?[1-9]|1[1-2])\1\d{4}/;
   constructor() { }
 
-
-
-  /**
-   ** Method que valida si el campo es valido
-   * @param field string -> nombre del campo colocado el fieldControlName
-   * @returns true o false
-   */
-
-  public isValidFieldTouched(form: FormGroup, field: string): boolean | null {
-    return (
-      // field.invalid &&
-      // field.touched
-      //form.controls[field].invalid &&
-      form.controls[field].errors &&
-      form.controls[field].touched
-    );
-  }
 
   /**
  ** Method que valida si el campo es valido
@@ -47,24 +34,33 @@ export class ValidationService {
       form.controls[field].touched
     );
   }
-  // public isValidFieldRequired(field: NgModel): boolean | null {
-  //     return (
-  //         field.errors?.['required'] //&&
-  //        // field.touched
-  //     );
-  // }
-  // ci.errors?.['required']
-  // (ci.invalid && ci.touched)
+  public isValidFieldDateLimitValid(form: FormGroup, field: string): boolean | null {
+    return (
+      form.controls[field].errors?.['dateLimitValid'] &&
+      form.controls[field].touched
+    );
+  }
 
+  /**
+** Method que valida si el campo es valido
+* @param field string -> nombre del campo colocado el fieldControlName
+* @returns true o false
+*/
+  public isValidFieldDateOutLimit(form: FormGroup, field: string): boolean | null {
+    return (
+      form.controls[field].errors?.['dateOutLimit'] &&
+      form.controls[field].touched
+    );
+  }
   /**
        ** Method que valida si el campo cumple con la longitud mínima
        * @param field string -> nombre del campo colocado el fieldControlName
        * @returns true o false
        */
-  public isValidFieldMin(field: NgModel): boolean | null {
+  public isValidFieldMin(form: FormGroup, field: string): boolean | null {
     return (
-      field.errors?.['min'] //&&
-      //  field.controls[field].touched
+      form.controls[field].errors?.['min'] &&
+      form.controls[field].touched
     );
   }
 
@@ -106,17 +102,6 @@ export class ValidationService {
     );
   }
 
-  /**
-** Method que valida si el campo cumple con el patrón establecido
-* @param field string -> nombre del campo colocado el fieldControlName
-* @returns true o false
-*/
-  public isValidFielPasswordStrength(form: FormGroup, field: string): boolean | null {
-    return (
-      form.controls[field].errors?.['passwordStrength'] &&
-      form.controls[field].touched
-    );
-  }
 
   /**
    ** Method que valida si el campo se quiere pegar algun texto no le permite
@@ -145,7 +130,6 @@ export class ValidationService {
       }
     }
   }
-
 
   /**
   ** Method que valida solo la digitación de solo letras
@@ -187,6 +171,36 @@ export class ValidationService {
   }
 
 
+  onEditorPreparing(event: any) {
+    if (event.parentType === "filterRow") {
+      event.editorOptions.onKeyPress = function (args: any) {
+        var event = args.event;
+        if (/[</\\>]/.test(String.fromCharCode(event.keyCode)))
+          event.preventDefault();
+      }
+    }
+
+
+  }
+  onToolbarPreparing(event: any): void {
+    console.log("onEditorPreparing", event.toolbarOptions);
+    event.toolbarOptions.items.forEach((item: any) => {
+      if (item.name === "exportButton") {
+        // item.options = {
+        //   //icon: "xlsxfile",
+        //   //text: "Exportar",
+        //   // elementAttr: {
+        //   //   "class": "dx-datagrid-export-button"
+        //   // },
+        //   // onClick: function () {
+        //   //   event.component.exportToExcel(true);
+        //   // }
+        // };
+        //item.options.text = 'Exportar';
+        item.showText = "always";
+      }
+    });
+  }
   /**
   ** Method que valida cédula con modulo base 10
   *  @param {string} cedula recibe la cedula como parametro
@@ -276,11 +290,6 @@ export class ValidationService {
       // Imprimimos en consola si la cedula tiene mas o menos de 10 digitos
       return false;
     }
-  }
-
-
-  public isEmptyObject(obj: object): boolean {
-    return (obj && (Object.keys(obj).length === 0));
   }
 
 

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-
 import { IAuthTokenRsViewModel } from 'src/domain/login/viewModels/i-auth.viewModel';
 import { AuthService } from './auth.service';
 
@@ -7,23 +6,33 @@ const ACCESS_TOKEN = 'access_token';
 const REFRESH_TOKEN = 'refresh_token';
 const ID_USER = 'id_user';
 const FIRST_NAME = 'first_name';
+
 @Injectable({
   providedIn: 'root'
 })
 export class StorageService {
   constructor(private _authService: AuthService) { }
   private isRefreshing = false;
-  cleanUserStorage(): void {
+
+  /**
+  ** Método que permite limpiar los datos de sessión storage del usuario logueado
+  *  @param
+  *  @returns {void}
+  */
+  public cleanUserStorage(): void {
     window.sessionStorage.clear();
   }
 
+  /**
+  ** Método que permite guardar los datos en sessión storage del usuario logueado
+  *  @param
+  *  @returns {void}
+  */
   public saveUserStorage(user: IAuthTokenRsViewModel): void {
-    console.log("******************")
-    console.log("JSON.stringify(user)------------: ", JSON.stringify(user))
-    console.log("******************")
-    // window.sessionStorage.removeItem(ACCESS_TOKEN);
+    //Limpio todas las sessiones storage de usuario
     this.cleanUserStorage();
-    // window.sessionStorage.setItem(ACCESS_TOKEN, JSON.stringify(user));
+
+    //Asigno los datos del login a session storage
     window.sessionStorage.setItem(ACCESS_TOKEN, user.accessToken!);
     window.sessionStorage.setItem(REFRESH_TOKEN, user.refreshToken!);
     if (user.userId) {
@@ -33,7 +42,6 @@ export class StorageService {
   }
 
   public getUserStorage(): IAuthTokenRsViewModel {
-
     const tokenResponse: IAuthTokenRsViewModel = {
       accessToken: sessionStorage.getItem(ACCESS_TOKEN),
       refreshToken: sessionStorage.getItem(REFRESH_TOKEN),
@@ -42,7 +50,6 @@ export class StorageService {
     };
 
     return tokenResponse;
-
   }
 
   public isLoggedIn(): boolean {
@@ -87,7 +94,7 @@ export class StorageService {
           this.isRefreshing = false;
         });
       } else {
-        console.log("Entra no tokenExpired----->");
+        console.log("Entra no token Expira----->");
       }
       console.log("Entra está logeado----->");
     } else {

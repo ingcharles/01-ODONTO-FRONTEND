@@ -1,17 +1,21 @@
-import { AplicacionPageComponent } from './components/aplicacion/aplicacion-page.component';
+import { PerfilPageComponent } from './perfil/perfil-page.component';
+import { AplicacionComponent } from './components/aplicacion/aplicacion.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { MenuAplicacionComponent } from './components/menu-aplicacion/menu-aplicacion.component';
 import { AuthGuard } from '../app/shared/guards/auth.guard';
-import { MenuAplicacionPageComponent } from './components/menu-aplicacion/menu-aplicacion-page.component';
 
 
 const routes: Routes = [
   {
-    // canActivate: [AuthGuard],
-    path: '', component: AplicacionPageComponent
+    canActivate: [AuthGuard],
+    path: '', component: AplicacionComponent
   },
   {
-    path: 'menu-aplicacion', component: MenuAplicacionPageComponent
+    path: 'perfil', component: PerfilPageComponent
+  },
+  {
+    path: 'menu-aplicacion', component: MenuAplicacionComponent
   },
   // {
   //   /* Ruta para la */

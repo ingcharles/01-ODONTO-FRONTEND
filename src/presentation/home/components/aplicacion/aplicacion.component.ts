@@ -7,11 +7,11 @@ import { IAplicacionRsViewModel } from 'src/domain/login/viewModels/i-aplicacion
 import { IMenuItemRsViewModel } from 'src/domain/login/viewModels/i-menu.viewModel';
 
 @Component({
-  selector: 'home-aplicacion-page',
-  templateUrl: './aplicacion-page.component.html',
-  styleUrls: ['./aplicacion-page.component.css']
+  selector: 'home-aplicacion',
+  templateUrl: './aplicacion.component.html',
+  styleUrls: ['./aplicacion.component.css']
 })
-export class AplicacionPageComponent {
+export class AplicacionComponent {
   constructor(private _storageUseCase: StorageUseCase, private _loaderService: LoaderService, private _appService: AppService, private _authUseCase: AuthUseCase) {
 
   }

@@ -29,14 +29,14 @@ export class PasswordStrengthDirective implements Validator {
   }
 }
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css',
+  selector: 'login-login-page',
+  templateUrl: './login-page.component.html',
+  styleUrls: ['./login-page.component.css',
   ]
 })
 
 
-export class LoginComponent {
+export class LoginPageComponent {
 
 
   constructor(public _fb: FormBuilder, public _validatorService: ValidationService, private _alertService: AlertsService, private _loaderService: LoaderService, private _authUseCase: AuthUseCase, private _storageUseCase: StorageUseCase, private _router: Router, private _globals: Globals) { }
@@ -113,10 +113,13 @@ export class LoginComponent {
     //this._alertService.alertConfirm(messages.confirmacionTitle, messages.confirmSave, () => {
     this._authUseCase.login(this.loginForm.value as IAuthViewModel).then(obs => {
       this._loaderService.display(true);
+      this._globals.setLoginStatus(false);
+      this.isLoginFailed = true;
       obs.subscribe((result) => {
 
         this._loaderService.display(false);
         // console.log("result",result);
+        // console.log("result.falos= ", this._validatorService.isEmptyObject(result));
         if (result.ok) {
 
 
@@ -124,10 +127,7 @@ export class LoginComponent {
           result.token!.userId = result.data?.codigoUsuario!;
           result.token!.firstName = result.data?.nombreUsuario!;
 
-          console.log("result.token?.accessToken: " + result.token?.accessToken);
-          console.log("result.token?.refreshToken: " + result.token?.refreshToken);
-          console.log("result.token!.userId: " + result.token?.userId);
-          console.log("result.token!.firstName: " + result.token?.firstName);
+
           this._storageUseCase.saveUserStorage(result.token!);
           this.isLoginFailed = false;
           this.isLoggedIn = true;
@@ -139,22 +139,25 @@ export class LoginComponent {
 
 
           this.refirectToPages('')
-          //this._alertService.alertMessage(messages.exitoTitle, result.message, messages.isSuccess);
-          //  this.loginForm.get('codigoCrca')!.patchValue(result.data?.codigoCrca);
+
 
         } else {
+
+          // if (this._validatorService.isEmptyObject(result)) {
+          //   this._alertService.alertMessage(messages.advertenciaTitle, messages.serviceFail, messages.isWarning);
+          //   return;
+          // }
           //this.errorMessage = err.error.message;
-          //console.log("result.falos= " + result.ok);
-          this._globals.setLoginStatus(false);
-          this.isLoginFailed = true;
+
+
           this._alertService.alertMessage(messages.advertenciaTitle, result.message, messages.isWarning);
+
         }
       })
     }).catch(err => {
       this._globals.setLoginStatus(false);
-      // this.error = error;
-      // this.isRequesting = false;
       this._globals.setIsRequestingGlobal(false);
+      console.log("try cath login failed");
     });
     // });
     //return;

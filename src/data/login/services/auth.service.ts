@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, catchError, map, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { IResponseStatusViewModel } from 'src/domain/general/viewModels/i-response-status.viewModel';
 import { AuthMapper } from '../mappers/auth.mapper';
 import { StatusResponseService } from 'src/data/base/status-response.service';
 import { AAuthService } from 'src/domain/login/services/a-auth-service';
@@ -34,6 +33,7 @@ export class AuthService extends AAuthService {
         return this._authMapper.mapLoginFrom(result)
       }),
       catchError((error) => {
+        console.log("error", error);
         return of(this._statusResponseService.error(error));
       })
     );

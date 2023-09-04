@@ -1,9 +1,12 @@
-import { AplicacionPageComponent } from './components/aplicacion/aplicacion-page.component';
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeRoutingModule } from './home-routing.module';
-import { MenuAplicacionPageComponent } from './components/menu-aplicacion/menu-aplicacion-page.component';
+import { AplicacionComponent } from './components/aplicacion/aplicacion.component';
+import { MenuAplicacionComponent } from './components/menu-aplicacion/menu-aplicacion.component';
+import { PerfilPageComponent } from './perfil/perfil-page.component';
+
 
 @NgModule({
 
@@ -14,10 +17,11 @@ import { MenuAplicacionPageComponent } from './components/menu-aplicacion/menu-a
     ReactiveFormsModule
   ],
   declarations: [
-    MenuAplicacionPageComponent,
-    AplicacionPageComponent
+    MenuAplicacionComponent,
+    AplicacionComponent,
+    PerfilPageComponent
   ],
-  exports: [MenuAplicacionPageComponent,],
+  exports: [MenuAplicacionComponent],
   providers: []
 })
 export class HomeModule {

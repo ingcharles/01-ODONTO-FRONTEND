@@ -1,5 +1,5 @@
 var csrfToken = $("[name=_csrf]").val();
-
+// console.log(urlPublic, "sssssssssssssdddd");
 //**AdminLTE v3.0.0 (https://adminlte.io)**//
 !function (t, e) {
   "object" == typeof exports && "undefined" != typeof module ? e(exports) : "function" == typeof define && define.amd ? define(["exports"], e) : e((t = t || self).adminlte = {})
@@ -1266,20 +1266,14 @@ function cargarValorComboPorDefecto(combo, valor) {
     "selected");
 }
 
-// export var numeroALetras = (function () {
-
-// return
 function ajustarAltoVentanaAplicacion() {
-  console.log("resize");
   header = $(".main-header").height();
   footer = $(".main-footer").height();
   $(".content-wrapper").css("min-height", $(window).height() - 18 - header - footer);
   $(".main-sidebar").height($(window).height());
   $("#menuAplicacion").height($(window).height() - 149);
   $("#areaTrabajo").height($(window).height() - 18 - header - footer);
-  // return true;
 }
-// })();
 
 $(window).resize(function () {
   ajustarAltoVentanaAplicacion();
@@ -1538,7 +1532,6 @@ function mensajeErrorAjax(msgError, textStatus) {
   return msg;
 }
 
-console.log("a");
 function notificacionesEditar(element) {
 
   $.ajax({
@@ -2029,8 +2022,6 @@ $('#areaTrabajo').on('click', ".campos .eliminarCampo", function (event) {
 
 $(document).ready(function () {
   (function () {
-
-    console.log('aaaaaaaaa');
     ajustarAltoVentanaAplicacion();
   })();
 });

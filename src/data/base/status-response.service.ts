@@ -1,28 +1,33 @@
 import { Injectable } from '@angular/core';
 import { IResponseStatusViewModel } from 'src/domain/general/viewModels/i-response-status.viewModel';
+import { messages } from 'src/presentation/base/messages';
 
 @Injectable({ providedIn: 'root' })
 export class StatusResponseService {
   constructor() { }
 
   error(httpErrorResponse: any): IResponseStatusViewModel {
-    let { error, ok } = httpErrorResponse;
-    const { StatusCode } = error || {}
-    const { status } = error || {}
+    let { error, ok, status, StatusCode } = httpErrorResponse;
     let responseStatus: IResponseStatusViewModel = <IResponseStatusViewModel>{}
-    // console.error("error.StatusCode", error.StatusCode);
-    // var existePropiedadFantasma = StatusCode;
-    // console.log("existePropied", existePropiedadFantasma);
-    if (StatusCode)
-      if (error.StatusCode == 404 || error.StatusCode == 500) {
-        responseStatus = { message: error.Message, statusCode: error.StatusCode, ok }
-      } else if (!StatusCode && status) {
-        if (error.status == 401) {
 
-          responseStatus = { message: error.message, statusCode: error.status, ok }
-
-        }
+    if (StatusCode) {
+      if (StatusCode == 404 || StatusCode == 500) {
+        responseStatus = { message: error.Message, statusCode: StatusCode, ok }
       }
+
+    } else {
+
+      if (status == 401) {
+
+        responseStatus = { message: error.message, statusCode: status, ok }
+
+      } else if (status == 0 || status == 403) {
+
+        responseStatus = { message: messages.serviceFail, statusCode: status, ok }
+
+      }
+    }
+    console.log("responseStatus", responseStatus)
     return responseStatus;
   }
 

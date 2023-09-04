@@ -1,0 +1,320 @@
+<!-- <spinner-content [isRunning]="isRequesting"></spinner-content> -->
+<!-- [hidden]="isRequesting" -->
+<!-- container -->
+<div class="">
+
+  <div class="card">
+    <div class="card-header">
+      <h2>
+        Información del perfil
+        <small>Complete toda la información para el uso posterior de la plataforma</small>
+      </h2>
+    </div>
+
+    <!-- <div class="row p-t-25 m-t-25">
+      <div class="alert alert-danger alert-dismissible col-sm-10 col-sm-offset-1" role="alert" [hidden]="!error">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        {{response.Message}}
+      </div>
+    </div> -->
+
+    <div class="card-body">
+
+      <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <a class="nav-link active col-sx-6" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
+            type="button" role="tab" aria-controls="nav-home" aria-selected="true"><span class="hidden-xs">Mi
+              cuenta</span></a>
+          <a class="nav-link col-sx-6" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
+            type="button" role="tab" aria-controls="nav-profile" aria-selected="false"><span class="hidden-xs">Cambiar
+              contraseña</span></a>
+          <!-- <a class="nav-link col-sx-6" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
+            type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a> -->
+        </div>
+      </nav>
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+          <div role="tabpanel" class="tab-pane animated fadeIn active" id="tab-1">
+            <!-- (ngSubmit)="editProfile()" -->
+            <form #fprofile="ngForm" novalidate>
+              <div class="row">
+                <div class="col-sm-4">
+                  <!-- <div class="input-group form-group {{ (name.valid || (name.pristine && !fprofile.submitted)) ? '' : 'has-error has-feedback' }}">
+                   -->
+                  <div class="input-group form-group">
+                    <span class="input-group-addon">
+                      <i class="md md-person"></i>
+                    </span>
+                    <div class="fg-line ">
+                      <!-- [(ngModel)]="person.Name" #name="ngModel"-->
+                      <input type="text" class="form-control" name="name" placeholder="Nombres" required
+                        data-toggle="tooltip" data-placement="top" title="error validacion" />
+                    </div>
+                    <!-- <span class="md md-close form-control-feedback {{ (name.valid || (name.pristine && !fprofile.submitted)) ? 'hidden' : '' }}"></span>
+                   -->
+                    <span class="md md-close form-control-feedback"></span>
+                  </div>
+                </div>
+
+                <div class="col-sm-4">
+                  <!-- <div class="input-group form-group {{ (lastname.valid || (lastname.pristine && !fprofile.submitted)) ? '' : 'has-error has-feedback' }}"> -->
+
+                  <div class="input-group form-group">
+                    <span class="input-group-addon">
+                      <i class="md md-account-child"></i>
+                    </span>
+                    <div class="fg-line">
+                      <!-- [(ngModel)]="person.LastNames"  #lastname="ngModel"-->
+                      <input type="text" class="form-control" name="lastname" required placeholder="Apellidos" />
+                    </div>
+                    <!-- <span class="md md-close form-control-feedback {{ (lastname.valid || (lastname.pristine && !fprofile.submitted)) ? 'hidden' : '' }}"></span>
+                   -->
+                    <span class="md md-close form-control-feedback"></span>
+                  </div>
+                </div>
+
+                <div class="col-sm-4">
+                  <!-- <div class="input-group form-group {{ (dni.valid || (dni.pristine && !fprofile.submitted)) ? '' : 'has-error has-feedback' }}">
+                   -->
+                  <div class="input-group form-group ">
+                    <span class="input-group-addon">
+                      <i class="md md-portrait"></i>
+                    </span>
+                    <div class="fg-line">
+                      <!-- [(ngModel)]="person.DNI"  #dni="ngModel" -->
+                      <input type="text" class="form-control" name="dni" required placeholder="Cédula de identidad">
+                    </div>
+                    <!-- <span class="md md-close form-control-feedback {{ (dni.valid || (dni.pristine && !fprofile.submitted)) ? 'hidden' : '' }}"></span> -->
+                    <span class="md md-close form-control-feedback"></span>
+                  </div>
+                </div>
+
+                <div class="col-sm-4">
+                  <!-- <div class="input-group form-group {{ (mobile.valid || (mobile.pristine && !fprofile.submitted)) ? '' : 'has-error has-feedback' }}">
+                   -->
+                  <div class="input-group form-group">
+                    <span class="input-group-addon">
+                      <i class="md md-stay-primary-portrait"></i>
+                    </span>
+                    <div class="fg-line">
+                      <!-- [(ngModel)]="person.Mobile"  #mobile="ngModel" -->
+                      <input type="text" class="form-control" name="mobile" required placeholder="Número de celular">
+                    </div>
+                    <!-- <span class="md md-close form-control-feedback {{ (mobile.valid || (mobile.pristine && !fprofile.submitted)) ? 'hidden' : '' }}"></span>
+                  -->
+                    <span class="md md-close form-control-feedback"></span>
+                  </div>
+                </div>
+
+                <div class="col-sm-4">
+                  <!-- {{ (phone.valid || (phone.pristine && !fprofile.submitted)) ? '' : 'has-error has-feedback' }}" -->
+                  <div class="input-group form-group">
+                    <span class="input-group-addon">
+                      <i class="md md-local-phone"></i>
+                    </span>
+                    <div class="fg-line">
+                      <!-- [(ngModel)]="person.Phone"  #phone="ngModel" -->
+                      <input type="text" class="form-control" name="phone" required placeholder="Teléfono fijo">
+                    </div>
+                    <!-- <span class="md md-close form-control-feedback {{ (phone.valid || (phone.pristine && !fprofile.submitted)) ? 'hidden' : '' }}"></span> -->
+
+                    <span class="md md-close form-control-feedback"></span>
+                  </div>
+                </div>
+
+                <div class="col-sm-4">
+                  <!-- <div class="input-group form-group {{ (email.valid || (email.pristine && !fprofile.submitted)) ? '' : 'has-error has-feedback' }}"> -->
+                  <div class="input-group form-group">
+                    <span class="input-group-addon">
+                      <i class="md md-email"></i>
+                    </span>
+                    <div class="fg-line">
+                      <!-- [(ngModel)]="person.Email"  #email="ngModel"-->
+                      <input type="email" class="form-control" name="email" required validateEmail
+                        placeholder="Correo electrónico">
+                    </div>
+                    <!-- <span class="md md-close form-control-feedback {{ (email.valid || (email.pristine && !fprofile.submitted)) ? 'hidden' : '' }}"></span> -->
+                  </div>
+                </div>
+
+                <div class="col-sm-4">
+                  <div class="input-group form-group">
+                    <span class="input-group-addon">
+                      <i class="md md-account-child"></i>
+                    </span>
+                    <div class="fg-line select">
+                      <!-- [(ngModel)]="person.Sex" -->
+                      <select class="form-control" name="sex">
+                        <option value="true">Masculino</option>
+                        <option value="false">Femenino</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-4">
+                  <div class="input-group form-group">
+                    <span class="input-group-addon">
+                      <i class="md md-event"></i>
+                    </span>
+
+                    <div class="fg-line">
+                      <!-- [(ngModel)]="person.DateOfBirth"  -->
+                      <input type="text" class="form-control date-picker" data-toggle="dropdown" name="dateofbirth"
+                        placeholder="Fecha de nacimiento">
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="col-sm-4">
+                  <!-- <div class="input-group form-group {{ (specialty.valid || (specialty.pristine && !fprofile.submitted)) ? '' : 'has-error has-feedback' }}"> -->
+                  <div class="input-group form-group">
+                    <span class="input-group-addon">
+                      <i class="md md-school"></i>
+                    </span>
+                    <div class="fg-line select">
+                      <!-- [(ngModel)]="person.SpecialtyId" #specialty="ngModel"-->
+                      <select class="form-control" name="specialty" required>
+                        <option value="-1">Seleccione su especialidad</option>
+                        <!-- <option *ngFor="let opt of catalogs" [value]="opt.Id">{{opt.Name}}</option> -->
+                        <option></option>
+                      </select>
+                    </div>
+                    <!-- <span class="md md-close form-control-feedback {{ (specialty.valid || (specialty.pristine && !fprofile.submitted)) ? 'hidden' : '' }}"></span> -->
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="input-group  form-group">
+                    <span class="input-group-addon">
+                      <i class="md md-location-on"></i>
+                    </span>
+
+                    <div class="fg-line">
+                      <!-- (keyup.enter)="editProfile()"  [(ngModel)]="person.Address"-->
+                      <input type="text" class="form-control" placeholder="Home Address" name="address"
+                        placeholder="Dirección particular">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <br />
+              <br />
+              <button type="submit" class="btn btn-primary btn-sm m-t-10" [disabled]="!fprofile.valid">Guardar</button>
+              <!-- (click)="cancel()" -->
+              <button type="button" class="btn btn-default btn-sm m-t-10">Cancelar</button>
+            </form>
+          </div>
+        </div>
+
+
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+          <div role="tabpanel" class="tab-pane animated fadeIn" id="tab-4">
+            <!-- (ngSubmit)="changePassword()" -->
+            <form #fchangePassword="ngForm" novalidate>
+              <div class="row">
+                <div class="col-sm-6">
+                  <!-- <div class="input-group form-group {{ (changePass_OldPassword.valid || (changePass_OldPassword.pristine && !fchangePassword.submitted)) ? '' : 'has-error has-feedback' }}">
+                   -->
+                  <div class="input-group form-group">
+                    <span class="input-group-addon">
+                      <i class="md md-accessibility"></i>
+                    </span>
+
+                    <div class="fg-line">
+                      <!-- [(ngModel)]="changePass.OldPassword"   #changePass_OldPassword="ngModel"  -->
+                      <input type="password" class="form-control" required name="changePass_OldPassword"
+                        placeholder="Contraseña Anterior" autocomplete="on">
+                    </div>
+                    <!-- <span class="md md-close form-control-feedback {{ (changePass_OldPassword.valid || (changePass_OldPassword.pristine && !fchangePassword.submitted)) ? 'hidden' : '' }}"></span> -->
+                    <span class="md md-close form-control-feedback"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <!-- <div class="input-group form-group {{ (changePass_NewPassword.valid || (changePass_NewPassword.pristine && !fchangePassword.submitted)) ? '' : 'has-error has-feedback' }}">
+                     -->
+                  <div class="input-group form-group">
+                    <span class="input-group-addon">
+                      <i class="md md-accessibility"></i>
+                    </span>
+                    <div class="fg-line">
+                      <!-- [(ngModel)]="changePass.NewPassword" #changePass_NewPassword="ngModel" -->
+                      <input type="password" class="form-control" name="changePass_NewPassword" required
+                        placeholder="Nueva contraseña" autocomplete="on">
+                    </div>
+                    <!-- <span class="md md-close form-control-feedback {{ (changePass_NewPassword.valid || (changePass_NewPassword.pristine && !fchangePassword.submitted)) ? 'hidden' : '' }}"></span> -->
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <!-- {{ (changePass_ConfirmPassword.valid || (changePass_ConfirmPassword.pristine && !fchangePassword.submitted)) ? '' : 'has-error has-feedback' }} -->
+                  <div class="input-group form-group">
+                    <span class="input-group-addon">
+                      <i class="md md-accessibility"></i>
+                    </span>
+                    <div class="fg-line">
+                      <!-- [(ngModel)]="changePass.ConfirmPassword" #changePass_ConfirmPassword="ngModel"-->
+                      <input type="password" class="form-control" name="changePass_ConfirmPassword" required
+                        placeholder="Repita la contraseña" autocomplete="on">
+                    </div>
+                    <!-- <span class="md md-close form-control-feedback {{ (changePass_ConfirmPassword.valid || (changePass_ConfirmPassword.pristine && !fchangePassword.submitted)) ? 'hidden' : '' }}"></span> -->
+                  </div>
+                </div>
+              </div>
+              <br />
+              <br />
+              <button type="submit" class="btn btn-primary btn-sm m-t-10" [disabled]="!fchangePassword.valid">Cambiar
+                contreseña</button>
+              <!-- (click)="cancel()" -->
+              <button type="submit" class="btn btn-default btn-sm m-t-10">Cancelar</button>
+            </form>
+          </div>
+
+
+        </div>
+
+
+        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+      </div>
+
+      <!-- <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
+            type="button" role="tab" aria-controls="pills-home" aria-selected="true">Home</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
+            type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact"
+            type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button>
+        </li>
+      </ul>
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+          ...ddddddddddddd
+        </div>
+        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
+        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+      </div>
+ -->
+
+
+
+
+    </div>
+  </div>
+
+</div>

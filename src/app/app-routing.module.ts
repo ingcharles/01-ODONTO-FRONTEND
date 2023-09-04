@@ -1,4 +1,4 @@
-import { AplicacionPageComponent } from '../presentation/home/components/aplicacion/aplicacion-page.component';
+import { AplicacionComponent } from '../presentation/home/components/aplicacion/aplicacion.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'src/presentation/app/shared/guards/auth.guard';
@@ -6,8 +6,8 @@ import { AuthGuard } from 'src/presentation/app/shared/guards/auth.guard';
 const routes: Routes = [
   {
     path: '',
-    canActivate: [AuthGuard],
-    component: AplicacionPageComponent,
+    // canActivate: [AuthGuard],
+    component: AplicacionComponent,
     //component: AppComponent
   },
   {

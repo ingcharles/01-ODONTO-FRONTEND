@@ -87,7 +87,7 @@
           </button>
           <ul class="dropdown-menu dm-icon pull-right" aria-labelledby="dropdownMenuButton2">
             <li>
-              <a [routerLink]="['/profile']"><i class="md fas fa-user-md"></i>Perfil</a>
+              <a [routerLink]="['home/perfil']"><i class="md fas fa-user-md"></i>Perfil</a>
             </li>
             <li>
               <a [routerLink]="['/appoitments', -1, '!']"><i class="md fa-solid fa-calendar-day"></i> Agendar
@@ -147,7 +147,7 @@
             </li>
           </ul>
         </div>
-        <home-menu-aplicacion-page [inputMenu]="getMenuItem"></home-menu-aplicacion-page>
+        <home-menu-aplicacion [inputMenu]="getMenuItem"></home-menu-aplicacion>
         <!-- <ul class="main-menu">
           <li class="active"><a [routerLink]="['/dashboard']"><i class="md fa-solid fa-house"></i> Inicio</a></li>
           <li> -->
