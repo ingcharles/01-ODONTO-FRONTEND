@@ -1,3 +1,4 @@
+
 import { AplicacionComponent } from '../presentation/home/components/aplicacion/aplicacion.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -41,7 +42,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('../presentation/paciente/paciente.module').then((m) => m.PacienteModule)
   },
-
+  {
+    path: 'treatments',
+    loadChildren: () =>
+      import('../presentation/tratamiento/tratamiento.module').then((m) => m.TratamientoModule)
+  },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
     path: '**',

@@ -1,17 +1,16 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   //  standalone: true,
-  selector: 'app-create-paciente',
+  selector: 'paciente-create-paciente-page',
 
   // imports: [NgbDatepicker],
-  templateUrl: './create-paciente.component.html',
-  styleUrls: ['./create-paciente.component.css'],
+  templateUrl: './create-paciente-page.component.html',
+  styleUrls: ['./create-paciente-page.component.css'],
 
 
 })
-export class CreatePacienteComponent {
+export class CreatePacientePageComponent {
 
   title = 'Datos personales';
 

@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CreatePacienteComponent } from './components/create-paciente/create-paciente.component';
-import { IndexPacienteComponent } from './components/index-paciente/index-paciente.component';
+import { CreatePacientePageComponent } from './components/create-paciente-page/create-paciente-page.component';
+import { IndexPacientePageComponent } from './components/index-paciente-page/index-paciente-page.component';
 
 
 const routes: Routes = [
   {
-    path: '', component: IndexPacienteComponent
+    path: '', component: IndexPacientePageComponent
   },
   {
     /* Ruta para la */
-    path: 'create-patiens/:id', component: CreatePacienteComponent
+    path: 'create-patiens/:id', component: CreatePacientePageComponent
   },
 
 

@@ -3,11 +3,11 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
-  selector: 'app-index-paciente',
-  templateUrl: './index-paciente.component.html',
-  styleUrls: ['./index-paciente.component.css']
+  selector: 'paciente-index-paciente-page',
+  templateUrl: './index-paciente-page.component.html',
+  styleUrls: ['./index-paciente-page.component.css']
 })
-export class IndexPacienteComponent {
+export class IndexPacientePageComponent {
   title = 'Pacientes';
 
   error: any;

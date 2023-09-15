@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CreatePacienteComponent } from './components/create-paciente/create-paciente.component';
+import { CreatePacientePageComponent } from './components/create-paciente-page/create-paciente-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PacienteRoutingModule } from './paciente-routing.module';
 import { SharedModule } from '../shared/shared.module';
-import { IndexPacienteComponent } from './components/index-paciente/index-paciente.component';
+import { IndexPacientePageComponent } from './components/index-paciente-page/index-paciente-page.component';
 import { NgbDatepicker, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
@@ -13,8 +13,8 @@ import { MatTableModule } from '@angular/material/table';
 @NgModule({
 
   declarations: [
-    CreatePacienteComponent,
-    IndexPacienteComponent
+    CreatePacientePageComponent,
+    IndexPacientePageComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,108 @@
+<!-- <spinner-content [isRunning]="isRequesting"></spinner-content>
+[hidden]="isRequesting" -->
+<div class="container">
+  <div class="card">
+    <form role="form">
+      <div class="card-header">
+        <h2>
+          <!-- {{sub_title}} -->
+          <small>
+            <!-- {{sub_title_description}} -->
+          </small>
+        </h2>
+      </div>
+
+      <div class="card-body card-padding">
+        <div class="row">
+          <div class="col-sm-6">
+            <label class="fg-label padding-left-40">Especialidad</label>
+            <div class="input-group form-group fg-float">
+              <!-- [hidden]="treatment.TreatmentsTypeId" -->
+
+              <span class="input-group-text"><i class="md fa fa-user"></i></span>
+              <div class="fg-line select">
+                <!-- [(ngModel)]="treatment.SpecialityTypeId" (change)="selectSpeciality($event.target.value)" -->
+                <select class="form-select" name="SpecialityTypeId">
+                  <!-- *ngFor="let opt of specialitiesTypes" [value]="opt.Id" -->
+                  <!-- {{opt.Name}} -->
+                  <option></option>
+                </select>
+              </div>
+
+            </div>
+          </div>
+          <!-- [hidden]="newTreatment" -->
+          <div class="col-sm-6">
+            <label class="fg-label padding-left-40">Tipo de tratamiento</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="md fa fa-user"></i></span>
+              <div class="fg-line select">
+                <!-- [(ngModel)]="treatment.TreatmentsTypeId" -->
+                <select class="form-select" name="TreatmentsTypeId" required>
+                  <!-- *ngFor="let opt of treatmentsTypes" [value]="opt.Id" -->
+                  <!-- {{opt.Name}} -->
+                  <option></option>
+                </select>
+              </div>
+              <!-- [hidden]="treatment.TreatmentsTypeId" -->
+
+              <span class="input-group-text"><a (click)="addTreatmentType()"><i
+                    class="md fa fa-user-plus"></i></a></span>
+            </div>
+          </div>
+          <!-- [hidden]="!newTreatment" -->
+          <div class="col-sm-6">
+            <label class="fg-label padding-left-40">Nuevo tipo de
+              tratamiento</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="md fa fa-user-plus"></i></span>
+              <div class="fg-line">
+                <!-- [(ngModel)]="treatment.TreatmentType" -->
+                <input type="text" class="form-control" name="TreatmentType">
+              </div>
+              <!-- [hidden]="treatment.TreatmentType" -->
+
+              <span class="input-group-text"><a (click)="showTreatmentType()"><i
+                    class="md fa fa-user-plus"></i></a></span>
+            </div>
+          </div>
+
+          <div class="col-sm-2">
+            <label class="fg-label padding-left-40">Precio</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="md md-attach-money"></i></span>
+              <div class="fg-line">
+                <!-- [(ngModel)]="treatment.Price" -->
+                <input type="text" class="form-control" required name="price" (keyup.enter)="save()">
+              </div>
+              <!-- [hidden]="treatment.Price" -->
+
+            </div>
+          </div>
+
+          <div class="col-sm-2">
+            <label class="fg-label padding-left-40">Descuento</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="md md-bookmark"></i></span>
+              <div class="fg-line">
+                <!-- [(ngModel)]="treatment.Discount" -->
+                <input type="text" class="form-control" name="Discount" (keyup.enter)="save()">
+              </div>
+              <!-- [hidden]="treatment.Discount" -->
+
+            </div>
+          </div>
+
+        </div>
+
+        <br /><br />
+        <button class="btn btn-primary btn-sm m-t-10" (click)="save()">Guardar</button>
+        <button type="submit" class="btn btn-default btn-sm m-t-10" (click)="cancel()">Cancelar</button>
+      </div>
+
+      <br />
+    </form>
+  </div>
+
+
+</div>
