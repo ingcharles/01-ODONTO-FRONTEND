@@ -47,6 +47,21 @@ const routes: Routes = [
     loadChildren: () =>
       import('../presentation/tratamiento/tratamiento.module').then((m) => m.TratamientoModule)
   },
+  {
+    path: 'odontogram',
+    loadChildren: () =>
+      import('../presentation/odontograma/odontograma.module').then((m) => m.OdontogramaModule)
+  },
+  {
+    path: 'appoitments',
+    loadChildren: () =>
+      import('../presentation/agendar-cita/agendar-cita.module').then((m) => m.AgendarCitaModule)
+  },
+  {
+    path: 'diagnosis',
+    loadChildren: () =>
+      import('../presentation/diagnostico-plan/diagnostico-plan.module').then((m) => m.DiagnosticoPlanModule)
+  },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
     path: '**',
