@@ -10,7 +10,7 @@ const routes: Routes = [
   },
   {
     /* Ruta para la */
-    path: 'create-patiens/:id', component: CreatePacientePageComponent
+    path: ':id', component: CreatePacientePageComponent
   },
 
 
@@ -25,4 +25,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class PacienteRoutingModule { }
+export class PacienteRouting { }
