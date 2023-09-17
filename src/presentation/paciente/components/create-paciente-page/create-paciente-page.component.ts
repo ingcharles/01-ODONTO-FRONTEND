@@ -1,4 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Paciente } from '../../models/paciente';
+import { Persona } from 'src/presentation/home/models/persona';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   //  standalone: true,
@@ -14,8 +17,8 @@ export class CreatePacientePageComponent {
 
   title = 'Datos personales';
 
-  // @Input() patient: Patient;
-  // @Input() person: Person;
+  @Input() patient!: Paciente;
+  @Input() person!: Persona;
   @Output() close = new EventEmitter();
   navigated = false; // true if navigated here
   sub: any;
@@ -34,23 +37,25 @@ export class CreatePacientePageComponent {
   }
 
 
-  // constructor(private router: Router, private route: ActivatedRoute, private appGlobals: AppGlobals,
+  constructor(private router: Router, private route: ActivatedRoute,
+    //  private appGlobals: AppGlobals,
   //   private patientService: PatientService, private profileService: ProfileService, private fileService: FileService,
-  //   private notification: NotificationMessage) {
-  // }
+  //   private notification: NotificationMessage
+  ) {
+   }
 
-  // ngOnInit() {
+   ngOnInit() {
 
   //   var user = JSON.parse(localStorage.getItem('user')).Data;
-  //   this.isSuperAdmin = user.Id == 3;
+  //  this.isSuperAdmin = user.Id == 3;
+     this.patient = new Paciente();
+     this.person = new Persona();
+    this.sub = this.route.params.subscribe(params => {
+       this.navigated = true;
+       if (params['id'] != -1) {
+        let id = +params['id'];
+        this.navigated = true;
 
-  //   this.sub = this.route.params.subscribe(params => {
-  //     this.navigated = true;
-  //     if (params['id'] != -1) {
-  //       let id = +params['id'];
-  //       this.navigated = true;
-  //       this.patient = new Patient();
-  //       this.person = new Person();
   //       this.patientService.getPatient(id)
   //         .then(patient => {
   //           this.response = patient;
@@ -63,17 +68,16 @@ export class CreatePacientePageComponent {
   //           this.patient.stomatognathicSystem = this.patient.Patients_Catalog_By_Type.STOMATOGNATHICSYSTEM;
   //           this.getFilesById();
   //         });
-  //     } else {
-  //       this.newPatient = true;
-  //       this.patient = new Patient();
-  //       this.person = new Person();
-  //       this.patient.personalAndFamilyHistory = JSON.parse(localStorage.getItem('catalog')).Data.PERSONALANDFAMILYHISTORY;
-  //       this.patient.vitalSigns = JSON.parse(localStorage.getItem('catalog')).Data.VITALSIGNS;
-  //       this.patient.stomatognathicSystem = JSON.parse(localStorage.getItem('catalog')).Data.STOMATOGNATHICSYSTEM;
-  //       this.patient.PatientFromPartner = false;
-  //     }
-  //   });
-  // }
+      } else {
+        this.newPatient = true;
+
+        // this.patient.personalAndFamilyHistory = JSON.parse(localStorage.getItem('catalog')).Data.PERSONALANDFAMILYHISTORY;
+        // this.patient.vitalSigns = JSON.parse(localStorage.getItem('catalog')).Data.VITALSIGNS;
+        // this.patient.stomatognathicSystem = JSON.parse(localStorage.getItem('catalog')).Data.STOMATOGNATHICSYSTEM;
+        this.patient.PatientFromPartner = false;
+      }
+    });
+   }
 
   // ngOnDestroy() {
   //   this.sub.unsubscribe();

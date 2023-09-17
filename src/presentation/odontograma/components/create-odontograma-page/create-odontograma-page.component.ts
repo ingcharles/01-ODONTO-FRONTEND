@@ -4,8 +4,9 @@ import { Paciente } from 'src/presentation/paciente/models/paciente';
 import { Odontograma } from '../../models/odontograma';
 import { DiagnosticoPlan } from 'src/presentation/diagnostico-plan/models/diagnostico-plan';
 import { Response } from 'src/presentation/base/Response';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
-  selector: 'odontograma-create-odontograma-page',
+  selector: 'create-odontograma-page',
   templateUrl: './create-odontograma-page.component.html',
   styleUrls: ['./create-odontograma-page.component.css']
 })
@@ -43,7 +44,8 @@ export class CreateOdontogramaPageComponent {
   responsePatient: any;
 
   constructor(
-    // private router: Router, private route: ActivatedRoute, private odontogramService: OdontogramService,
+    private router: Router, private route: ActivatedRoute,
+    //private odontogramService: OdontogramService,
     // private appGlobals: AppGlobals, private patientService: PatientService, private diagnosisPlanService: DiagnosisPlanService,
     // private treatmentService: TreatmentService
     ) {
@@ -53,9 +55,9 @@ export class CreateOdontogramaPageComponent {
     this.odontogram = new Odontograma();
     this.initTooth();
 
-    // this.sub = this.route.params.subscribe(params => {
-    //   if (params['id'] != -1) {
-    //     this.id = +params['id'];
+     this.sub = this.route.params.subscribe(params => {
+       if (params['id'] != -1) {
+         this.id = +params['id'];
            this.getOdontogramByPatientId(this.id);
     //     this.odontogram.PatientId = this.id;
 
@@ -68,7 +70,7 @@ export class CreateOdontogramaPageComponent {
     //         this.personSelect = this.patientSelect.Person;
     //         this.appGlobals.setPatient(this.patientSelect);
     //         this.age = this.personSelect.Age;
-    //       });
+          // });
     this.catalogs = [
       { Description: "bgm-red|Descipción diagnóstico 1|triangle|right|1-2", Name:"Diagnóstico 1"},
       { Description: "bgm-orange|Descipción diagnóstico 2|equis|left|1-2", Name: "Diagnóstico 2" },
@@ -86,11 +88,11 @@ export class CreateOdontogramaPageComponent {
     //         this.treatments = treatments.Data;
     //       });
 
-    //   }
-    //   if (params['age'] != -1) {
-    //     this.age = +params['age'];
-    //   }
-    // });
+      }
+      if (params['age'] != -1) {
+        this.age = +params['age'];
+      }
+    });
 
   }
 

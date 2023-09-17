@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IndexTratramientoPageComponent } from './components/index-tratramiento-page/index-tratramiento-page.component';
 import { CreateTratramientoPageComponent } from './components/create-tratramiento-page/create-tratramiento-page.component';
-import { TratamientoRoutingModule } from './tratamiento-routing.module';
+import { TratamientoRouting } from './tratamiento.routing';
 
 
 
@@ -13,7 +13,7 @@ import { TratamientoRoutingModule } from './tratamiento-routing.module';
   ],
   imports: [
     CommonModule,
-    TratamientoRoutingModule
+    TratamientoRouting
   ]
 })
 export class TratamientoModule { }

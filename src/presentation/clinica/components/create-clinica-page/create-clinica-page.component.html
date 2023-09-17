@@ -1,0 +1,216 @@
+<!-- <spinner-content [isRunning]="isRequesting"></spinner-content> -->
+<!-- class="container" [hidden]="isRequesting" -->
+<div >
+  <div class="card">
+    <div class="card-header">
+      <h2>
+        Configuración de la clínica
+        <small>Complete toda la información para un mejor uso de la plataforma</small>
+      </h2>
+    </div>
+    <div class="row p-t-25 m-t-25">
+      <div class="alert alert-danger alert-dismissible col-sm-10 col-sm-offset-1" role="alert" [hidden]="!error">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        {{response.Message}}
+      </div>
+    </div>
+
+    <div class="card-body">
+      <ul class="tab-nav tn-justified tn-icon" role="tablist" tabindex="1" style="overflow: hidden; outline: none;">
+        <li role="presentation" class="active">
+          <a class="col-xs-6" href="#tab-2" aria-controls="tab-2" role="tab" data-toggle="tab" aria-expanded="false">
+            <i class="md md-room icon-tab"></i>
+            <span class="hidden-xs">Mi clínica</span>
+          </a>
+        </li>
+        <li role="presentation">
+          <a class="col-xs-6" href="#tab-3" aria-controls="tab-2" role="tab" data-toggle="tab" aria-expanded="true">
+            <i class="md md-attach-money icon-tab"></i>
+            <span class="hidden-xs">Membresía</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="tab-content p-20">
+        <div role="tabpanel" class="tab-pane animated fadeIn active" id="tab-2">
+          <div class="alert alert-success" role="alert" [hidden]="clinic.Active">
+            Solicite la afiliación de su clínica para muchas m&aacute;s funcionalidades &nbsp;&nbsp;&nbsp;
+            <button class="btn btn-primary" (click)="activeClinic()"> Afiliar mi clínica</button>
+          </div>
+          <!-- #fclinic="ngForm" -->
+          <form  novalidate (ngSubmit)="editCLinic(true)" [hidden]="!clinic.Active">
+            <div class="row">
+              <div class="col-sm-12">
+                <!-- {{ (clinic_name.valid || (clinic_name.pristine && !fclinic.submitted)) ? '' : 'has-error has-feedback' }}" -->
+                <div class="input-group form-group" >
+                  <span class="input-group-addon">
+                    <i class="md md-person"></i>
+                  </span>
+
+                  <div class="fg-line">
+                    <!-- [(ngModel)]="clinic.Name" #clinic_name="ngModel" -->
+                    <input type="text" class="form-control"  name="clinic_name"  required placeholder="Nombre de la Clínica">
+                  </div>
+                  <!-- <span class="md md-close form-control-feedback {{ (clinic_name.valid || (clinic_name.pristine && !fclinic.submitted)) ? 'hidden' : '' }}"></span> -->
+                </div>
+              </div>
+
+              <div class="col-sm-4">
+                <!-- {{ (clinic_mobile.valid || (clinic_mobile.pristine && !fclinic.submitted)) ? '' : 'has-error has-feedback' }}" -->
+                <div class="input-group form-group" >
+                  <span class="input-group-addon">
+                    <i class="md md-stay-primary-portrait"></i>
+                  </span>
+                  <div class="fg-line">
+                    <!-- [(ngModel)]="clinic.Mobile" #clinic_mobile="ngModel" -->
+                    <input type="text" class="form-control"  name="clinic_mobile" required placeholder="Número de Celular">
+                  </div>
+                  <!-- <span class="md md-close form-control-feedback {{ (clinic_mobile.valid || (clinic_mobile.pristine && !fclinic.submitted)) ? 'hidden' : '' }}"></span> -->
+                </div>
+              </div>
+
+              <div class="col-sm-4">
+                <!-- {{ (clinic_phone.valid || (clinic_phone.pristine && !fclinic.submitted)) ? '' : 'has-error has-feedback' }}" -->
+                <div class="input-group form-group" >
+                  <span class="input-group-addon">
+                    <i class="md md-local-phone"></i>
+                  </span>
+                  <div class="fg-line">
+                    <!-- [(ngModel)]="clinic.Phone" name="clinic_phone" #clinic_phone="ngModel" -->
+                    <input type="text" class="form-control"  required placeholder="Teléfono fijo">
+                  </div>
+                  <!-- <span class="md md-close form-control-feedback {{ (clinic_phone.valid || (clinic_phone.pristine && !fclinic.submitted)) ? 'hidden' : '' }}"></span> -->
+                </div>
+              </div>
+
+              <div class="col-sm-4">
+                <!-- {{ (clinic_email.valid || (clinic_email.pristine && !fclinic.submitted)) ? '' : 'has-error has-feedback' }}" -->
+                <div class="input-group form-group" >
+                  <span class="input-group-addon">
+                    <i class="md md-email"></i>
+                  </span>
+                  <div class="fg-line">
+                    <!-- [(ngModel)]="clinic.Email" name="clinic_email" #clinic_email="ngModel" -->
+                    <input type="email" class="form-control"  required placeholder="Correo electrónico">
+                  </div>
+                  <!-- <span class="md md-close form-control-feedback {{ (clinic_email.valid || (clinic_email.pristine && !fclinic.submitted)) ? 'hidden' : '' }}"></span> -->
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-8">
+                <div class="input-group  form-group">
+                  <span class="input-group-addon">
+                    <i class="md md-location-on"></i>
+                  </span>
+
+                  <div class="fg-line">
+                    <!-- [(ngModel)]="clinic.Adress" -->
+                    <input type="text" class="form-control"  name="clinic_address" placeholder="Direcciòn de la clínica">
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-4">
+                <!-- {{ (specialtyClinic.valid || (specialtyClinic.pristine && !fclinic.submitted)) ? '' : 'has-error has-feedback' }} -->
+                <div class="input-group form-group ">
+                  <span class="input-group-addon">
+                    <i class="md md-school"></i>
+                  </span>
+                  <div class="fg-line select">
+                    <!-- [(ngModel)]="clinic.SpecialtyId" #specialtyClinic="ngModel"-->
+                    <select class="form-control" name="specialtyClinic"  required>
+                      <option value="-1">Seleccione el tipo de clínica</option>
+                      <option *ngFor="let opt of catalogsSpecialty" [value]="opt.Id">{{opt.Name}}</option>
+                    </select>
+                  </div>
+                  <!-- <span class="md md-close form-control-feedback {{ (specialtyClinic.valid || (specialtyClinic.pristine && !fclinic.submitted)) ? 'hidden' : '' }}"></span> -->
+                </div>
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="input-group  form-group">
+                  <span class="input-group-addon">
+                    <i class="md md-location-on"></i>
+                  </span>
+
+                  <div class="fg-line">
+                    <!-- [(ngModel)]="clinic.Description" -->
+                    <!-- (keyup.enter)="editClinic()" -->
+                    <input type="text" class="form-control" name="clinic_description" placeholder="Descripción">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <br />
+            <br />
+            <button type="submit" class="btn btn-primary btn-sm m-t-10">Guardar</button>
+            <!-- (click)="cancel()" -->
+            <button type="submit" class="btn btn-default btn-sm m-t-10" >Cancelar</button>
+          </form>
+        </div>
+
+        <div role="tabpanel" class="tab-pane animated fadeIn" id="tab-3">
+
+          <p class="c-black f-500 m-b-5">Planes de subscripción</p>
+          <small>Cambia el plan de subscripción cuando desee para obtener más beneficios de la plataforma.</small>
+
+          <div class="alert alert-success" role="alert" [hidden]="clinic.Active">
+            Usted canceló su menbresía, puede volver a activar su clínica escogiendo un nuevo plan.
+            <button class="btn btn-primary" (click)="activeClinic()"> Activar mi clínica</button>
+          </div>
+
+          <br />
+          <br />
+          <div [hidden]="!clinic.Active">
+            <div class="listview lv-bordered lv-lg">
+              <div class="lv-body">
+                <div class="lv-item media" [ngClass]="opt.Class" *ngFor="let opt of paymentsTypes">
+                  <div class="checkbox pull-left" *ngIf="opt.Show">
+                    <label>
+                      <!-- [(ngModel)]="opt.Value" -->
+                      <input type="checkbox"  [checked]="opt.Value === 'True'" (click)="selectPlan(opt)">
+                      <i class="input-helper"></i>
+                    </label>
+                  </div>
+                  <div class="media-body" *ngIf="opt.Show">
+                    <div class="row">
+                      <div class="col-sm-10">
+                        <div class="lv-title">{{getValue(opt.Description, 0)}}
+                          <h4 class="c-teal pull-right" *ngIf="getValue(opt.Description, 3) != ''">{{getValue(opt.Description, 3)}} % <small class="c-teal"> por cada paciente remitido por OdontoFy </small> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ </h4>
+                        </div>
+                        <ul class="lv-attrs">
+                          <li *ngFor="let item of getFeatures(opt.Description)">{{item}}</li>
+                        </ul>
+                      </div>
+                      <div class="col-sm-2">
+                        <h4 class="c-teal">$ {{getValue(opt.Description, 1)}} <small class="c-teal">al mes</small></h4>
+                        <h5 class="c-gray pull-right"><small>ó</small> $ {{getValue(opt.Description, 2)}} <small class="c-gray">al a&ntilde;o</small></h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br />
+            <br />
+            <p class="c-black f-500 m-b-5">Cancelar membresía</p>
+            <small>Al cancelar la membresía se suspenden los beneficios de la plataforma OdontoFy para su clínica. Usted puede solicitar al equipo de soporte la descarga de su información.</small>
+            <div class="row  p-20">
+              <div class="col-sm-12">
+                <button type="submit" class="btn btn-danger btn-sm m-t-10" (click)="cancelMembership()">Cancelar membresía</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

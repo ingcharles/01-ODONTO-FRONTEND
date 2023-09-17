@@ -62,6 +62,42 @@ const routes: Routes = [
     loadChildren: () =>
       import('../presentation/diagnostico-plan/diagnostico-plan.module').then((m) => m.DiagnosticoPlanModule)
   },
+  {
+    path: 'dashboard',
+    loadChildren: () =>
+      import('../presentation/dashboard/dashboard.module').then((m) => m.DashboardModule)
+  },
+  {
+    path: 'calendar',
+    loadChildren: () =>
+      import('../presentation/calendario/calendario.module').then((m) => m.CalendarioModule),
+  },
+  {
+    path: 'employees',
+    loadChildren: () =>
+      import('../presentation/empleado/empleado.module').then((m) => m.EmpleadoModule),
+  },
+  {
+    path: 'notifications',
+    loadChildren: () =>
+      import('../presentation/notificacion/notificacion.module').then((m) => m.NotificacionModule),
+  },
+    {
+      path: 'clinics',
+    loadChildren: () =>
+      import('../presentation/clinica/clinica.module').then((m) => m.ClinicaModule),
+  },
+  {
+    path: 'accounting-all',
+    loadChildren: () =>
+      import('../presentation/estado-cuenta/estado-cuenta.module').then((m) => m.EstadoCuentaModule),
+  },
+  {
+    path: 'accounting',
+    loadChildren: () =>
+      import('../presentation/estado-cuenta/estado-cuenta.module').then((m) => m.EstadoCuentaModule),
+  },
+
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
     path: '**',

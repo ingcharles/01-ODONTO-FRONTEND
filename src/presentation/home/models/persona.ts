@@ -12,6 +12,7 @@ export class Persona {
   DNI!: string;
   Active!: boolean;
   Age!: number;
+  Months!: number;
   SpecialtyId!: number;
   strDateOfBirth!: string;
   Role!: string;
