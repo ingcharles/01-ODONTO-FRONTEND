@@ -3,12 +3,12 @@ import { AplicacionComponent } from './components/aplicacion/aplicacion.componen
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MenuAplicacionComponent } from './components/menu-aplicacion/menu-aplicacion.component';
-import { AuthGuard } from '../app/shared/guards/auth.guard';
+import { AuthGuardService } from '../shared/services/auth-guard.service';
 
 
 const routes: Routes = [
   {
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuardService],
     path: '', component: AplicacionComponent
   },
   {
@@ -17,11 +17,6 @@ const routes: Routes = [
   {
     path: 'menu-aplicacion', component: MenuAplicacionComponent
   },
-  // {
-  //   /* Ruta para la */
-  //   path: 'forgot-password', component: HomeComponent
-  // },
-
 
   {
     path: '**',

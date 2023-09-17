@@ -39,7 +39,7 @@ export class Permissions {
     providedIn: 'root'
   }
 )
-export class AuthGuard {
+export class AuthGuardService {
   constructor(private permissions: Permissions, private currentUser: UserToken) { }
 
   canActivate(
