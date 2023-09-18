@@ -1,0 +1,21 @@
+/* .bold-caption {
+  font-weight: bold;
+}
+
+.bold-caption {
+  font-weight: bold;
+}
+
+.custom-cell {
+  color: red;
+  font-weight: bold;
+
+}
+
+::ng-deep .dx-datagrid .dx-header-row strong {
+  font-weight: bold;
+}
+
+::ng-deep td[role=columnheader] {
+  text-align: center !important
+} */

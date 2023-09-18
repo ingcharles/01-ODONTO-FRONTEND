@@ -1,5 +1,5 @@
 <dx-data-grid (onEditorPreparing)="_validator.onEditorPreparing($event)" (onToolbarPreparing)="_validator.onToolbarPreparing($event)" [dataSource]="datasource" [keyExpr]="keyExpr" [showBorders]="true" [columns]="columns"
-  (onSelectionChanged)="onSelectionChangedLibrary($event)" [(selectedRowKeys)]="selectedRowKeys">
+  (onSelectionChanged)="onSelectionChangedLibrary($event)"  (onExporting)="onExporting('s')" [(selectedRowKeys)]="selectedRowKeys">
 
   <dxi-column *ngFor="let item of headers" [alignment]="item.aligment" [dataField]="item.name" [format]="item.format" [caption]="item.caption" [width]="item.width" [visible]="item.visible">
 
@@ -18,13 +18,13 @@
   </dxi-column>
   <dxi-column caption="Anular" cellTemplate="cellTemplateDelete" cssClass="bold-caption" wrapItemText="true" width="5%" [allowFiltering]="false" [allowSorting]="false" [allowExporting]="false">
   </dxi-column>
-  <!-- </ng-container> -->
-  <dxo-paging [pageSize]="10" [pageIndex]="0" style="background: red;">
+<!-- [pageIndex]="0" style="background: red;"-->
+  <dxo-paging  [pageSize]="10"  >
   </dxo-paging>
 
-  <dxo-pager [showPageSizeSelector]="true" [showInfo]="true" [showNavigationButtons]="true" [showInfo]="true" infoText="Página {0} del Total: {1} ({2} registros)"></dxo-pager>
-  <dxo-selection [mode]="mode" selectAllMode="allPages" showCheckBoxesMode="always">
-  </dxo-selection>
+  <dxo-pager [visible]="true" [displayMode]="'adaptive'" [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 'all']" [showInfo]="true" [showNavigationButtons]="true" infoText="Página {0} de {1} ({2} registros)"></dxo-pager>
+  <!-- <dxo-selection [mode]="mode" selectAllMode="allPages" showCheckBoxesMode="always">
+  </dxo-selection> -->
   <dxo-filter-row [visible]="filterActive">
   </dxo-filter-row>
 
@@ -57,9 +57,5 @@
 
 
 
-  <!-- <div *dxTemplate="let row of 'cellTemplateIndex'">
-    <div>{{row.rowIndex+1}}</div>
-  </div> -->
 </dx-data-grid>
 
-<img src="../../../../assets/loaderVale.svg" *ngIf="!hasLoader" class="mt-3 logo-img" height="35" width="35" />

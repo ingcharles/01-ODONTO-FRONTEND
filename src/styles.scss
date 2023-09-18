@@ -22875,3 +22875,103 @@ a i.md {
 .nav-tabs .nav-link:hover {
   border-color: white;
 }
+
+
+
+
+
+
+
+// estilo para data grid
+.dx-datagrid-headers {
+  color: #ffffff !important;
+  background: $color-primario;
+  font-weight: 400;
+  -ms-touch-action: pinch-zoom;
+  touch-action: pinch-zoom;
+  border-bottom: 1px solid #4d4d4d;
+}
+
+.dx-datagrid-rowsview .dx-select-checkboxes-hidden>tbody>tr>td>.dx-select-checkbox {
+  display: inline-block;
+}
+
+.dx-treeview-item {
+  border-bottom: solid 1px;
+  border-color: rgb(207, 205, 205);
+}
+
+.dx-popup-content {
+  padding: 15px;
+}
+
+.dx-datagrid-filter-row {
+  background: white;
+}
+
+// .dx-button-mode-contained.dx-button-default {
+//   background-color: $color-primario !important;
+// }
+
+// .dx-button-mode-contained.dx-button-default.dx-state-hover {
+//   background-color: $color-primario-hover !important;
+// }
+
+// .dx-button-mode-contained.dx-button-default.dx-state-active {
+//   background-color: $color-primario-dark !important;
+// }
+
+.dx-widget.dx-button.dx-button-mode-contained.dx-button-normal.dx-button-has-text.dx-button-has-icon.dx-datagrid-export-button.dx-button-mode-contained.dx-state-hover {
+  background: $color-primario-hover;
+}
+
+.dx-widget.dx-button.dx-button-mode-contained.dx-button-normal.dx-button-has-text.dx-button-has-icon.dx-datagrid-export-button.dx-button-mode-contained.dx-state-active {
+  background: $color-primario-dark;
+}
+
+.dx-widget.dx-button.dx-button-mode-contained.dx-button-normal.dx-button-has-text.dx-button-has-icon.dx-datagrid-export-button {
+  background: $color-primario;
+}
+
+.dx-widget.dx-button.dx-button-mode-contained.dx-button-normal.dx-button-has-text.dx-button-has-icon.dx-datagrid-export-button.dx-button-mode-contained .dx-icon {
+  color: white;
+}
+
+.dx-popup-title.dx-toolbar .dx-toolbar-label {
+  font-weight: 500;
+}
+
+span.text-danger {
+  color: #820000 !important;
+  font-size: 12px;
+}
+
+.dx-popup-title {
+  background: $color-primario !important;
+  color: white !important;
+  text-align: end !important;
+}
+
+.dx-button-mode-text .dx-icon {
+  color: white !important;
+}
+
+.dx-popup-title.dx-toolbar .dx-toolbar-before {
+  text-align: center !important;
+  width: 100% !important;
+}
+
+.dx-loadpanel-wrapper {
+  top: 250px !important;
+}
+
+.dx-widget.dx-button.dx-button-mode-contained.dx-button-normal.dx-button-has-text.dx-button-has-icon {
+  background-color: $color-primario !important;
+  border-color: #ddd;
+  color: white !important;
+}
+
+// .dx-widget.dx-button.dx-button-mode-contained.dx-button-normal.dx-button-has-text.dx-button-has-icon .dx-button-content .dx-icon.dx-icon-xlsxfile {
+//   color: white !important;
+// }
+//

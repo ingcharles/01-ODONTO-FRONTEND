@@ -22,8 +22,10 @@
       <i class="md md-settings-ethernet" style="font-size: 100px;"></i>
       <div>No hay elementos para mostrar</div>
     </div>
+<index-data-grid-empleado [datasource]="allEmployees" keyExpr="codigoCrca" (editButton)="edit($event)" mode="single" [headers]="headers" [filterActive]="true"></index-data-grid-empleado>
+    <div class="table-responsive" [hidden]="(response.Total > 0)">
+      <!-- (uploadButton)="showUploadForm($event)" (deleteButton)="deleteCrca($event)" (viewIndexCrcaButton)="generateIndexVoucherCrca($event)" -->
 
-    <div class="table-responsive" [hidden]="!(response.Total > 0)">
       <!-- [mfData]="response.Data" #mf="mfDataTable" [mfRowsOnPage]="10" -->
       <table class="table table-striped" >
         <thead>

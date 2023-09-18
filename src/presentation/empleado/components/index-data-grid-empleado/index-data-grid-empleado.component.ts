@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ValidationService } from 'src/presentation/base/services/validation.service';
-import { DataGrid } from 'src/presentation/base/models/data-grid';
+import { DataGrid, IDataGrid } from 'src/presentation/base/models/data-grid';
 
 @Component({
-  selector: 'app-index-data-grid-empleado',
+  selector: 'index-data-grid-empleado',
   templateUrl: './index-data-grid-empleado.component.html',
   styleUrls: ['./index-data-grid-empleado.component.css']
 })
@@ -23,7 +23,7 @@ export class IndexDataGridEmpleadoComponent {
 
   //**  variable de salida cuando escucha el evento de selection change del DataGrid*/
   @Output()
-  onSelectionChanged = new EventEmitter<any>();
+  public onSelectionChanged = new EventEmitter<any>();
 
   //**  variable de entrada de los datos que se van a mostrar en el grid*/
   @Input()
@@ -46,7 +46,7 @@ export class IndexDataGridEmpleadoComponent {
 
   /** Variable  de entrada de tipo array<HeadersDataGrid> que permite obtener los campos que se van a mostrar y diferentes attributos*/
   @Input()
-  public headers: DataGrid[] = []
+  public headers: IDataGrid[] = []
 
   // /** Variable  de entrada para mostrar las columnas automaticamente sin necesidad de utilizar los headers
   //  * Nota: Solo utilizar cuando no va a utilizar la variable headers
@@ -210,7 +210,9 @@ export class IndexDataGridEmpleadoComponent {
   }
 
 
+  onExporting(event:string){
 
+  }
 
 
 }

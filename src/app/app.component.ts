@@ -4,8 +4,10 @@ import { StorageUseCase } from 'src/domain/login/useCases/storage-usecase';
 import { Globals } from 'src/presentation/base/services/globals';
 import '@angular/localize/init';
 import { IAplicacionRsViewModel } from 'src/domain/login/viewModels/i-aplicaciones.viewModel';
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { AppService } from './app.service';
+import { loadMessages, locale } from 'devextreme/localization';
+import * as deMessages from "devextreme/localization/messages/es.json";
 // import $ from 'jquery';
 // import * as aaa from '../js/plataforma'
 @Component({
@@ -23,9 +25,10 @@ export class AppComponent {
 
   constructor(private _storageUseCase: StorageUseCase, private _globals: Globals,
     private _loaderService: LoaderService,
-    private _appService: AppService) {
+    private _appService: AppService, private ref: ChangeDetectorRef) {
 
-
+    loadMessages(deMessages);
+    locale(navigator.language);
   }
 
   showLoader: boolean = false;
@@ -65,5 +68,11 @@ export class AppComponent {
       this.showLoader = val;
     });
   }
+
+
+  ngAfterContentChecked(): void {
+    this.ref.detectChanges();
+  }
+
 
 }

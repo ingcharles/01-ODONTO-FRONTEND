@@ -25,6 +25,23 @@ export class ValidationService {
   //onlyOnlyDateRegExp: RegExp = new RegExp("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$");// /(?:3[01]|[12][0-9]|0?[1-9])([\-/.])(0?[1-9]|1[1-2])\1\d{4}/;
   constructor() { }
 
+
+  /**
+   ** Method que valida si el campo es valido
+   * @param field string -> nombre del campo colocado el fieldControlName
+   * @returns true o false
+   */
+
+  public isValidFieldTouched(form: FormGroup, field: string): boolean | null {
+    return (
+      // field.invalid &&
+      // field.touched
+      //form.controls[field].invalid &&
+      form.controls[field].errors &&
+      form.controls[field].touched
+    );
+  }
+
   /**
  ** Method que valida si el campo es valido
  * @param field string -> nombre del campo colocado el fieldControlName
@@ -100,6 +117,19 @@ export class ValidationService {
   public isValidFielPattern(form: FormGroup, field: string): boolean | null {
     return (
       form.controls[field].errors?.['pattern'] &&
+      form.controls[field].touched
+    );
+  }
+
+
+  /**
+** Method que valida si el campo cumple con el patrón establecido
+* @param field string -> nombre del campo colocado el fieldControlName
+* @returns true o false
+*/
+  public isValidFielPasswordStrength(form: FormGroup, field: string): boolean | null {
+    return (
+      form.controls[field].errors?.['passwordStrength'] &&
       form.controls[field].touched
     );
   }

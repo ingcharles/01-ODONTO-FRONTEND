@@ -5,6 +5,7 @@ import { CreateEmpleadoPageComponent } from './components/create-empleado-page/c
 import { EmpleadoRouting } from './empleado.routing';
 import { IndexDataGridEmpleadoComponent } from './components/index-data-grid-empleado/index-data-grid-empleado.component';
 import { SharedModule } from '../shared/shared.module';
+import { ValidationService } from '../base/services/validation.service';
 
 
 
@@ -18,6 +19,10 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     EmpleadoRouting,
     SharedModule
+  ],
+  providers: [
+    { provide: ValidationService },
+
   ]
 })
 export class EmpleadoModule { }
