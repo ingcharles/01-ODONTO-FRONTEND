@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FileUploaderComponent } from './components/file-uploader/file-uploader.component';
-import { DxDataGridModule } from 'devextreme-angular';
+import { DxButtonModule, DxDataGridModule } from 'devextreme-angular';
 
 
 
@@ -12,10 +12,12 @@ import { DxDataGridModule } from 'devextreme-angular';
   ],
   imports: [
     CommonModule,
-    DxDataGridModule
+
   ],
   exports: [
-    FileUploaderComponent
+    FileUploaderComponent,
+    DxDataGridModule,
+    DxButtonModule
   ]
 
 })

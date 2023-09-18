@@ -37,7 +37,11 @@
 
             ],
             "allowedCommonJsDependencies": [
-              "sweetalert2"
+              "sweetalert2",
+              "devexpress-diagram",
+              "devexpress-gantt",
+              "devextreme-quill",
+              "jszip"
             ]
           },
 
