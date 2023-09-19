@@ -46,7 +46,7 @@ export class DashboardPageComponent {
   ngOnInit() {
     this.todo = new Dashboard();
     this.referred = new Referido();
-    this.referred.Description = "Te invito a ser parte de la plataforma OdondoSystem";
+    this.referred.description = "Te invito a ser parte de la plataforma OdondoSystem";
     this.sub = this.route.params.subscribe(params => {
       // if (params.type == "owner") {
       //   this.selectClinicOwner(params.id, params.name);

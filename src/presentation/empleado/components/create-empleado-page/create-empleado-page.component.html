@@ -18,25 +18,25 @@
         <div class="row">
           <div class="col-sm-6">
             <div class="input-group form-group">
-              <span class="input-group-addon"><i class="md md-person"></i></span>
+              <span class="input-group-text"><i class="md fa fa-user"></i></span>
               <div class="fg-line select">
                 <!-- [(ngModel)]="employee.EmployeeId" -->
                 <select class="form-control tag-select"  data-live-search="true" name="EmployeeId" [disabled]="newPerson">
                   <option value="-1">Seleccione el empleado o adicionelo si no está registrado</option>
-                  <option *ngFor="let opt of allEmployees" [value]="opt.EmployeeId">{{opt.person.Name}} {{opt.person.LastNames}}</option>
+                  <option *ngFor="let employee of allEmployees" [value]="employee.employeeId">{{employee.person.name}} {{employee.person.lastNames}}</option>
                 </select>
               </div>
-              <span class="input-group-addon"><a (click)="addPerson()"><i class="md md-person-add"></i></a></span>
+              <span class="input-group-text"><a (click)="addPerson()"><i class="md fa fa-user-add"></i></a></span>
             </div>
           </div>
           <div class="col-sm-6">
             <div class="input-group form-group">
-              <span class="input-group-addon"><i class="md md-school"></i></span>
+              <span class="input-group-text"><i class="md md-school"></i></span>
               <div class="fg-line select">
                 <!-- [(ngModel)]="employee.JobId" -->
                 <select class="form-control"  name="JobId" (keyup.enter)="save()">
                   <option value="-1">Seleccione la especialidad</option>
-                  <option *ngFor="let opt of jobs" [value]="opt.Id">{{opt.Name}}</option>
+                  <option *ngFor="let job of jobs" [value]="job.id">{{job.name}}</option>
                 </select>
               </div>
             </div>
@@ -46,18 +46,18 @@
         <div class="row" [hidden]="!newPerson">
           <div class="col-sm-6">
             <div class="input-group form-group fg-float">
-              <span class="input-group-addon"><i class="md md-person"></i></span>
+              <span class="input-group-text"><i class="md fa fa-user"></i></span>
               <div class="fg-line">
                 <!-- [(ngModel)]="user.Name" -->
-                <input type="text" class="form-control"  name="Name" (keyup.enter)="save()">
+                <input type="text" class="form-control" name="Name" (keyup.enter)="save()">
               </div>
-              <label class="fg-label padding-left-40" [hidden]="user.Name">Nombre</label>
+              <label class="fg-label padding-left-40" [hidden]="user.name">Nombre</label>
             </div>
           </div>
 
           <div class="col-sm-6">
             <div class="input-group form-group fg-float">
-              <span class="input-group-addon"><i class="md md-account-child"></i></span>
+              <span class="input-group-text"><i class="md md-account-child"></i></span>
               <div class="fg-line">
                 <!-- [(ngModel)]="user.LastNames" -->
                 <input type="text" class="form-control" name="LastName" (keyup.enter)="save()">
@@ -71,23 +71,23 @@
         <div class="row" [hidden]="!newPerson">
           <div class="col-sm-6">
             <div class="input-group form-group fg-float">
-              <span class="input-group-addon"><i class="md md-email"></i></span>
+              <span class="input-group-text"><i class="md md-email"></i></span>
               <div class="fg-line">
                 <!-- [(ngModel)]="user.Email" -->
                 <input type="text" class="form-control"  name="Email" (keyup.enter)="save()">
               </div>
-              <label class="fg-label padding-left-40" [hidden]="user.Email">Correo electrónico</label>
+              <label class="fg-label padding-left-40" [hidden]="user.email">Correo electrónico</label>
             </div>
           </div>
 
           <div class="col-sm-6">
             <div class="input-group form-group fg-float">
-              <span class="input-group-addon"><i class="md md-accessibility"></i></span>
+              <span class="input-group-text"><i class="md md-accessibility"></i></span>
               <div class="fg-line">
-                [(ngModel)]="user.Password"
+                <!-- [(ngModel)]="user.Password" -->
                 <input type="password" class="form-control"  name="Password" (keyup.enter)="save()">
               </div>
-              <label class="fg-label padding-left-40" [hidden]="user.Password">Contraseña</label>
+              <label class="fg-label padding-left-40" [hidden]="user.password">Contraseña</label>
             </div>
           </div>
         </div>
@@ -95,23 +95,23 @@
         <div class="row">
           <div class="col-sm-6">
             <div class="input-group form-group fg-float">
-              <span class="input-group-addon"><i class="md md-attach-money"></i></span>
+              <span class="input-group-text"><i class="md md-attach-money"></i></span>
               <div class="fg-line">
                 <!-- [(ngModel)]="employee.Salary" -->
                 <input type="text" class="form-control" name="Salary" (keyup.enter)="save()">
               </div>
-              <label class="fg-label padding-left-40" [hidden]="employee.Salary">Salario</label>
+              <label class="fg-label padding-left-40" [hidden]="employee.salary">Salario</label>
             </div>
           </div>
 
           <div class="col-sm-6">
             <div class="input-group form-group fg-float">
-              <span class="input-group-addon"><i class="md md-bookmark"></i></span>
+              <span class="input-group-text"><i class="md md-bookmark"></i></span>
               <div class="fg-line">
                 <!-- [(ngModel)]="employee.PercentOfWork" -->
                 <input type="text" class="form-control"  name="PercentOfWork" (keyup.enter)="save()">
               </div>
-              <label class="fg-label padding-left-40" [hidden]="employee.PercentOfWork">% de comisión</label>
+              <label class="fg-label padding-left-40" [hidden]="employee.percentOfWork">% de comisión</label>
             </div>
           </div>
         </div>

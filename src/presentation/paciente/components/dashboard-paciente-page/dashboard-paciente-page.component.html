@@ -12,7 +12,7 @@
             {{person.Name}} {{person.LastNames}}
           </h2>
           <small>
-            <i class="md md-lock c-red" *ngIf="patient.PatientFromPartner">De OdontoBy</i>
+            <i class="md md-lock c-red" *ngIf="patient.patientFromPartner">De OdontoBy</i>
             <!-- *ngIf="(appGlobals.owner.getValue() && !patient.PatientFromPartner) || isSuperAdmin" -->
             <i class="md md-email pull-left" > {{person.Email}}</i>&nbsp;&nbsp;
             <!-- *ngIf="(appGlobals.owner.getValue() && !patient.PatientFromPartner) || isSuperAdmin" -->
@@ -30,7 +30,7 @@
             </a>
           </li>
           <li>
-            <a href="#/patiens/{{patient.Id}}">
+            <a href="#/patiens/{{patient.id}}">
               <i class="md md-edit"></i>
             </a>
           </li>
@@ -223,7 +223,7 @@
         <div class="row">
           <div class="col-sm-6">
             <div class="input-group form-group">
-              <span class="input-group-addon"><i class="md md-event"></i></span>
+              <span class="input-group-text"><i class="md md-event"></i></span>
               <div class="fg-line">
                 <!-- [(ngModel)]="appoiment.CantDateType" [ngModelOptions]="{standalone: true}" -->
                 <input type="text" class="form-control" placeholder="Próxima consulta en:" (keyup.enter)="createNextAppoiment()">
@@ -232,9 +232,9 @@
           </div>
           <div class="col-sm-6">
             <div class="input-group form-group">
-              <span class="input-group-addon"></span>
+              <span class="input-group-text"></span>
               <div class="fg-line select">
-                <select class="form-control" [(ngModel)]="appoiment.DateType" name="DateType">
+                <select class="form-control" [(ngModel)]="appoiment.dateType" name="DateType">
                   <option value="day">D&iacute;as</option>
                   <option value="month">Meses</option>
                   <option value="year">Años</option>

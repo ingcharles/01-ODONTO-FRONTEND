@@ -1,14 +1,14 @@
 export class Consulta {
-  Id!: number;
-  Payment!: number;
-  Procedures!: string;
-  Prescriptions!: string;
-  Observations!: string;
-  DateExecute!: Date;
-  Diagnosis_PlanId!: number;
-  DoctorExecuteId!: number;
-  DiagnosisPlanStatus!: string;
-  Invoiced!: boolean;
-  PaymentMethodsId!: number;
-  InvoicedNumber!: string;
+  id!: number;
+  payment!: number;
+  procedures!: string;
+  prescriptions!: string;
+  observations!: string;
+  dateExecute!: Date;
+  diagnosisPlanId!: number;
+  doctorExecuteId!: number;
+  diagnosisPlanStatus!: string;
+  invoiced!: boolean;
+  paymentMethodsId!: number;
+  invoicedNumber!: string;
 }

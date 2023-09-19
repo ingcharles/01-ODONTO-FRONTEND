@@ -46,12 +46,12 @@ export class CreateDiagnosticoPlanPageComponent {
   save() {
     this.isRequesting = true;
     // this.diagnosisPlan.DoctorDiagnosticId = JSON.parse(localStorage.getItem('user')).Data.Employees[0].Id;
-    this.diagnosisPlan.DoctorExecuteId = this.diagnosisPlan.DoctorDiagnosticId;
+    this.diagnosisPlan.doctorExecuteId = this.diagnosisPlan.doctorDiagnosticId;
     // this.diagnosisPlan.PatientId = this.appGlobals.patient.getValue().Id;
-    this.diagnosisPlan.Tooth = "4C";
+    // this.diagnosisPlan.tooth = "4C";
 
-    if (this.diagnosisPlan.ValueType == 3) {
-      this.diagnosisPlan.PercentSpecialDiscount = this.diagnosisPlan.TreatmentAmount / this.price * 100;
+    if (this.diagnosisPlan.valueType == 3) {
+      this.diagnosisPlan.percentSpecialDiscount = this.diagnosisPlan.treatmentAmount / this.price * 100;
     }
 
     // this.diagnosisPlanService.save(this.diagnosisPlan)
@@ -73,21 +73,21 @@ export class CreateDiagnosticoPlanPageComponent {
   }
 
   getAmount(typeValue: number) {
-    this.diagnosisPlan.PercentDiscountStablished = 0; //Porcentaje de descuento establecido
-    this.diagnosisPlan.ValueType = typeValue;
+    this.diagnosisPlan.percentDiscountStablished = 0; //Porcentaje de descuento establecido
+    this.diagnosisPlan.valueType = typeValue;
 
     for (var i = 0; i < this.treatments.length; i++) {
-      if (this.treatments[i].Id == this.diagnosisPlan.TreatmentId) {
-        this.price = this.treatments[i].Price;
+      if (this.treatments[i].id == this.diagnosisPlan.treatmentId) {
+        this.price = this.treatments[i].price;
         if (typeValue == 1) {
-          this.diagnosisPlan.TreatmentAmount = this.treatments[i].Price;
+          this.diagnosisPlan.treatmentAmount = this.treatments[i].price;
         }
         if (typeValue == 2) {
-          this.diagnosisPlan.TreatmentAmount = this.diagnosisPlan.TreatmentAmount - this.treatments[i].Price * this.treatments[i].Discount / 100;
-          this.diagnosisPlan.PercentDiscountStablished = this.treatments[i].Discount;
+          this.diagnosisPlan.treatmentAmount = this.diagnosisPlan.treatmentAmount - this.treatments[i].price * this.treatments[i].discount / 100;
+          this.diagnosisPlan.percentDiscountStablished = this.treatments[i].discount;
         }
         if (typeValue == 3) {
-          this.diagnosisPlan.PercentSpecialDiscount = this.diagnosisPlan.TreatmentAmount / this.treatments[i].Price * 100;
+          this.diagnosisPlan.percentSpecialDiscount = this.diagnosisPlan.treatmentAmount / this.treatments[i].price * 100;
         }
       }
     }

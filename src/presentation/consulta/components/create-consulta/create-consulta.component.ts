@@ -45,7 +45,7 @@ export class CreateConsultaComponent implements OnInit {
   save() {
     this.isRequesting = true;
     // this.consultation.DoctorExecuteId = JSON.parse(localStorage.getItem('user')).Data.Employees[0].Id;
-    this.consultation.Diagnosis_PlanId = this.diagnosisPlan.Id;
+    this.consultation.diagnosisPlanId = this.diagnosisPlan.id;
     // this.consultationService.save(this.consultation)
     //   .then(consultation => {
     //     this.notification.notifySuccess("Guardar consulta");

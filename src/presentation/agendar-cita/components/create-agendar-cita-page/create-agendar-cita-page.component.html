@@ -19,7 +19,7 @@
           <div class="col-sm-6">
             <!-- {{ (patientid.valid || (patientid.pristine && !fappoitment.submitted)) ? '' : 'has-error has-feedback' }} -->
             <div class="input-group form-group ">
-              <span class="input-group-addon"><i class="md md-person"></i></span>
+              <span class="input-group-text"><i class="md fa fa-user"></i></span>
               <!-- #patientid="ngModel" -->
               <!-- [(ngModel)]="appoitment.PatientName" [ngModelOptions]="{standalone: true}" -->
               <input id="patientId" class="form-control" type="text" list="text_editors" placeholder="Seleccione el paciente o adicionelo si es nuevo"  name="patientid"
@@ -27,14 +27,14 @@
               <datalist id="text_editors">
                 <option *ngFor="let opt of allPatients" data-id="{{opt.patient.Id}}" (click)="selectOption(opt.patient.Id)">{{opt.LastNames}} {{opt.Name}}</option>
               </datalist>
-              <span class="input-group-addon"><a [routerLink]="['/patiens', -1]"><i class="md md-person-add"></i></a></span>
+              <span class="input-group-text"><a [routerLink]="['/patiens', -1]"><i class="md fa fa-user-add"></i></a></span>
               <!-- <span class="md md-close form-control-feedback {{ (patientid.valid || (patientid.pristine && !fappoitment.submitted)) ? 'hidden' : '' }}"></span> -->
             </div>
           </div>
           <div class="col-sm-6">
             <!-- {{ (EmployeeId.valid || (EmployeeId.pristine && !fappoitment.submitted)) ? '' : 'has-error has-feedback' }} -->
             <div class="input-group form-group ">
-              <span class="input-group-addon"><i class="md md-school"></i></span>
+              <span class="input-group-text"><i class="md md-school"></i></span>
               <div class="fg-line select">
                 <!-- [(ngModel)]="appoitment.EmployeeId" #EmployeeId="ngModel"-->
                 <select class="form-control" data-live-search="true" name="EmployeeId"  required>
@@ -51,7 +51,7 @@
           <div class="col-sm-6">
             <!-- {{ (StartDate.valid || (StartDate.pristine && !fappoitment.submitted)) ? '' : 'has-error has-feedback' }} -->
             <div class="input-group form-group">
-              <span class="input-group-addon"><i class="md md-event"></i></span>
+              <span class="input-group-text"><i class="md md-event"></i></span>
               <div class="dtp-container dropdown fg-line">
                 <!-- [(ngModel)]="appoitment.StartDate" name="StartDate" #StartDate="ngModel" -->
                 <input id="StartDate" type='text' class="form-control date-picker" data-toggle="dropdown" placeholder="Fecha de la cita"  required>
@@ -62,9 +62,9 @@
           <div class="col-sm-3">
             <!-- {{ (Hour.valid || (Hour.pristine && !fappoitment.submitted)) ? '' : 'has-error has-feedback' }} -->
             <div class="input-group form-group">
-              <span class="input-group-addon"><i class="md md-access-time"></i></span>
+              <span class="input-group-text"><i class="md md-access-time"></i></span>
               <div class="dtp-container dropdown fg-line">
-                <input id="EndDate" type='text' class="form-control time-picker" data-toggle="dropdown" placeholder="Hora de la cita" [(ngModel)]="appoitment.Hour" name="Hour" #Hour="ngModel">
+                <input id="EndDate" type='text' class="form-control time-picker" data-toggle="dropdown" placeholder="Hora de la cita" [(ngModel)]="appoitment.hour" name="Hour" #Hour="ngModel">
               </div>
               <!-- <span class="md md-close form-control-feedback {{ (Hour.valid || (Hour.pristine && !fappoitment.submitted)) ? 'hidden' : '' }}"></span> -->
             </div>
@@ -72,7 +72,7 @@
           <div class="col-sm-3">
             <!-- {{ (Duration.valid || (Duration.pristine && !fappoitment.submitted)) ? '' : 'has-error has-feedback' }} -->
             <div class="input-group form-group">
-              <span class="input-group-addon"><i class="md md-watch"></i></span>
+              <span class="input-group-text"><i class="md md-watch"></i></span>
               <div class="dtp-container dropdown fg-line">
                 <!-- [(ngModel)]="appoitment.Duration" #Duration="ngModel" -->
                 <input type='text' class="form-control" placeholder="Duración de la cita en minutos" name="Duration" (keyup.enter)="save()" required>
@@ -84,11 +84,11 @@
         <div class="form-group">
           <label for="eventName">Estado de la cita</label>
           <div class="event-tag">
-            <span data-tag="bgm-red" class="bgm-red" [class.selected]="appoitment.ClassName == 'bgm-red'" (click)="selectTagColor('bgm-red')" title="Planificado"></span>
-            <span data-tag="bgm-orange" class="bgm-orange" [class.selected]="appoitment.ClassName == 'bgm-orange'" (click)="selectTagColor('bgm-orange')" title="Agendado"></span>
-            <span data-tag="bgm-green" class="bgm-green" [class.selected]="appoitment.ClassName == 'bgm-green'" (click)="selectTagColor('bgm-green')" title="Confirmado"></span>
-            <span data-tag="bgm-black" class="bgm-black" [class.selected]="appoitment.ClassName == 'bgm-black'" (click)="selectTagColor('bgm-black')" title="Cancelado"></span>
-            <span data-tag="bgm-gray" class="bgm-gray" [class.selected]="appoitment.ClassName == 'bgm-gray'" (click)="selectTagColor('bgm-gray')" title="No Asistió"></span>
+            <span data-tag="bgm-red" class="bgm-red" [class.selected]="appoitment.className == 'bgm-red'" (click)="selectTagColor('bgm-red')" title="Planificado"></span>
+            <span data-tag="bgm-orange" class="bgm-orange" [class.selected]="appoitment.className == 'bgm-orange'" (click)="selectTagColor('bgm-orange')" title="Agendado"></span>
+            <span data-tag="bgm-green" class="bgm-green" [class.selected]="appoitment.className == 'bgm-green'" (click)="selectTagColor('bgm-green')" title="Confirmado"></span>
+            <span data-tag="bgm-black" class="bgm-black" [class.selected]="appoitment.className == 'bgm-black'" (click)="selectTagColor('bgm-black')" title="Cancelado"></span>
+            <span data-tag="bgm-gray" class="bgm-gray" [class.selected]="appoitment.className == 'bgm-gray'" (click)="selectTagColor('bgm-gray')" title="No Asistió"></span>
           </div>
         </div>
         <br />

@@ -212,8 +212,8 @@ body {
 
 .card-header {
   padding: 0.6rem 1.25rem;
-  border-left: 8px solid var(--color-primario);
-  background-color: rgba(0, 0, 0, 0.03);
+  // border-left: 8px solid var(--color-primario);
+  // background-color: rgba(0, 0, 0, 0.03);
   font-weight: 700;
   letter-spacing: 0.5px;
   font-size: 16px;
@@ -4195,7 +4195,7 @@ pre code {
 
 // .row {
 //   margin-left: -15px;
-//   margin-right: -15px;
+//    margin-right: -15px;
 // }
 .col-xs-1,
 .col-sm-1,
@@ -10833,10 +10833,11 @@ button.close {
   -moz-osx-font-smoothing: grayscale;
 }
 
-// .md {
-//   line-height: inherit;
-//   vertical-align: bottom;
-// }
+ .md {
+  font-size: 1.2rem;
+  // line-height: inherit;
+  //  vertical-align: top;
+ }
 .md-lg {
   font-size: 1.5em;
   line-height: 0.5em;
@@ -16927,13 +16928,13 @@ nav {
 // }
 @media screen and (min-width: 768px) {
   .card .card-header:not(.ch-alt) {
-    padding: 23px 26px;
+    padding: 20px 40px;
   }
 }
 
 @media screen and (max-width: 991px) {
   .card .card-header:not(.ch-alt) {
-    padding: 18px;
+    padding: 15px;
   }
 }
 
@@ -19509,7 +19510,7 @@ html:not(.ie9) .select.fg-line:before {
 }
 
 .fg-float {
-  margin-top: 5px;
+  margin-top: 20px;
   position: relative
 }
 
@@ -19557,7 +19558,7 @@ html:not(.ie9) .select.fg-line:before {
 }
 
 .fg-float .fg-toggled+.fg-label {
-  top: -20px;
+  top: -13px;
   font-size: 11px
 }
 
@@ -22463,7 +22464,7 @@ only screen and (min-resolution: 2dppx) {
 }
 
 .padding-left-40 {
-  padding-left: 40px;
+  padding-left: 16px;
 }
 
 @media (max-width: 768px) {
@@ -22717,9 +22718,9 @@ body {
 //   border-radius: 2px;
 // }
 .input-group-text {
-  font-size: 1.2rem;
+  font-size: 0.6rem;
   border: 0px solid;
-  color: inherit;
+  color: #5e5e5e;
   background-color: inherit;
 }
 

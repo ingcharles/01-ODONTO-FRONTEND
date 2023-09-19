@@ -34,7 +34,7 @@ export class CreateOdontogramaPageComponent {
   public responseCDLeft: any[] = [];
   public responseCDRight: any[] = [];
 
-  public teeths!: any[];
+  // public teeths!: any[];
   public age!: number;
   public id!: number;
   @Input()  patientSelect!: Paciente;
@@ -177,19 +177,19 @@ export class CreateOdontogramaPageComponent {
   showOdontogram(toothNumber:number) {
     this.odontogram = new Odontograma();
     this.initTooth();
-    this.odontogram.ToothNumber = toothNumber;
+    this.odontogram.toothNumber = toothNumber;
     for (var item of this.response.Data) {
       if (item.ToothNumber == toothNumber) {
-        this.odontogram.Tooth = item.Tooth;
+        this.odontogram.tooth = item.Tooth;
       }
     }
   }
 
 
   save() {
-    this.odontogram.Active = true;
-    this.odontogram.PatientId = this.id;
-    this.odontogram.ToothDetails = JSON.stringify(this.odontogram.Tooth);
+    this.odontogram.active = true;
+    this.odontogram.patientId = this.id;
+    this.odontogram.toothDetails = JSON.stringify(this.odontogram.tooth);
     // this.odontogramService.save(this.odontogram)
     //   .then(odontogram => {
 
@@ -226,24 +226,24 @@ export class CreateOdontogramaPageComponent {
   }
 
   selectSquare(face:string) {
-    this.odontogram.Face = face;
-    console.log("this.odontogram.Face", this.odontogram.Face);
-    console.log("this.odontogram.Tooth.Top.Color",this.odontogram.Tooth.Top.Color);
-    switch (this.odontogram.Face) {
+    this.odontogram.face = face;
+    console.log("this.odontogram.face", this.odontogram.face);
+    console.log("this.odontogram.tooth.top.color",this.odontogram.tooth.top.color);
+    switch (this.odontogram.face) {
       case "top":
-        this.odontogram.Tooth.Top.Color = (this.odontogram.Tooth.Top.Color == '' ? 'bgm-gray' : '');
+        this.odontogram.tooth.top.color = (this.odontogram.tooth.top.color == '' ? 'bgm-gray' : '');
         break;
       case "bottom":
-        this.odontogram.Tooth.Bottom.Color = (this.odontogram.Tooth.Bottom.Color == '' ? 'bgm-gray' : '');
+        this.odontogram.tooth.bottom.color = (this.odontogram.tooth.bottom.color == '' ? 'bgm-gray' : '');
         break;
       case "left":
-        this.odontogram.Tooth.Left.Color = (this.odontogram.Tooth.Left.Color == '' ? 'bgm-gray' : '');
+        this.odontogram.tooth.left.color = (this.odontogram.tooth.left.color == '' ? 'bgm-gray' : '');
         break;
       case "right":
-        this.odontogram.Tooth.Right.Color = (this.odontogram.Tooth.Right.Color == '' ? 'bgm-gray' : '');
+        this.odontogram.tooth.right.color = (this.odontogram.tooth.right.color == '' ? 'bgm-gray' : '');
         break;
       case "center":
-        this.odontogram.Tooth.Center.Color = (this.odontogram.Tooth.Center.Color == '' ? 'bgm-gray' : '');
+        this.odontogram.tooth.center.color = (this.odontogram.tooth.center.color == '' ? 'bgm-gray' : '');
         break;
     }
   }
@@ -266,49 +266,49 @@ export class CreateOdontogramaPageComponent {
     var countFaces = 0;
     console.log("face", shape + "-" + color + "-" + face);
     if (face == "all") {
-      this.odontogram.Tooth.Shape = shape + "-" + color + "-" + face;
-      this.odontogram.Tooth.Center.Color = "";
-      this.odontogram.Tooth.Top.Diagnostic = "";
-      this.odontogram.Tooth.Bottom.Diagnostic = "";
-      this.odontogram.Tooth.Left.Diagnostic = "";
-      this.odontogram.Tooth.Right.Diagnostic = "";
+      this.odontogram.tooth.shape = shape + "-" + color + "-" + face;
+      this.odontogram.tooth.center.color = "";
+      this.odontogram.tooth.top.diagnostic = "";
+      this.odontogram.tooth.bottom.diagnostic = "";
+      this.odontogram.tooth.left.diagnostic = "";
+      this.odontogram.tooth.right.diagnostic = "";
 
-      this.odontogram.Tooth.Top.Diagnostic = diagnostic;
-      this.odontogram.Tooth.Bottom.Diagnostic = diagnostic;
-      this.odontogram.Tooth.Left.Diagnostic = diagnostic;
-      this.odontogram.Tooth.Right.Diagnostic = diagnostic;
-      this.odontogram.Tooth.Center.Diagnostic = diagnostic;
+      this.odontogram.tooth.top.diagnostic = diagnostic;
+      this.odontogram.tooth.bottom.diagnostic = diagnostic;
+      this.odontogram.tooth.left.diagnostic = diagnostic;
+      this.odontogram.tooth.right.diagnostic = diagnostic;
+      this.odontogram.tooth.center.diagnostic = diagnostic;
       countFaces += 1;
     }
     else {
-      if (this.odontogram.Tooth.Top.Color != "") {
-        this.odontogram.Tooth.Top.Color = color;
-        this.odontogram.Tooth.Top.Diagnostic = diagnostic;
-        this.odontogram.Tooth.Shape = "";
+      if (this.odontogram.tooth.top.color != "") {
+        this.odontogram.tooth.top.color = color;
+        this.odontogram.tooth.top.diagnostic = diagnostic;
+        this.odontogram.tooth.shape = "";
         countFaces += 1;
       }
-      if (this.odontogram.Tooth.Bottom.Color != "") {
-        this.odontogram.Tooth.Bottom.Color = color;
-        this.odontogram.Tooth.Bottom.Diagnostic = diagnostic;
-        this.odontogram.Tooth.Shape = "";
+      if (this.odontogram.tooth.bottom.color != "") {
+        this.odontogram.tooth.bottom.color = color;
+        this.odontogram.tooth.bottom.diagnostic = diagnostic;
+        this.odontogram.tooth.shape = "";
         countFaces += 1;
       }
-      if (this.odontogram.Tooth.Left.Color != "") {
-        this.odontogram.Tooth.Left.Color = color;
-        this.odontogram.Tooth.Left.Diagnostic = diagnostic;
-        this.odontogram.Tooth.Shape = "";
+      if (this.odontogram.tooth.left.color != "") {
+        this.odontogram.tooth.left.color = color;
+        this.odontogram.tooth.left.diagnostic = diagnostic;
+        this.odontogram.tooth.shape = "";
         countFaces += 1;
       }
-      if (this.odontogram.Tooth.Right.Color != "") {
-        this.odontogram.Tooth.Right.Color = color;
-        this.odontogram.Tooth.Right.Diagnostic = diagnostic;
-        this.odontogram.Tooth.Shape = "";
+      if (this.odontogram.tooth.right.color != "") {
+        this.odontogram.tooth.right.color = color;
+        this.odontogram.tooth.right.diagnostic = diagnostic;
+        this.odontogram.tooth.shape = "";
         countFaces += 1;
       }
-      if (this.odontogram.Tooth.Center.Color != "") {
-        this.odontogram.Tooth.Center.Color = color;
-        this.odontogram.Tooth.Center.Diagnostic = diagnostic;
-        this.odontogram.Tooth.Shape = "";
+      if (this.odontogram.tooth.center.color != "") {
+        this.odontogram.tooth.center.color = color;
+        this.odontogram.tooth.center.diagnostic = diagnostic;
+        this.odontogram.tooth.shape = "";
         countFaces += 1;
       }
     }
@@ -316,12 +316,12 @@ export class CreateOdontogramaPageComponent {
     if (countFaces > 3)
       countFaces = 3;
 
-    this.odontogram.ToothStatusId = parseInt(treatmentsTypeIds[countFaces - 1]);
+    this.odontogram.toothStatusId = parseInt(treatmentsTypeIds[countFaces - 1]);
     this.legend = name;
   }
 
   initTooth() {
-    this.odontogram.Tooth = { Top: { Color: '', Diagnostic: '' }, Bottom: { Color: '', Diagnostic: '' }, Left: { Color: '', Diagnostic: '' }, Right: { Color: '', Diagnostic: '' }, Center: { Color: '', Diagnostic: '' }, Shape: '' };
+    this.odontogram.tooth = { top: { color: '', diagnostic: '' }, bottom: { color: '', diagnostic: '' }, left: { color: '', diagnostic: '' }, right: { color: '', diagnostic: '' }, center: { color: '', diagnostic: '' }, shape: '' };
   }
 
 }

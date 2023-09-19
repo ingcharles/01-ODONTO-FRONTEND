@@ -1,12 +1,12 @@
 export class Tratamiento {
-  Id!: number;
-  Price!: number;
-  Discount!: number;
-  TreatmentsTypeId!: number;
-  TreatmentsTypeName!: string;
-  Status!: boolean;
-  ClinicId!: number;
-  TreatmentType!: string;
-  SpecialityTypeId!: number;
-  SpecialityTypeName!: string;
+  id!: number;
+  price!: number;
+  discount!: number;
+  treatmentsTypeId!: number;
+  treatmentsTypeName!: string;
+  status!: boolean;
+  clinicId!: number;
+  treatmentType!: string;
+  specialityTypeId!: number;
+  specialityTypeName!: string;
 }

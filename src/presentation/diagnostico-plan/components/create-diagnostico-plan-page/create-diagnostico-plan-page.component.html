@@ -14,12 +14,12 @@
     <div class="alert alert-success" role="alert">
       Solicite la afiliación de su clínica para el ingreso de planes diagnósticos y tratamientos. &nbsp;&nbsp;&nbsp;
       <!-- [routerLink]="['/profile']" -->
-      <a class="form-witget btn btn-primary"><i class="md md-person"></i> Afiliar mi clínica</a>
+      <a class="form-witget btn btn-primary"><i class="md fa fa-user"></i> Afiliar mi clínica</a>
     </div>
     <div class="row">
       <div class="col-sm-4">
         <div class="input-group form-group">
-          <span class="input-group-addon"><i class="md md-expand-more"></i></span>
+          <span class="input-group-text"><i class="md md-expand-more"></i></span>
           <div class="fg-line select">
             <!-- [(ngModel)]="diagnosisPlan.SpecialitieTypeId" #specialitietype="ngModel"-->
             <select class="form-control" name="specialitietype" (change)="selectSpeciality($event)">
@@ -31,13 +31,13 @@
       </div>
       <div class="col-sm-8">
         <div class="input-group form-group">
-          <span class="input-group-addon"><i class="md md-expand-more"></i></span>
+          <span class="input-group-text"><i class="md md-expand-more"></i></span>
 
           <div class="fg-line select">
             <!-- [(ngModel)]="diagnosisPlan.TreatmentId" -->
             <!-- #treatment="ngModel" -->
             <select class="form-control" (click)="getAmount(1)" name="treatment">
-              <option *ngFor="let opt of treatments" [value]="opt.Id">
+              <option *ngFor="let treatment of treatments" [value]="treatment.id">
                 <!-- {{opt.CCatalog.Name}} -->
 
               </option>
@@ -50,7 +50,7 @@
     <div class="row">
       <div class="col-sm-12">
         <div class="input-group form-group">
-          <span class="input-group-addon"><i class="md md-bookmark"></i></span>
+          <span class="input-group-text"><i class="md md-bookmark"></i></span>
 
           <div class="fg-line">
             <!-- [(ngModel)]="diagnosisPlan.DiagnosticsAndComplications" #DiagnosticsAndComplications="ngModel" -->
@@ -63,7 +63,7 @@
     <div class="row">
       <div class="col-sm-12">
         <div class="input-group form-group">
-          <span class="input-group-addon"><i class="md md-bookmark"></i></span>
+          <span class="input-group-text"><i class="md md-bookmark"></i></span>
 
           <div class="fg-line">
             <!-- [(ngModel)]="diagnosisPlan.Procedures"  #Procedures="ngModel" -->
@@ -76,7 +76,7 @@
     <div class="row">
       <div class="col-sm-12">
         <div class="input-group form-group">
-          <span class="input-group-addon"><i class="md md-bookmark"></i></span>
+          <span class="input-group-text"><i class="md md-bookmark"></i></span>
 
           <div class="fg-line">
             <!-- [(ngModel)]="diagnosisPlan.Prescriptions" #Prescriptions="ngModel" -->
@@ -100,7 +100,7 @@
       <div class="col-sm-3 p-t-10">
         <div class="input-group form-group">
           <label class="radio radio-inline m-r-20">
-            <input type="radio" name="inlineRadioOptions" (click)="getAmount(2)" [checked]="diagnosisPlan.PercentDiscountStablished > 0">
+            <input type="radio" name="inlineRadioOptions" (click)="getAmount(2)" [checked]="diagnosisPlan.percentDiscountStablished > 0">
             <i class="input-helper"></i>
             Descuento establecido
           </label>
@@ -110,7 +110,7 @@
       <div class="col-sm-3 p-t-10">
         <div class="input-group form-group">
           <label class="radio radio-inline m-r-20">
-            <input type="radio" name="inlineRadioOptions" (click)="getAmount(3)" [checked]="diagnosisPlan.PercentSpecialDiscount > 0">
+            <input type="radio" name="inlineRadioOptions" (click)="getAmount(3)" [checked]="diagnosisPlan.percentSpecialDiscount > 0">
             <i class="input-helper"></i>
             Descuento especial
           </label>
@@ -118,10 +118,10 @@
       </div>
       <div class="col-sm-3">
         <div class="input-group form-group">
-          <span class="input-group-addon"><i class="md md-attach-money"></i></span>
+          <span class="input-group-text"><i class="md md-attach-money"></i></span>
           <div class="fg-line">
             <!-- [(ngModel)]="diagnosisPlan.TreatmentAmount" #TreatmentAmount="ngModel" -->
-            <input type="text" class="form-control" [disabled]="diagnosisPlan.ValueType != 3" (keypress)="getAmount(3)" name="TreatmentAmount" (keyup.enter)="save()">
+            <input type="text" class="form-control" [disabled]="diagnosisPlan.valueType != 3" (keypress)="getAmount(3)" name="TreatmentAmount" (keyup.enter)="save()">
           </div>
         </div>
       </div>

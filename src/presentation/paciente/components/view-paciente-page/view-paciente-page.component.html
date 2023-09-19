@@ -28,7 +28,7 @@
       <div class="col-sm-3">{{person.LastNames}}</div>
       <div class="col-sm-1">{{person.Sex == true ? 'M': 'F'}}</div>
       <div class="col-sm-1">{{person.Age > 0 ? person.Age : ''}} <small>{{person.Months > 0 ? person.Months : ''}} {{person.Months == 1 ? 'mes' : ( person.Months > 1 ? 'meses': '')}}</small></div>
-      <div class="col-sm-1">{{patient.Id}}</div>
+      <div class="col-sm-1">{{patient.id}}</div>
     </div>
   </div>
 
@@ -40,7 +40,7 @@
       </div>
     </div>
     <div class="col-sm-12 border-1-top">
-      <div class="col-sm-12">{{patient.ReasonForConsultation}}</div>
+      <div class="col-sm-12">{{patient.reasonForConsultation}}</div>
     </div>
   </div>
 
@@ -52,7 +52,7 @@
       </div>
     </div>
     <div class="col-sm-12 border-1-top">
-      <div class="col-sm-12">{{patient.CurrentProblem}}</div>
+      <div class="col-sm-12">{{patient.currentProblem}}</div>
     </div>
   </div>
 
@@ -75,7 +75,7 @@
     </div>
     <div class="col-sm-12 border-1-top">
       <div class="col-sm-12">
-        {{patient.NotePersonalAndFamilyRecord}}
+        {{patient.notePersonalAndFamilyRecord}}
       </div>
     </div>
   </div>
@@ -118,7 +118,7 @@
     <div class="col-sm-12 border-1-top">
       <div class="input-group form-group">
         <div class="fg-line">
-          {{patient.NoteReviewSystemStomatognathic}}
+          {{patient.noteReviewSystemStomatognathic}}
         </div>
       </div>
     </div>

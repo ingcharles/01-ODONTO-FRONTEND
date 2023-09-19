@@ -67,8 +67,8 @@
         <td>{{item.Name}}</td>
         <td>{{item.Tooth}}</td>
         <td>{{item.TreatmentAmount}}</td>
-        <td [ngClass]="item.Status == 'ADVANCED' ? 'bgm-green badge' : ''">{{item.Payment}}</td>
-        <td [ngClass]="((item.TreatmentAmount - item.Payment) > 0) && item.Status == 'FINISHED' ? 'bgm-red badge' : ''">{{item.TreatmentAmount - item.Payment}}</td>
+        <td [ngClass]="item.Status == 'AVANZADO' ? 'bgm-green badge' : ''">{{item.Payment}}</td>
+        <td [ngClass]="((item.TreatmentAmount - item.Payment) > 0) && item.Status == 'TERMINADO' ? 'bgm-red badge' : ''">{{item.TreatmentAmount - item.Payment}}</td>
         <td>{{(item.dateExecute == null ? item.DatePayment : item.dateExecute) | date:'dd-MM-yyyy' }}</td>
         <td class="text-center">{{getStatus(item.Status)}}</td>
         <td class="actions text-center">
@@ -152,7 +152,7 @@
           <div class="col-xs-12 col-sm-4">
             <div class="input-group form-group">
               <label class="radio radio-inline m-r-20">
-                <input type="radio" name="inlineRadioOptions" checked (click)="setStatus('ADVANCED')">
+                <input type="radio" name="inlineRadioOptions" checked (click)="setStatus('AVANZADO')">
                 <i class="input-helper"></i>
                 Adelantado
               </label>
@@ -161,7 +161,7 @@
           <div class="col-xs-12 col-sm-4">
             <div class="input-group form-group">
               <label class="radio radio-inline m-r-20">
-                <input type="radio" name="inlineRadioOptions" (click)="setStatus('INPROCESS')">
+                <input type="radio" name="inlineRadioOptions" (click)="setStatus('EN PROCESO')">
                 <i class="input-helper"></i>
                 En proceso
               </label>
@@ -170,7 +170,7 @@
           <div class="col-xs-12 col-sm-4">
             <div class="input-group form-group">
               <label class="radio radio-inline m-r-20">
-                <input type="radio" name="inlineRadioOptions" (click)="setStatus('FINISHED')" checked>
+                <input type="radio" name="inlineRadioOptions" (click)="setStatus('TERMINADO')" checked>
                 <i class="input-helper"></i>
                 Terminado
               </label>
@@ -179,10 +179,10 @@
         </div>
         <div class="row">
           <div class="col-xs-12 col-sm-4">
-            <span class="input-group form-group">Presupuestado: <label>{{diagnosisPlan.TreatmentAmount}}</label></span>
+            <span class="input-group form-group">Presupuestado: <label>{{diagnosisPlan.treatmentAmount}}</label></span>
           </div>
           <div class="col-xs-12 col-sm-4">
-            <span class="input-group form-group">Abonado: <label>{{diagnosisPlan.Payment}}</label></span>
+            <span class="input-group form-group">Abonado: <label>{{diagnosisPlan.payment}}</label></span>
           </div>
           <div class="col-xs-12 col-sm-4">
             <span class="input-group form-group">Pendiente: <label>{{amountPending}}</label></span>
@@ -191,20 +191,21 @@
         <div class="row">
           <div class="col-xs-12 col-sm-4">
             <div class="input-group form-group">
-              <span class="input-group-addon"><i class="md md-attach-money"></i></span>
+              <span class="input-group-text"><i class="md md-attach-money"></i></span>
               <div>
-                <input type="text" class="form-control" placeholder="Monto abonado" [(ngModel)]="diagnosisPlan.Pay" [ngModelOptions]="{standalone: true}" (keyup.enter)="payment()" autofocus>
+                <!-- [(ngModel)]="diagnosisPlan.pay" [ngModelOptions]="{standalone: true}" -->
+                <input type="text" class="form-control" placeholder="Monto abonado"  (keyup.enter)="payment()" autofocus>
               </div>
             </div>
-            <small class="c-red" *ngIf="diagnosisPlan.Pay  > amountPending">El monto abonado no debe ser mayor al monto pendinete para este tratamiento</small>
+            <small class="c-red" *ngIf="diagnosisPlan.pay  > amountPending">El monto abonado no debe ser mayor al monto pendinete para este tratamiento</small>
           </div>
           <div class="col-xs-12 col-sm-4">
             <div class="input-group form-group">
-              <span class="input-group-addon"><i class="md md-expand-more"></i></span>
+              <span class="input-group-text"><i class="md md-expand-more"></i></span>
               <div class="fg-line select">
-                <select class="form-control" [(ngModel)]="diagnosisPlan.PaymentMethodsId" [ngModelOptions]="{standalone: true}">
+                <select class="form-control" [(ngModel)]="diagnosisPlan.paymentMethodsId" [ngModelOptions]="{standalone: true}">
                   <option [value]="-1">Forma de pago</option>
-                  <option *ngFor="let opt of paymentMethods" [value]="opt.Id">{{opt.Name}}</option>
+                  <option *ngFor="let paymentMethod of paymentMethods" [value]="paymentMethod.id">{{paymentMethod.name}}</option>
                 </select>
               </div>
             </div>
@@ -213,7 +214,8 @@
             <div class="input-group form-group">
               <div class="col-sm-3">
                 <label class="checkbox checkbox-inline m-r-20">
-                  <input type="checkbox" [checked]="diagnosisPlan.Invoiced  === true" [(ngModel)]="diagnosisPlan.Invoiced" name="Facturado?">
+                  <!-- [(ngModel)]="diagnosisPlan.invoiced" -->
+                  <input type="checkbox" [checked]="diagnosisPlan.invoiced  === true" name="Facturado?">
                   <i class="input-helper"></i>
                   Facturado
                 </label>
@@ -225,7 +227,7 @@
           <div class="col-sm-8">
             <!-- {{ (EmployeeId.valid || (EmployeeId.pristine && !fappoitment.submitted)) ? '' : 'has-error has-feedback' }}" -->
             <div class="input-group form-group">
-              <span class="input-group-addon"><i class="md md-school"></i></span>
+              <span class="input-group-text"><i class="md md-school"></i></span>
               <div class="fg-line select">
                 <select class="form-control" [(ngModel)]="doctorExcecuteId" data-live-search="true" name="EmployeeId" #EmployeeId="ngModel" [ngModelOptions]="{standalone: true}">
                   <option value="-1">Seleccione el profesional que lo atendió</option>
@@ -239,14 +241,14 @@
           <div class="col-sm-4">
             <div class="input-group form-group">
               <div>
-                <input *ngIf="diagnosisPlan.Invoiced" type="text" class="form-control" placeholder="N&uacute;mero de factura" [(ngModel)]="diagnosisPlan.InvoicedNumber" [ngModelOptions]="{standalone: true}" (keyup.enter)="payment()">
+                <input *ngIf="diagnosisPlan.invoiced" type="text" class="form-control" placeholder="N&uacute;mero de factura" [(ngModel)]="diagnosisPlan.invoicedNumber" [ngModelOptions]="{standalone: true}" (keyup.enter)="payment()">
               </div>
             </div>
           </div>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="payment()" data-bs-dismiss="modal" [disabled]="diagnosisPlan.Pay  > amountPending">Cobrar</button>
+        <button type="button" class="btn btn-primary" (click)="payment()" data-bs-dismiss="modal" [disabled]="diagnosisPlan.pay  > amountPending">Cobrar</button>
         <button type="button" class="btn btn-link" (click)="close()" data-bs-dismiss="modal">Cancelar</button>
       </div>
     </div>
@@ -263,7 +265,7 @@
         <div class="row">
           <div class="col-sm-6">
             <div class="input-group form-group">
-              <span class="input-group-addon"><i class="md md-event"></i></span>
+              <span class="input-group-text"><i class="md md-event"></i></span>
               <div class="fg-line">
                 <!-- [(ngModel)]="appoiment.CantDateType" [ngModelOptions]="{standalone: true}" -->
                 <input type="text" class="form-control" placeholder="Próxima consulta en:"  (keyup.enter)="createNextAppoiment()">
@@ -272,7 +274,7 @@
           </div>
           <div class="col-sm-6">
             <div class="input-group form-group">
-              <span class="input-group-addon"></span>
+              <span class="input-group-text"></span>
               <div class="fg-line select">
                 <!-- [(ngModel)]="appoiment.DateType" -->
                 <select class="form-control" name="DateType">

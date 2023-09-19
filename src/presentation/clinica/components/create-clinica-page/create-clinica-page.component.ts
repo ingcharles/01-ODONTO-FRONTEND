@@ -101,20 +101,20 @@ export class CreateClinicaPageComponent {
   }
 
   activeClinic() {
-    this.clinic.Active = true;
+    this.clinic.active = true;
     this.editCLinic(false);
   }
 
   selectPlan(plan:any) {
     this.formatPaymentsTypes(plan.Id);
-    this.clinic.PaymentPlanId = plan.Id;
-    this.clinic.Active = true;
+    this.clinic.paymentPlanId = plan.Id;
+    this.clinic.active = true;
     this.editCLinic(false);
   }
 
   cancelMembership() {
-    this.clinic.PaymentPlanId = -2;
-    this.clinic.Active = false;
+    this.clinic.paymentPlanId = -2;
+    this.clinic.active = false;
     this.editCLinic(false);
   }
 
@@ -132,7 +132,7 @@ export class CreateClinicaPageComponent {
     for (var item of this.paymentsTypes) {
       item.Value = planId == item.Id;
       item.Class = planId == item.Id ? 'select-plan' : '';
-      item.Show = item.Id == "154" ? (this.clinic.PaymentPlanId == 154 || this.isSuperAdmin) : true;
+      item.Show = item.Id == "154" ? (this.clinic.paymentPlanId == 154 || this.isSuperAdmin) : true;
     }
   }
 

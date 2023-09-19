@@ -40,19 +40,20 @@ export class CreateEmpleadoPageComponent {
     // this.jobs = JSON.parse(localStorage.getItem('catalog')).Data.JOBSTYPES;
     this.getEmployees();
     this.navigated = true;
+    this.employee = new Empleado();
      this.sub = this.route.params.subscribe(params => {
+       console.log("ss", params['id']);
        if (params['id'] != -1) {
          let id = +params['id'];
-         this.employee = new Empleado();
+
     //     this.employeesService.getEmployee(id)
     //       .then(employee => {
     //         this.employee = employee.Data
     //       });
     //     this.user = new Usuario();
        } else {
-         this.employee = new Empleado();
-         this.employee.EmployeeId = -1;
-         this.employee.JobId = -1;
+         this.employee.employeeId = -1;
+         this.employee.jobId = -1;
          this.user = new Usuario();
        }
      });
@@ -65,7 +66,7 @@ export class CreateEmpleadoPageComponent {
   save() {
     // this.isRequesting = true;
 
-    if (this.user != undefined && this.user.Name != undefined && this.user.Name != "")
+    if (this.user != undefined && this.user.name != undefined && this.user.name != "")
       this.register();
     else
       this.saveEmployee();
@@ -73,7 +74,7 @@ export class CreateEmpleadoPageComponent {
 
   saveEmployee() {
     // this.employee.ClinicId = this.appGlobals.clinic.getValue().Id;
-    this.employee.Active = true;
+    this.employee.active = true;
     // this.employeesService.asociate(this.employee)
     //   .then(employee => {
     //     this.isRequesting = false;
@@ -105,12 +106,12 @@ export class CreateEmpleadoPageComponent {
   }
 
   register() {
-    this.user.ConfirmPassword = this.user.Password;
-    this.user.IHaveClinic = false;
-    this.user.ImProfesional = true;
-    this.user.LicenseAgreement = true;
-    this.user.PaymentPlanId = -1;
-    this.user.ClinicSpecialtyId = -1;
+    this.user.confirmPassword = this.user.password;
+    this.user.iHaveClinic = false;
+    this.user.imProfesional = true;
+    this.user.licenseAgreement = true;
+    this.user.paymentPlanId = -1;
+    this.user.clinicSpecialtyId = -1;
     // this.loginService
     //   .register(this.user)
     //   .then(response => {

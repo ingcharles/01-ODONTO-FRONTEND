@@ -1,18 +1,18 @@
 export class Clinica {
-  Id!: number;
-  Name!: string;
-  Adress!: string;
-  Description!: string;
-  Email!: string;
-  Phone!: string;
-  Mobile!: string;
-  RegionId!: number;
-  Schedule!: string;
-  OwnerId!: number;
-  Active!: boolean;
-  PaymentPlanId!: number;
-  SpecialtyId!: number;
-  Banck!: number;
-  DatePay!: Date;
-  Clinic_Specialties!: any[];
+  id!: number;
+  name!: string;
+  adress!: string;
+  description!: string;
+  email!: string;
+  phone!: string;
+  mobile!: string;
+  regionId!: number;
+  schedule!: string;
+  ownerId!: number;
+  active!: boolean;
+  paymentPlanId!: number;
+  specialtyId!: number;
+  banck!: number;
+  datePay!: Date;
+  clinicSpecialties!: any[];
 }

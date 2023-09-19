@@ -60,23 +60,23 @@ export class CreateAgendarCitaPageComponent {
         //   });
       } else {
         // this.appoitment = new Cita();
-        this.appoitment.PatientId = -1;
-        this.appoitment.EmployeeId = -1;
-        this.appoitment.Duration = 30;
-        this.appoitment.ClassName = "bgm-orange";
+        this.appoitment.patientId = -1;
+        this.appoitment.employeeId = -1;
+        this.appoitment.duration = 30;
+        this.appoitment.className = "bgm-orange";
         // this.isRequesting = false;
       }
 
       if (params['start'] != "!") {
-        this.appoitment.StartDate = params['start'];
-        this.appoitment.StartDate = this.appoitment.StartDate.replace("-", "/");
-        this.appoitment.StartDate = this.appoitment.StartDate.replace("-", "/");
+        this.appoitment.startDate = params['start'];
+        this.appoitment.startDate = this.appoitment.startDate.replace("-", "/");
+        this.appoitment.startDate = this.appoitment.startDate.replace("-", "/");
       }
     });
     let current_patient = localStorage.getItem("current_patient");
 
     if (current_patient != "" && current_patient != null) {
-      this.appoitment.PatientId = JSON.parse(current_patient).Id;
+      this.appoitment.patientId = JSON.parse(current_patient).Id;
       localStorage.removeItem("current_patient");
     }
 
@@ -95,26 +95,26 @@ export class CreateAgendarCitaPageComponent {
     // this.appoitment.ClinicId = this.appGlobals.clinic.getValue().Id;
     // this.appoitment.PatientId = this.appoitment.PatientId == -1 ? parseInt(localStorage.getItem("idPatient")) : this.appoitment.PatientId;
 
-    switch (this.appoitment.ClassName) {
+    switch (this.appoitment.className) {
       case "bgm-red":
-        this.appoitment.Status = "PLANNED";
+        this.appoitment.status = "PLANNED";
         break;
       case "bgm-orange":
-        this.appoitment.Status = "SCHEDULED";
+        this.appoitment.status = "SCHEDULED";
         break;
       case "bgm-green":
-        this.appoitment.Status = "CONFIRMED";
+        this.appoitment.status = "CONFIRMED";
         break;
       case "bgm-black":
-        this.appoitment.Status = "CANCELLED";
+        this.appoitment.status = "CANCELLED";
         break;
       case "bgm-gray":
-        this.appoitment.Status = "NOTASSIST";
+        this.appoitment.status = "NOTASSIST";
         break;
 
       default: {
-        this.appoitment.ClassName = "bgm-orange";
-        this.appoitment.Status = "SCHEDULED";
+        this.appoitment.className = "bgm-orange";
+        this.appoitment.status = "SCHEDULED";
       }
         break;
     }
@@ -174,7 +174,7 @@ export class CreateAgendarCitaPageComponent {
   }
 
   selectTagColor(color:string) {
-    this.appoitment.ClassName = color;
+    this.appoitment.className = color;
   }
 
   ngAfterViewInit() {
@@ -182,7 +182,7 @@ export class CreateAgendarCitaPageComponent {
     // $('.time-picker').datetimepicker({ format: 'LT' });
     // $('.date-picker').datetimepicker({ format: 'DD/MM/YYYY' });
 
-    this.loadData(this.appoitment.PatientId);
+    this.loadData(this.appoitment.patientId);
   }
 
   selectOption(id:number) {

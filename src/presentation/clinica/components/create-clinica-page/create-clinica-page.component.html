@@ -35,18 +35,18 @@
 
       <div class="tab-content p-20">
         <div role="tabpanel" class="tab-pane animated fadeIn active" id="tab-2">
-          <div class="alert alert-success" role="alert" [hidden]="clinic.Active">
+          <div class="alert alert-success" role="alert" [hidden]="clinic.active">
             Solicite la afiliación de su clínica para muchas m&aacute;s funcionalidades &nbsp;&nbsp;&nbsp;
             <button class="btn btn-primary" (click)="activeClinic()"> Afiliar mi clínica</button>
           </div>
           <!-- #fclinic="ngForm" -->
-          <form  novalidate (ngSubmit)="editCLinic(true)" [hidden]="!clinic.Active">
+          <form  novalidate (ngSubmit)="editCLinic(true)" [hidden]="!clinic.active">
             <div class="row">
               <div class="col-sm-12">
                 <!-- {{ (clinic_name.valid || (clinic_name.pristine && !fclinic.submitted)) ? '' : 'has-error has-feedback' }}" -->
                 <div class="input-group form-group" >
-                  <span class="input-group-addon">
-                    <i class="md md-person"></i>
+                  <span class="input-group-text">
+                    <i class="md fa fa-user"></i>
                   </span>
 
                   <div class="fg-line">
@@ -60,7 +60,7 @@
               <div class="col-sm-4">
                 <!-- {{ (clinic_mobile.valid || (clinic_mobile.pristine && !fclinic.submitted)) ? '' : 'has-error has-feedback' }}" -->
                 <div class="input-group form-group" >
-                  <span class="input-group-addon">
+                  <span class="input-group-text">
                     <i class="md md-stay-primary-portrait"></i>
                   </span>
                   <div class="fg-line">
@@ -74,7 +74,7 @@
               <div class="col-sm-4">
                 <!-- {{ (clinic_phone.valid || (clinic_phone.pristine && !fclinic.submitted)) ? '' : 'has-error has-feedback' }}" -->
                 <div class="input-group form-group" >
-                  <span class="input-group-addon">
+                  <span class="input-group-text">
                     <i class="md md-local-phone"></i>
                   </span>
                   <div class="fg-line">
@@ -88,7 +88,7 @@
               <div class="col-sm-4">
                 <!-- {{ (clinic_email.valid || (clinic_email.pristine && !fclinic.submitted)) ? '' : 'has-error has-feedback' }}" -->
                 <div class="input-group form-group" >
-                  <span class="input-group-addon">
+                  <span class="input-group-text">
                     <i class="md md-email"></i>
                   </span>
                   <div class="fg-line">
@@ -103,7 +103,7 @@
             <div class="row">
               <div class="col-sm-8">
                 <div class="input-group  form-group">
-                  <span class="input-group-addon">
+                  <span class="input-group-text">
                     <i class="md md-location-on"></i>
                   </span>
 
@@ -117,7 +117,7 @@
               <div class="col-sm-4">
                 <!-- {{ (specialtyClinic.valid || (specialtyClinic.pristine && !fclinic.submitted)) ? '' : 'has-error has-feedback' }} -->
                 <div class="input-group form-group ">
-                  <span class="input-group-addon">
+                  <span class="input-group-text">
                     <i class="md md-school"></i>
                   </span>
                   <div class="fg-line select">
@@ -136,7 +136,7 @@
             <div class="row">
               <div class="col-sm-12">
                 <div class="input-group  form-group">
-                  <span class="input-group-addon">
+                  <span class="input-group-text">
                     <i class="md md-location-on"></i>
                   </span>
 
@@ -162,14 +162,14 @@
           <p class="c-black f-500 m-b-5">Planes de subscripción</p>
           <small>Cambia el plan de subscripción cuando desee para obtener más beneficios de la plataforma.</small>
 
-          <div class="alert alert-success" role="alert" [hidden]="clinic.Active">
+          <div class="alert alert-success" role="alert" [hidden]="clinic.active">
             Usted canceló su menbresía, puede volver a activar su clínica escogiendo un nuevo plan.
             <button class="btn btn-primary" (click)="activeClinic()"> Activar mi clínica</button>
           </div>
 
           <br />
           <br />
-          <div [hidden]="!clinic.Active">
+          <div [hidden]="!clinic.active">
             <div class="listview lv-bordered lv-lg">
               <div class="lv-body">
                 <div class="lv-item media" [ngClass]="opt.Class" *ngFor="let opt of paymentsTypes">

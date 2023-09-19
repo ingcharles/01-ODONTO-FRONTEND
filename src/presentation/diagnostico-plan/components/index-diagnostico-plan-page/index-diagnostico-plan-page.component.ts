@@ -91,7 +91,7 @@ export class IndexDiagnosticoPlanPageComponent {
       }
     });
     this.appoiment = new Cita();
-    this.appoiment.DateType = "month";
+    this.appoiment.dateType = "month";
     this.getEmployees();
     // this.doctorExcecuteId = JSON.parse(localStorage.getItem('user')).Data.Employees[0].Id;
   }
@@ -100,26 +100,26 @@ export class IndexDiagnosticoPlanPageComponent {
     window.history.back();
   }
 
-  selectTreatment(Id: number, TreatmentAmount: number, Payment: number) {
-    this.diagnosisPlan.Id = Id;
-    this.diagnosisPlan.TreatmentAmount = TreatmentAmount;
-    this.diagnosisPlan.Payment = Payment;
-    this.diagnosisPlan.PaymentMethodsId = -1;
-    this.diagnosisPlan.Invoiced = false;
-    this.amountPending = this.diagnosisPlan.TreatmentAmount - this.diagnosisPlan.Payment;
+  selectTreatment(id: number, treatmentAmount: number, payment: number) {
+    this.diagnosisPlan.id = id;
+    this.diagnosisPlan.treatmentAmount = treatmentAmount;
+    this.diagnosisPlan.payment = payment;
+    this.diagnosisPlan.paymentMethodsId = -1;
+    this.diagnosisPlan.invoiced = false;
+    this.amountPending = this.diagnosisPlan.treatmentAmount - this.diagnosisPlan.payment;
   }
 
   payment() {
-    this.diagnosisPlan.Pay = this.diagnosisPlan.Pay == undefined ? 0 : this.diagnosisPlan.Pay;
+    this.diagnosisPlan.pay = this.diagnosisPlan.pay == undefined ? 0 : this.diagnosisPlan.pay;
     this.consultation = new Consulta();
-    this.consultation.DoctorExecuteId = this.doctorExcecuteId;
-    this.consultation.Diagnosis_PlanId = this.diagnosisPlan.Id;
-    this.consultation.Payment = parseFloat(this.diagnosisPlan.Pay.toString());
-    this.consultation.DiagnosisPlanStatus = this.diagnosisPlan.Status != undefined ? this.diagnosisPlan.Status : "FINISHED";
-    this.consultation.Invoiced = this.diagnosisPlan.Invoiced;
-    this.consultation.InvoicedNumber = this.diagnosisPlan.InvoicedNumber;
-    if (this.diagnosisPlan.PaymentMethodsId != -1)
-      this.consultation.PaymentMethodsId = this.diagnosisPlan.PaymentMethodsId;
+    this.consultation.doctorExecuteId = this.doctorExcecuteId;
+    this.consultation.diagnosisPlanId = this.diagnosisPlan.id;
+    this.consultation.payment = parseFloat(this.diagnosisPlan.pay.toString());
+    this.consultation.diagnosisPlanStatus = this.diagnosisPlan.status != undefined ? this.diagnosisPlan.status : "TERMINADO";
+    this.consultation.invoiced = this.diagnosisPlan.invoiced;
+    this.consultation.invoicedNumber = this.diagnosisPlan.invoicedNumber;
+    if (this.diagnosisPlan.paymentMethodsId != -1)
+      this.consultation.paymentMethodsId = this.diagnosisPlan.paymentMethodsId;
     // this.consultationService.save(this.consultation)
     //   .then(consultation => {
     //     $('#modalPayment').modal('hide');
@@ -145,7 +145,7 @@ export class IndexDiagnosticoPlanPageComponent {
   }
 
   goToOdontogram() {
-    window.location.href = "#/odontogram/" + this.patientSelect.Id + "/" + this.personSelect.Age;
+    window.location.href = "#/odontogram/" + this.patientSelect.id + "/" + this.personSelect.Age;
   }
 
   selectDiagnosisPlan(Id: number) {
@@ -175,11 +175,11 @@ export class IndexDiagnosticoPlanPageComponent {
   }
 
   createNextAppoiment() {
-    if (this.appoiment.CantDateType != null) {
-      this.appoiment.Status = "SCHEDULED";
+    if (this.appoiment.cantDateType != null) {
+      this.appoiment.status = "SCHEDULED";
       // this.appoiment.ClinicId = this.appGlobals.clinic.getValue().Id;
-      this.appoiment.PatientId = this.patientSelect.Id;
-      this.appoiment.ClassName = "bgm-red";
+      this.appoiment.patientId = this.patientSelect.id;
+      this.appoiment.className = "bgm-red";
       // this.appoitmentService.save(this.appoiment)
       //   .then(response => {
       //     this.notification.notifySuccess("Guardar recordatorio de cita");
@@ -203,7 +203,7 @@ export class IndexDiagnosticoPlanPageComponent {
       case "PAID":
         return "PAGADO";
       case "ADVANCED":
-        return "ADELANTADO";
+        return "AVANZADO";
       case "INPROCESS":
         return "EN PROCESO";
       case "PENDING":
@@ -216,7 +216,7 @@ export class IndexDiagnosticoPlanPageComponent {
   }
 
   setStatus(status: string) {
-    this.diagnosisPlan.Status = status;
+    this.diagnosisPlan.status = status;
   }
 
   print() {

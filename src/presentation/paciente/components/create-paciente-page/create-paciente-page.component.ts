@@ -74,7 +74,7 @@ export class CreatePacientePageComponent {
         // this.patient.personalAndFamilyHistory = JSON.parse(localStorage.getItem('catalog')).Data.PERSONALANDFAMILYHISTORY;
         // this.patient.vitalSigns = JSON.parse(localStorage.getItem('catalog')).Data.VITALSIGNS;
         // this.patient.stomatognathicSystem = JSON.parse(localStorage.getItem('catalog')).Data.STOMATOGNATHICSYSTEM;
-        this.patient.PatientFromPartner = false;
+        this.patient.patientFromPartner = false;
       }
     });
    }

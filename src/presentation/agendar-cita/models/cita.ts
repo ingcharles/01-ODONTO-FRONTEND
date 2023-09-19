@@ -1,18 +1,18 @@
 export class Cita {
-  Id!: number;
-  ClinicId!: number;
-  EmployeeId!: number;
-  Status!: string;
-  Active!: boolean;
-  PatientId!: number;
-  PatientName!: string;
-  StartDate!: string;
-  EndDate!: string;
-  ClassName!: string;
-  Hour!: string;
+  id!: number;
+  clinicId!: number;
+  employeeId!: number;
+  status!: string;
+  active!: boolean;
+  patientId!: number;
+  patientName!: string;
+  startDate!: string;
+  endDate!: string;
+  className!: string;
+  hour!: string;
   strStartDate!: string;
   strHour!: string;
-  Duration!: number;
-  CantDateType!: number;
-  DateType!: string;
+  duration!: number;
+  cantDateType!: number;
+  dateType!: string;
 }

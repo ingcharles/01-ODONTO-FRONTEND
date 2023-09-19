@@ -48,10 +48,10 @@ export class DashboardPacientePageComponent {
     // this.clinic = user.Clinics[0];
 
     if (this.clinic != undefined) {
-      if (this.clinic.Clinic_Specialties.length > 0 && this.clinic.Clinic_Specialties[0].SpecialtiesId != null && this.clinic.Clinic_Specialties[0].SpecialtiesId != undefined)
-        this.clinic.SpecialtyId = this.clinic.Clinic_Specialties[0].SpecialtiesId;
+      if (this.clinic.clinicSpecialties.length > 0 && this.clinic.clinicSpecialties[0].SpecialtiesId != null && this.clinic.clinicSpecialties[0].SpecialtiesId != undefined)
+        this.clinic.specialtyId = this.clinic.clinicSpecialties[0].SpecialtiesId;
       else
-        this.clinic.SpecialtyId = -1;
+        this.clinic.specialtyId = -1;
 
       this.hiddenOdonto = false; //JSON.parse(localStorage.getItem('catalog')).Data.CLINICTYPES.filter(x => x.Id == this.clinic.SpecialtyId)[0].Description != 'ODONTO';
     }
@@ -91,7 +91,7 @@ export class DashboardPacientePageComponent {
     });
 
     this.appoiment = new Cita();
-    this.appoiment.DateType = "month";
+    this.appoiment.dateType = "month";
 
   }
 
@@ -181,11 +181,11 @@ export class DashboardPacientePageComponent {
   }
 
   createNextAppoiment() {
-    if (this.appoiment.CantDateType != null) {
-      this.appoiment.Status = "PLANNED";
+    if (this.appoiment.cantDateType != null) {
+      this.appoiment.status = "PLANNED";
       // this.appoiment.ClinicId = this.appGlobals.clinic.getValue().Id;
-      this.appoiment.PatientId = this.patient.Id;
-      this.appoiment.ClassName = "bgm-red";
+      this.appoiment.patientId = this.patient.id;
+      this.appoiment.className = "bgm-red";
       // this.appoitmentService.save(this.appoiment)
       //   .then(response => { })
       //   .catch(error => this.error = error);
