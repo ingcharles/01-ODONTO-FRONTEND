@@ -14,11 +14,11 @@ export class ValidationService {
   emailPattern: string = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$";
 
 
-  onlyNumber: string = "^([0-9]{10,13})$";
-  twoDecimal: string = "^([0-9]{0,8})(\.[0-9]{0,2})$";
+  // onlyNumber: string = "^([0-9]{10,13})$";
+  patternTwoDecimal: string = "^([0-9]{0,8})(\.[0-9]{0,3})$";
   // twoDecimal: string = "^(?!0+\.00)(?=.{1,9}(\.|$))(?!0(?!\.))\d{1,3}(,\d{3})*(\.\d+)?$";
 
-  onlyTwoDecimalRegExp: RegExp = /.[0-9]{2}$/;
+  onlyTwoDecimalRegExp: RegExp = /[0-9.]/;
   onlyNumberRegExp: RegExp = /[0-9]/;
   onlyOnlyLetterRegExp: RegExp = /[A-Za-zñÑáÁéÉíÍóÓúÚ ]/;
   //emailPatterndRegExp: RegExp = /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/;
@@ -162,7 +162,7 @@ export class ValidationService {
    ** Method que valida si el campo se quiere pegar algun texto no le permite
    *  @param {any} s recibe el evento de los atributos del componente
    */
-  public validatePaste(s: any) {
+  public validarPegarTexto(s: any) {
     s.event.returnValue = false;
     if (s.event.preventDefault) {
       s.event.preventDefault();
@@ -174,10 +174,27 @@ export class ValidationService {
    ** Method que valida solo la digitación de solo numeros
    *  @param {any} event recibe el evento del componente
    */
-  public validateOnlyNumber(event: any) {
+  public validarSoloNumeros(event: any) {
     let key = event.keyCode;
     key = String.fromCharCode(key);
     const regex = this.onlyNumberRegExp;
+    if (!regex.test(key)) {
+      event.returnValue = false;
+      if (event.preventDefault) {
+        event.preventDefault();
+      }
+    }
+  }
+
+
+  /**
+   ** Method que valida solo la digitación de solo numeros
+   *  @param {any} event recibe el evento del componente
+   */
+   public validarSoloDecimales(event: any) {
+    let key = event.keyCode;
+    key = String.fromCharCode(key);
+    const regex = this.onlyTwoDecimalRegExp;
     if (!regex.test(key)) {
       event.returnValue = false;
       if (event.preventDefault) {
@@ -190,7 +207,7 @@ export class ValidationService {
   ** Method que valida solo la digitación de solo letras
   *  @param {any} event recibe el evento del componente
   */
-  public validateOnlyLetter(event: any) {
+  public validarSoloLetras(event: any) {
     let key = event.keyCode;
     if (key === 60 || key === 62) {
       event.returnValue = false;
@@ -215,7 +232,7 @@ export class ValidationService {
   ** Method que valida solo la digitación de solo alfanumericos
   *  @param {any} event recibe el evento del componente
   */
-  public validateOnlyCharacter(event: any) {
+  public validarAlfanumericos(event: any) {
     let key = event.keyCode;
     if (key === 60 || key === 62) {
       event.returnValue = false;

@@ -1,0 +1,121 @@
+<!--
+* Vista index-tabla-prueba-page.component.html
+*
+* @author  Carlos Anchundia
+* @date    2023-12-08
+* @name    index-tabla-prueba-page.component.html
+* @package presentation
+* @subpackage tabla-prueba
+-->
+
+<div class="card">
+	<div class="card-header"><h2>{{titulo}}<small>Datos generales</small></h2>
+		<ul class="accion mt-3" title="Agregar {{titulo}}">
+			<li><a class="btn btn-info" [routerLink]="['/tabla-prueba', -1]"><i class="fa fa-add"></i></a></li>
+		</ul>
+	</div>
+
+	<div class="card-body card-padding">
+
+		<div class="row">
+
+			<div class="col-md-6 col-sm-6 col-xs-6">
+				<div class="input-group form-group">
+					<span class="input-group-text"><i class="md fa-solid fa-location-dot"></i></span>
+					<div class="dtp-container dropdown fg-line">
+						<input type="text" class="form-control" id="busqueda" name="busqueda" value="" placeholder="busqueda" maxlength="128" (keyup.enter)="obtenerTablaPrueba()"/>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-2 col-sm-2 col-xs-2">
+				<div class="input-group form-group">
+					<span class="input-group-text"><i class="md fa-solid fa-user-group"></i></span>
+						<div class="fg-line select">
+						<select class="form-control" name="tablaPruebaPadre">
+							<option value="-1">Todas tus tablaPrueba padres </option>
+							<option *ngFor="let opt of tablaPruebaPadre " [value]="opt.tabla_prueba_padre">{{opt.nombre_padre}}</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4 col-sm-4 col-xs-4">
+				<div class="input-group form-group">
+					<button class="btn btn-info" (click)="obtenerTablaPrueba()"><i class="md md-search"></i>Buscar</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="text-center mt-5" [hidden]="datosGridTablaPrueba.length > 0">
+		<div style="font-size: 16px;">No hay elementos para mostrar</div>
+	</div>
+
+	<table class="table align-middle mb-0 bg-white" mat-table [dataSource]="dataSource">
+
+		<ng-container matColumnDef="id_tabla_prueba">
+			<th mat-header-cell *matHeaderCellDef> Id </th>
+			<td mat-cell *matCellDef="let element"> {{element.id_tabla_prueba}} </td>
+		</ng-container>
+
+		<ng-container matColumnDef="nombre_tabla_prueba">
+			<th mat-header-cell *matHeaderCellDef> Nombre </th>
+			<td mat-cell *matCellDef="let element">
+				<div class="d-flex align-items-center">
+				<img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
+				<div class="ms-3">
+					<p class="fw-bold mb-1">{{element.nombre_tabla_prueba + ' - ' + element.nombre_tabla_prueba}} </p>
+					<p class="text-muted mb-0">{{element.nombre_tabla_prueba}}</p>
+				</div>
+			</div>
+			</td>
+		</ng-container>
+
+		<ng-container matColumnDef="fecha_tabla_prueba">
+			<th mat-header-cell *matHeaderCellDef> Fecha </th>
+			<td mat-cell *matCellDef="let element"> {{element.fecha_tabla_prueba}} </td>
+		</ng-container>
+
+		<ng-container matColumnDef="numero_entero">
+			<th mat-header-cell *matHeaderCellDef> Estado entero </th>
+			<td mat-cell *matCellDef="let element"> {{element.numero_entero}} </td>
+		</ng-container>
+
+		<ng-container matColumnDef="estado_boleano">
+			<th mat-header-cell *matHeaderCellDef> Estado boelano </th>
+			<td mat-cell *matCellDef="let element"> <span class="badge badge-warning rounded-pill d-inline">{{element.estado_boleano}}</span> </td>
+		</ng-container>
+
+		<ng-container matColumnDef="fecha_registro">
+			<th mat-header-cell *matHeaderCellDef> Fecha registro </th>
+			<td mat-cell *matCellDef="let element"> {{element.fecha_registro}} </td>
+		</ng-container>
+
+		<ng-container matColumnDef="numero_decimal">
+			<th mat-header-cell *matHeaderCellDef> Numero decimal </th>
+			<td mat-cell *matCellDef="let element"> {{element.numero_decimal}} </td>
+		</ng-container>
+
+		<ng-container matColumnDef="estado">
+			<th mat-header-cell *matHeaderCellDef> Estado </th>
+			<td mat-cell *matCellDef="let element"> <span class="badge badge-warning rounded-pill d-inline">{{element.estado}}</span> </td>
+		</ng-container>
+
+		<ng-container matColumnDef="accion">
+				<th mat-header-cell *matHeaderCellDef> Acción </th>
+			<td mat-cell *matCellDef="let element" class="text-center" >
+				<a [routerLink]="['/tabla-prueba/', element.id_tabla_prueba]"><i class="md fa-solid fa-file-pen"></i></a>
+			</td>
+		</ng-container>
+
+		<tr mat-header-row *matHeaderRowDef="['id_tabla_prueba','nombre_tabla_prueba','fecha_tabla_prueba','numero_entero','estado_boleano','fecha_registro','numero_decimal','estado','accion']"></tr>
+		<tr mat-row *matRowDef="let row; columns:['id_tabla_prueba','nombre_tabla_prueba','fecha_tabla_prueba','numero_entero','estado_boleano','fecha_registro','numero_decimal','estado','accion']"></tr>
+	
+	</table>
+
+	<mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons aria-label="Select page">
+	</mat-paginator>
+
+</div>

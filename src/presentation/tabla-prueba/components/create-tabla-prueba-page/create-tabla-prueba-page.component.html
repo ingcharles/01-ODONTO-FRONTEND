@@ -1,0 +1,91 @@
+<!--
+* Vista create-tabla-prueba-page.component.html
+*
+* @author  Carlos Anchundia
+* @date    2023-12-08
+* @name    create-tabla-prueba-page.component.html
+* @package presentation
+* @subpackage tabla-prueba
+-->
+
+<div class="card">
+	<form autocomplete="off" [formGroup]="formTablaPrueba" novalidate (ngSubmit)="saveTablaPrueba()">
+		<div class="card-header"><h2>TablaPrueba<small>Información del TablaPrueba</small></h2></div>
+
+		<div class="card-body card-padding">
+			<p class="c-black f-500 m-b-5">Información general</p>
+			<small>Información general del TablaPrueba. Los campos señalados con <strong>(*)</strong> son obligatorios.</small><br/><br/>
+			<br/><br/>
+
+			<div class="row">
+
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="input-group form-group">
+						<span class="input-group-text"><i class="md fa-solid fa-mobile-screen"></i>Nombre(*)</span>
+						<div class="fg-line">
+							<input type="text" class="form-control" id="nombre_tabla_prueba" name="nombre_tabla_prueba" value="" formControlName="nombre_tabla_prueba" placeholder="Nombre" required="required" maxlength="128" (keypress)="this._validatorService.validarAlfanumericos($event)" />
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="input-group form-group">
+						<span class="input-group-text"><i class="md fa-solid fa-envelope"></i>Fecha(*)</span>
+						<div class="fg-line">
+							<input type="text" class="form-control" id="fecha_tabla_prueba" name="fecha_tabla_prueba" value="" formControlName="fecha_tabla_prueba" placeholder="Fecha" required="required" maxlength="8" (keypress)="this._validatorService.validarAlfanumericos($event)" />
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="input-group form-group">
+						<span class="input-group-text"><i class="md fa-solid fa-phone"></i>Estado entero(*)</span>
+						<div class="fg-line">
+							<input type="text" class="form-control" id="numero_entero" name="numero_entero" value="" formControlName="numero_entero" placeholder="Estado entero" required="required" maxlength="8" (keypress)="this._validatorService.validarAlfanumericos($event)" />
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="input-group form-group">
+						<span class="input-group-text"><i class="md fa-solid fa-location-dot"></i>Estado boelano(*)</span>
+						<div class="fg-line">
+							<input type="text" class="form-control" id="estado_boleano" name="estado_boleano" value="" formControlName="estado_boleano" placeholder="Estado boelano" required="required" maxlength="8" (keypress)="this._validatorService.validarAlfanumericos($event)" />
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="input-group form-group">
+						<span class="input-group-text"><i class="md fa-solid fa-location-dot"></i>Fecha registro(*)</span>
+						<div class="fg-line">
+							<input type="text" class="form-control" id="fecha_registro" name="fecha_registro" value="" formControlName="fecha_registro" placeholder="Fecha registro" required="required" maxlength="8" (keypress)="this._validatorService.validarAlfanumericos($event)" />
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="input-group form-group">
+						<span class="input-group-text"><i class="md fa fa-user"></i>Numero decimal(*)</span>
+						<div class="fg-line">
+							<input type="text" class="form-control" id="numero_decimal" name="numero_decimal" value="" formControlName="numero_decimal" placeholder="Numero decimal" required="required" maxlength="8" (keypress)="this._validatorService.validarAlfanumericos($event)" />
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="input-group form-group">
+						<span class="input-group-text"><i class="md fa-solid fa-venus-mars"></i>Estado(*)</span>
+						<div class="fg-line">
+							<input type="text" class="form-control" id="estado" name="estado" value="" formControlName="estado" placeholder="Estado" required="required" maxlength="16" (keypress)="this._validatorService.validarAlfanumericos($event)" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<input type="hidden" class="form-control" id="id_tabla_prueba" name="id_tabla_prueba" value="" formControlName="id_tabla_prueba"/>
+			<br/><br/><br/>
+			<button type="submit" class="btn btn-primary btn-sm" [disabled]="!formTablaPrueba">Guardar</button>
+			<button type="button" class="btn btn-default btn-sm" (click)="cancelTablaPrueba()">Cancelar</button>
+		</div>
+	</form>
+</div>

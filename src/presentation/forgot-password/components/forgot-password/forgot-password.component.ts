@@ -21,7 +21,7 @@ import { Globals } from 'src/presentation/base/services/globals';
 export class ForgotPasswordComponent {
 
 
-  constructor(public _fb: FormBuilder, public _validatorService: ValidationService, private _alertService: AlertsService, private _loaderService: LoaderService, private _authUseCase: AuthUseCase, private _router: Router, private _globals: Globals) { }
+  constructor(public _fb: FormBuilder, public _validatorService: ValidationService, private _authUseCase: AuthUseCase, private _router: Router, private _globals: Globals, private _alertService: AlertsService,private _loaderService: LoaderService) { }
   //* obtener los mensajes de la alertas configuradas en base/messages.ts
   public menssage = messages;
 

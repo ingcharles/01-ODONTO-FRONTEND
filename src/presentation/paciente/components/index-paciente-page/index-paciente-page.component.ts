@@ -1,15 +1,25 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { messages } from 'src/presentation/base/messages';
+import { PacienteUseCase } from 'src/domain/paciente/useCases/paciente.usecase';
+import { IGetPacienteRsViewModel, IGetPacienteViewModel } from 'src/domain/paciente/viewModels/i-paciente.viewModel';
+import { AlertsService } from 'src/presentation/base/services/alerts.service';
+import { LoaderService } from 'src/presentation/base/services/loader.service';
+import { Router } from '@angular/router';
 
+declare var $:any;
 @Component({
   selector: 'paciente-index-paciente-page',
   templateUrl: './index-paciente-page.component.html',
   styleUrls: ['./index-paciente-page.component.css']
 })
 export class IndexPacientePageComponent {
-  title = 'Pacientes';
+  // , private _route: ActivatedRoute
+  constructor(private _router: Router, private _alertService: AlertsService, private _loaderService: LoaderService, private _pacienteUseCase: PacienteUseCase){}
 
+  public title:string = 'Pacientes';
+  public datosGridPaciente: IGetPacienteRsViewModel[] = [];
   error: any;
   // response: Response;
   // responseClinics: Response;
@@ -26,8 +36,8 @@ export class IndexPacientePageComponent {
   //   private dashBoardService: DashBoardService, private notification: NotificationMessage, private clinicService: ClinicService) {
   //   this.response = new Response();
   // }
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'symbola'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  //displayedColumns: string[] = ['id_paciente', 'nombre', 'apellido', 'dni', 'email', 'celular', 'telefono', 'fecha_nacimiento', 'sexo','estado'];
+  dataSource = new MatTableDataSource<IGetPacienteRsViewModel>();
   // @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   ngAfterViewInit(): void {
@@ -36,33 +46,30 @@ export class IndexPacientePageComponent {
   ngOnInit() {
     //   this.idCLinic = this.appGlobals.clinic.getValue().Id;
     //   this.getPatientsByClinic(this.appGlobals.query.getValue());
+    this.obtenerPaciente();
+
   }
 
-  searchPatients() {
-    //   if ($('#query').val() == "") {
-    //     this.appGlobals.setQuery("!");
-    //   }
-    //   else {
-    //     this.appGlobals.setQuery($('#query').val());
-    //   }
-    //   this.getPatientsByClinic(this.appGlobals.query.getValue());
-  }
 
-  getPatientsByClinic(query: any) {
-    //   this.isRequesting = true;
+  obtenerPaciente() {
 
-    //   var idEmployee = -1;
-    //   if (this.appGlobals.owner.getValue() === false) {
-    //     idEmployee = JSON.parse(localStorage.getItem('user')).Data.Employees[0].Id;
-    //   }
+    let busquedaString:any = $('#busqueda').val();
+    let busqueda: IGetPacienteViewModel = { busqueda: busquedaString};
 
-    //   this.patientService
-    //     .getByIdClinicByIdEmployee(this.idCLinic, idEmployee, "!", "!", query)
-    //     .then(response => {
-    //       this.response = response;
-    //       this.getClinicsWorker();
-    //     })
-    //     .catch(error => this.error = error);
+    this._pacienteUseCase.getPaciente(busqueda).then(obs => {
+      this._loaderService.display(true);
+      obs.subscribe((result) => {
+        this._loaderService.display(false);
+        if (result.ok) {
+          this.datosGridPaciente = result.data!;
+        } else {
+          this.datosGridPaciente = [];
+          this._alertService.alertMessage(messages.advertenciaTitle, result.message, messages.isWarning);
+        }
+        this.dataSource = new MatTableDataSource<IGetPacienteRsViewModel>(this.datosGridPaciente);
+      });
+    });
+
   }
 
   delete(Id: number) {
@@ -100,36 +107,30 @@ export class IndexPacientePageComponent {
   //   $('.date-picker').datetimepicker({ format: 'DD/MM/YYYY' });
   //}
 
+  // this.datosGrid = [
+  //   { id_paciente: 1, nombre: 'Hydrogen', apellido: 'AHydrogen', dni: '1722039953', email:'e.du.ingcharles@hotmail.com', celular:'0996421114', telefono: '025592254', fecha_nacimiento: new Date('2022-12-12'), sexo: 'H', estado: 'active' },
+  //   { id_paciente: 2, nombre: 'Helium', apellido: 'AHydrogen', dni: '1722039953', email:'e.du.ingcharles@hotmail.com', celular:'0996421114', telefono: '025592254', fecha_nacimiento: new Date('2022-12-12'), sexo: 'He', estado: 'active' },
+    // { id_paciente: 3, nombre: 'Lithium', apellido: 'AHydrogen', fecha_nacimiento: new Date('2022-12-12'), sexo: 'Li', estado: 'active' },
+    // { id_paciente: 4, nombre: 'Beryllium', apellido: 'AHydrogen', fecha_nacimiento: new Date('2022-12-12'), sexo: 'Be', estado: 'active' },
+    // { id_paciente: 5, nombre: 'Boron', apellido: 'AHydrogen', fecha_nacimiento: new Date('2022-12-12'), sexo: 'B', estado: 'active' },
+    // { id_paciente: 6, nombre: 'Carbon', apellido: 'AHydrogen', fecha_nacimiento: new Date('2022-12-12'), sexo: 'C', estado: 'active' },
+    // { id_paciente: 7, nombre: 'Nitrogen', apellido: 'AHydrogen', fecha_nacimiento: new Date('2022-12-12'), sexo: 'N', estado: 'active' },
+    // { id_paciente: 8, nombre: 'Oxygen', apellido: 'AHydrogen', fecha_nacimiento: new Date('2022-12-12'), sexo: 'O', estado: 'active' },
+    // { id_paciente: 9, nombre: 'Fluorine', apellido: 'AHydrogen', fecha_nacimiento: new Date('2022-12-12'), sexo: 'F', estado: 'active' },
+    // { id_paciente: 10, nombre: 'Neon', apellido: 'AHydrogen', fecha_nacimiento: new Date('2022-12-12'), sexo: 'Ne', estado: 'active' },
+    // { id_paciente: 11, nombre: 'Sodium', apellido: 'AHydrogen', fecha_nacimiento: new Date('2022-12-12'), sexo: 'Na', estado: 'active' },
+    // { id_paciente: 12, nombre: 'Magnesium', apellido: 'AHydrogen', fecha_nacimiento: new Date('2022-12-12'), sexo: 'Mg', estado: 'active' },
+    // { id_paciente: 13, nombre: 'Aluminum', apellido: 'AHydrogen', fecha_nacimiento: new Date('2022-12-12'), sexo: 'Al', estado: 'active' },
+    // { id_paciente: 14, nombre: 'Silicon', apellido: 'AHydrogen', fecha_nacimiento: new Date('2022-12-12'), sexo: 'Si', estado: 'active' },
+    // { id_paciente: 15, nombre: 'Phosphorus', apellido: 'AHydrogen', fecha_nacimiento: new Date('2022-12-12'), sexo: 'P', estado: 'active' },
+    // { id_paciente: 16, nombre: 'Sulfur', apellido: 'AHydrogen', fecha_nacimiento: new Date('2022-12-12'), sexo: 'S', estado: 'active' },
+    // { id_paciente: 17, nombre: 'Chlorine', apellido: 'AHydrogen', fecha_nacimiento: new Date('2022-12-12'), sexo: 'Cl', estado: 'active' },
+    // { id_paciente: 18, nombre: 'Argon', apellido: 'AHydrogen', fecha_nacimiento: new Date('2022-12-12'), sexo: 'Ar', estado: 'active' },
+    // { id_paciente: 19, nombre: 'Potassium', apellido: 'AHydrogen', fecha_nacimiento: new Date('2022-12-12'), sexo: 'K', estado: 'active' },
+    // { id_paciente: 20, nombre: 'Calcium', apellido: 'AHydrogen', fecha_nacimiento: new Date('2022-12-12'), sexo: 'Ca', estado: 'active' },
+  //];
 
 }
 
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
-  { position: 11, name: 'Sodium', weight: 22.9897, symbol: 'Na' },
-  { position: 12, name: 'Magnesium', weight: 24.305, symbol: 'Mg' },
-  { position: 13, name: 'Aluminum', weight: 26.9815, symbol: 'Al' },
-  { position: 14, name: 'Silicon', weight: 28.0855, symbol: 'Si' },
-  { position: 15, name: 'Phosphorus', weight: 30.9738, symbol: 'P' },
-  { position: 16, name: 'Sulfur', weight: 32.065, symbol: 'S' },
-  { position: 17, name: 'Chlorine', weight: 35.453, symbol: 'Cl' },
-  { position: 18, name: 'Argon', weight: 39.948, symbol: 'Ar' },
-  { position: 19, name: 'Potassium', weight: 39.0983, symbol: 'K' },
-  { position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca' },
-];

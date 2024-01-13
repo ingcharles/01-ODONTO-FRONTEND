@@ -38,7 +38,7 @@ const routes: Routes = [
       import('../presentation/change-password/change-password.module').then((m) => m.ChangePasswordModule)
   },
   {
-    path: 'patiens',
+    path: 'paciente',
     loadChildren: () =>
       import('../presentation/paciente/paciente.module').then((m) => m.PacienteModule)
   },
@@ -97,7 +97,16 @@ const routes: Routes = [
     loadChildren: () =>
       import('../presentation/estado-cuenta/estado-cuenta.module').then((m) => m.EstadoCuentaModule),
   },
-
+	{
+		path: 'tabla-prueba',
+			loadChildren: () =>
+				import('../presentation/tabla-prueba/tabla-prueba.module').then((m) => m.TablaPruebaModule)
+	},
+  {
+		path: 'tabla-prueba-uno',
+			loadChildren: () =>
+				import('../presentation/tabla-prueba-uno/tabla-prueba-uno.module').then((m) => m.TablaPruebaUnoModule)
+	},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
     path: '**',

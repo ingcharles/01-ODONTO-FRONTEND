@@ -7,6 +7,8 @@ import { PersonaMapper } from './general/mappers/persona.mapper';
 import { httpInterceptorProviders } from '../base/interceptors/http.interceptor';
 import { AuthService } from './login/services/auth.service';
 import { AuthMapper } from './login/mappers/auth.mapper';
+import { TablaPruebaUseCase } from 'src/domain/tabla-prueba/usesCases/tabla-prueba.usecase';
+import { TablaPruebaService } from './tabla-prueba/services/tabla-prueba.services';
 
 
 
@@ -18,7 +20,11 @@ import { AuthMapper } from './login/mappers/auth.mapper';
 
         PersonaMapper,
       AuthMapper,
-        { provide: GeneralService }
+
+        { provide: GeneralService},
+        // { provide: TablaPruebaService }
+        // { provide: TablaPruebaService },
+        // { provide: TablaPruebaUseCase }
     ],
     imports: [
         CommonModule,

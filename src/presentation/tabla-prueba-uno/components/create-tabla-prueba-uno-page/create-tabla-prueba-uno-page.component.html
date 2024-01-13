@@ -1,0 +1,113 @@
+<!--
+* Vista create-tabla-prueba-uno-page.component.html
+*
+* @author  Carlos Anchundia
+* @date    2023-12-08
+* @name    create-tabla-prueba-uno-page.component.html
+* @package presentation
+* @subpackage tabla-prueba-uno
+-->
+
+<div class="card">
+	<form autocomplete="off" [formGroup]="formTablaPruebaUno" novalidate (ngSubmit)="saveTablaPruebaUno()">
+		<div class="card-header"><h2>TablaPruebaUno<small>Información del TablaPruebaUno</small></h2></div>
+
+		<div class="card-body card-padding">
+			<p class="c-black f-500 m-b-5">Información general</p>
+			<small>Información general del TablaPruebaUno. Los campos señalados con <strong>(*)</strong> son obligatorios.</small><br/><br/>
+			<br/><br/>
+
+			<div class="row">
+
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="input-group form-group">
+						<span class="input-group-text"><i class="md fa-solid fa-mobile-screen pe-1-9"></i>Nombre</span>
+						<div class="fg-line">
+							<input type="text" class="form-control" id="nombre_tabla_uno" name="nombre_tabla_uno" value="" formControlName="nombre_tabla_uno" placeholder="Nombre"  maxlength="128" (keypress)="this._validatorService.validarAlfanumericos($event)" />
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="input-group form-group">
+						<span class="input-group-text"><i class="md fa-solid fa-mobile-screen pe-1-9"></i>Apellido</span>
+						<div class="fg-line-text-area mb-2">
+							<textarea type="text" rows="3" class="form-control" id="apellido_tabla_uno" name="apellido_tabla_uno" value="" formControlName="apellido_tabla_uno" placeholder="Apellido"  maxlength="256" (keypress)="this._validatorService.validarAlfanumericos($event)" ></textarea>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="input-group form-group">
+						<span class="input-group-text"><i class="md fa-solid fa-user-group pe-1-9"></i>Número entero</span>
+						<div class="fg-line">
+							<input type="number" class="form-control" id="numero_entero_tabla_uno" name="numero_entero_tabla_uno" value="" formControlName="numero_entero_tabla_uno" placeholder="Número entero" max="999999999" (keypress)="this._validatorService.validarSoloNumeros($event)" />
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="input-group form-group">
+						<span class="input-group-text"><i class="md fa-regular fa-calendar pe-1-9"></i>Número decimal</span>
+						<div class="fg-line">
+							<input type="number" class="form-control" id="numero_decimal_tabla_uno" name="numero_decimal_tabla_uno" value="" formControlName="numero_decimal_tabla_uno" placeholder="Número decimal" max="999999999.99" (keypress)="this._validatorService.validarSoloDecimales($event)" />
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="input-group form-group">
+						<span class="input-group-text"><i class="md fa-regular fa-calendar pe-1-9"></i>Fecha creación</span>
+						<div class="fg-line">
+							<input type="text" [autoClose]="true" (click)="fechaCreacionTablaUno.open()" ngbDatepicker #fechaCreacionTablaUno="ngbDatepicker" class="form-control date-picker" id="fecha_creacion_tabla_uno" name="fecha_creacion_tabla_uno" value="" formControlName="fecha_creacion_tabla_uno" placeholder="Fecha creación" maxlength="8"/>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="input-group form-group">
+						<span class="input-group-text"><i class="md fa-regular fa-calendar pe-1-9"></i>Fecha actual</span>
+						<div class="fg-line">
+							<input type="text" [autoClose]="true" (click)="fechaActualTablaUno.open()" ngbDatepicker #fechaActualTablaUno="ngbDatepicker" class="form-control date-picker" id="fecha_actual_tabla_uno" name="fecha_actual_tabla_uno" value="" formControlName="fecha_actual_tabla_uno" placeholder="Fecha actual" maxlength="8"/>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="input-group form-group">
+						<span class="input-group-text"><i class="md fas fa-toggle-off pe-1-9"></i>Es tabla uno</span>
+						<div class="fg-line slide-toggle">
+							<mat-slide-toggle class="form-control" color="success"  maxlength="8" formControlName="es_tabla_uno" (change)="onChangeEsTablaUno($event)">Es tabla uno {{checkedEsTablaUno}}</mat-slide-toggle>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="input-group form-group">
+						<span class="input-group-text"><i class="md fa-solid fa-venus-mars pe-1-9"></i>Estado</span>
+						<div class="fg-line select">
+							<select class="form-control" id="estado_tabla_uno" name="estado_tabla_uno" formControlName="estado_tabla_uno">
+								<option value="Activo">Activo</option>
+								<option value="Inactivo">Inactivo</option>
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="input-group form-group">
+						<span class="input-group-text"><i class="md fa fa-user pe-1-9"></i>Teléfono</span>
+						<div class="fg-line">
+							<input type="text" class="form-control" id="telefono_tabla_uno" name="telefono_tabla_uno" value="" formControlName="telefono_tabla_uno" placeholder="Teléfono"  maxlength="16" (keypress)="this._validatorService.validarAlfanumericos($event)" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<input type="hidden" class="form-control" id="id_tabla_prueba_uno" name="id_tabla_prueba_uno" value="" formControlName="id_tabla_prueba_uno"/>
+			<input type="hidden" class="form-control" id="fecha_actualizacion_tabla_uno" name="fecha_actualizacion_tabla_uno" value="" formControlName="fecha_actualizacion_tabla_uno"/>
+			<br/><br/><br/>
+			<button type="submit" class="btn btn-primary btn-sm" [disabled]="!formTablaPruebaUno">Guardar</button>
+			<button type="button" class="btn btn-default btn-sm" (click)="cancelTablaPruebaUno()">Cancelar</button>
+		</div>
+	</form>
+</div>

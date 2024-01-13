@@ -2025,3 +2025,28 @@ $(document).ready(function () {
     ajustarAltoVentanaAplicacion();
   })();
 });
+
+
+window.validarDecimalesJs = function (campo, maxlength, maxlengthDecimal) {
+
+  $(campo).on('input', function () {
+    var inputValue = $(campo).val();
+    var regex = new RegExp('^\\d{0,' + maxlength + '}(\\.\\d{0,' + maxlengthDecimal + '})?$');
+      if (!regex.test(inputValue)) {
+      $(campo).val(inputValue.slice(0, -1));
+    }
+  });
+
+}
+
+window.validarEnterosJs = function (campo, maxlength) {
+
+  $(campo).on('input', function () {
+    var inputValue = $(campo).val();
+    var regex = new RegExp('^\\d{0,' + maxlength + '}?$');
+      if (!regex.test(inputValue)) {
+      $(campo).val(inputValue.slice(0, -1));
+    }
+  });
+
+}

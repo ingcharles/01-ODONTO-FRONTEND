@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HttpHeaderInterceptorProvider } from 'src/base/interceptors/http-header.interceptor';
 import { LoaderService } from 'src/presentation/base/services/loader.service';
 import { DataModule } from 'src/data/data.module';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeModule } from 'src/presentation/home/home.module';
 import { RouterModule } from '@angular/router';
@@ -33,7 +32,7 @@ export function tokenGetter() {
       },
     }),
 
-    NgbModule,
+    // NgbModule,
     BrowserAnimationsModule,
     HomeModule,
     RouterModule

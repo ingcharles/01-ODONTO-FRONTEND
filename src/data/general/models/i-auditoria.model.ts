@@ -1,3 +1,3 @@
 export interface IAuditoriaModel {
-    auditoria: string | null;
+    auditoria?: string | null;
 }
