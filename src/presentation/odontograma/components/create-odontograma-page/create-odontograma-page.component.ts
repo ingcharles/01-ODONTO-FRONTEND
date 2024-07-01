@@ -53,7 +53,7 @@ export class CreateOdontogramaPageComponent {
 
   ngOnInit() {
     this.odontogram = new Odontograma();
-    this.initTooth();
+    this.inittooth();
 
      this.sub = this.route.params.subscribe(params => {
        if (params['id'] != -1) {
@@ -72,10 +72,10 @@ export class CreateOdontogramaPageComponent {
     //         this.age = this.personSelect.Age;
           // });
     this.catalogs = [
-      { Description: "bgm-red|Descipción diagnóstico 1|triangle|right|1-2", Name:"Diagnóstico 1"},
+      { Description: "bgm-black|Descipción diagnóstico 1|triangle|right|1-2", Name:"Diagnóstico 1"},
       { Description: "bgm-orange|Descipción diagnóstico 2|equis|left|1-2", Name: "Diagnóstico 2" },
       { Description: "bgm-green|Descipción diagnóstico 3|screw|bottom|1-2", Name: "Diagnóstico 3" },//Tornillo
-      { Description: "bgm-black|Descipción diagnóstico 4|circle|top|1-2", Name: "Diagnóstico 4" },
+      { Description: "bgm-red|Descipción diagnóstico 4|circle|all|1-2", Name: "Diagnóstico 4" },
       { Description: "bgm-gray|Descipción diagnóstico 5|asterisk|center|1-2-10", Name: "Diagnóstico 5" },
       { Description: "bgm-blue|Descipción diagnóstico 6|asterisk|all|1-2-10", Name: "Diagnóstico 6" },
     ]
@@ -98,7 +98,7 @@ export class CreateOdontogramaPageComponent {
 
   getOdontogramByPatientId(idPatient:number) {
     this.response = new Response();
-    //Tooth: { Top: { Color: string, Diagnostic: string }, Bottom: { Color: string, Diagnostic: string }, Left: { Color: string, Diagnostic: string }, Right: { Color: string, Diagnostic: string }, Center: { Color: string, Diagnostic: string }, Shape: string };
+    //tooth: { Top: { Color: string, Diagnostic: string }, Bottom: { Color: string, Diagnostic: string }, Left: { Color: string, Diagnostic: string }, Right: { Color: string, Diagnostic: string }, Center: { Color: string, Diagnostic: string }, Shape: string };
 //  case "PLANNED":
 //     item.appoitment.ClassName = "bgm-red";
 //     break;
@@ -122,20 +122,76 @@ export class CreateOdontogramaPageComponent {
     //         < option class="bgm-black" value = "CANCELLED"[selected] = "item.appoitment.Status == 'CANCELLED'" > Cancelado < /option>
     //           < option class="bgm-gray" value = "NOTASSIST"[selected] = "item.appoitment.Status == 'NOTASSIST'" > No Asistido </>
     this.response.Data = [
-      { ToothNumber: 11, Tooth: { Top: { Color: "bgm-red", Diagnostic:"Diagnostico1" }, Left: { Color: "bgm-green" }, Bottom: { Color: "bgm-orange" }, Right: { Color: "bgm-black" }, Center: { Color: "" }, Shape:"triangle-bgm-red-all" }},
-      { ToothNumber: 12, Tooth: { Top: { Color: "bgm-red", Diagnostic: "Diagnostico1" }, Left: { Color: "bgm-green" }, Bottom: { Color: "bgm-orange" }, Right: { Color: "bgm-black" }, Center: { Color: "" }, Shape: "triangle-bgm-blue-all" } },
+      //PIEZA ADULTO 11 A 18 SUPERIOR IZQUIERDA
+      { toothNumber: 11, tooth: { top: { color: "bgm-red", diagnostic:"Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape:"triangle-bgm-red-all" }},
+      { toothNumber: 12, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "triangle-bgm-blue-all" } },
+      { toothNumber: 13, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "triangle-bgm-blue-all" } },
+      { toothNumber: 14, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "triangle-bgm-blue-all" } },
+      { toothNumber: 15, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "triangle-bgm-blue-all" } },
+      { toothNumber: 16, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "triangle-bgm-blue-all" } },
+      { toothNumber: 17, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "triangle-bgm-blue-all" } },
+      { toothNumber: 18, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "triangle-bgm-blue-all" } },
 
-      { ToothNumber: 21, Tooth: { Top: { Color: "bgm-red", Diagnostic: "Diagnostico1" }, Left: { Color: "bgm-green" }, Bottom: { Color: "bgm-orange" }, Right: { Color: "bgm-black" }, Center: { Color: "" }, Shape: "equis-bgm-red-all" } },
-      { ToothNumber: 31, Tooth: { Top: { Color: "bgm-red", Diagnostic: "Diagnostico1" }, Left: { Color: "bgm-green" }, Bottom: { Color: "bgm-orange" }, Right: { Color: "bgm-black" }, Center: { Color: "" }, Shape: "equis-bgm-blue-all " } },
-      { ToothNumber: 41, Tooth: { Top: { Color: "bgm-red", Diagnostic: "Diagnostico1" }, Left: { Color: "bgm-green" }, Bottom: { Color: "bgm-orange" }, Right: { Color: "bgm-black" }, Center: { Color: "" }, Shape: "screw-bgm-blue-all " } },
-      { ToothNumber: 51, Tooth: { Top: { Color: "bgm-red", Diagnostic: "Diagnostico1" }, Left: { Color: "bgm-green" }, Bottom: { Color: "bgm-orange" }, Right: { Color: "bgm-black" }, Center: { Color: "" }, Shape: "screw-bgm-red-all " } },
-      { ToothNumber: 61, Tooth: { Top: { Color: "bgm-red", Diagnostic: "Diagnostico1" }, Left: { Color: "bgm-green" }, Bottom: { Color: "bgm-orange" }, Right: { Color: "bgm-black" }, Center: { Color: "" }, Shape: "circle-bgm-red-all" } },
-      { ToothNumber: 71, Tooth: { Top: { Color: "bgm-red", Diagnostic: "Diagnostico1" }, Left: { Color: "bgm-green" }, Bottom: { Color: "bgm-orange" }, Right: { Color: "bgm-black" }, Center: { Color: "" }, Shape: "circle-bgm-blue-all" } },
-      { ToothNumber: 81, Tooth: { Top: { Color: "bgm-red", Diagnostic: "Diagnostico1" }, Left: { Color: "bgm-green" }, Bottom: { Color: "bgm-orange" }, Right: { Color: "bgm-black" }, Center: { Color: "" }, Shape: "asterisk-bgm-red-all" } },
-      { ToothNumber: 82, Tooth: { Top: { Color: "bgm-red", Diagnostic: "Diagnostico1" }, Left: { Color: "bgm-green" }, Bottom: { Color: "bgm-orange" }, Right: { Color: "bgm-black" }, Center: { Color: "" }, Shape: "asterisk-bgm-blue-all" } },
-      { ToothNumber: 83, Tooth: { Top: { Color: "bgm-red", Diagnostic: "Diagnostico1" }, Left: { Color: "" }, Bottom: { Color: "" }, Right: { Color: "" }, Center: { Color: "" }, Shape: "" } },
+      //PIEZA ADULTO 21 A 28 SUPERIOR DERECHA
+      { toothNumber: 21, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "equis-bgm-red-all" } },
+      { toothNumber: 22, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "equis-bgm-red-all" } },
+      { toothNumber: 23, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "equis-bgm-red-all" } },
+      { toothNumber: 24, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "equis-bgm-red-all" } },
+      { toothNumber: 25, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "equis-bgm-red-all" } },
+      { toothNumber: 26, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "equis-bgm-red-all" } },
+      { toothNumber: 27, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "equis-bgm-red-all" } },
+      { toothNumber: 28, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "equis-bgm-red-all" } },
 
-      //  { ToothNumber: 21 }, { ToothNumber: 41 }, { ToothNumber: 31 }
+      //PIEZA ADULTO 31 A 38 SUPERIOR DERECHA
+      { toothNumber: 31, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "equis-bgm-blue-all " } },
+      { toothNumber: 32, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "equis-bgm-blue-all " } },
+      { toothNumber: 33, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "equis-bgm-blue-all " } },
+      { toothNumber: 34, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "equis-bgm-blue-all " } },
+      { toothNumber: 35, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "equis-bgm-blue-all " } },
+      { toothNumber: 36, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "equis-bgm-blue-all " } },
+      { toothNumber: 37, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "equis-bgm-blue-all " } },
+      { toothNumber: 38, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "equis-bgm-blue-all " } },
+
+      //PIEZA NIÑOS 41 A 48 INFERIOR IZQUIERDA
+      { toothNumber: 41, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "screw-bgm-blue-all " } },
+      { toothNumber: 42, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "screw-bgm-blue-all " } },
+      { toothNumber: 43, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "screw-bgm-blue-all " } },
+      { toothNumber: 44, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "screw-bgm-blue-all " } },
+      { toothNumber: 45, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "screw-bgm-blue-all " } },
+      { toothNumber: 46, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "screw-bgm-blue-all " } },
+      { toothNumber: 47, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "screw-bgm-blue-all " } },
+      { toothNumber: 48, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "screw-bgm-blue-all " } },
+
+      //PIEZA NIÑOS 51 A 55 SUPERIOR IZQUIERDA
+      { toothNumber: 51, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "screw-bgm-red-all " } },
+      { toothNumber: 52, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "screw-bgm-red-all " } },
+      { toothNumber: 53, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "screw-bgm-red-all " } },
+      { toothNumber: 54, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "screw-bgm-red-all " } },
+      { toothNumber: 55, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "screw-bgm-red-all " } },
+
+      //PIEZA NIÑOS 61 A 65 SUPERIOR DERECHA
+      { toothNumber: 61, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "circle-bgm-red-all" } },
+      { toothNumber: 62, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "circle-bgm-red-all" } },
+      { toothNumber: 63, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "circle-bgm-red-all" } },
+      { toothNumber: 64, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "circle-bgm-red-all" } },
+      { toothNumber: 65, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "circle-bgm-red-all" } },
+
+      //PIEZA NIÑOS 71 A 55 INFERIOR DERECHA
+      { toothNumber: 71, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "circle-bgm-blue-all" } },
+      { toothNumber: 72, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "circle-bgm-blue-all" } },
+      { toothNumber: 73, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "circle-bgm-blue-all" } },
+      { toothNumber: 74, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "circle-bgm-blue-all" } },
+      { toothNumber: 75, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "circle-bgm-blue-all" } },
+
+      //PIEZA NIÑOS 81 A 85 INFERIOR IZQUIERDA
+      { toothNumber: 81, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "asterisk-bgm-red-all" } },
+      { toothNumber: 82, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "asterisk-bgm-blue-all" } },
+      { toothNumber: 83, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "" }, bottom: { color: "" }, right: { color: "" }, center: { color: "" }, shape: "" } },
+      { toothNumber: 84, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "" }, bottom: { color: "" }, right: { color: "" }, center: { color: "" }, shape: "" } },
+      { toothNumber: 85, tooth: { top: { color: "bgm-red", diagnostic: "Diagnostico1" }, left: { color: "bgm-green" }, bottom: { color: "bgm-orange" }, right: { color: "bgm-black" }, center: { color: "" }, shape: "asterisk-bgm-blue-all" } },
+
+
+      //  { toothNumber: 21 }, { toothNumber: 41 }, { toothNumber: 31 }
     ]
     // this.odontogramService
     //   .getOdontogramByPatientId(idPatient)
@@ -143,29 +199,29 @@ export class CreateOdontogramaPageComponent {
     //     this.response = response;
     console.log("this.response.Data ", this.response.Data );
         for (var item of this.response.Data) {
-          if (item.ToothNumber > 10 && item.ToothNumber < 19) {
+          if (item.toothNumber > 10 && item.toothNumber < 19) {
             this.responseATLeft.push(item);
           }
-          if (item.ToothNumber > 20 && item.ToothNumber < 29) {
+          if (item.toothNumber > 20 && item.toothNumber < 29) {
             this.responseATRight.push(item);
           }
-          if (item.ToothNumber > 40 && item.ToothNumber < 49) {
+          if (item.toothNumber > 40 && item.toothNumber < 49) {
             this.responseADLeft.push(item);
           }
-          if (item.ToothNumber > 30 && item.ToothNumber < 39) {
+          if (item.toothNumber > 30 && item.toothNumber < 39) {
             this.responseADRight.push(item);
           }
 
-          if (item.ToothNumber > 50 && item.ToothNumber < 56) {
+          if (item.toothNumber > 50 && item.toothNumber < 56) {
             this.responseCTLeft.push(item);
           }
-          if (item.ToothNumber > 60 && item.ToothNumber < 66) {
+          if (item.toothNumber > 60 && item.toothNumber < 66) {
             this.responseCTRight.push(item);
           }
-          if (item.ToothNumber > 80 && item.ToothNumber < 86) {
+          if (item.toothNumber > 80 && item.toothNumber < 86) {
             this.responseCDLeft.push(item);
           }
-          if (item.ToothNumber > 70 && item.ToothNumber < 76) {
+          if (item.toothNumber > 70 && item.toothNumber < 76) {
             this.responseCDRight.push(item);
           }
         }
@@ -176,11 +232,11 @@ export class CreateOdontogramaPageComponent {
 
   showOdontogram(toothNumber:number) {
     this.odontogram = new Odontograma();
-    this.initTooth();
+    this.inittooth();
     this.odontogram.toothNumber = toothNumber;
     for (var item of this.response.Data) {
-      if (item.ToothNumber == toothNumber) {
-        this.odontogram.tooth = item.Tooth;
+      if (item.toothNumber == toothNumber) {
+        this.odontogram.tooth = item.tooth;
       }
     }
   }
@@ -193,10 +249,10 @@ export class CreateOdontogramaPageComponent {
     // this.odontogramService.save(this.odontogram)
     //   .then(odontogram => {
 
-    //     if (this.odontogram.ToothStatusId != 0) {
+    //     if (this.odontogram.toothStatusId != 0) {
     //       for (var i = 0; i < this.treatments.length; i++) {
 
-    //         if (this.treatments[i].TreatmentsTypeId == this.odontogram.ToothStatusId) {
+    //         if (this.treatments[i].TreatmentsTypeId == this.odontogram.toothStatusId) {
     //           this.diagnosisPlan = new Diagnosis_Plan();
     //           this.diagnosisPlan.DoctorDiagnosticId = JSON.parse(localStorage.getItem('user')).Data.Employees[0].Id;
     //           this.diagnosisPlan.DoctorExecuteId = this.diagnosisPlan.DoctorDiagnosticId;
@@ -204,7 +260,7 @@ export class CreateOdontogramaPageComponent {
     //           this.diagnosisPlan.TreatmentId = this.treatments[i].Id;
     //           this.diagnosisPlan.TreatmentAmount = this.treatments[i].Price;
     //           this.diagnosisPlan.PercentSpecialDiscount = this.treatments[i].Discount;
-    //           this.diagnosisPlan.Tooth = this.odontogram.ToothNumber.toString();
+    //           this.diagnosisPlan.tooth = this.odontogram.toothNumber.toString();
 
     //           this.diagnosisPlanService.save(this.diagnosisPlan)
     //             .then(diagnosisPlan => {
@@ -218,7 +274,7 @@ export class CreateOdontogramaPageComponent {
   }
 
   close() {
-    this.initTooth();
+    this.inittooth();
   }
 
   goBack() {
@@ -320,7 +376,7 @@ export class CreateOdontogramaPageComponent {
     this.legend = name;
   }
 
-  initTooth() {
+  inittooth() {
     this.odontogram.tooth = { top: { color: '', diagnostic: '' }, bottom: { color: '', diagnostic: '' }, left: { color: '', diagnostic: '' }, right: { color: '', diagnostic: '' }, center: { color: '', diagnostic: '' }, shape: '' };
   }
 

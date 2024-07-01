@@ -32,7 +32,7 @@ export class ForgotPasswordComponent {
 
   forgotPasswordForm = this._fb.group({
     ci: ['', [Validators.required, Validators.minLength(10)]],
-    email: [null, [Validators.required, Validators.pattern(this._validatorService.emailPattern)]],
+    email: [null, [Validators.required, Validators.pattern(this._validatorService.patternEmail)]],
 
   });
 

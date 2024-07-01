@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 
 import { TablaPruebaUnoService } from 'src/data/tabla-prueba-uno/services/tabla-prueba-uno.services';
-import { ISaveTablaPruebaUnoViewModel, ISaveTablaPruebaUnoFromRsViewModel, IGetTablaPruebaUnoViewModel, IGetTablaPruebaUnoFromRsViewModel, IGetTablaPruebaUnoByIdViewModel, IGetTablaPruebaUnoByIdFromRsViewModel, IUpdateTablaPruebaUnoViewModel, IUpdateTablaPruebaUnoFromRsViewModel  } from '../viewModels/i-tabla-prueba-uno.viewModel';
+import { ISaveTablaPruebaUnoViewModel, ISaveTablaPruebaUnoFromRsViewModel, IGetTablaPruebaUnoViewModel, IGetTablaPruebaUnoFromRsViewModel, IGetTablaPruebaUnoPaginadoViewModel, IGetTablaPruebaUnoPaginadoFromRsViewModel, IGetTablaPruebaUnoByIdViewModel, IGetTablaPruebaUnoByIdFromRsViewModel, IUpdateTablaPruebaUnoViewModel, IUpdateTablaPruebaUnoFromRsViewModel  } from '../viewModels/i-tabla-prueba-uno.viewModel';
 
 
 @Injectable({
@@ -45,6 +45,14 @@ export class TablaPruebaUnoUseCase {
 	*/
 	public async getTablaPruebaUno(tablaPruebaUno: IGetTablaPruebaUnoViewModel): Promise<Observable<IGetTablaPruebaUnoFromRsViewModel>> {
 		return await this._tablaPruebaUnoService.getTablaPruebaUno(tablaPruebaUno);
+	}
+	/**
+	* Obtiene el/los registros
+	* @param tablaPruebaUno: IGetTablaPruebaUnoPaginadoViewModel
+	* @return Promise<Observable<IGetTablaPruebaUnoPaginadoFromRsViewModel>>
+	*/
+	public async getTablaPruebaUnoPaginado(tablaPruebaUno: IGetTablaPruebaUnoPaginadoViewModel): Promise<Observable<IGetTablaPruebaUnoPaginadoFromRsViewModel>> {
+		return await this._tablaPruebaUnoService.getTablaPruebaUnoPaginado(tablaPruebaUno);
 	}
 	/**
 	* Obtiene el registro por id

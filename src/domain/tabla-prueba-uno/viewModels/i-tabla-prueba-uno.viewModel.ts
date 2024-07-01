@@ -35,15 +35,17 @@ export interface ISaveTablaPruebaUnoRsViewModel {
 * @name ISaveTablaPruebaUnoViewModel
 */
 export interface ISaveTablaPruebaUnoViewModel extends IAuditoriaModel {
-	nombre_tabla_uno: string | null;
-	apellido_tabla_uno: string | null;
-	numero_entero_tabla_uno: number | null;
-	numero_decimal_tabla_uno: number | null;
-	fecha_creacion_tabla_uno: Date | null;
-	fecha_actual_tabla_uno: Date | null;
-	es_tabla_uno: boolean | null;
-	estado_tabla_uno: string | null;
-	telefono_tabla_uno: string | null;
+	nombre_tabla_uno?: string | null;
+	apellido_tabla_uno?: string | null;
+	numero_entero_tabla_uno?: number | null;
+	numero_decimal_tabla_uno?: number | null;
+	fecha_creacion_tabla_uno?: Date | null;
+	fecha_actualizacion_tabla_uno?: Date | null;
+	fecha_actual_tabla_uno?: Date | null;
+	es_tabla_uno?: boolean | null;
+	estado_tabla_uno?: string | null;
+	telefono_tabla_uno?: string | null;
+	correo_electronico_tabla_uno?: string | null;
 }
 
 /**
@@ -60,16 +62,18 @@ export interface IGetTablaPruebaUnoFromRsViewModel extends IResponseStatusViewMo
 * @name IGetTablaPruebaUnoRsViewModel
 */
 export interface IGetTablaPruebaUnoRsViewModel {
-	id_tabla_prueba_uno: number | null;
-	nombre_tabla_uno: string | null;
-	apellido_tabla_uno: string | null;
-	numero_entero_tabla_uno: number | null;
-	numero_decimal_tabla_uno: number | null;
-	fecha_creacion_tabla_uno: Date | null;
-	fecha_actual_tabla_uno: Date | null;
-	es_tabla_uno: boolean | null;
-	estado_tabla_uno: string | null;
-	telefono_tabla_uno: string | null;
+	id_tabla_prueba_uno?: number | null;
+	nombre_tabla_uno?: string | null;
+	apellido_tabla_uno?: string | null;
+	numero_entero_tabla_uno?: number | null;
+	numero_decimal_tabla_uno?: number | null;
+	fecha_creacion_tabla_uno?: Date | null;
+	fecha_actualizacion_tabla_uno?: Date | null;
+	fecha_actual_tabla_uno?: Date | null;
+	es_tabla_uno?: boolean | null;
+	estado_tabla_uno?: string | null;
+	telefono_tabla_uno?: string | null;
+	correo_electronico_tabla_uno?: string | null;
 }
 
 /**
@@ -78,7 +82,48 @@ export interface IGetTablaPruebaUnoRsViewModel {
 * @name IGetTablaPruebaUnoViewModel
 */
 export interface IGetTablaPruebaUnoViewModel {
-	busqueda: string | null;
+	busqueda?: string | null;
+}
+
+/**
+* Interface que contiene los datos de entrada que viene del servicio
+* Extiende IResponseStatusViewModel
+* @name IGetTablaPruebaUnoPaginadoFromRsViewModel
+*/
+export interface IGetTablaPruebaUnoPaginadoFromRsViewModel extends IResponseStatusViewModel {
+	data?: IGetTablaPruebaUnoPaginadoRsViewModel[] | null;
+	total_registro?: number | null;
+}
+
+/**
+* Interface que contiene el datos de entrada que viene del servicio
+* @name IGetTablaPruebaUnoPaginadoRsViewModel
+*/
+export interface IGetTablaPruebaUnoPaginadoRsViewModel {
+	id_tabla_prueba_uno?: number | null;
+	nombre_tabla_uno?: string | null;
+	apellido_tabla_uno?: string | null;
+	numero_entero_tabla_uno?: number | null;
+	numero_decimal_tabla_uno?: number | null;
+	fecha_creacion_tabla_uno?: Date | null;
+	fecha_actualizacion_tabla_uno?: Date | null;
+	fecha_actual_tabla_uno?: Date | null;
+	es_tabla_uno?: boolean | null;
+	estado_tabla_uno?: string | null;
+	telefono_tabla_uno?: string | null;
+	correo_electronico_tabla_uno?: string | null;
+}
+
+/**
+* Interface que contiene los datos de salida que van al servicio
+* @name IGetTablaPruebaUnoPaginadoViewModel
+*/
+export interface IGetTablaPruebaUnoPaginadoViewModel {
+	busqueda?: string | null;
+	campo_orden?: string | null;
+	orden?: string | null;
+	indice_inicio?: number | null;
+	cantidad_registro?: number | null;
 }
 
 /**
@@ -95,16 +140,18 @@ export interface IGetTablaPruebaUnoByIdFromRsViewModel extends IResponseStatusVi
 * @name IGetTablaPruebaUnoByIdRsViewModel
 */
 export interface IGetTablaPruebaUnoByIdRsViewModel {
-	id_tabla_prueba_uno: number | null;
-	nombre_tabla_uno: string | null;
-	apellido_tabla_uno: string | null;
-	numero_entero_tabla_uno: number | null;
-	numero_decimal_tabla_uno: number | null;
-	fecha_creacion_tabla_uno: Date | null;
-	fecha_actual_tabla_uno: Date | null;
-	es_tabla_uno: boolean | null;
-	estado_tabla_uno: string | null;
-	telefono_tabla_uno: string | null;
+	id_tabla_prueba_uno?: number | null;
+	nombre_tabla_uno?: string | null;
+	apellido_tabla_uno?: string | null;
+	numero_entero_tabla_uno?: number | null;
+	numero_decimal_tabla_uno?: number | null;
+	fecha_creacion_tabla_uno?: Date | null;
+	fecha_actualizacion_tabla_uno?: Date | null;
+	fecha_actual_tabla_uno?: Date | null;
+	es_tabla_uno?: boolean | null;
+	estado_tabla_uno?: string | null;
+	telefono_tabla_uno?: string | null;
+	correo_electronico_tabla_uno?: string | null;
 }
 
 /**
@@ -139,14 +186,16 @@ export interface IUpdateTablaPruebaUnoRsViewModel {
 * @name IUpdateTablaPruebaUnoViewModel
 */
 export interface IUpdateTablaPruebaUnoViewModel extends IAuditoriaModel {
-	id_tabla_prueba_uno: number | null;
-	nombre_tabla_uno: string | null;
-	apellido_tabla_uno: string | null;
-	numero_entero_tabla_uno: number | null;
-	numero_decimal_tabla_uno: number | null;
-	fecha_creacion_tabla_uno: Date | null;
-	fecha_actual_tabla_uno: Date | null;
-	es_tabla_uno: boolean | null;
-	estado_tabla_uno: string | null;
-	telefono_tabla_uno: string | null;
+	id_tabla_prueba_uno?: number | null;
+	nombre_tabla_uno?: string | null;
+	apellido_tabla_uno?: string | null;
+	numero_entero_tabla_uno?: number | null;
+	numero_decimal_tabla_uno?: number | null;
+	fecha_creacion_tabla_uno?: Date | null;
+	fecha_actualizacion_tabla_uno?: Date | null;
+	fecha_actual_tabla_uno?: Date | null;
+	es_tabla_uno?: boolean | null;
+	estado_tabla_uno?: string | null;
+	telefono_tabla_uno?: string | null;
+	correo_electronico_tabla_uno?: string | null;
 }

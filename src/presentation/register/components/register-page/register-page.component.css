@@ -199,9 +199,15 @@ input:focus {
 
 .fg-line {
   position: relative;
-
+  padding: 0rem 0.75rem !important;
 }
 
+.md {
+  font-size: 1.2rem;
+  width: 25px;
+  height: 25px;
+  margin-right: 1px;
+}
 .fg-line.left {
   padding-left: 0.25rem !important;
 }
@@ -316,7 +322,7 @@ input:focus {
   border-left: 5px solid #a94442;
   /* red */
 }
-
+/*
 div.alert {
   padding-top: initial;
   padding-bottom: initial;
@@ -327,9 +333,9 @@ div.alert {
 
   padding-left: 2rem;
   padding-bottom: 0.2rem;
-  /* margin-bottom: 0.4rem; */
+
   text-align: start;
-}
+} */
 
 .form-group {
   margin-bottom: 1rem;

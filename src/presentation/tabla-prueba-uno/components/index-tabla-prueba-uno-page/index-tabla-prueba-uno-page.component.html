@@ -21,16 +21,16 @@
 
 			<div class="col-md-6 col-sm-6 col-xs-6">
 				<div class="input-group form-group">
-					<span class="input-group-text"><i class="md fa-solid fa-phone"></i></span>
+					<span class="input-group-text"><i class="md fa-solid fa-person"></i></span>
 					<div class="dtp-container dropdown fg-line">
-						<input type="text" class="form-control" id="busqueda" name="busqueda" value="" placeholder="busqueda" maxlength="128" (keyup.enter)="obtenerTablaPruebaUno()"/>
+						<input type="text" class="form-control" id="busqueda" name="busqueda" value="" placeholder="busqueda" maxlength="128" (keyup.enter)="obtenerTablaPruebaUnoPaginado(true,'id_tabla_prueba_uno','DESC',0,5)"/>
 					</div>
 				</div>
 			</div>
 
 			<div class="col-md-2 col-sm-2 col-xs-2">
 				<div class="input-group form-group">
-					<span class="input-group-text"><i class="md fa-solid fa-person-digging"></i></span>
+					<span class="input-group-text"><i class="md fa-solid fa-star-half-stroke"></i></span>
 						<div class="fg-line select">
 						<select class="form-control" name="tablaPruebaUnoPadre">
 							<option value="-1">Todas tus tablaPruebaUno padres </option>
@@ -42,26 +42,31 @@
 
 			<div class="col-md-4 col-sm-4 col-xs-4">
 				<div class="input-group form-group">
-					<button class="btn btn-info" (click)="obtenerTablaPruebaUno()"><i class="md md-search"></i>Buscar</button>
+					<button class="btn btn-info" (click)="obtenerTablaPruebaUnoPaginado(true,'id_tabla_prueba_uno','DESC',0,5)"><i class="md md-search"></i>Buscar</button>
 				</div>
 			</div>
 
 		</div>
 	</div>
 
-	<div class="text-center mt-5" [hidden]="datosGridTablaPruebaUno.length > 0">
+	<div class="text-center mt-5" [hidden]="totalRegistrosTablaPruebaUno > 0">
 		<div style="font-size: 16px;">No hay elementos para mostrar</div>
 	</div>
 
-	<table class="table align-middle mb-0 bg-white" mat-table [dataSource]="dataSource">
+	<mat-form-field>
+		<mat-label>Filtro</mat-label>
+		<input matInput (keyup)="aplicarFiltroTablaPruebaUno($event)" placeholder="Ejem. Juan">
+	</mat-form-field>
+
+	<table class="table align-middle mb-0 bg-white mat-elevation-z8" mat-table [dataSource]="dataSourceTablaPruebaUno" matSort matSortActive=id_tabla_prueba_uno matSortDisableClear matSortDirection="desc">
 
 		<ng-container matColumnDef="id_tabla_prueba_uno">
-			<th mat-header-cell *matHeaderCellDef> Id </th>
+			<th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> Id </th>
 			<td mat-cell *matCellDef="let element"> {{element.id_tabla_prueba_uno}} </td>
 		</ng-container>
 
 		<ng-container matColumnDef="nombre_tabla_uno">
-			<th mat-header-cell *matHeaderCellDef> Nombre </th>
+			<th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> Nombre </th>
 			<td mat-cell *matCellDef="let element">
 				<div class="d-flex align-items-center">
 				<img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
@@ -74,43 +79,53 @@
 		</ng-container>
 
 		<ng-container matColumnDef="apellido_tabla_uno">
-			<th mat-header-cell *matHeaderCellDef> Apellido </th>
+			<th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> Apellido </th>
 			<td mat-cell *matCellDef="let element"> {{element.apellido_tabla_uno}} </td>
 		</ng-container>
 
 		<ng-container matColumnDef="numero_entero_tabla_uno">
-			<th mat-header-cell *matHeaderCellDef> Número entero </th>
+			<th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> Número entero </th>
 			<td mat-cell *matCellDef="let element"> {{element.numero_entero_tabla_uno}} </td>
 		</ng-container>
 
 		<ng-container matColumnDef="numero_decimal_tabla_uno">
-			<th mat-header-cell *matHeaderCellDef> Número decimal </th>
+			<th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> Número decimal </th>
 			<td mat-cell *matCellDef="let element"> {{element.numero_decimal_tabla_uno}} </td>
 		</ng-container>
 
 		<ng-container matColumnDef="fecha_creacion_tabla_uno">
-			<th mat-header-cell *matHeaderCellDef> Fecha creación </th>
+			<th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> Fecha creación </th>
 			<td mat-cell *matCellDef="let element"> {{element.fecha_creacion_tabla_uno | date : "YYYY-MM-dd"}} </td>
 		</ng-container>
 
+		<ng-container matColumnDef="fecha_actualizacion_tabla_uno">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> Fecha actualización </th>
+			<td mat-cell *matCellDef="let element"> {{element.fecha_actualizacion_tabla_uno | date : "YYYY-MM-dd"}} </td>
+		</ng-container>
+
 		<ng-container matColumnDef="fecha_actual_tabla_uno">
-			<th mat-header-cell *matHeaderCellDef> Fecha actual </th>
-			<td mat-cell *matCellDef="let element"> {{element.fecha_actual_tabla_uno | date : "YYYY-MM-dd" }} </td>
+			<th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> Fecha actual </th>
+			<td mat-cell *matCellDef="let element"> {{element.fecha_actual_tabla_uno | date : "YYYY-MM-dd"}} </td>
 		</ng-container>
 
 		<ng-container matColumnDef="es_tabla_uno">
-			<th mat-header-cell *matHeaderCellDef> Es tabla uno </th>
+			<th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> Es tabla uno </th>
 			<td mat-cell *matCellDef="let element"> {{element.es_tabla_uno}} </td>
 		</ng-container>
 
 		<ng-container matColumnDef="estado_tabla_uno">
-			<th mat-header-cell *matHeaderCellDef> Estado </th>
+			<th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> Estado </th>
 			<td mat-cell *matCellDef="let element"> <span class="badge badge-warning rounded-pill d-inline">{{element.estado_tabla_uno}}</span> </td>
 		</ng-container>
 
 		<ng-container matColumnDef="telefono_tabla_uno">
-			<th mat-header-cell *matHeaderCellDef> Teléfono </th>
+			<th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> Teléfono </th>
 			<td mat-cell *matCellDef="let element"> {{element.telefono_tabla_uno}} </td>
+		</ng-container>
+
+		<ng-container matColumnDef="correo_electronico_tabla_uno">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> Email </th>
+			<td mat-cell *matCellDef="let element"> {{element.correo_electronico_tabla_uno}} </td>
 		</ng-container>
 
 		<ng-container matColumnDef="accion">
@@ -120,15 +135,12 @@
 			</td>
 		</ng-container>
 
-		<tr mat-header-row *matHeaderRowDef="['id_tabla_prueba_uno','nombre_tabla_uno','apellido_tabla_uno','numero_entero_tabla_uno','numero_decimal_tabla_uno','fecha_creacion_tabla_uno','fecha_actual_tabla_uno','es_tabla_uno','estado_tabla_uno','telefono_tabla_uno','accion']"></tr>
-		<tr mat-row *matRowDef="let row; columns:['id_tabla_prueba_uno','nombre_tabla_uno','apellido_tabla_uno','numero_entero_tabla_uno','numero_decimal_tabla_uno','fecha_creacion_tabla_uno','fecha_actual_tabla_uno','es_tabla_uno','estado_tabla_uno','telefono_tabla_uno','accion']"></tr>
-
+		<tr mat-header-row *matHeaderRowDef="['id_tabla_prueba_uno','nombre_tabla_uno','apellido_tabla_uno','numero_entero_tabla_uno','numero_decimal_tabla_uno','fecha_creacion_tabla_uno','fecha_actualizacion_tabla_uno','fecha_actual_tabla_uno','es_tabla_uno','estado_tabla_uno','telefono_tabla_uno','correo_electronico_tabla_uno','accion']"></tr>
+		<tr mat-row *matRowDef="let row; columns:['id_tabla_prueba_uno','nombre_tabla_uno','apellido_tabla_uno','numero_entero_tabla_uno','numero_decimal_tabla_uno','fecha_creacion_tabla_uno','fecha_actualizacion_tabla_uno','fecha_actual_tabla_uno','es_tabla_uno','estado_tabla_uno','telefono_tabla_uno','correo_electronico_tabla_uno','accion']"></tr>
+	
 	</table>
 
-	<mat-paginator [length]="datosGridTablaPruebaUno.length" [pageSize]="10"
-
-  [pageSizeOptions]="[5, 10]"
-  aria-label="Select page" [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons aria-label="Select page">
+	<mat-paginator [length]="totalRegistrosTablaPruebaUno" #paginatorTablaPruebaUno [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons>
 	</mat-paginator>
 
 </div>

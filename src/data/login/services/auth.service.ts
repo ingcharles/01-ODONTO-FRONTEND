@@ -81,7 +81,7 @@ export class AuthService extends AAuthService {
 
 
   public async aplicacion(usuario: IAuthViewModel): Promise<Observable<IAplicacionFromRsViewModel>> {
-    const url = `${apiUrl}Auth/GetAplicacionByCodUser`;
+    const url = `${apiUrl}Auth/GetAplicationByCodUser`;
     return this._http.post<any>(url, await this._authMapper.mapAplicacionTo(usuario)).pipe(
       map((result) => {
         return this._authMapper.mapAplicacionFrom(result)

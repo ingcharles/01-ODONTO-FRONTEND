@@ -30,8 +30,8 @@
         <div class="col-md-4 col-sm-6 col-xs-12">
           <!-- {{ (dni.valid || (dni.pristine && !fpatient.submitted)) ? '' : 'has-error has-feedback' }} -->
           <div class="input-group form-group">
-            <span class="input-group-text"><i class="md fa-solid fa-image-portrait"></i>(*)</span>
-            <div class="fg-line">
+            <span class="input-group-text"><i class="md fa-solid fa-image-portrait"></i></span>
+            <div class="fg-line-input-group ">
               <!-- [(ngModel)]="person.DNI" #dni="ngModel" -->
               <input type="text" class="form-control" name="dni" formControlName="dni" placeholder="CI" required>
             </div>
@@ -43,9 +43,9 @@
         <div class="col-md-4 col-sm-6 col-xs-12">
           <!-- {{ (name.valid || (name.pristine && !fpatient.submitted)) ? '' : 'has-error has-feedback' }} -->
           <div class="input-group form-group ">
-            <span class="input-group-text"><i class="md fa fa-user"></i>(*)</span>
+            <span class="input-group-text"><i class="md fa fa-user"></i></span>
 
-            <div class="fg-line">
+            <div class="fg-line-input-group ">
               <!-- [(ngModel)]="person.Name" #name="ngModel"-->
               <input type="text" class="form-control" name="nombre" formControlName="nombre" placeholder="Nombres"
                 required>
@@ -58,8 +58,8 @@
         <div class="col-md-4 col-sm-6 col-xs-12">
           <!-- {{ (last_name.valid || (last_name.pristine && !fpatient.submitted)) ? '' : 'has-error has-feedback' }} -->
           <div class="input-group form-group">
-            <span class="input-group-text"><i class="md fa-solid fa-user-group"></i>(*)</span>
-            <div class="fg-line">
+            <span class="input-group-text"><i class="md fa-solid fa-user-group"></i></span>
+            <div class="fg-line-input-group ">
               <!-- [(ngModel)]="person.LastNames"  #last_name="ngModel" -->
               <input type="text" class="form-control" name="apellido" formControlName="apellido" placeholder="Apellidos"
                 required>
@@ -75,8 +75,8 @@
         <div class="col-md-4 col-sm-6 col-xs-12">
           <!-- {{ (mobile.valid || (mobile.pristine && !fpatient.submitted)) ? '' : 'has-error has-feedback' }} -->
           <div class="input-group form-group">
-            <span class="input-group-text"><i class="md fa-solid fa-mobile-screen pe-1-9"></i></span>
-            <div class="fg-line">
+            <span class="input-group-text"><i class="md fa-solid fa-mobile-screen"></i></span>
+            <div class="fg-line-input-group ">
               <!-- [(ngModel)]="person.Mobile" #mobile="ngModel"-->
               <input type="text" class="form-control" name="celular" formControlName="celular" placeholder="Celular">
             </div>
@@ -88,8 +88,8 @@
         <div class="col-md-4 col-sm-6 col-xs-12">
           <!-- {{ (phone.valid || (phone.pristine && !fpatient.submitted)) ? '' : 'has-error has-feedback' }} -->
           <div class="input-group form-group">
-            <span class="input-group-text"><i class="md fa-solid fa-phone pe-1-9"></i></span>
-            <div class="fg-line">
+            <span class="input-group-text"><i class="md fa-solid fa-phone"></i></span>
+            <div class="fg-line-input-group ">
               <!-- [(ngModel)]="person.Phone" #phone="ngModel"-->
               <input type="text" class="form-control" name="telefono" formControlName="telefono" placeholder="Teléfono">
             </div>
@@ -101,8 +101,8 @@
         <div class="col-md-4 col-sm-6 col-xs-12">
           <!-- {{ (mail.valid || (mail.pristine && !fpatient.submitted)) ? '' : 'has-error has-feedback' }} -->
           <div class="input-group form-group">
-            <span class="input-group-text"><i class="md fa-solid fa-envelope pe-1-9"></i></span>
-            <div class="fg-line">
+            <span class="input-group-text"><i class="md fa-solid fa-envelope"></i></span>
+            <div class="fg-line-input-group ">
               <!-- [(ngModel)]="person.Email"  #mail="ngModel"-->
 
               <input type="email" class="form-control" name="email" formControlName="email"
@@ -117,8 +117,8 @@
         <div class="col-md-4 col-sm-6 col-xs-12">
           <!-- {{ (sex.valid || (sex.pristine && !fpatient.submitted)) ? '' : 'has-error has-feedback' }} -->
           <div class="input-group form-group">
-            <span class="input-group-text"><i class="md fa-solid fa-venus-mars"></i>(*)</span>
-            <div class="fg-line select">
+            <span class="input-group-text"><i class="md fa-solid fa-venus-mars"></i></span>
+            <div class="fg-line-input-group select">
               <!-- [(ngModel)]="person.Sex" #sex="ngModel"-->
               <select class="form-control" name="sexo" formControlName="sexo" required>
                 <option value="Masculino">Masculino</option>
@@ -132,8 +132,8 @@
 
         <div class="col-md-4 col-sm-6 col-xs-12">
           <div class="input-group form-group">
-            <span class="input-group-text"><i class="md fa-regular fa-calendar"></i>(*)</span>
-            <div class="fg-line">
+            <span class="input-group-text"><i class="md fa-regular fa-calendar"></i></span>
+            <div class="fg-line-input-group">
               <!-- -->
               <!-- <ngb-datepicker #d ></ngb-datepicker> -->
               <!-- [(ngModel)]="person.DateOfBirth" -->
@@ -153,7 +153,7 @@
           <!-- {{ (race.valid || (race.pristine && !fpatient.submitted)) ? '' : 'has-error has-feedback' }} -->
           <div class="input-group form-group">
             <span class="input-group-text"><i class="md fa-solid fa-star-half-stroke pe-1-9"></i></span>
-            <div class="fg-line">
+            <div class="fg-line-input-group">
               <!-- [(ngModel)]="person.Race" #race="ngModel" -->
               <input type="text" class="form-control" name="race" placeholder="Color de la piel">
             </div>
@@ -166,10 +166,10 @@
 
         <div class="col-sm-6 col-xs-12">
           <!-- {{ (address.valid || (address.pristine && !fpatient.submitted)) ? '' : 'has-error has-feedback' }} -->
-          <div class="input-group  form-group">
-            <span class="input-group-text"><i class="md fa-solid fa-location-dot pe-1-9"></i></span>
+          <div class="input-group form-group">
+            <span class="input-group-text"><i class="md fa-solid fa-location-dot"></i></span>
 
-            <div class="fg-line">
+            <div class="fg-line-input-group">
               <!-- [(ngModel)]="person.Address" #address="ngModel"-->
               <input type="text" class="form-control" name="direccion" formControlName="direccion"
                 placeholder="Dirección">

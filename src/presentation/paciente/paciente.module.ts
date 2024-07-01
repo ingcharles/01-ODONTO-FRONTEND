@@ -13,6 +13,7 @@ import { ViewPacientePageComponent } from './components/view-paciente-page/view-
 import { CreatePacientePageComponent } from './components/create-paciente-page/create-paciente-page.component';
 import { IndexPacientePageComponent } from './components/index-paciente-page/index-paciente-page.component';
 import { PacienteRouting } from './paciente.routing';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { PacienteRouting } from './paciente.routing';
     NgbDatepicker,
     NgbModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+
   ]
 })
 export class PacienteModule { }

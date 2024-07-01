@@ -21,8 +21,8 @@
 
 				<div class="col-md-4 col-sm-6 col-xs-12">
 					<div class="input-group form-group">
-						<span class="input-group-text"><i class="md fa-solid fa-mobile-screen"></i>Nombre(*)</span>
-						<div class="fg-line">
+						<span class="input-group-text"><i class="md fa-solid fa-user"></i>Nombre(*)</span>
+						<div class="fg-line-input-group">
 							<input type="text" class="form-control" id="nombre_tabla_prueba" name="nombre_tabla_prueba" value="" formControlName="nombre_tabla_prueba" placeholder="Nombre" required="required" maxlength="128" (keypress)="this._validatorService.validarAlfanumericos($event)" />
 						</div>
 					</div>
@@ -30,54 +30,57 @@
 
 				<div class="col-md-4 col-sm-6 col-xs-12">
 					<div class="input-group form-group">
-						<span class="input-group-text"><i class="md fa-solid fa-envelope"></i>Fecha(*)</span>
-						<div class="fg-line">
-							<input type="text" class="form-control" id="fecha_tabla_prueba" name="fecha_tabla_prueba" value="" formControlName="fecha_tabla_prueba" placeholder="Fecha" required="required" maxlength="8" (keypress)="this._validatorService.validarAlfanumericos($event)" />
+						<span class="input-group-text"><i class="md fa-solid fa-calendar-days"></i>Fecha(*)</span>
+						<div class="fg-line-input-group">
+							<input type="text" [autoClose]="true" (click)="fechaTablaPrueba.open()" ngbDatepicker #fechaTablaPrueba="ngbDatepicker" class="form-control date-picker" id="fecha_tabla_prueba" name="fecha_tabla_prueba" value="" formControlName="fecha_tabla_prueba" placeholder="Fecha" required="required" maxlength="8"/>
 						</div>
 					</div>
 				</div>
 
 				<div class="col-md-4 col-sm-6 col-xs-12">
 					<div class="input-group form-group">
-						<span class="input-group-text"><i class="md fa-solid fa-phone"></i>Estado entero(*)</span>
-						<div class="fg-line">
-							<input type="text" class="form-control" id="numero_entero" name="numero_entero" value="" formControlName="numero_entero" placeholder="Estado entero" required="required" maxlength="8" (keypress)="this._validatorService.validarAlfanumericos($event)" />
+						<span class="input-group-text"><i class="md fa-solid fa-hashtag"></i>Estado entero(*)</span>
+						<div class="fg-line-input-group">
+							<input type="number" class="form-control" id="numero_entero" name="numero_entero" value="" formControlName="numero_entero" placeholder="Estado entero" required="required" min="1" max="999999999" (keypress)="this._validatorService.validarSoloNumeros($event)" />
 						</div>
 					</div>
 				</div>
 
 				<div class="col-md-4 col-sm-6 col-xs-12">
 					<div class="input-group form-group">
-						<span class="input-group-text"><i class="md fa-solid fa-location-dot"></i>Estado boelano(*)</span>
-						<div class="fg-line">
-							<input type="text" class="form-control" id="estado_boleano" name="estado_boleano" value="" formControlName="estado_boleano" placeholder="Estado boelano" required="required" maxlength="8" (keypress)="this._validatorService.validarAlfanumericos($event)" />
+						<span class="input-group-text"><i class="md fas fa-toggle-off"></i>Estado boelano(*)</span>
+						<div class="fg-line-input-group slide-toggle">
+							<mat-slide-toggle class="form-control" color="success" required="required" maxlength="8" formControlName="estado_boleano" (change)="onChangeEstadoBoleano($event)">Estado boelano {{checkedEstadoBoleano}}</mat-slide-toggle>
 						</div>
 					</div>
 				</div>
 
 				<div class="col-md-4 col-sm-6 col-xs-12">
 					<div class="input-group form-group">
-						<span class="input-group-text"><i class="md fa-solid fa-location-dot"></i>Fecha registro(*)</span>
-						<div class="fg-line">
-							<input type="text" class="form-control" id="fecha_registro" name="fecha_registro" value="" formControlName="fecha_registro" placeholder="Fecha registro" required="required" maxlength="8" (keypress)="this._validatorService.validarAlfanumericos($event)" />
+						<span class="input-group-text"><i class="md fa-solid fa-calendar-days"></i>Fecha registro(*)</span>
+						<div class="fg-line-input-group">
+							<input type="text" [autoClose]="true" (click)="fechaRegistro.open()" ngbDatepicker #fechaRegistro="ngbDatepicker" class="form-control date-picker" id="fecha_registro" name="fecha_registro" value="" formControlName="fecha_registro" placeholder="Fecha registro" required="required" maxlength="8"/>
 						</div>
 					</div>
 				</div>
 
 				<div class="col-md-4 col-sm-6 col-xs-12">
 					<div class="input-group form-group">
-						<span class="input-group-text"><i class="md fa fa-user"></i>Numero decimal(*)</span>
-						<div class="fg-line">
-							<input type="text" class="form-control" id="numero_decimal" name="numero_decimal" value="" formControlName="numero_decimal" placeholder="Numero decimal" required="required" maxlength="8" (keypress)="this._validatorService.validarAlfanumericos($event)" />
+						<span class="input-group-text"><i class="md fa-solid fa-hashtag"></i>Numero decimal(*)</span>
+						<div class="fg-line-input-group">
+							<input type="number" class="form-control" id="numero_decimal" name="numero_decimal" value="" formControlName="numero_decimal" placeholder="Numero decimal" required="required" max="999999999.99" (keypress)="this._validatorService.validarSoloDecimales($event)" />
 						</div>
 					</div>
 				</div>
 
 				<div class="col-md-4 col-sm-6 col-xs-12">
 					<div class="input-group form-group">
-						<span class="input-group-text"><i class="md fa-solid fa-venus-mars"></i>Estado(*)</span>
-						<div class="fg-line">
-							<input type="text" class="form-control" id="estado" name="estado" value="" formControlName="estado" placeholder="Estado" required="required" maxlength="16" (keypress)="this._validatorService.validarAlfanumericos($event)" />
+						<span class="input-group-text"><i class="md fa-solid fa-bars-progress"></i>Estado(*)</span>
+						<div class="fg-line-input-group select">
+							<select class="form-control" id="estado" name="estado" formControlName="estado">
+								<option value="Activo">Activo</option>
+								<option value="Inactivo">Inactivo</option>
+							</select>
 						</div>
 					</div>
 				</div>

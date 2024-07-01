@@ -17,12 +17,14 @@
 
           <div class="lc-block" [ngClass]="registerToggled">
             <form [formGroup]="registerForm" (ngSubmit)="register()" autocomplete="off">
-              <div class="mb-4">
-                <div class="input-group">
-                  <span class="input-group-text" id="basic-ci"><i class="fa fa-address-card"></i></span>
-                  <div class="fg-line">
 
-                    <input type="text" id="ci" name="ci" class="form-control" placeholder="Cédula" aria-describedby="basic-ci" required minlength="10" formControlName="ci" (onPaste)="this._validatorService.validarPegarTexto($event)"
+              <div class="mb-2">
+                <div class="input-group">
+                  <span class="input-group-text" id="basic-ci"><i class="md fa fa-address-card"></i></span>
+                  <div class="fg-line-input-group">
+                    <input type="text" id="ci" name="ci" class="form-control" placeholder="Cédula"
+                      aria-describedby="basic-ci" required minlength="10" formControlName="ci"
+                      (onPaste)="this._validatorService.validarPegarTexto($event)"
                       (keypress)="this._validatorService.validarSoloNumeros($event)">
                   </div>
                 </div>
@@ -34,12 +36,14 @@
                   </div>
                 </div>
               </div>
-              <div class="mb-4">
+              <div class="mb-2">
                 <div class="input-group">
-                  <span class="input-group-text" id="basic-names"><i class="fa fa-user"></i></span>
-                  <div class="fg-line left1">
+                  <span class="input-group-text" id="basic-names"><i class="md fa fa-user"></i></span>
+                  <div class="fg-line-input-group">
 
-                    <input type="text" id="names" name="names" class="form-control" placeholder="Nombres" aria-describedby="basic-names" required maxlength="100" formControlName="names" (onPaste)="this._validatorService.validarPegarTexto($event)"
+                    <input type="text" id="names" name="names" class="form-control" placeholder="Nombres"
+                      aria-describedby="basic-names" required maxlength="100" formControlName="names"
+                      (onPaste)="this._validatorService.validarPegarTexto($event)"
                       (keypress)="this._validatorService.validarAlfanumericos($event)">
                   </div>
                 </div>
@@ -51,13 +55,14 @@
                   </div>
                 </div>
               </div>
-              <div class="mb-4">
+              <div class="mb-2">
                 <div class="input-group">
-                  <span class="input-group-text left-1" id="basic-lastNames"><i class="fa fa-user-group"></i></span>
-                  <div class="fg-line">
-
-                    <input type="text" id="lastNames" name="lastNames" class="form-control" placeholder="Apellidos" aria-describedby="basic-astNames" required maxlength="100" formControlName="lastNames"
-                      (onPaste)="this._validatorService.validarPegarTexto($event)" (keypress)="this._validatorService.validarAlfanumericos($event)">
+                  <span class="input-group-text" id="basic-lastNames"><i class="md fa fa-user-group"></i></span>
+                  <div class="fg-line-input-group">
+                    <input type="text" id="lastNames" name="lastNames" class="form-control" placeholder="Apellidos"
+                      aria-describedby="basic-astNames" required maxlength="100" formControlName="lastNames"
+                      (onPaste)="this._validatorService.validarPegarTexto($event)"
+                      (keypress)="this._validatorService.validarAlfanumericos($event)">
                   </div>
                 </div>
                 <div *ngIf="this._validatorService.isValidFieldTouched(registerForm,'lastNames')" class="alert">
@@ -69,12 +74,14 @@
                 </div>
               </div>
 
-              <div class="mb-4">
+              <div class="mb-2">
                 <div class="input-group">
-                  <span class="input-group-text" id="basic-email"><i class="fa fa-envelope"></i></span>
-                  <div class="fg-line left">
-                    <input type="text" id="email" name="email" class="form-control" placeholder="Correo Electrónico" aria-describedby="basic-email" required maxlength="100" email="true" pattern="" formControlName="email"
-                      (onPaste)="this._validatorService.validarPegarTexto($event)" (keypress)="this._validatorService.validarAlfanumericos($event)">
+                  <span class="input-group-text" id="basic-email"><i class="md fa fa-envelope"></i></span>
+                  <div class="fg-line-input-group">
+                    <input type="text" id="email" name="email" class="form-control" placeholder="Correo Electrónico"
+                      aria-describedby="basic-email" required maxlength="100" email="true" pattern=""
+                      formControlName="email" (onPaste)="this._validatorService.validarPegarTexto($event)"
+                      (keypress)="this._validatorService.validarAlfanumericos($event)">
                   </div>
                 </div>
                 <div *ngIf="this._validatorService.isValidFieldTouched(registerForm,'email')" class="alert">
@@ -89,17 +96,20 @@
                 </div>
               </div>
 
-              <div class="mb-4">
+
+              <div class="mb-2">
                 <div class="input-group">
-                  <span class="input-group-text" id="basic-addon2"><i class="fa fa-lock"></i></span>
-                  <div class="fg-line left">
-                    <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" required passwordStrength formControlName="password" aria-label="Recipient's username" aria-describedby="basic-addon2"
-                      (onPaste)="this._validatorService.validarPegarTexto($event)">
+                  <span class="input-group-text" id="basic-addon2"><i class="md fa fa-lock"></i></span>
+                  <div class="fg-line-input-group">
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña"
+                      required passwordStrength formControlName="password" aria-label="Recipient's username"
+                      aria-describedby="basic-addon2" (onPaste)="this._validatorService.validarPegarTexto($event)">
                   </div>
                 </div>
 
                 <div *ngIf="this._validatorService.isValidFieldTouched(registerForm,'password')" class="alert">
-                  <div *ngIf="this._validatorService.isValidFieldRequired(registerForm,'password')">{{menssage.required}}
+                  <div *ngIf="this._validatorService.isValidFieldRequired(registerForm,'password')">
+                    {{menssage.required}}
                   </div>
                   <div *ngIf="this._validatorService.isValidFieldMinlength(registerForm,'password')">
                     {{menssage.min8Character}}
@@ -137,7 +147,8 @@
                 <label>
 
                   <span>Al crear aceptas los </span>
-                  <a href="http://odontofy.com/terms-and-conditions-of-use" target="_blank"> términos y condiciones de uso</a>
+                  <a href="http://odontofy.com/terms-and-conditions-of-use" target="_blank"> términos y condiciones de
+                    uso</a>
                 </label>
               </div>
 

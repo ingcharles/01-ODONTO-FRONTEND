@@ -27,7 +27,7 @@ export class RegisterPageComponent {
     ci: [null, [Validators.required, Validators.minLength(10)]],
     names: [null, [Validators.required, Validators.maxLength(100)]],
     lastNames: [null, [Validators.required, Validators.maxLength(100)]],
-    email: [null, [Validators.required, Validators.pattern(this._validatorService.emailPattern)]],
+    email: [null, [Validators.required, Validators.pattern(this._validatorService.patternEmail)]],
     password: [null, [Validators.required, Validators.minLength(8), this.createPasswordStrengthValidator()]],
     confirmPassword: [null],
     licenseAgreement: [false],
@@ -105,7 +105,7 @@ export class RegisterPageComponent {
 
     if (this.registerForm.invalid) {
       this.registerForm.markAllAsTouched();
-      this._alertService.alertMessage(messages.advertenciaTitle, messages.camposVacios, 'warning');
+      this._alertService.alertMessage(messages.informativoTitle, messages.camposVacios, messages.isInfo);
       return;
     }
 

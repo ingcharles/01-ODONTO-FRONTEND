@@ -31,7 +31,8 @@ declare var validarEnterosJs: any;
 export class CreateTablaPruebaUnoPageComponent {
 
 	constructor(private _route: ActivatedRoute, public _validatorService: ValidationService, private _alertService: AlertsService, private _loaderService: LoaderService, private _tablaPruebaUnoUseCase: TablaPruebaUnoUseCase){
-	}
+
+	}
 
 	title = 'Datos TablaPruebaUno';
 
@@ -44,13 +45,14 @@ export class CreateTablaPruebaUnoPageComponent {
 	saveTablaPruebaUno(): void{
 		if (this.formTablaPruebaUno.invalid) {
 			this.formTablaPruebaUno.markAllAsTouched();
-			this._alertService.alertMessage(messages.advertenciaTitle, messages.camposVacios, 'warning');
+			this._alertService.alertMessage(messages.informativoTitle, messages.camposVacios, messages.isInfo);
 			return;
 		}
 
 		if (this.currentTablaPruebaUno.id_tabla_prueba_uno) {
 			this._alertService.alertConfirm(messages.confirmacionTitle, messages.confirmUpdate, () => {
 				this.formTablaPruebaUno.value['fecha_creacion_tabla_uno'] = $('#fecha_creacion_tabla_uno').val() == "" ? null : $('#fecha_creacion_tabla_uno').val();
+				this.formTablaPruebaUno.value['fecha_actualizacion_tabla_uno'] = $('#fecha_actualizacion_tabla_uno').val() == "" ? null : $('#fecha_actualizacion_tabla_uno').val();
 				this.formTablaPruebaUno.value['fecha_actual_tabla_uno'] = $('#fecha_actual_tabla_uno').val() == "" ? null : $('#fecha_actual_tabla_uno').val();
 
 				this._tablaPruebaUnoUseCase.updateTablaPruebaUno(this.currentTablaPruebaUno as IUpdateTablaPruebaUnoViewModel).then(obs => {
@@ -72,6 +74,7 @@ export class CreateTablaPruebaUnoPageComponent {
 		this._alertService.alertConfirm(messages.confirmacionTitle, messages.confirmSave, () => {
 
 				this.formTablaPruebaUno.value['fecha_creacion_tabla_uno'] = $('#fecha_creacion_tabla_uno').val() == "" ? null : $('#fecha_creacion_tabla_uno').val();
+				this.formTablaPruebaUno.value['fecha_actualizacion_tabla_uno'] = $('#fecha_actualizacion_tabla_uno').val() == "" ? null : $('#fecha_actualizacion_tabla_uno').val();
 				this.formTablaPruebaUno.value['fecha_actual_tabla_uno'] = $('#fecha_actual_tabla_uno').val() == "" ? null : $('#fecha_actual_tabla_uno').val();
 
 			this._tablaPruebaUnoUseCase.saveTablaPruebaUno(this.formTablaPruebaUno.value as ISaveTablaPruebaUnoViewModel).then(obs => {
@@ -95,16 +98,17 @@ export class CreateTablaPruebaUnoPageComponent {
 
 		this.formTablaPruebaUno = new FormGroup({
 			id_tabla_prueba_uno: new FormControl(null, Validators.compose([Validators.max(999999999)])),
-			nombre_tabla_uno: new FormControl(null, Validators.compose([Validators.maxLength(128)])),
-			apellido_tabla_uno: new FormControl(null, Validators.compose([Validators.maxLength(256)])),
-			numero_entero_tabla_uno: new FormControl(null, Validators.compose([Validators.max(999999999)])),
-			numero_decimal_tabla_uno: new FormControl(null, Validators.compose([Validators.max(999999999.99), Validators.pattern(this._validatorService.patternTwoDecimal)])),
-			fecha_creacion_tabla_uno: new FormControl(null, Validators.compose([Validators.maxLength(8)])),
-			fecha_actualizacion_tabla_uno: new FormControl(null, Validators.compose([Validators.maxLength(8)])),
-			fecha_actual_tabla_uno: new FormControl(null, Validators.compose([Validators.maxLength(8)])),
-			es_tabla_uno: new FormControl(false, Validators.compose([Validators.maxLength(8)])),
-			estado_tabla_uno: new FormControl(null, Validators.compose([Validators.maxLength(8)])),
-			telefono_tabla_uno: new FormControl(null, Validators.compose([Validators.maxLength(16)])),
+			nombre_tabla_uno: new FormControl(null, Validators.compose([Validators.required, Validators.maxLength(128)])),
+			apellido_tabla_uno: new FormControl(null, Validators.compose([Validators.required, Validators.maxLength(256)])),
+			numero_entero_tabla_uno: new FormControl(null, Validators.compose([Validators.required, Validators.min(1), Validators.max(999999999)])),
+			numero_decimal_tabla_uno: new FormControl(null, Validators.compose([Validators.required, Validators.min(0.01), Validators.max(999999999.99), Validators.pattern(this._validatorService.patternTwoDecimal)])),
+			fecha_creacion_tabla_uno: new FormControl(null, Validators.compose([Validators.required, Validators.maxLength(8)])),
+			fecha_actualizacion_tabla_uno: new FormControl(null, Validators.compose([Validators.required, Validators.maxLength(8)])),
+			fecha_actual_tabla_uno: new FormControl(null, Validators.compose([Validators.required, Validators.maxLength(8)])),
+			es_tabla_uno: new FormControl(false, Validators.compose([Validators.requiredTrue, Validators.maxLength(8)])),
+			estado_tabla_uno: new FormControl(null, Validators.compose([Validators.required, Validators.maxLength(8)])),
+			telefono_tabla_uno: new FormControl(null, Validators.compose([Validators.required, Validators.maxLength(16)])),
+			correo_electronico_tabla_uno: new FormControl(null, Validators.compose([Validators.required, Validators.maxLength(64), Validators.pattern(this._validatorService.patternEmail)])),
 		});
 
 		this.sub = this._route.params.subscribe(params => {
@@ -126,6 +130,15 @@ export class CreateTablaPruebaUnoPageComponent {
 									year: parseInt(yearFechaCreacionTablaUno), month: parseInt(monthFechaCreacionTablaUno), day:parseInt(dayFechaCreacionTablaUno.split(' ')[0].trim())
 								};
 								this.formTablaPruebaUno.get('fecha_creacion_tabla_uno')?.setValue(fechaCreacionTablaUno);
+							}
+							var fechaActualizacionTablaUnoString = result.data?.fecha_actualizacion_tabla_uno?.toString();
+							if (fechaActualizacionTablaUnoString != null)
+							{
+								const [yearFechaActualizacionTablaUno, monthFechaActualizacionTablaUno, dayFechaActualizacionTablaUno] = fechaActualizacionTablaUnoString!.split('-');
+								const fechaActualizacionTablaUno = {
+									year: parseInt(yearFechaActualizacionTablaUno), month: parseInt(monthFechaActualizacionTablaUno), day:parseInt(dayFechaActualizacionTablaUno.split(' ')[0].trim())
+								};
+								this.formTablaPruebaUno.get('fecha_actualizacion_tabla_uno')?.setValue(fechaActualizacionTablaUno);
 							}
 							var fechaActualTablaUnoString = result.data?.fecha_actual_tabla_uno?.toString();
 							if (fechaActualTablaUnoString != null)

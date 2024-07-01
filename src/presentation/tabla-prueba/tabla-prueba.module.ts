@@ -13,8 +13,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbDatepicker, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
+import { MatSortModule } from '@angular/material/sort';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { SharedModule } from '../shared/shared.module';
 import { ValidationService } from '../base/services/validation.service';
 import { IndexTablaPruebaPageComponent } from './components/index-tabla-prueba-page/index-tabla-prueba-page.component';
@@ -33,13 +36,17 @@ import { TablaPruebaRouting } from './tabla-prueba.routing';
 		NgbDatepicker,
 		SharedModule,
 		NgbModule,
-		NgbModule,
 		MatSlideToggleModule,
 		MatTableModule,
 		MatPaginatorModule,
+		MatInputModule,
+		MatSortModule,
+		NgxMaskDirective,
+		NgxMaskPipe,
 		TablaPruebaRouting
 	],
 	providers: [
+		provideNgxMask(),
 		{provide: ValidationService }
 	]
 })

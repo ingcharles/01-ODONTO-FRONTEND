@@ -14,7 +14,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, catchError, map, of  } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { StatusResponseService } from 'src/data/base/status-response.service';
-import { ISaveTablaPruebaUnoFromRsViewModel, ISaveTablaPruebaUnoViewModel, IGetTablaPruebaUnoByIdFromRsViewModel, IGetTablaPruebaUnoByIdViewModel, IGetTablaPruebaUnoFromRsViewModel, IGetTablaPruebaUnoViewModel, IUpdateTablaPruebaUnoFromRsViewModel, IUpdateTablaPruebaUnoViewModel } from 'src/domain/tabla-prueba-uno/viewModels/i-tabla-prueba-uno.viewModel';
+import { ISaveTablaPruebaUnoFromRsViewModel, ISaveTablaPruebaUnoViewModel, IGetTablaPruebaUnoFromRsViewModel, IGetTablaPruebaUnoViewModel, IGetTablaPruebaUnoPaginadoViewModel, IGetTablaPruebaUnoPaginadoFromRsViewModel, IGetTablaPruebaUnoByIdFromRsViewModel, IGetTablaPruebaUnoByIdViewModel, IUpdateTablaPruebaUnoFromRsViewModel, IUpdateTablaPruebaUnoViewModel } from 'src/domain/tabla-prueba-uno/viewModels/i-tabla-prueba-uno.viewModel';
 
 const apiUrl: string = environment.apiUrl;
 
@@ -59,6 +59,23 @@ export class TablaPruebaUnoService  {
 	public async getTablaPruebaUno(busqueda: IGetTablaPruebaUnoViewModel): Promise<Observable<IGetTablaPruebaUnoFromRsViewModel>>{
 		const url = `${apiUrl}TablaPruebaUno/GetTablaPruebaUno`;
 		return this._http.post<any>(url, busqueda).pipe(
+			map((result) => {
+				return result;
+			}),
+			catchError((error) => {
+				return of(this._statusResponseService.error(error));
+			})
+		);
+	}
+
+	/**
+	* Obtiene el/los registros
+	* @param busqueda: IGetTablaPruebaUnoPaginadoViewModel
+	* @return Promise<Observable<IGetTablaPruebaUnoPaginadoFromRsViewModel>>
+	*/
+	public async getTablaPruebaUnoPaginado(dataViewModel: IGetTablaPruebaUnoPaginadoViewModel): Promise<Observable<IGetTablaPruebaUnoPaginadoFromRsViewModel>>{
+		const url = `${apiUrl}TablaPruebaUno/GetTablaPruebaUnoPaginado`;
+		return this._http.post<any>(url, dataViewModel).pipe(
 			map((result) => {
 				return result;
 			}),

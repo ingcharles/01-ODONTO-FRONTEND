@@ -375,6 +375,7 @@ $(document).ready(function () {
   $('body').on('focus', '.form-control', function () {
     console.log("entra $(this).closest('.fg-line')");
     $(this).closest('.fg-line').addClass('fg-toggled');
+    $(this).closest('.fg-line-input-group').addClass('fg-toggled');
     $(this).closest('.fg-line-text-area').addClass('fg-toggled');
   })
 
@@ -386,11 +387,13 @@ $(document).ready(function () {
     if (p.hasClass('fg-float')) {
       if (i.length == 0) {
         $(this).closest('.fg-line').removeClass('fg-toggled');
+        $(this).closest('.fg-line-input-group').removeClass('fg-toggled');
         $(this).closest('.fg-line-text-area').removeClass('fg-toggled');
       }
     }
     else {
       $(this).closest('.fg-line').removeClass('fg-toggled');
+      $(this).closest('.fg-line-input-group').removeClass('fg-toggled');
       $(this).closest('.fg-line-text-area').removeClass('fg-toggled');
     }
   });
@@ -403,6 +406,7 @@ $(document).ready(function () {
 
       if (!i.length == 0) {
         $(this).closest('.fg-line').addClass('fg-toggled');
+        $(this).closest('.fg-line-input-group').addClass('fg-toggled');
         $(this).closest('.fg-line-text-area').addClass('fg-toggled');
       }
 

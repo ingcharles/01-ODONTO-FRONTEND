@@ -89,10 +89,10 @@
 
         <div class="lc-block " [ngClass]="loginToggled">
           <form [formGroup]="loginForm" (ngSubmit)="login()">
-            <div class="mb-4">
+            <div class="mb-2">
               <div class="input-group">
-                <span class="input-group-text" id="basic-addon1"><i class="fa fa-address-card"></i></span>
-                <div class="fg-line">
+                <span class="input-group-text" id="basic-addon1"><i class="md fa fa-address-card"></i></span>
+                <div class="fg-line-input-group">
 
                   <input type="text" id="ci" name="ci" class="form-control" placeholder="Cédula"
                     aria-label="Recipient's username" aria-describedby="basic-addon1" required minlength="10"
@@ -109,10 +109,10 @@
                 </div>
               </div>
             </div>
-            <div class="mb-4">
+            <div class="mb-2">
               <div class="input-group">
-                <span class="input-group-text" id="basic-addon2"><i class="fa fa-lock"></i></span>
-                <div class="fg-line left">
+                <span class="input-group-text" id="basic-addon2"><i class="md fa fa-lock"></i></span>
+                <div class="fg-line-input-group">
                   <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña"
                     required passwordStrength formControlName="password" aria-label="Recipient's username"
                     aria-describedby="basic-addon2" (onPaste)="this._validatorService.validarPegarTexto($event)"

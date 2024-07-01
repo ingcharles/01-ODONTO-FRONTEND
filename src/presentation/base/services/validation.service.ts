@@ -11,7 +11,7 @@ export const isValidCI = (control: FormControl): ValidationErrors | null => {
 
 export class ValidationService {
   firstNameAndLastnamePattern: string = '([a-zA-Z]+) ([a-zA-Z]+)';
-  emailPattern: string = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$";
+  patternEmail: string = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$";
 
 
   // onlyNumber: string = "^([0-9]{10,13})$";

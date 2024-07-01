@@ -9,16 +9,16 @@
 */
 
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ActivatedRoute} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ValidationService } from 'src/presentation/base/services/validation.service';
 import { AlertsService } from 'src/presentation/base/services/alerts.service';
 import { LoaderService } from 'src/presentation/base/services/loader.service';
 import { messages } from 'src/presentation/base/messages';
-import { ISaveTablaPruebaViewModel,IGetTablaPruebaByIdViewModel, IUpdateTablaPruebaViewModel } from 'src/domain/tabla-prueba/viewModels/i-tabla-prueba.viewModel';
+import { ISaveTablaPruebaViewModel, IGetTablaPruebaByIdViewModel, IUpdateTablaPruebaViewModel } from 'src/domain/tabla-prueba/viewModels/i-tabla-prueba.viewModel';
 import { TablaPruebaUseCase } from 'src/domain/tabla-prueba/usesCases/tabla-prueba.usecase';
 
-declare var $:any;
+declare var $: any;
 declare var validarDecimalesJs: any;
 declare var validarEnterosJs: any;
 
@@ -30,25 +30,29 @@ declare var validarEnterosJs: any;
 
 export class CreateTablaPruebaPageComponent {
 
-	constructor(private _route: ActivatedRoute, public _validatorService: ValidationService, private _alertService: AlertsService, private _loaderService: LoaderService, private _tablaPruebaUseCase: TablaPruebaUseCase){
-	}
+	constructor(private _route: ActivatedRoute, public _validatorService: ValidationService, private _alertService: AlertsService, private _loaderService: LoaderService, private _tablaPruebaUseCase: TablaPruebaUseCase) {
+
+	}
 
 	title = 'Datos TablaPrueba';
 
 	public formTablaPrueba!: FormGroup;
 	@Output() close = new EventEmitter();
+	public checkedEstadoBoleano: boolean = false;
 	navigated = false;
 	sub: any;
 
-	saveTablaPrueba(): void{
+	saveTablaPrueba(): void {
 		if (this.formTablaPrueba.invalid) {
 			this.formTablaPrueba.markAllAsTouched();
-			this._alertService.alertMessage(messages.advertenciaTitle, messages.camposVacios, 'warning');
+			this._alertService.alertMessage(messages.informativoTitle, messages.camposVacios, messages.isInfo);
 			return;
 		}
 
 		if (this.currentTablaPrueba.id_tabla_prueba) {
 			this._alertService.alertConfirm(messages.confirmacionTitle, messages.confirmUpdate, () => {
+				this.formTablaPrueba.value['fecha_tabla_prueba'] = $('#fecha_tabla_prueba').val() == "" ? null : $('#fecha_tabla_prueba').val();
+				this.formTablaPrueba.value['fecha_registro'] = $('#fecha_registro').val() == "" ? null : $('#fecha_registro').val();
 
 				this._tablaPruebaUseCase.updateTablaPrueba(this.currentTablaPrueba as IUpdateTablaPruebaViewModel).then(obs => {
 					this._loaderService.display(true);
@@ -68,6 +72,8 @@ export class CreateTablaPruebaPageComponent {
 
 		this._alertService.alertConfirm(messages.confirmacionTitle, messages.confirmSave, () => {
 
+			this.formTablaPrueba.value['fecha_tabla_prueba'] = $('#fecha_tabla_prueba').val() == "" ? null : $('#fecha_tabla_prueba').val();
+			this.formTablaPrueba.value['fecha_registro'] = $('#fecha_registro').val() == "" ? null : $('#fecha_registro').val();
 
 			this._tablaPruebaUseCase.saveTablaPrueba(this.formTablaPrueba.value as ISaveTablaPruebaViewModel).then(obs => {
 				this._loaderService.display(true);
@@ -85,16 +91,18 @@ export class CreateTablaPruebaPageComponent {
 
 
 	ngOnInit() {
+		validarEnterosJs('#numero_entero', 8);
+		validarDecimalesJs('#numero_decimal', 8, 2);
 
 		this.formTablaPrueba = new FormGroup({
-			id_tabla_prueba: new FormControl('', Validators.compose([Validators.maxLength(8)])),
-			nombre_tabla_prueba: new FormControl('', Validators.compose([Validators.required, Validators.maxLength(128)])),
-			fecha_tabla_prueba: new FormControl('', Validators.compose([Validators.required, Validators.maxLength(8)])),
-			numero_entero: new FormControl('', Validators.compose([Validators.required, Validators.maxLength(8)])),
-			estado_boleano: new FormControl('', Validators.compose([Validators.required, Validators.maxLength(8)])),
-			fecha_registro: new FormControl('', Validators.compose([Validators.required, Validators.maxLength(8)])),
-			numero_decimal: new FormControl('', Validators.compose([Validators.required, Validators.maxLength(8)])),
-			estado: new FormControl('', Validators.compose([Validators.required, Validators.maxLength(16)])),
+			id_tabla_prueba: new FormControl(null, Validators.compose([Validators.max(999999999)])),
+			nombre_tabla_prueba: new FormControl(null, Validators.compose([Validators.required, Validators.maxLength(128)])),
+			fecha_tabla_prueba: new FormControl(null, Validators.compose([Validators.required, Validators.maxLength(8)])),
+			numero_entero: new FormControl(null, Validators.compose([Validators.required, Validators.min(1), Validators.max(999999999)])),
+			estado_boleano: new FormControl(false, Validators.compose([Validators.requiredTrue, Validators.maxLength(8)])),
+			fecha_registro: new FormControl(null, Validators.compose([Validators.required, Validators.maxLength(8)])),
+			numero_decimal: new FormControl(null, Validators.compose([Validators.required, Validators.min(0.01), Validators.max(999999999.99), Validators.pattern(this._validatorService.patternTwoDecimal)])),
+			estado: new FormControl(null, Validators.compose([Validators.required, Validators.maxLength(16)])),
 		});
 
 		this.sub = this._route.params.subscribe(params => {
@@ -109,17 +117,21 @@ export class CreateTablaPruebaPageComponent {
 						if (result.ok) {
 							this.formTablaPrueba.reset(result.data);
 							var fechaTablaPruebaString = result.data?.fecha_tabla_prueba?.toString();
-							const [yearFechaTablaPrueba, monthFechaTablaPrueba, dayFechaTablaPrueba] = fechaTablaPruebaString!.split('-');
-							const fechaTablaPrueba = {
-								year: parseInt(yearFechaTablaPrueba), month: parseInt(monthFechaTablaPrueba), day:parseInt(dayFechaTablaPrueba.split(' ')[0].trim())
-							};
-							this.formTablaPrueba.get('fecha_tabla_prueba')?.setValue(fechaTablaPrueba);
+							if (fechaTablaPruebaString != null) {
+								const [yearFechaTablaPrueba, monthFechaTablaPrueba, dayFechaTablaPrueba] = fechaTablaPruebaString!.split('-');
+								const fechaTablaPrueba = {
+									year: parseInt(yearFechaTablaPrueba), month: parseInt(monthFechaTablaPrueba), day: parseInt(dayFechaTablaPrueba.split(' ')[0].trim())
+								};
+								this.formTablaPrueba.get('fecha_tabla_prueba')?.setValue(fechaTablaPrueba);
+							}
 							var fechaRegistroString = result.data?.fecha_registro?.toString();
-							const [yearFechaRegistro, monthFechaRegistro, dayFechaRegistro] = fechaRegistroString!.split('-');
-							const fechaRegistro = {
-								year: parseInt(yearFechaRegistro), month: parseInt(monthFechaRegistro), day:parseInt(dayFechaRegistro.split(' ')[0].trim())
-							};
-							this.formTablaPrueba.get('fecha_registro')?.setValue(fechaRegistro);
+							if (fechaRegistroString != null) {
+								const [yearFechaRegistro, monthFechaRegistro, dayFechaRegistro] = fechaRegistroString!.split('-');
+								const fechaRegistro = {
+									year: parseInt(yearFechaRegistro), month: parseInt(monthFechaRegistro), day: parseInt(dayFechaRegistro.split(' ')[0].trim())
+								};
+								this.formTablaPrueba.get('fecha_registro')?.setValue(fechaRegistro);
+							}
 						} else {
 							this._alertService.alertMessage(messages.advertenciaTitle, result.message, messages.isWarning);
 						}
@@ -128,8 +140,11 @@ export class CreateTablaPruebaPageComponent {
 			};
 		});
 	};
+	public onChangeEstadoBoleano(event: any): void {
+		this.checkedEstadoBoleano = event.checked;
+	}
 
-	public cancelTablaPrueba(): void{
+	public cancelTablaPrueba(): void {
 		this.close.emit(true);
 		window.history.back();
 	};

@@ -10,9 +10,16 @@ import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeModule } from 'src/presentation/home/home.module';
 import { RouterModule } from '@angular/router';
+import { MatPaginatorIntl } from '@angular/material/paginator';
+import { getDutchPaginatorIntl } from 'src/base/paginator-intl';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { provideNgxMask } from 'ngx-mask';
 export function tokenGetter() {
   return sessionStorage.getItem("access_token");
 }
+// const maskConfig: Partial<IConfig> = {
+//   validation: true,
+// };
 
 @NgModule({
   declarations: [
@@ -35,7 +42,9 @@ export function tokenGetter() {
     // NgbModule,
     BrowserAnimationsModule,
     HomeModule,
-    RouterModule
+    RouterModule,
+    MatFormFieldModule,
+
   ],
 
   providers: [/*{
@@ -44,9 +53,13 @@ export function tokenGetter() {
     multi: true
   },*/
     //ErrorInterceptorProvider,
+
     HttpHeaderInterceptorProvider,
+    // provideEnvironmentNgxMask(maskConfig),
     //{ provide: ErrorInterceptorProvider },
-    { provide: LoaderService }, { provide: JwtHelperService }],
+    { provide: LoaderService }, { provide: JwtHelperService }, { provide: MatPaginatorIntl, useValue: getDutchPaginatorIntl() }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+

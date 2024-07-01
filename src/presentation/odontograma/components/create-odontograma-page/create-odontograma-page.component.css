@@ -69,6 +69,8 @@
     position: relative;
     text-align: center;
     vertical-align: middle;
+    font-weight: bold;
+    font-size: small;
   }
 }
 
@@ -390,13 +392,14 @@ iPad 3
   background-color: transparent;
   border: none;
   background-size: 40px 40px; */
-  top: -87px !important;
-    left: -5px;
-    height: 30px;
-    width: 30px;
-    background-color: transparent;
-    border: none;
-    background-size: 30px 30px;
+  top: -82px !important;
+  left: -2px;
+  height: 24px;
+  width: 24px;
+  background-color: transparent;
+  border: none;
+  background-size: 24px 24px;
+
 }
 
 .shape-select {
@@ -417,53 +420,63 @@ iPad 3
 }
 
 .triangle-bgm-red-all {
-  background-image: url("../../../../assets/img/odontogram/triangle-bgm-red-all.png");
+  background-image: url(../../../../assets/img/odontogram/triangle-bgm-red-all.png);
   top: -180px;
+  opacity: 0.6;
 }
 
 .triangle-bgm-blue-all {
   background-image: url(../../../../assets/img/odontogram/triangle-bgm-blue-all.png);
   top: -180px;
+  opacity: 0.6;
 }
 
 .equis-bgm-red-all {
   background-image: url(../../../../assets/img/odontogram/equis-bgm-red-all.png);
   top: -180px;
+  opacity: 0.6;
 }
 
 .equis-bgm-blue-all {
   background-image: url(../../../../assets/img/odontogram/equis-bgm-blue-all.png);
   top: -180px;
+  opacity: 0.6;
 }
 
 .screw-bgm-blue-all {
   background-image: url(../../../../assets/img/odontogram/screw-bgm-blue-all.png);
   top: -180px;
+  opacity: 0.6;
 }
 
 .screw-bgm-red-all {
   background-image: url(../../../../assets/img/odontogram/screw-bgm-red-all.png);
   top: -180px;
+  opacity: 0.6;
 }
 
 .circle-bgm-red-all {
   background-image: url(../../../../assets/img/odontogram/circle-bgm-red-all.png);
   top: -180px;
+  opacity: 0.6;
 }
 
 .circle-bgm-blue-all {
   background-image: url(../../../../assets/img/odontogram/circle-bgm-blue-all.png);
   top: -180px;
+  opacity: 0.6;
 }
 
 .asterisk-bgm-red-all {
   background-image: url(../../../../assets/img/odontogram/asterisk-bgm-red-all.png);
   top: -180px;
+  opacity: 0.6;
 }
 
 .asterisk-bgm-blue-all {
   background-image: url(../../../../assets/img/odontogram/asterisk-bgm-blue-all.png);
   top: -180px;
+  opacity: 0.6;
 }
 
 .children-p-r {

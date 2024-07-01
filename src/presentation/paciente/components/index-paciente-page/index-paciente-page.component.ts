@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { messages } from 'src/presentation/base/messages';
@@ -14,7 +14,9 @@ declare var $:any;
   templateUrl: './index-paciente-page.component.html',
   styleUrls: ['./index-paciente-page.component.css']
 })
-export class IndexPacientePageComponent {
+export class IndexPacientePageComponent implements AfterViewInit {
+
+
   // , private _route: ActivatedRoute
   constructor(private _router: Router, private _alertService: AlertsService, private _loaderService: LoaderService, private _pacienteUseCase: PacienteUseCase){}
 
@@ -49,6 +51,7 @@ export class IndexPacientePageComponent {
     this.obtenerPaciente();
 
   }
+
 
 
   obtenerPaciente() {

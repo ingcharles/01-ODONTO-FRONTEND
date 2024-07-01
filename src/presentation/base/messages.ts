@@ -1,5 +1,6 @@
 import { SweetAlertIcon } from "sweetalert2";
 export const isWarning: SweetAlertIcon = 'warning';
+export const isInfo: SweetAlertIcon = 'info';
 export const isSuccess: SweetAlertIcon = 'success';
 export const isError: SweetAlertIcon = 'error';
 let date: Date = new Date();
@@ -18,8 +19,9 @@ export const messages = {
   aportanteNoExist: "Aportante no registrado, por favor registrelo",
   camposVacios: "Debe completar o revisar campos con observación",
   advertenciaTitle: "¡Advertencia!",
+  informativoTitle: "¡Informativo!",
   exitoTitle: "¡Éxito!",
-  confirmacionTitle: "Confirmación",
+  confirmacionTitle: "¡Confirmación!",
   documentosRespaldosVacios: "Cargue los documentos de respaldo",
   documentoExcelVacio: "Registre de afiliados o adherentes",
   registrosGastoActivoFijoVacio: "Registre los de gastos o activos fijos",
@@ -35,16 +37,9 @@ export const messages = {
   confirmAnular: "¿Está seguro de anular el registro?",
   serviceFail: "Servicio no disponible",
   isWarning: isWarning,
+  isInfo: isInfo,
   isSuccess: isSuccess,
   isError: isError,
 
-  proceso: 'Electoral',
-  codProceso: 999,
-  dignidad: 'Alcalde',
-  candidato: 'Lista 6',
-  codUsuario: 888,
-  usuario: 'Pepito Perez',
-  rolUsuario: 'RME',
-  fecha: date.toLocaleString()
 
 }

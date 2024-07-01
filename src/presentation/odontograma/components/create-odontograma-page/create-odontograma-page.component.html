@@ -11,223 +11,262 @@
   <div class="card-body">
     <div class="row adult">
       <div class="col-sm-6">
-        <div class="col-sm-1 diente"></div>
-        <div class="col-sm-1 m-r-3-p diente" *ngFor="let item of responseATLeft">
-          <div *ngIf="item.ToothNumber >10 && item.ToothNumber < 19">
-            <a data-toggle="modal" data-bs-toggle="modal" data-bs-target="#modalOdontogram" (click)="showOdontogram(item.ToothNumber)">
-              <div class="cuadro click" [ngClass]="item.tooth.top.color"></div>
-              <div class="cuadro izquierdo click" [ngClass]="item.tooth.left.color"></div>
-              <div class="cuadro debajo click" [ngClass]="item.tooth.bottom.color"></div>
-              <div class="cuadro derecha click" [ngClass]="item.tooth.right.color"></div>
-              <div class="centro click" [ngClass]="item.tooth.center.color">{{item.ToothNumber}}</div>
-              <div class="centro click shape" [ngClass]="item.Tooth.Shape" id="chape"></div>
-            </a>
+        <div class="row">
+          <div class="col-sm-1 diente"></div>
+          <div class="col-sm-1 m-r-3-p diente" *ngFor="let item of responseATLeft.slice().reverse()">
+            <div *ngIf="item.toothNumber >10 && item.toothNumber < 19">
+              <a data-toggle="modal" data-bs-toggle="modal" data-bs-target="#modalOdontogram"
+                (click)="showOdontogram(item.toothNumber)">
+                <div class="cuadro click" [ngClass]="item.tooth.top.color"></div>
+                <div class="cuadro izquierdo click" [ngClass]="item.tooth.left.color"></div>
+                <div class="cuadro debajo click" [ngClass]="item.tooth.bottom.color"></div>
+                <div class="cuadro derecha click" [ngClass]="item.tooth.right.color"></div>
+                <div class="centro click" [ngClass]="item.tooth.center.color">{{item.toothNumber}}</div>
+                <div class="centro click shape" [ngClass]="item.tooth.shape" id="chape"></div>
+              </a>
+            </div>
           </div>
         </div>
       </div>
       <div class="col-sm-6">
-        <div class="col-sm-1 m-r-3-p diente" *ngFor="let item of responseATRight">
-          <div *ngIf="item.ToothNumber >20  && item.ToothNumber < 29">
-            <a data-toggle="modal" data-bs-toggle="modal" data-bs-target="#modalOdontogram" (click)="showOdontogram(item.ToothNumber)">
-              <div class="cuadro click" [ngClass]="item.tooth.top.color"></div>
-              <div class="cuadro izquierdo click" [ngClass]="item.tooth.left.color"></div>
-              <div class="cuadro debajo click" [ngClass]="item.tooth.bottom.color"></div>
-              <div class="cuadro derecha click" [ngClass]="item.tooth.right.color"></div>
-              <div class="centro click" [ngClass]="item.tooth.center.color">{{item.ToothNumber}}</div>
-              <div class="centro click shape" [ngClass]="item.Tooth.Shape" id="chape"></div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row children">
-      <div class="col-sm-6">
-        <div class="col-sm-5 diente"></div>
-        <div class="col-sm-1 m-r-3-p diente" *ngFor="let item of responseCTLeft">
-          <div *ngIf="item.ToothNumber >50  && item.ToothNumber < 56">
-            <a data-toggle="modal" data-bs-toggle="modal" data-bs-target="#modalOdontogram" (click)="showOdontogram(item.ToothNumber)">
-              <div class="cuadro click" [ngClass]="item.tooth.top.color"></div>
-              <div class="cuadro izquierdo click" [ngClass]="item.tooth.left.color"></div>
-              <div class="cuadro debajo click" [ngClass]="item.tooth.bottom.color"></div>
-              <div class="cuadro derecha click" [ngClass]="item.tooth.right.color"></div>
-              <div class="centro click" [ngClass]="item.tooth.center.color">{{item.ToothNumber}}</div>
-              <div class="centro click shape" [ngClass]="item.Tooth.Shape" id="chape"></div>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="col-sm-1 m-r-3-p diente" *ngFor="let item of responseCTRight">
-          <div *ngIf="item.ToothNumber >60  && item.ToothNumber < 66">
-            <a data-toggle="modal" data-bs-toggle="modal" data-bs-target="#modalOdontogram" (click)="showOdontogram(item.ToothNumber)">
-              <div class="cuadro click" [ngClass]="item.tooth.top.color"></div>
-              <div class="cuadro izquierdo click" [ngClass]="item.tooth.left.color"></div>
-              <div class="cuadro debajo click" [ngClass]="item.tooth.bottom.color"></div>
-              <div class="cuadro derecha click" [ngClass]="item.tooth.right.color"></div>
-              <div class="centro click" [ngClass]="item.tooth.center.color">{{item.ToothNumber}}</div>
-              <div class="centro click shape" [ngClass]="item.Tooth.Shape" id="chape"></div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row children">
-      <div class="col-sm-6">
-        <div class="col-sm-5 diente"></div>
-        <div class="col-sm-1 m-r-3-p diente" *ngFor="let item of responseCDLeft">
-          <div *ngIf="item.ToothNumber >80  && item.ToothNumber < 86">
-            <a data-toggle="modal" data-bs-toggle="modal" data-bs-target="#modalOdontogram" (click)="showOdontogram(item.ToothNumber)">
-              <div class="cuadro click" [ngClass]="item.tooth.top.color"></div>
-              <div class="cuadro izquierdo click" [ngClass]="item.tooth.left.color"></div>
-              <div class="cuadro debajo click" [ngClass]="item.tooth.bottom.color"></div>
-              <div class="cuadro derecha click" [ngClass]="item.tooth.right.color"></div>
-              <div class="centro click" [ngClass]="item.tooth.center.color">
-                <!-- <input name="cuadro" type="hidden" value="5" (click)="modal.open()"> -->
-                {{item.ToothNumber}}
-              </div>
-              <div class="centro click shape" [ngClass]="item.Tooth.Shape" id="chape"></div>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-6 diente">
-        <div class="col-sm-1 m-r-3-p diente" *ngFor="let item of responseCDRight">
-          <div *ngIf="item.ToothNumber >70  && item.ToothNumber < 76">
-            <a data-toggle="modal" data-bs-toggle="modal" data-bs-target="#modalOdontogram" (click)="showOdontogram(item.ToothNumber)">
-              <div class="cuadro click" [ngClass]="item.tooth.top.color"></div>
-              <div class="cuadro izquierdo click" [ngClass]="item.tooth.left.color"></div>
-              <div class="cuadro debajo click" [ngClass]="item.tooth.bottom.color"></div>
-              <div class="cuadro derecha click" [ngClass]="item.tooth.right.color"></div>
-              <div class="centro click" [ngClass]="item.tooth.center.color">
-                <!-- <input name="cuadro" type="hidden" value="5" (click)="modal.open()"> -->
-                {{item.ToothNumber}}
-              </div>
-              <div class="centro click shape" [ngClass]="item.Tooth.Shape" id="chape"></div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row adult">
-      <div class="col-sm-6">
-        <div class="col-sm-1 diente"></div>
-        <div class="col-sm-1 m-r-3-p diente" *ngFor="let item of responseADLeft">
-          <div *ngIf="item.ToothNumber >40  && item.ToothNumber < 49">
-            <a data-toggle="modal" data-bs-toggle="modal" data-bs-target="#modalOdontogram" (click)="showOdontogram(item.ToothNumber)">
-              <div class="cuadro click" [ngClass]="item.tooth.top.color"></div>
-              <div class="cuadro izquierdo click" [ngClass]="item.tooth.left.color"></div>
-              <div class="cuadro debajo click" [ngClass]="item.tooth.bottom.color"></div>
-              <div class="cuadro derecha click" [ngClass]="item.tooth.right.color"></div>
-              <div class="centro click" [ngClass]="item.tooth.center.color">
-                <!-- <input name="cuadro" type="hidden" value="5" (click)="modal.open()"> -->
-                {{item.ToothNumber}}
-              </div>
-              <div class="centro click shape" [ngClass]="item.Tooth.Shape" id="chape"></div>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="col-sm-1 m-r-3-p diente" *ngFor="let item of responseADRight">
-          <div *ngIf="item.ToothNumber >30  && item.ToothNumber < 39">
-            <a data-toggle="modal" data-bs-toggle="modal" data-bs-target="#modalOdontogram" (click)="showOdontogram(item.ToothNumber)">
-              <div class="cuadro click" [ngClass]="item.tooth.top.color"></div>
-              <div class="cuadro izquierdo click" [ngClass]="item.tooth.left.color"></div>
-              <div class="cuadro debajo click" [ngClass]="item.tooth.bottom.color"></div>
-              <div class="cuadro derecha click" [ngClass]="item.tooth.right.color"></div>
-              <div class="centro click" [ngClass]="item.tooth.center.color">
-                <!-- <input name="cuadro" type="hidden" value="5" (click)="modal.open()"> -->
-                {{item.ToothNumber}}
-              </div>
-              <div class="centro click shape" [ngClass]="item.Tooth.Shape" id="chape"></div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="panel-group" data-collapse-color="green" id="accordionGreen" role="tablist">
-      <div class="panel panel-collapse">
-        <div class="panel-heading" role="tab">
-          <h4 class="panel-title">
-            <a data-bs-toggle="collapse" data-parent="#accordionGreen" href="#accordionGreen-one" aria-expanded="true">
-              Leyenda
-            </a>
-          </h4>
-        </div>
-        <div id="accordionGreen-one" class="collapse" role="tabpanel">
-          <div class="panel-body">
-            <div class="card-body table-responsive">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>Diagnóstico</th>
-                    <th>Color</th>
-                    <th>Símbolo</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let opt of catalogs">
-                    <td>{{opt.Name}}</td>
-                    <td><span [ngClass]="opt.Description.split('|')[0]">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
-                    <td><span class="shape-legend" [ngClass]="opt.Description.split('|')[2] + '-' + opt.Description.split('|')[0] + '-'  + opt.Description.split('|')[3]">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
-                  </tr>
-                </tbody>
-              </table>
+        <div class="row">
+          <div class="col-sm-1 diente"></div>
+          <div class="col-sm-1 m-r-3-p diente" *ngFor="let item of responseATRight">
+            <div *ngIf="item.toothNumber >20  && item.toothNumber < 29">
+              <a data-toggle="modal" data-bs-toggle="modal" data-bs-target="#modalOdontogram"
+                (click)="showOdontogram(item.toothNumber)">
+                <div class="cuadro click" [ngClass]="item.tooth.top.color"></div>
+                <div class="cuadro izquierdo click" [ngClass]="item.tooth.left.color"></div>
+                <div class="cuadro debajo click" [ngClass]="item.tooth.bottom.color"></div>
+                <div class="cuadro derecha click" [ngClass]="item.tooth.right.color"></div>
+                <div class="centro click" [ngClass]="item.tooth.center.color">{{item.toothNumber}}</div>
+                <div class="centro click shape" [ngClass]="item.tooth.shape" id="chape"></div>
+              </a>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-  </div>
-  <!--</div>-->
-
-
-
-  <!-- Modal Default -->
-  <div class="modal fade col-sm-offset-2" id="modalOdontogram" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog col-xs-12 col-sm-4">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Diagnóstico</h4>
+    <div class="row children">
+      <div class="col-sm-6">
+        <div class="row">
+          <div class="col-sm-5 diente"></div>
+          <div class="col-sm-1 m-r-3-p diente" *ngFor="let item of responseCTLeft.slice().reverse()">
+            <div *ngIf="item.toothNumber >50  && item.toothNumber < 56">
+              <a data-toggle="modal" data-bs-toggle="modal" data-bs-target="#modalOdontogram"
+                (click)="showOdontogram(item.toothNumber)">
+                <div class="cuadro click" [ngClass]="item.tooth.top.color"></div>
+                <div class="cuadro izquierdo click" [ngClass]="item.tooth.left.color"></div>
+                <div class="cuadro debajo click" [ngClass]="item.tooth.bottom.color"></div>
+                <div class="cuadro derecha click" [ngClass]="item.tooth.right.color"></div>
+                <div class="centro click" [ngClass]="item.tooth.center.color">{{item.toothNumber}}</div>
+                <div class="centro click shape" [ngClass]="item.tooth.shape" id="chape"></div>
+              </a>
+            </div>
+          </div>
         </div>
-        <div class="modal-body">
+      </div>
+      <div class="col-sm-6">
+        <div class="row">
+          <div class="col-sm-1 diente"></div>
+          <div class="col-sm-1 m-r-3-p diente" *ngFor="let item of responseCTRight">
+            <div *ngIf="item.toothNumber >60  && item.toothNumber < 66">
+              <a data-toggle="modal" data-bs-toggle="modal" data-bs-target="#modalOdontogram"
+                (click)="showOdontogram(item.toothNumber)">
+                <div class="cuadro click" [ngClass]="item.tooth.top.color"></div>
+                <div class="cuadro izquierdo click" [ngClass]="item.tooth.left.color"></div>
+                <div class="cuadro debajo click" [ngClass]="item.tooth.bottom.color"></div>
+                <div class="cuadro derecha click" [ngClass]="item.tooth.right.color"></div>
+                <div class="centro click" [ngClass]="item.tooth.center.color">{{item.toothNumber}}</div>
+                <div class="centro click shape" [ngClass]="item.tooth.shape" id="chape"></div>
+              </a>
+            </div>
+            <div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row children">
+        <div class="col-sm-6">
           <div class="row">
-            <div class="col-sm-6">
-              <div class="diente-select">
-                <div class="cuadro-select click" [ngClass]="odontogram.tooth.top.color" (click)="selectSquare('top')"></div>
-                <div class="cuadro-select izquierdo-select click" [ngClass]="odontogram.tooth.left.color" (click)="selectSquare('left')"></div>
-                <div class="cuadro-select debajo-select click" [ngClass]="odontogram.tooth.bottom.color" (click)="selectSquare('bottom')"></div>
-                <div class="cuadro-select derecha-select click" [ngClass]="odontogram.tooth.right.color" (click)="selectSquare('right')"></div>
-                <div class="centro-select click" [ngClass]="odontogram.tooth.center.color" (click)="selectSquare('center')">{{odontogram.toothNumber}}</div>
-                <div class="centro-select click shape-select" [ngClass]="odontogram.tooth.shape" id="chape" (click)="selectSquare('center')"></div>
+            <div class="col-sm-5 diente"></div>
+            <div class="col-sm-1 m-r-3-p diente" *ngFor="let item of responseCDLeft.slice().reverse()">
+              <div *ngIf="item.toothNumber >80  && item.toothNumber < 86">
+                <a data-toggle="modal" data-bs-toggle="modal" data-bs-target="#modalOdontogram"
+                  (click)="showOdontogram(item.toothNumber)">
+                  <div class="cuadro click" [ngClass]="item.tooth.top.color"></div>
+                  <div class="cuadro izquierdo click" [ngClass]="item.tooth.left.color"></div>
+                  <div class="cuadro debajo click" [ngClass]="item.tooth.bottom.color"></div>
+                  <div class="cuadro derecha click" [ngClass]="item.tooth.right.color"></div>
+                  <div class="centro click" [ngClass]="item.tooth.center.color">
+                    <!-- <input name="cuadro" type="hidden" value="5" (click)="modal.open()"> -->
+                    {{item.toothNumber}}
+                  </div>
+                  <div class="centro click shape" [ngClass]="item.tooth.shape" id="chape"></div>
+                </a>
               </div>
             </div>
-            <div class="col-sm-6">
-              <label>Seleccione el cuadrante del diente y posteriormente la situación actual</label>
-              <div class="dropdown-btn-demo">
-                <div class="dropdown">
-                  <a href="#" class="dropdown-toggle btn btn-success" data-bs-toggle="dropdown">Diagnóstico</a>
-                  <ul class="dropdown-menu">
-                    <li role="presentation" *ngFor="let opt of catalogs">
-                      <a (click)="selectTagColor(opt.Description, opt.Name)">{{opt.Name}}</a>
-                    </li>
-                  </ul>
+          </div>
+        </div>
+        <div class="col-sm-6 diente">
+          <div class="row">
+            <div class="col-sm-1 diente"></div>
+            <div class="col-sm-1 m-r-3-p diente" *ngFor="let item of responseCDRight">
+              <div *ngIf="item.toothNumber >70  && item.toothNumber < 76">
+                <a data-toggle="modal" data-bs-toggle="modal" data-bs-target="#modalOdontogram"
+                  (click)="showOdontogram(item.toothNumber)">
+                  <div class="cuadro click" [ngClass]="item.tooth.top.color"></div>
+                  <div class="cuadro izquierdo click" [ngClass]="item.tooth.left.color"></div>
+                  <div class="cuadro debajo click" [ngClass]="item.tooth.bottom.color"></div>
+                  <div class="cuadro derecha click" [ngClass]="item.tooth.right.color"></div>
+                  <div class="centro click" [ngClass]="item.tooth.center.color">
+                    <!-- <input name="cuadro" type="hidden" value="5" (click)="modal.open()"> -->
+                    {{item.toothNumber}}
+                  </div>
+                  <div class="centro click shape" [ngClass]="item.tooth.shape" id="chape"></div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row adult">
+        <div class="col-sm-6">
+          <div class="row">
+            <div class="col-sm-1 diente"></div>
+            <div class="col-sm-1 m-r-3-p diente" *ngFor="let item of responseADLeft.slice().reverse()">
+              <div *ngIf="item.toothNumber >40  && item.toothNumber < 49">
+                <a data-toggle="modal" data-bs-toggle="modal" data-bs-target="#modalOdontogram"
+                  (click)="showOdontogram(item.toothNumber)">
+                  <div class="cuadro click" [ngClass]="item.tooth.top.color"></div>
+                  <div class="cuadro izquierdo click" [ngClass]="item.tooth.left.color"></div>
+                  <div class="cuadro debajo click" [ngClass]="item.tooth.bottom.color"></div>
+                  <div class="cuadro derecha click" [ngClass]="item.tooth.right.color"></div>
+                  <div class="centro click" [ngClass]="item.tooth.center.color">
+                    <!-- <input name="cuadro" type="hidden" value="5" (click)="modal.open()"> -->
+                    {{item.toothNumber}}
+                  </div>
+                  <div class="centro click shape" [ngClass]="item.tooth.shape" id="chape"></div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="row">
+            <div class="col-sm-1 diente"></div>
+            <div class="col-sm-1 m-r-3-p diente" *ngFor="let item of responseADRight">
+              <div *ngIf="item.toothNumber >30  && item.toothNumber < 39">
+                <a data-toggle="modal" data-bs-toggle="modal" data-bs-target="#modalOdontogram"
+                  (click)="showOdontogram(item.toothNumber)">
+                  <div class="cuadro click" [ngClass]="item.tooth.top.color"></div>
+                  <div class="cuadro izquierdo click" [ngClass]="item.tooth.left.color"></div>
+                  <div class="cuadro debajo click" [ngClass]="item.tooth.bottom.color"></div>
+                  <div class="cuadro derecha click" [ngClass]="item.tooth.right.color"></div>
+                  <div class="centro click" [ngClass]="item.tooth.center.color">
+                    <!-- <input name="cuadro" type="hidden" value="5" (click)="modal.open()"> -->
+                    {{item.toothNumber}}
+                  </div>
+                  <div class="centro click shape" [ngClass]="item.tooth.shape" id="chape"></div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-group" data-collapse-color="green" id="accordionGreen" role="tablist">
+        <div class="panel panel-collapse">
+          <div class="panel-heading" role="tab">
+            <h4 class="panel-title">
+              <a data-bs-toggle="collapse" data-parent="#accordionGreen" href="#accordionGreen-one"
+                aria-expanded="true">
+                Leyenda
+              </a>
+            </h4>
+          </div>
+          <div id="accordionGreen-one" class="collapse" role="tabpanel">
+            <div class="panel-body">
+              <div class="card-body table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Diagnóstico</th>
+                      <th>Color</th>
+                      <th>Símbolo</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let opt of catalogs">
+                      <td>{{opt.Name}}</td>
+                      <td><span
+                          [ngClass]="opt.Description.split('|')[0]">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                      </td>
+                      <td><span class="shape-legend"
+                          [ngClass]="opt.Description.split('|')[2] + '-' + opt.Description.split('|')[0] + '-'  + opt.Description.split('|')[3]">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!--</div>-->
+
+
+
+    <!-- Modal Default -->
+    <div class="modal fade col-sm-offset-2" id="modalOdontogram" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog col-xs-12 col-sm-4">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Diagnóstico</h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="diente-select">
+                  <div class="cuadro-select click" [ngClass]="odontogram.tooth.top.color" (click)="selectSquare('top')">
+                  </div>
+                  <div class="cuadro-select izquierdo-select click" [ngClass]="odontogram.tooth.left.color"
+                    (click)="selectSquare('left')"></div>
+                  <div class="cuadro-select debajo-select click" [ngClass]="odontogram.tooth.bottom.color"
+                    (click)="selectSquare('bottom')"></div>
+                  <div class="cuadro-select derecha-select click" [ngClass]="odontogram.tooth.right.color"
+                    (click)="selectSquare('right')"></div>
+                  <div class="centro-select click" [ngClass]="odontogram.tooth.center.color"
+                    (click)="selectSquare('center')">{{odontogram.toothNumber}}</div>
+                  <div class="centro-select click shape-select" [ngClass]="odontogram.tooth.shape" id="chape"
+                    (click)="selectSquare('center')"></div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <label>Seleccione el cuadrante del diente y posteriormente la situación actual</label>
+                <div class="dropdown-btn-demo">
+                  <div class="dropdown">
+                    <a href="#" class="dropdown-toggle btn btn-success" data-bs-toggle="dropdown">Diagnóstico</a>
+                    <ul class="dropdown-menu">
+                      <li role="presentation" *ngFor="let opt of catalogs">
+                        <a (click)="selectTagColor(opt.Description, opt.Name)">{{opt.Name}}</a>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
+            <div>Diagnóstico seleccionado: {{legend}}</div>
           </div>
-          <div>Diagnóstico seleccionado: {{legend}}</div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" (click)="save()" data-bs-dismiss="modal">Guardar</button>
-          <button type="button" class="btn btn-link" (click)="close()" data-bs-dismiss="modal">Cancelar</button>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="save()" data-bs-dismiss="modal">Guardar</button>
+            <button type="button" class="btn btn-link" (click)="close()" data-bs-dismiss="modal">Cancelar</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>

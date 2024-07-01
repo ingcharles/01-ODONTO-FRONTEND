@@ -21,16 +21,16 @@
 
 			<div class="col-md-6 col-sm-6 col-xs-6">
 				<div class="input-group form-group">
-					<span class="input-group-text"><i class="md fa-solid fa-location-dot"></i></span>
+					<span class="input-group-text"><i class="md fa fa-user"></i></span>
 					<div class="dtp-container dropdown fg-line">
-						<input type="text" class="form-control" id="busqueda" name="busqueda" value="" placeholder="busqueda" maxlength="128" (keyup.enter)="obtenerTablaPrueba()"/>
+						<input type="text" class="form-control" id="busqueda" name="busqueda" value="" placeholder="busqueda" maxlength="128" (keyup.enter)="obtenerTablaPruebaPaginado(true,'id_tabla_prueba_uno','DESC',0,5)"/>
 					</div>
 				</div>
 			</div>
 
 			<div class="col-md-2 col-sm-2 col-xs-2">
 				<div class="input-group form-group">
-					<span class="input-group-text"><i class="md fa-solid fa-user-group"></i></span>
+					<span class="input-group-text"><i class="md fa fa-user"></i></span>
 						<div class="fg-line select">
 						<select class="form-control" name="tablaPruebaPadre">
 							<option value="-1">Todas tus tablaPrueba padres </option>
@@ -42,26 +42,31 @@
 
 			<div class="col-md-4 col-sm-4 col-xs-4">
 				<div class="input-group form-group">
-					<button class="btn btn-info" (click)="obtenerTablaPrueba()"><i class="md md-search"></i>Buscar</button>
+					<button class="btn btn-info" (click)="obtenerTablaPruebaPaginado(true,'id_tabla_prueba_uno','DESC',0,5)"><i class="md md-search"></i>Buscar</button>
 				</div>
 			</div>
 
 		</div>
 	</div>
 
-	<div class="text-center mt-5" [hidden]="datosGridTablaPrueba.length > 0">
+	<div class="text-center mt-5" [hidden]="totalRegistrosTablaPrueba > 0">
 		<div style="font-size: 16px;">No hay elementos para mostrar</div>
 	</div>
 
-	<table class="table align-middle mb-0 bg-white" mat-table [dataSource]="dataSource">
+	<mat-form-field>
+		<mat-label>Filtro</mat-label>
+		<input matInput (keyup)="aplicarFiltroTablaPrueba($event)" placeholder="Ejem. Juan">
+	</mat-form-field>
+
+	<table class="table align-middle mb-0 bg-white mat-elevation-z8" mat-table [dataSource]="dataSourceTablaPrueba" matSort matSortActive=id_tabla_prueba matSortDisableClear matSortDirection="desc">
 
 		<ng-container matColumnDef="id_tabla_prueba">
-			<th mat-header-cell *matHeaderCellDef> Id </th>
+			<th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> Id </th>
 			<td mat-cell *matCellDef="let element"> {{element.id_tabla_prueba}} </td>
 		</ng-container>
 
 		<ng-container matColumnDef="nombre_tabla_prueba">
-			<th mat-header-cell *matHeaderCellDef> Nombre </th>
+			<th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> Nombre </th>
 			<td mat-cell *matCellDef="let element">
 				<div class="d-flex align-items-center">
 				<img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
@@ -74,32 +79,32 @@
 		</ng-container>
 
 		<ng-container matColumnDef="fecha_tabla_prueba">
-			<th mat-header-cell *matHeaderCellDef> Fecha </th>
-			<td mat-cell *matCellDef="let element"> {{element.fecha_tabla_prueba}} </td>
+			<th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> Fecha </th>
+			<td mat-cell *matCellDef="let element"> {{element.fecha_tabla_prueba | date : "YYYY-MM-dd"}} </td>
 		</ng-container>
 
 		<ng-container matColumnDef="numero_entero">
-			<th mat-header-cell *matHeaderCellDef> Estado entero </th>
+			<th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> Estado entero </th>
 			<td mat-cell *matCellDef="let element"> {{element.numero_entero}} </td>
 		</ng-container>
 
 		<ng-container matColumnDef="estado_boleano">
-			<th mat-header-cell *matHeaderCellDef> Estado boelano </th>
+			<th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> Estado boelano </th>
 			<td mat-cell *matCellDef="let element"> <span class="badge badge-warning rounded-pill d-inline">{{element.estado_boleano}}</span> </td>
 		</ng-container>
 
 		<ng-container matColumnDef="fecha_registro">
-			<th mat-header-cell *matHeaderCellDef> Fecha registro </th>
-			<td mat-cell *matCellDef="let element"> {{element.fecha_registro}} </td>
+			<th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> Fecha registro </th>
+			<td mat-cell *matCellDef="let element"> {{element.fecha_registro | date : "YYYY-MM-dd"}} </td>
 		</ng-container>
 
 		<ng-container matColumnDef="numero_decimal">
-			<th mat-header-cell *matHeaderCellDef> Numero decimal </th>
+			<th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> Numero decimal </th>
 			<td mat-cell *matCellDef="let element"> {{element.numero_decimal}} </td>
 		</ng-container>
 
 		<ng-container matColumnDef="estado">
-			<th mat-header-cell *matHeaderCellDef> Estado </th>
+			<th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> Estado </th>
 			<td mat-cell *matCellDef="let element"> <span class="badge badge-warning rounded-pill d-inline">{{element.estado}}</span> </td>
 		</ng-container>
 
@@ -115,7 +120,7 @@
 	
 	</table>
 
-	<mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons aria-label="Select page">
+	<mat-paginator [length]="totalRegistrosTablaPrueba" #paginatorTablaPrueba [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons>
 	</mat-paginator>
 
 </div>
